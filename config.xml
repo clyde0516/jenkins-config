@@ -251,7 +251,7 @@
           <lastJob></lastJob>
         </se.diabol.jenkins.pipeline.DeliveryPipelineView_-ComponentSpec>
       </componentSpecs>
-      <noOfPipelines>1</noOfPipelines>
+      <noOfPipelines>0</noOfPipelines>
       <showAggregatedPipeline>true</showAggregatedPipeline>
       <noOfColumns>1</noOfColumns>
       <sorting>none</sorting>
