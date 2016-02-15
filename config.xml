@@ -89,7 +89,7 @@
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
-        <string>libweintek_dev-cppcheck_jenkins-test</string>
+        <string>jenkins-test</string>
         <string>libweintek_dev_cMT-SVR</string>
         <string>libweintek_dev_cMT3000</string>
         <string>libweintek_dev_Ubuntu</string>
