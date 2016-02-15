@@ -119,7 +119,7 @@ cppcheck --enable=warning --inconclusive --suppress=syntaxError --xml --xml-vers
       </cppcheckConfig>
     </org.jenkinsci.plugins.cppcheck.CppcheckPublisher>
     <hudson.tasks.Mailer plugin="mailer@1.16">
-      <recipients>clydeliu@weintek.com</recipients>
+      <recipients>katte@weintek.com paul@weintek.com zen@weintek.com easonwu@weintek.com jeremyhong@weintek.com clydeliu@weintek.com</recipients>
       <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
       <sendToIndividuals>false</sendToIndividuals>
     </hudson.tasks.Mailer>
