@@ -47,18 +47,12 @@ rm -rf jenkins
 mkdir jenkins
 cd jenkins
 
-export INSTALL_PREFIX=/home/ci/work/cMT3000/build-dev-branch
-${WORKSPACE}/build/cMT3000/cmake_libweintek.sh ${WORKSPACE} ${INSTALL_PREFIX}
+export INSTALL_PREFIX=/home/ci/work/cMT-iv5/build-dev-branch
+${WORKSPACE}/build/cMT-iv5/cmake_libweintek.sh ${WORKSPACE} ${INSTALL_PREFIX}
 
 make install</command>
     </hudson.tasks.Shell>
   </builders>
-  <publishers>
-    <hudson.tasks.Mailer plugin="mailer@1.16">
-      <recipients>katte@weintek.com paul@weintek.com zen@weintek.com easonwu@weintek.com jeremyhong@weintek.com clydeliu@weintek.com</recipients>
-      <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
-      <sendToIndividuals>false</sendToIndividuals>
-    </hudson.tasks.Mailer>
-  </publishers>
+  <publishers/>
   <buildWrappers/>
 </project>
