@@ -4,6 +4,6 @@
   <scmRepositoryUrl>scm:git:git@github.com:clyde0516/jenkins-config.git</scmRepositoryUrl>
   <noUserCommitMessage>true</noUserCommitMessage>
   <displayStatus>true</displayStatus>
-  <commitMessagePattern>[message] SCM sync</commitMessagePattern>
+  <commitMessagePattern>[message] </commitMessagePattern>
   <manualSynchronizationIncludes/>
 </hudson.plugins.scm__sync__configuration.ScmSyncConfigurationPlugin>
