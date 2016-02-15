@@ -59,7 +59,7 @@ cd jenkins
 
 cp ${WORKSPACE}/build/Ubuntu/features.pri .
 
-export PATH=${PATH}:/opt/Qt5.4.2/5.4/gcc_64/bin
+export PATH=/opt/Qt5.4.2/5.4/gcc_64/bin:${PATH}
 export LIBWEINTEK_PATH=/var/lib/jenkins/jobs/libweintek_dev_Ubuntu/workspace
 export DSERVER_PATH=/var/lib/jenkins/jobs/dserver_dev_Ubuntu/workspace
 export INSTALL_PATH=/home/ci/work/Ubuntu/build-dev-branch
