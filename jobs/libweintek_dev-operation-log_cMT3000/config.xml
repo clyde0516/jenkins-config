@@ -22,7 +22,7 @@
     </userRemoteConfigs>
     <branches>
       <hudson.plugins.git.BranchSpec>
-        <name>*/dev</name>
+        <name>*/dev_operation_log_wip</name>
       </hudson.plugins.git.BranchSpec>
     </branches>
     <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
@@ -43,11 +43,10 @@
   <builders>
     <hudson.tasks.Shell>
       <command>cd ${WORKSPACE}/build
-rm -rf jenkins
 mkdir jenkins
 cd jenkins
 
-export INSTALL_PREFIX=/home/ci/work/cMT3000/build-dev-branch
+export INSTALL_PREFIX=/home/ci/work/cMT3000/build-dev-operation-log-branch
 ${WORKSPACE}/build/cMT3000/cmake_libweintek.sh ${WORKSPACE} ${INSTALL_PREFIX}
 
 make install</command>
