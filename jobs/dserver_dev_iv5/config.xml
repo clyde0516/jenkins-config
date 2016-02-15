@@ -36,7 +36,7 @@
   <triggers>
     <jenkins.triggers.ReverseBuildTrigger>
       <spec></spec>
-      <upstreamProjects>libweintek_dev_cMT3000</upstreamProjects>
+      <upstreamProjects>libweintek_dev_cMT-iv5</upstreamProjects>
       <threshold>
         <name>UNSTABLE</name>
         <ordinal>1</ordinal>
@@ -57,10 +57,10 @@ rm -rf jenkins
 mkdir jenkins
 cd jenkins
 
-export UPSTREAM_JOB=libweintek_dev_cMT3000
+export UPSTREAM_JOB=libweintek_dev_cMT-iv5
 export UPSTREAM_JOB_PATH=${JENKINS_HOME}/jobs/${UPSTREAM_JOB}/workspace
-export INSTALL_PREFIX=/home/ci/work/cMT3000/build-dev-branch
-${WORKSPACE}/build/cMT3000/cmake_dserver.sh ${WORKSPACE} ${UPSTREAM_JOB_PATH} ${INSTALL_PREFIX}
+export INSTALL_PREFIX=/home/ci/work/cMT-iv5/build-dev-branch
+${WORKSPACE}/build/cMT-iv5/cmake_dserver.sh ${WORKSPACE} ${UPSTREAM_JOB_PATH} ${INSTALL_PREFIX}
 
 make install/strip
 
