@@ -68,15 +68,6 @@
         <string>dserver_dev_Ubuntu</string>
         <string>dserver_stable_cMT-SVR</string>
         <string>dserver_stable_cMT3000</string>
-        <string>gui-v5_fix-Calibri-font-vertical-offset</string>
-        <string>gui-v5_release-5-01-03</string>
-        <string>gui_dev-operation-log_cMT3000</string>
-        <string>gui_dev_cMT-iv5</string>
-        <string>gui_dev_cMT3000</string>
-        <string>gui_dev_Ubuntu</string>
-        <string>jenkins-test</string>
-        <string>libweintek_dev_cMT-iv5</string>
-        <string>libweintek_dev_cMT-SVR</string>
       </jobNames>
       <jobFilters/>
       <columns>
