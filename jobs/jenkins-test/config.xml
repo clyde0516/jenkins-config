@@ -56,7 +56,7 @@ export PATH=${PATH}:/opt/Qt5.4.2/5.4/gcc_64/bin
   </builders>
   <publishers>
     <hudson.tasks.ArtifactArchiver>
-      <artifacts>/home/ci/work/cMT3000/build-dev-branch/bin/dserver.c30</artifacts>
+      <artifacts>*.txt</artifacts>
       <allowEmptyArchive>false</allowEmptyArchive>
       <onlyIfSuccessful>false</onlyIfSuccessful>
       <fingerprint>false</fingerprint>
