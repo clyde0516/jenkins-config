@@ -51,12 +51,14 @@ git config --global user.name &quot;jenkins&quot;
 
 echo $PATH
 export PATH=${PATH}:/opt/Qt5.4.2/5.4/gcc_64/bin
-</command>
+
+
+cp /home/ci/work/cMT3000/build-dev-branch/bin/dserver.c30 .</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
     <hudson.tasks.ArtifactArchiver>
-      <artifacts>*.txt</artifacts>
+      <artifacts>dserver.c30</artifacts>
       <allowEmptyArchive>false</allowEmptyArchive>
       <onlyIfSuccessful>false</onlyIfSuccessful>
       <fingerprint>false</fingerprint>
