@@ -27,11 +27,13 @@
         <hudson.plugins.parameterizedtrigger.BuildTriggerConfig>
           <configs>
             <hudson.plugins.parameterizedtrigger.PredefinedBuildParameters>
-              <properties>TRIGGER_PARAM_LIBWEINTEK_BRANCH=dev
-TRIGGER_PARAM_INSTALL_FOLDER=build-dev-branch</properties>
+              <properties>TRIGGER_PARAM_INSTALL_FOLDER=build-dev-branch
+TRIGGER_PARAM_LIBWEINTEK_BRANCH=dev
+TRIGGER_PARAM_DSERVER_BRANCH=dev
+TRIGGER_PARAM_GOT_BRANCH=dev</properties>
             </hudson.plugins.parameterizedtrigger.PredefinedBuildParameters>
           </configs>
-          <projects>libweintek_para_cMT3000, </projects>
+          <projects>libweintek_dev_cMT3000, </projects>
           <condition>ALWAYS</condition>
           <triggerWithNoParameters>false</triggerWithNoParameters>
         </hudson.plugins.parameterizedtrigger.BuildTriggerConfig>
