@@ -4,6 +4,20 @@
   <description></description>
   <keepDependencies>false</keepDependencies>
   <properties>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.TextParameterDefinition>
+          <name>TRIGGER_PARAM_LIBWEINTEK_BRANCH</name>
+          <description></description>
+          <defaultValue>dev</defaultValue>
+        </hudson.model.TextParameterDefinition>
+        <hudson.model.TextParameterDefinition>
+          <name>TRIGGER_PARAM_INSTALL_FOLDER</name>
+          <description></description>
+          <defaultValue>build-dev-branch</defaultValue>
+        </hudson.model.TextParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
     <jenkins.model.BuildDiscarderProperty>
       <strategy class="hudson.tasks.LogRotator">
         <daysToKeep>-1</daysToKeep>
@@ -22,7 +36,7 @@
     </userRemoteConfigs>
     <branches>
       <hudson.plugins.git.BranchSpec>
-        <name>*/dev</name>
+        <name>*/${TRIGGER_PARAM_LIBWEINTEK_BRANCH}</name>
       </hudson.plugins.git.BranchSpec>
     </branches>
     <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
@@ -37,6 +51,10 @@
     <hudson.triggers.TimerTrigger>
       <spec>H H(0-7) * * *</spec>
     </hudson.triggers.TimerTrigger>
+    <hudson.triggers.SCMTrigger>
+      <spec>H/5 * * * *</spec>
+      <ignorePostCommitHooks>false</ignorePostCommitHooks>
+    </hudson.triggers.SCMTrigger>
   </triggers>
   <concurrentBuild>false</concurrentBuild>
   <builders>
@@ -46,7 +64,7 @@ rm -rf jenkins
 mkdir jenkins
 cd jenkins
 
-export INSTALL_PREFIX=/home/ci/work/cMT3000/build-dev-branch
+export INSTALL_PREFIX=/home/ci/work/cMT3000/${TRIGGER_PARAM_INSTALL_FOLDER}
 ${WORKSPACE}/build/cMT3000/cmake_libweintek.sh ${WORKSPACE} ${INSTALL_PREFIX}
 
 make install</command>
