@@ -21,22 +21,6 @@
   <triggers/>
   <concurrentBuild>false</concurrentBuild>
   <builders/>
-  <publishers>
-    <hudson.plugins.parameterizedtrigger.BuildTrigger plugin="parameterized-trigger@2.30">
-      <configs>
-        <hudson.plugins.parameterizedtrigger.BuildTriggerConfig>
-          <configs>
-            <hudson.plugins.parameterizedtrigger.PredefinedBuildParameters>
-              <properties>TRIGGER_PARAM_LIBWEINTEK_BRANCH=dev_cppcheck
-TRIGGER_PARAM_INSTALL_FOLDER=build-dev-branch</properties>
-            </hudson.plugins.parameterizedtrigger.PredefinedBuildParameters>
-          </configs>
-          <projects>libweintek_dev_cMT3000, </projects>
-          <condition>ALWAYS</condition>
-          <triggerWithNoParameters>false</triggerWithNoParameters>
-        </hudson.plugins.parameterizedtrigger.BuildTriggerConfig>
-      </configs>
-    </hudson.plugins.parameterizedtrigger.BuildTrigger>
-  </publishers>
+  <publishers/>
   <buildWrappers/>
 </project>
