@@ -66,7 +66,11 @@ export INSTALL_PATH=/home/ci/work/Ubuntu/build-dev-branch
 
 ${WORKSPACE}/build/Ubuntu/qmake_gui.sh ${WORKSPACE} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${INSTALL_PATH}
 
-</command>
+### Do not save artifact gui.c30 for Ubuntu, since there is no QtMEL library linking to executable on Ubuntu.
+# cd ${WORKSPACE}
+# rm -rf artifacts
+# mkdir artifacts
+# cp ${INSTALL_PREFIX}/bin/gui.c30 artifacts</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
       <command>/home/ci/work/Ubuntu/build-dev-branch/bin/test-got --gtest_output=xml:gtest.xml
