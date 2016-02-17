@@ -63,6 +63,12 @@ export INSTALL_PREFIX=/home/ci/work/cMT-iv5/build-dev-branch
 ${WORKSPACE}/build/cMT-iv5/cmake_dserver.sh ${WORKSPACE} ${UPSTREAM_JOB_PATH} ${INSTALL_PREFIX}
 
 make install
+
+### Dao not save artifact dserver.c30 for cMT-iv5, since iconv library could not be found by cmake/FindIconv.cmake in cMT-iv5 toolchain.
+# cd ${WORKSPACE}
+# rm -rf artifacts
+# mkdir artifacts
+# cp ${INSTALL_PREFIX}/bin/dserver.c30 artifacts
 </command>
     </hudson.tasks.Shell>
   </builders>
