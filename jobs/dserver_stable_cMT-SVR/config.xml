@@ -69,10 +69,23 @@ make install/strip
 
 cd ${INSTALL_PREFIX}/bin
 /home/ci/work/crypto e dserver dserver.cmt
-</command>
+
+
+cd ${WORKSPACE}
+rm -rf artifacts
+mkdir artifacts
+cp ${INSTALL_PREFIX}/bin/dserver.cmt artifacts</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
+    <hudson.tasks.ArtifactArchiver>
+      <artifacts>artifacts/dserver.cmt</artifacts>
+      <allowEmptyArchive>false</allowEmptyArchive>
+      <onlyIfSuccessful>false</onlyIfSuccessful>
+      <fingerprint>false</fingerprint>
+      <defaultExcludes>true</defaultExcludes>
+      <caseSensitive>true</caseSensitive>
+    </hudson.tasks.ArtifactArchiver>
     <hudson.tasks.Mailer plugin="mailer@1.16">
       <recipients>katte@weintek.com paul@weintek.com zen@weintek.com easonwu@weintek.com jeremyhong@weintek.com clydeliu@weintek.com</recipients>
       <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
