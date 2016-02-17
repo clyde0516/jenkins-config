@@ -77,7 +77,7 @@ export LIBWEINTEK_PATH=/var/lib/jenkins/jobs/libweintek_${TRIGGER_PARAM_LIBWEINT
 export DSERVER_PATH=/var/lib/jenkins/jobs/dserver_${TRIGGER_PARAM_DSERVER_BRANCH}_cMT3000/workspace
 export INSTALL_PREFIX=/home/ci/work/cMT3000/${TRIGGER_PARAM_INSTALL_FOLDER}
 
-# ${WORKSPACE}/build/aio/qmake_gui.sh ${WORKSPACE} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${INSTALL_PREFIX}
+${WORKSPACE}/build/aio/qmake_gui.sh ${WORKSPACE} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${INSTALL_PREFIX}
 
 cd ${WORKSPACE}
 rm -rf artifacts
