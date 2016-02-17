@@ -67,7 +67,7 @@ cd jenkins
 export INSTALL_PREFIX=/home/ci/work/cMT3000/${TRIGGER_PARAM_INSTALL_FOLDER}
 ${WORKSPACE}/build/cMT3000/cmake_libweintek.sh ${WORKSPACE} ${INSTALL_PREFIX}
 
-# make install</command>
+make install</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
