@@ -64,6 +64,11 @@ ${WORKSPACE}/build/Ubuntu/cmake_dserver.sh ${WORKSPACE} ${UPSTREAM_JOB_PATH} ${I
 
 make install/strip
 
+cd ${WORKSPACE}
+rm -rf artifacts
+mkdir artifacts
+cp ${INSTALL_PREFIX}/bin/dserver.c30 artifacts
+
 </command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
