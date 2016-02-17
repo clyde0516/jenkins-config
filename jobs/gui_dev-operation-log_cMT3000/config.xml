@@ -61,9 +61,9 @@ cp ${WORKSPACE}/build/aio/features.pri .
 
 export LIBWEINTEK_PATH=/var/lib/jenkins/jobs/libweintek_dev_cMT3000/workspace
 export DSERVER_PATH=/var/lib/jenkins/jobs/dserver_dev-operation-log_cMT3000/workspace
-export INSTALL_PATH=/home/ci/work/cMT3000/build-dev-operation-log-branch
+export INSTALL_PREFIX=/home/ci/work/cMT3000/build-dev-operation-log-branch
 
-${WORKSPACE}/build/aio/qmake_gui.sh ${WORKSPACE} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${INSTALL_PATH}
+${WORKSPACE}/build/aio/qmake_gui.sh ${WORKSPACE} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${INSTALL_PREFIX}
 
 cd ${WORKSPACE}
 rm -rf artifacts
