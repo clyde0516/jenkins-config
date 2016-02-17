@@ -65,10 +65,23 @@ export INSTALL_PATH=/home/ci/work/cMT3000/build-dev-operation-log-branch
 
 ${WORKSPACE}/build/aio/qmake_gui.sh ${WORKSPACE} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${INSTALL_PATH}
 
+cd ${WORKSPACE}
+rm -rf artifacts
+mkdir artifacts
+cp ${INSTALL_PREFIX}/bin/gui.c30 artifacts
+
 </command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
+    <hudson.tasks.ArtifactArchiver>
+      <artifacts>artifacts/gui.c30</artifacts>
+      <allowEmptyArchive>false</allowEmptyArchive>
+      <onlyIfSuccessful>true</onlyIfSuccessful>
+      <fingerprint>false</fingerprint>
+      <defaultExcludes>true</defaultExcludes>
+      <caseSensitive>true</caseSensitive>
+    </hudson.tasks.ArtifactArchiver>
     <hudson.tasks.Mailer plugin="mailer@1.16">
       <recipients>easonwu@weintek.com</recipients>
       <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
