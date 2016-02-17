@@ -66,10 +66,6 @@ export INSTALL_PATH=/home/ci/work/Ubuntu/build-dev-branch
 
 ${WORKSPACE}/build/Ubuntu/qmake_gui.sh ${WORKSPACE} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${INSTALL_PATH}
 
-cd ${WORKSPACE}
-rm -rf artifacts
-mkdir artifacts
-cp ${INSTALL_PREFIX}/bin/gui.c30 artifacts
 </command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
@@ -82,14 +78,6 @@ cppcheck --enable=all --inconclusive --suppress=syntaxError --xml --xml-version=
     </hudson.tasks.Shell>
   </builders>
   <publishers>
-    <hudson.tasks.ArtifactArchiver>
-      <artifacts>artifacts/gui.c30</artifacts>
-      <allowEmptyArchive>false</allowEmptyArchive>
-      <onlyIfSuccessful>true</onlyIfSuccessful>
-      <fingerprint>false</fingerprint>
-      <defaultExcludes>true</defaultExcludes>
-      <caseSensitive>true</caseSensitive>
-    </hudson.tasks.ArtifactArchiver>
     <hudson.tasks.junit.JUnitResultArchiver plugin="junit@1.10">
       <testResults>gtest.xml</testResults>
       <keepLongStdio>false</keepLongStdio>
