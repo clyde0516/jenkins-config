@@ -4,6 +4,20 @@
   <description></description>
   <keepDependencies>false</keepDependencies>
   <properties>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.StringParameterDefinition>
+          <name>TRIGGER_PARAM_LIBWEINTEK_BRANCH</name>
+          <description></description>
+          <defaultValue>dev_cppcheck</defaultValue>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>TRIGGER_PARAM_INSTALL_FOLDER</name>
+          <description></description>
+          <defaultValue>build-dev-branch</defaultValue>
+        </hudson.model.StringParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
     <jenkins.model.BuildDiscarderProperty>
       <strategy class="hudson.tasks.LogRotator">
         <daysToKeep>-1</daysToKeep>
@@ -45,7 +59,7 @@ cd jenkins
 export INSTALL_PREFIX=/home/ci/work/cMT3000/${TRIGGER_PARAM_INSTALL_FOLDER}
 ${WORKSPACE}/build/cMT3000/cmake_libweintek.sh ${WORKSPACE} ${INSTALL_PREFIX}
 
-make install</command>
+# make install</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>
