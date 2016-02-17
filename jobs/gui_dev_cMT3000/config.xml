@@ -4,6 +4,30 @@
   <description></description>
   <keepDependencies>false</keepDependencies>
   <properties>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.TextParameterDefinition>
+          <name>TRIGGER_PARAM_LIBWEINTEK_BRANCH</name>
+          <description></description>
+          <defaultValue>dev</defaultValue>
+        </hudson.model.TextParameterDefinition>
+        <hudson.model.TextParameterDefinition>
+          <name>TRIGGER_PARAM_DSERVER_BRANCH</name>
+          <description></description>
+          <defaultValue>dev</defaultValue>
+        </hudson.model.TextParameterDefinition>
+        <hudson.model.TextParameterDefinition>
+          <name>TRIGGER_PARAM_GUI_BRANCH</name>
+          <description></description>
+          <defaultValue>dev</defaultValue>
+        </hudson.model.TextParameterDefinition>
+        <hudson.model.TextParameterDefinition>
+          <name>TRIGGER_PARAM_INSTALL_FOLDER</name>
+          <description></description>
+          <defaultValue>build-dev-branch</defaultValue>
+        </hudson.model.TextParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
     <jenkins.model.BuildDiscarderProperty>
       <strategy class="hudson.tasks.LogRotator">
         <daysToKeep>-1</daysToKeep>
@@ -22,7 +46,7 @@
     </userRemoteConfigs>
     <branches>
       <hudson.plugins.git.BranchSpec>
-        <name>*/dev</name>
+        <name>*/${TRIGGER_PARAM_GUI_BRANCH}</name>
       </hudson.plugins.git.BranchSpec>
     </branches>
     <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
@@ -59,11 +83,11 @@ cd jenkins
 
 cp ${WORKSPACE}/build/aio/features.pri .
 
-export LIBWEINTEK_PATH=/var/lib/jenkins/jobs/libweintek_dev_cMT3000/workspace
-export DSERVER_PATH=/var/lib/jenkins/jobs/dserver_dev_cMT3000/workspace
-export INSTALL_PREFIX=/home/ci/work/cMT3000/build-dev-branch
+export LIBWEINTEK_PATH=/var/lib/jenkins/jobs/libweintek_${TRIGGER_PARAM_LIBWEINTEK_BRANCH}_cMT3000/workspace
+export DSERVER_PATH=/var/lib/jenkins/jobs/dserver_${TRIGGER_PARAM_DSERVER_BRANCH}_cMT3000/workspace
+export INSTALL_PREFIX=/home/ci/work/cMT3000/${TRIGGER_PARAM_INSTALL_FOLDER}
 
-${WORKSPACE}/build/aio/qmake_gui.sh ${WORKSPACE} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${INSTALL_PREFIX}
+# ${WORKSPACE}/build/aio/qmake_gui.sh ${WORKSPACE} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${INSTALL_PREFIX}
 
 cd ${WORKSPACE}
 rm -rf artifacts
