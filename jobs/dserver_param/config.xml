@@ -105,7 +105,7 @@ cp ${INSTALL_PREFIX}/bin/${ENCRYPT_NAME} artifacts
           <configs>
             <hudson.plugins.parameterizedtrigger.CurrentBuildParameters/>
           </configs>
-          <projects>gui_dev_cMT3000,</projects>
+          <projects>gui_dev_cMT3000</projects>
           <condition>UNSTABLE_OR_BETTER</condition>
           <triggerWithNoParameters>false</triggerWithNoParameters>
         </hudson.plugins.parameterizedtrigger.BuildTriggerConfig>

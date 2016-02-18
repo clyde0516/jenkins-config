@@ -36,7 +36,7 @@
   <triggers>
     <jenkins.triggers.ReverseBuildTrigger>
       <spec></spec>
-      <upstreamProjects>dserver_dev_cMT-iv5, </upstreamProjects>
+      <upstreamProjects>dserver_dev_cMT-iv5,</upstreamProjects>
       <threshold>
         <name>UNSTABLE</name>
         <ordinal>1</ordinal>
