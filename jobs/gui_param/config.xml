@@ -6,6 +6,11 @@
   <properties>
     <hudson.model.ParametersDefinitionProperty>
       <parameterDefinitions>
+        <hudson.model.StringParameterDefinition>
+          <name>TRIGGER_PARAM_PLATFORM</name>
+          <description></description>
+          <defaultValue>cMT3000</defaultValue>
+        </hudson.model.StringParameterDefinition>
         <hudson.model.TextParameterDefinition>
           <name>TRIGGER_PARAM_GUI_BRANCH</name>
           <description></description>
@@ -61,13 +66,13 @@ rm -rf jenkins
 mkdir jenkins
 cd jenkins
 
-cp ${WORKSPACE}/build/aio/features.pri .
+cp ${WORKSPACE}/build/${TRIGGER_PARAM_PLATFORM}/features.pri .
 
-export LIBWEINTEK_PATH=/var/lib/jenkins/jobs/libweintek_dev_cMT3000/workspace
-export DSERVER_PATH=/var/lib/jenkins/jobs/dserver_dev_cMT3000/workspace
-export INSTALL_PREFIX=/home/ci/work/cMT3000/${TRIGGER_PARAM_INSTALL_FOLDER}
+export LIBWEINTEK_PATH=/var/lib/jenkins/jobs/libweintek_param/workspace
+export DSERVER_PATH=/var/lib/jenkins/jobs/dserver_param/workspace
+export INSTALL_PREFIX=/home/ci/work/${TRIGGER_PARAM_PLATFORM}/${TRIGGER_PARAM_INSTALL_FOLDER}
 
-${WORKSPACE}/build/aio/qmake_gui.sh ${WORKSPACE} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${INSTALL_PREFIX}
+${WORKSPACE}/build/${TRIGGER_PARAM_PLATFORM}/qmake_gui.sh ${WORKSPACE} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${INSTALL_PREFIX}
 
 cd ${WORKSPACE}
 rm -rf artifacts
@@ -85,11 +90,6 @@ cp ${INSTALL_PREFIX}/bin/gui.c30 artifacts
       <defaultExcludes>true</defaultExcludes>
       <caseSensitive>true</caseSensitive>
     </hudson.tasks.ArtifactArchiver>
-    <hudson.tasks.Mailer plugin="mailer@1.16">
-      <recipients>katte@weintek.com paul@weintek.com zen@weintek.com easonwu@weintek.com jeremyhong@weintek.com clydeliu@weintek.com</recipients>
-      <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
-      <sendToIndividuals>false</sendToIndividuals>
-    </hudson.tasks.Mailer>
   </publishers>
   <buildWrappers/>
 </project>
