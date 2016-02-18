@@ -61,7 +61,7 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>if [ &quot;${TRIGGER_PARAM_BUILD_DSERVER}&quot; == &quot;true&quot; ]; then
+      <command>if [ &quot;${TRIGGER_PARAM_BUILD_DSERVER}&quot; = true ]; then
 
     cd ${WORKSPACE}/build
     rm -rf jenkins
