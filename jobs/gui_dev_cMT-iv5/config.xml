@@ -57,7 +57,7 @@ rm -rf jenkins
 mkdir jenkins
 cd jenkins
 
-cp ${WORKSPACE}/build/aio/features.pri .
+cp ${WORKSPACE}/build/cMT-iv5/features.pri .
 
 export LIBWEINTEK_PATH=/var/lib/jenkins/jobs/libweintek_dev_cMT-iv5/workspace
 export DSERVER_PATH=/var/lib/jenkins/jobs/dserver_dev_cMT-iv5/workspace
