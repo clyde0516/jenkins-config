@@ -61,33 +61,36 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>cd ${WORKSPACE}/build
-rm -rf jenkins
-mkdir jenkins
-cd jenkins
+      <command>if [ &quot;${TRIGGER_PARAM_BUILD_DSERVER}&quot; = true ]; then
 
-export LIBWEINTEK_PATH=${JENKINS_HOME}/jobs/libweintek_param/workspace
-export INSTALL_PREFIX=/home/ci/work/${TRIGGER_PARAM_PLATFORM}/${TRIGGER_PARAM_INSTALL_FOLDER}
-${WORKSPACE}/build/${TRIGGER_PARAM_PLATFORM}/cmake_dserver.sh ${WORKSPACE} ${LIBWEINTEK_PATH} ${INSTALL_PREFIX}
+    cd ${WORKSPACE}/build
+    rm -rf jenkins
+    mkdir jenkins
+    cd jenkins
 
-#make install/strip
+    export LIBWEINTEK_PATH=${JENKINS_HOME}/jobs/libweintek_param/workspace
+    export INSTALL_PREFIX=/home/ci/work/${TRIGGER_PARAM_PLATFORM}/${TRIGGER_PARAM_INSTALL_FOLDER}
+    ${WORKSPACE}/build/${TRIGGER_PARAM_PLATFORM}/cmake_dserver.sh ${WORKSPACE} ${LIBWEINTEK_PATH} ${INSTALL_PREFIX}
 
-if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; == &quot;cMT-SVR&quot; ]; then
-	export ENCRYPT_NAME=dserver.cmt
-elif [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; == &quot;cMT-iv5&quot; ]; then
-	export ENCRYPT_NAME=dserver.iv5
-else
-	export ENCRYPT_NAME=dserver.c30
-fi
+    make install/strip
 
-cd ${INSTALL_PREFIX}/bin
-/home/ci/work/crypto e dserver ${ENCRYPT_NAME}
+    if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; == &quot;cMT-SVR&quot; ]; then
+	    export ENCRYPT_NAME=dserver.cmt
+    elif [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; == &quot;cMT-iv5&quot; ]; then
+	    export ENCRYPT_NAME=dserver.iv5
+    else
+	    export ENCRYPT_NAME=dserver.c30
+    fi
 
-cd ${WORKSPACE}
-rm -rf artifacts
-mkdir artifacts
-cp ${INSTALL_PREFIX}/bin/${ENCRYPT_NAME} artifacts
-</command>
+    cd ${INSTALL_PREFIX}/bin
+    /home/ci/work/crypto e dserver ${ENCRYPT_NAME}
+
+    cd ${WORKSPACE}
+    rm -rf artifacts
+    mkdir artifacts
+    cp ${INSTALL_PREFIX}/bin/${ENCRYPT_NAME} artifacts
+
+fi</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
