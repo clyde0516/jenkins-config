@@ -19,6 +19,9 @@
       <hudson.plugins.git.UserRemoteConfig>
         <url>gitolite@192.168.1.220:libweintek.git</url>
       </hudson.plugins.git.UserRemoteConfig>
+      <hudson.plugins.git.UserRemoteConfig>
+        <url>gitolite@192.168.1.220:d-server.git</url>
+      </hudson.plugins.git.UserRemoteConfig>
     </userRemoteConfigs>
     <branches>
       <hudson.plugins.git.BranchSpec>
@@ -52,19 +55,9 @@ git config --global user.name &quot;jenkins&quot;
 echo $PATH
 export PATH=${PATH}:/opt/Qt5.4.2/5.4/gcc_64/bin
 
-
-cp /home/ci/work/cMT3000/build-dev-branch/bin/dserver.c30 .</command>
+</command>
     </hudson.tasks.Shell>
   </builders>
-  <publishers>
-    <hudson.tasks.ArtifactArchiver>
-      <artifacts>dserver.c30</artifacts>
-      <allowEmptyArchive>false</allowEmptyArchive>
-      <onlyIfSuccessful>false</onlyIfSuccessful>
-      <fingerprint>false</fingerprint>
-      <defaultExcludes>true</defaultExcludes>
-      <caseSensitive>true</caseSensitive>
-    </hudson.tasks.ArtifactArchiver>
-  </publishers>
+  <publishers/>
   <buildWrappers/>
 </project>
