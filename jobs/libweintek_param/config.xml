@@ -7,7 +7,7 @@
     <hudson.model.ParametersDefinitionProperty>
       <parameterDefinitions>
         <hudson.model.TextParameterDefinition>
-          <name> TRIGGER_PARAM_BUILD_LIBWEINTEK</name>
+          <name>TRIGGER_PARAM_BUILD_LIBWEINTEK</name>
           <description></description>
           <defaultValue>true</defaultValue>
         </hudson.model.TextParameterDefinition>
