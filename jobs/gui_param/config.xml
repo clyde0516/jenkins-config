@@ -6,11 +6,6 @@
   <properties>
     <hudson.model.ParametersDefinitionProperty>
       <parameterDefinitions>
-        <hudson.model.StringParameterDefinition>
-          <name>TRIGGER_PARAM_PLATFORM</name>
-          <description></description>
-          <defaultValue>cMT3000</defaultValue>
-        </hudson.model.StringParameterDefinition>
         <hudson.model.TextParameterDefinition>
           <name>TRIGGER_PARAM_GUI_BRANCH</name>
           <description></description>
@@ -20,6 +15,11 @@
           <name>TRIGGER_PARAM_INSTALL_FOLDER</name>
           <description></description>
           <defaultValue>build-dev-branch</defaultValue>
+        </hudson.model.TextParameterDefinition>
+        <hudson.model.TextParameterDefinition>
+          <name>TRIGGER_PARAM_PLATFORM</name>
+          <description></description>
+          <defaultValue>cMT3000</defaultValue>
         </hudson.model.TextParameterDefinition>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
