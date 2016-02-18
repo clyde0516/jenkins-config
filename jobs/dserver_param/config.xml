@@ -52,12 +52,7 @@
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
-  <triggers>
-    <hudson.triggers.SCMTrigger>
-      <spec>H/5 * * * *</spec>
-      <ignorePostCommitHooks>false</ignorePostCommitHooks>
-    </hudson.triggers.SCMTrigger>
-  </triggers>
+  <triggers/>
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
@@ -66,9 +61,9 @@ rm -rf jenkins
 mkdir jenkins
 cd jenkins
 
-export UPSTREAM_JOB_PATH=${JENKINS_HOME}/jobs/libweintek_param/workspace
+export LIBWEINTEK_PATH=${JENKINS_HOME}/jobs/libweintek_param/workspace
 export INSTALL_PREFIX=/home/ci/work/${TRIGGER_PARAM_PLATFORM}/${TRIGGER_PARAM_INSTALL_FOLDER}
-${WORKSPACE}/build/${TRIGGER_PARAM_PLATFORM}/cmake_dserver.sh ${WORKSPACE} ${UPSTREAM_JOB_PATH} ${INSTALL_PREFIX}
+${WORKSPACE}/build/${TRIGGER_PARAM_PLATFORM}/cmake_dserver.sh ${WORKSPACE} ${LIBWEINTEK_PATH} ${INSTALL_PREFIX}
 
 make install/strip
 
