@@ -61,13 +61,13 @@ rm -rf jenkins
 mkdir jenkins
 cd jenkins
 
-cp ${WORKSPACE}/build/aio/features.pri .
+cp ${WORKSPACE}/build/cMT3000/features.pri .
 
 export LIBWEINTEK_PATH=/var/lib/jenkins/jobs/libweintek_dev_cMT3000/workspace
 export DSERVER_PATH=/var/lib/jenkins/jobs/dserver_dev_cMT3000/workspace
 export INSTALL_PREFIX=/home/ci/work/cMT3000/${TRIGGER_PARAM_INSTALL_FOLDER}
 
-${WORKSPACE}/build/aio/qmake_gui.sh ${WORKSPACE} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${INSTALL_PREFIX}
+${WORKSPACE}/build/cMT3000/qmake_gui.sh ${WORKSPACE} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${INSTALL_PREFIX}
 
 cd ${WORKSPACE}
 rm -rf artifacts
