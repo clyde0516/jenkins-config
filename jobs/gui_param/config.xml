@@ -61,24 +61,27 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>cd ${WORKSPACE}/build
-rm -rf jenkins
-mkdir jenkins
-cd jenkins
+      <command>if [ &quot;${TRIGGER_PARAM_BUILD_GUI}&quot; = true ]; then
 
-cp ${WORKSPACE}/build/${TRIGGER_PARAM_PLATFORM}/features.pri .
+    cd ${WORKSPACE}/build
+    rm -rf jenkins
+    mkdir jenkins
+    cd jenkins
 
-export LIBWEINTEK_PATH=/var/lib/jenkins/jobs/libweintek_param/workspace
-export DSERVER_PATH=/var/lib/jenkins/jobs/dserver_param/workspace
-export INSTALL_PREFIX=/home/ci/work/${TRIGGER_PARAM_PLATFORM}/${TRIGGER_PARAM_INSTALL_FOLDER}
+    cp ${WORKSPACE}/build/${TRIGGER_PARAM_PLATFORM}/features.pri .
 
-${WORKSPACE}/build/${TRIGGER_PARAM_PLATFORM}/qmake_gui.sh ${WORKSPACE} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${INSTALL_PREFIX}
+    export LIBWEINTEK_PATH=/var/lib/jenkins/jobs/libweintek_param/workspace
+    export DSERVER_PATH=/var/lib/jenkins/jobs/dserver_param/workspace
+    export INSTALL_PREFIX=/home/ci/work/${TRIGGER_PARAM_PLATFORM}/${TRIGGER_PARAM_INSTALL_FOLDER}
 
-cd ${WORKSPACE}
-rm -rf artifacts
-mkdir artifacts
-cp ${INSTALL_PREFIX}/bin/gui.c30 artifacts
-</command>
+    ${WORKSPACE}/build/${TRIGGER_PARAM_PLATFORM}/qmake_gui.sh ${WORKSPACE} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${INSTALL_PREFIX}
+
+    cd ${WORKSPACE}
+    rm -rf artifacts
+    mkdir artifacts
+    cp ${INSTALL_PREFIX}/bin/gui.c30 artifacts
+
+fi</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
