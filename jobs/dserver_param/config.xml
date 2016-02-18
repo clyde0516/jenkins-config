@@ -65,7 +65,7 @@ export LIBWEINTEK_PATH=${JENKINS_HOME}/jobs/libweintek_param/workspace
 export INSTALL_PREFIX=/home/ci/work/${TRIGGER_PARAM_PLATFORM}/${TRIGGER_PARAM_INSTALL_FOLDER}
 ${WORKSPACE}/build/${TRIGGER_PARAM_PLATFORM}/cmake_dserver.sh ${WORKSPACE} ${LIBWEINTEK_PATH} ${INSTALL_PREFIX}
 
-make install/strip
+#make install/strip
 
 if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; == &quot;cMT-SVR&quot; ]; then
 	export ENCRYPT_NAME=dserver.cmt
@@ -87,7 +87,7 @@ cp ${INSTALL_PREFIX}/bin/${ENCRYPT_NAME} artifacts
   </builders>
   <publishers>
     <hudson.tasks.ArtifactArchiver>
-      <artifacts>artifacts/${ENCRYPT_NAME}</artifacts>
+      <artifacts>artifacts</artifacts>
       <allowEmptyArchive>false</allowEmptyArchive>
       <onlyIfSuccessful>true</onlyIfSuccessful>
       <fingerprint>false</fingerprint>
