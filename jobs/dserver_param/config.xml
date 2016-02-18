@@ -6,6 +6,11 @@
   <properties>
     <hudson.model.ParametersDefinitionProperty>
       <parameterDefinitions>
+        <hudson.model.StringParameterDefinition>
+          <name>TRIGGER_PARAM_PLATFORM</name>
+          <description></description>
+          <defaultValue>cMT3000</defaultValue>
+        </hudson.model.StringParameterDefinition>
         <hudson.model.TextParameterDefinition>
           <name>TRIGGER_PARAM_DSERVER_BRANCH</name>
           <description></description>
@@ -61,25 +66,33 @@ rm -rf jenkins
 mkdir jenkins
 cd jenkins
 
-export UPSTREAM_JOB_PATH=${JENKINS_HOME}/jobs/libweintek_dev_cMT3000/workspace
-export INSTALL_PREFIX=/home/ci/work/cMT3000/${TRIGGER_PARAM_INSTALL_FOLDER}
-${WORKSPACE}/build/cMT3000/cmake_dserver.sh ${WORKSPACE} ${UPSTREAM_JOB_PATH} ${INSTALL_PREFIX}
+export UPSTREAM_JOB_PATH=${JENKINS_HOME}/jobs/libweintek_param/workspace
+export INSTALL_PREFIX=/home/ci/work/${TRIGGER_PARAM_PLATFORM}/${TRIGGER_PARAM_INSTALL_FOLDER}
+${WORKSPACE}/build/${TRIGGER_PARAM_PLATFORM}/cmake_dserver.sh ${WORKSPACE} ${UPSTREAM_JOB_PATH} ${INSTALL_PREFIX}
 
 make install/strip
 
+if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; == &quot;cMT-SVR&quot; ]; then
+	export ENCRYPT_NAME=dserver.cmt
+elif [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; == &quot;cMT-iv5&quot; ]; then
+	export ENCRYPT_NAME=dserver.iv5
+else
+	export ENCRYPT_NAME=dserver.c30
+fi
+
 cd ${INSTALL_PREFIX}/bin
-/home/ci/work/crypto e dserver dserver.c30
+/home/ci/work/crypto e dserver ${ENCRYPT_NAME}
 
 cd ${WORKSPACE}
 rm -rf artifacts
 mkdir artifacts
-cp ${INSTALL_PREFIX}/bin/dserver.c30 artifacts
+cp ${INSTALL_PREFIX}/bin/${ENCRYPT_NAME} artifacts
 </command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
     <hudson.tasks.ArtifactArchiver>
-      <artifacts>artifacts/dserver.c30</artifacts>
+      <artifacts>artifacts/${ENCRYPT_NAME}</artifacts>
       <allowEmptyArchive>false</allowEmptyArchive>
       <onlyIfSuccessful>true</onlyIfSuccessful>
       <fingerprint>false</fingerprint>
