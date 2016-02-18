@@ -27,11 +27,11 @@
         <hudson.plugins.parameterizedtrigger.BuildTriggerConfig>
           <configs>
             <hudson.plugins.parameterizedtrigger.PredefinedBuildParameters>
-              <properties>TRIGGER_PARAM_PLATFORM=cMT3000
-TRIGGER_PARAM_INSTALL_FOLDER=build-dev-operation-log-branch
+              <properties>TRIGGER_PARAM_INSTALL_FOLDER=build-dev-operation-log-branch
 TRIGGER_PARAM_LIBWEINTEK_BRANCH=dev
 TRIGGER_PARAM_DSERVER_BRANCH=dev_operation_log_wip
-TRIGGER_PARAM_GUI_BRANCH=dev_operation_log_wip</properties>
+TRIGGER_PARAM_GUI_BRANCH=dev_operation_log_wip
+TRIGGER_PARAM_PLATFORM=cMT3000</properties>
             </hudson.plugins.parameterizedtrigger.PredefinedBuildParameters>
           </configs>
           <projects>libweintek_param, </projects>
