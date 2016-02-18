@@ -285,11 +285,17 @@
     </se.diabol.jenkins.pipeline.DeliveryPipelineView>
     <au.com.centrumsystems.hudson.plugin.buildpipeline.BuildPipelineView plugin="build-pipeline-plugin@1.4.9">
       <owner class="hudson" reference="../../.."/>
-      <name>operation-log</name>
+      <name>operation-log_cMT3000</name>
       <filterExecutors>false</filterExecutors>
       <filterQueue>false</filterQueue>
       <properties class="hudson.model.View$PropertyList"/>
+      <gridBuilder class="au.com.centrumsystems.hudson.plugin.buildpipeline.DownstreamProjectGridBuilder">
+        <firstJob>detonator_operation-log_cMT3000</firstJob>
+      </gridBuilder>
+      <noOfDisplayedBuilds>1</noOfDisplayedBuilds>
+      <buildViewTitle></buildViewTitle>
       <consoleOutputLinkStyle>Lightbox</consoleOutputLinkStyle>
+      <cssUrl></cssUrl>
       <triggerOnlyLatestJob>false</triggerOnlyLatestJob>
       <alwaysAllowManualTrigger>false</alwaysAllowManualTrigger>
       <showPipelineParameters>false</showPipelineParameters>
