@@ -27,7 +27,7 @@
         <hudson.plugins.parameterizedtrigger.BuildTriggerConfig>
           <configs>
             <hudson.plugins.parameterizedtrigger.PredefinedBuildParameters>
-              <properties>TRIGGER_PARAM_PLATFORM=cMT3000
+              <properties>TRIGGER_PARAM_PLATFORM=cMT-SVR
 TRIGGER_PARAM_INSTALL_FOLDER=build-dev-operation-log-branch
 TRIGGER_PARAM_BUILD_LIBWEINTEK=false
 TRIGGER_PARAM_BUILD_DSERVER=true
