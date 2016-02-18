@@ -33,7 +33,7 @@ TRIGGER_PARAM_DSERVER_BRANCH=dev_operation_log_wip
 TRIGGER_PARAM_GUI_BRANCH=dev_operation_log_wip</properties>
             </hudson.plugins.parameterizedtrigger.PredefinedBuildParameters>
           </configs>
-          <projects>dserver_param, </projects>
+          <projects>gui_param, </projects>
           <condition>ALWAYS</condition>
           <triggerWithNoParameters>false</triggerWithNoParameters>
         </hudson.plugins.parameterizedtrigger.BuildTriggerConfig>
