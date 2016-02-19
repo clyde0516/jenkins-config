@@ -57,10 +57,9 @@ rm -rf jenkins
 mkdir jenkins
 cd jenkins
 
-export UPSTREAM_JOB=libweintek_dev_Ubuntu
-export UPSTREAM_JOB_PATH=${JENKINS_HOME}/jobs/${UPSTREAM_JOB}/workspace
+export LIBWEINTEK_PATH=${JENKINS_HOME}/jobs/libweintek_dev_Ubuntu/workspace
 export INSTALL_PREFIX=/home/ci/work/Ubuntu/build-dev-branch
-${WORKSPACE}/build/Ubuntu/cmake_dserver.sh ${WORKSPACE} ${UPSTREAM_JOB_PATH} ${INSTALL_PREFIX}
+${WORKSPACE}/build/Ubuntu/cmake_dserver.sh ${WORKSPACE} ${LIBWEINTEK_PATH} ${INSTALL_PREFIX}
 
 make install/strip
 
