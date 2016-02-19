@@ -63,7 +63,7 @@ cd jenkins
 
 mkdir bin
 
-export ADDITIONAL_LIBRARY_DIRECTORY=/home/ci/work/cMT-SVR/build-${TRIGGER_PARAM_COM_BRANCH}-branch/lib
+export ADDITIONAL_LIBRARY_DIRECTORY=/home/ci/work/cMT-SVR/build-dev-branch/lib
 
 if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; == &quot;cMT3000&quot; ]; then
 	export CRYPTO_EXTENSION_NAME=c30
