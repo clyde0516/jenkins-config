@@ -73,8 +73,7 @@ fi
 
 ${WORKSPACE}/build/${TRIGGER_PARAM_PLATFORM}/cmake_com.sh ${WORKSPACE} ${ADDITIONAL_LIBRARY_DIRECTORY} ${CRYPTO_EXTENSION_NAME}
 
-make VERBOSE=1
-make install
+make install VERBOSE=1
 
 cd ${WORKSPACE}/build/jenkins/bin
 /home/ci/work/crypto e com com.${CRYPTO_EXTENSION_NAME}
