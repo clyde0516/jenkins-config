@@ -56,8 +56,7 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>mkdir build
-cd ${WORKSPACE}/build
+      <command>cd ${WORKSPACE}/build
 rm -rf jenkins
 mkdir jenkins
 cd jenkins
