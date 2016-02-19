@@ -41,7 +41,7 @@ TRIGGER_PARAM_DSERVER_BRANCH=dev
 TRIGGER_PARAM_GUI_BRANCH=dev</properties>
             </hudson.plugins.parameterizedtrigger.PredefinedBuildParameters>
           </configs>
-          <projects>libweintek_param,</projects>
+          <projects>libweintek_param</projects>
           <condition>ALWAYS</condition>
           <triggerWithNoParameters>false</triggerWithNoParameters>
         </hudson.plugins.parameterizedtrigger.BuildTriggerConfig>
