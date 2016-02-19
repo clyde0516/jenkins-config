@@ -7,7 +7,7 @@
     <hudson.model.ParametersDefinitionProperty>
       <parameterDefinitions>
         <hudson.model.TextParameterDefinition>
-          <name>TRIGGER_PARAM_DSERVER_BRANCH</name>
+          <name>TRIGGER_PARAM_COM_BRANCH</name>
           <description></description>
           <defaultValue>5.03.02</defaultValue>
         </hudson.model.TextParameterDefinition>
