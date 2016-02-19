@@ -74,9 +74,9 @@
 
     make install/strip
 
-    if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; == &quot;cMT-SVR&quot; ]; then
+    if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT-SVR&quot; ]; then
 	    export ENCRYPT_NAME=dserver.cmt
-    elif [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; == &quot;cMT-iv5&quot; ]; then
+    elif [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT-iv5&quot; ]; then
 	    export ENCRYPT_NAME=dserver.iv5
     else
 	    export ENCRYPT_NAME=dserver.c30
