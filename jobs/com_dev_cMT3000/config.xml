@@ -61,14 +61,12 @@ rm -rf jenkins
 mkdir jenkins
 cd jenkins
 
+mkdir bin/com
+
 ${WORKSPACE}/build/cMT3000/cmake_com.sh ${WORKSPACE}
 
-make install/strip
+# make install/strip
 
-# cd ${WORKSPACE}
-# rm -rf artifacts
-# mkdir artifacts
-# cp ${INSTALL_PREFIX}/bin/dserver.c30 artifacts
 </command>
     </hudson.tasks.Shell>
   </builders>
