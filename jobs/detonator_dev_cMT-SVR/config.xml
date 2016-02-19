@@ -32,7 +32,7 @@
           <configs>
             <hudson.plugins.parameterizedtrigger.PredefinedBuildParameters>
               <properties>TRIGGER_PARAM_PLATFORM=cMT-SVR
-TRIGGER_PARAM_INSTALL_FOLDER=build-dev-operation-log-branch
+TRIGGER_PARAM_INSTALL_FOLDER=build-dev-branch
 TRIGGER_PARAM_BUILD_LIBWEINTEK=true
 TRIGGER_PARAM_BUILD_DSERVER=true
 TRIGGER_PARAM_BUILD_GUI=true
