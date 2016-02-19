@@ -66,8 +66,7 @@ mkdir bin
 export CRYPTO_EXTENSION_NAME=c30
 ${WORKSPACE}/build/cMT3000/cmake_com.sh ${WORKSPACE} ${CRYPTO_EXTENSION_NAME}
 
-make
-make install/strip
+make install
 
 cd ${WORKSPACE}/build/jenkins/bin
 /home/ci/work/crypto e com com.${CRYPTO_EXTENSION_NAME}
