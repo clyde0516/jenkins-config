@@ -24,7 +24,14 @@
     </hudson.triggers.TimerTrigger>
   </triggers>
   <concurrentBuild>false</concurrentBuild>
-  <builders/>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#export install_prefix=
+#if [ ! -d &quot;$DIRECTORY&quot; ]; then
+#    
+#fi</command>
+    </hudson.tasks.Shell>
+  </builders>
   <publishers>
     <hudson.plugins.parameterizedtrigger.BuildTrigger plugin="parameterized-trigger@2.30">
       <configs>
