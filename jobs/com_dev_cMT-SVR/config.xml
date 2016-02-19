@@ -61,7 +61,7 @@
 #mkdir jenkins
 cd jenkins
 
-mkdir bin
+#mkdir bin
 
 export ADDITIONAL_LIBRARY_DIRECTORY=/home/ci/work/cMT-SVR/build-${TRIGGER_PARAM_COM_BRANCH}-branch/lib
 
