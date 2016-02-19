@@ -66,7 +66,7 @@ cd jenkins
 
 mkdir bin
 
-if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT3000&quot; ]ㄤ then
+if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT3000&quot; ]; then
 	export CRYPTO_EXTENSION_NAME=c30
 else
 	export CRYPTO_EXTENSION_NAME=e30
