@@ -66,12 +66,16 @@ mkdir bin
 export CRYPTO_EXTENSION_NAME=c30
 ${WORKSPACE}/build/cMT3000/cmake_com.sh ${WORKSPACE} ${CRYPTO_EXTENSION_NAME}
 
-make install
+make
+make install/strip
+
+cd ${WORKSPACE}/build/jenkins/bin
+/home/ci/work/crypto e com com.${CRYPTO_EXTENSION_NAME}
 
 cd ${WORKSPACE}
 rm -rf artifacts
 mkdir artifacts
-cp build/jenkins/bin/com.${CRYPTO_EXTENSION_NAME} artifacts
+cp ${WORKSPACE}/build/jenkins/bin/com.${CRYPTO_EXTENSION_NAME} artifacts
 
 </command>
     </hudson.tasks.Shell>
