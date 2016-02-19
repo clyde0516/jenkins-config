@@ -36,7 +36,7 @@
     </userRemoteConfigs>
     <branches>
       <hudson.plugins.git.BranchSpec>
-        <name>*/${TRIGGER_PARAM_DSERVER_BRANCH}</name>
+        <name>*/${TRIGGER_PARAM_COM_BRANCH}</name>
       </hudson.plugins.git.BranchSpec>
     </branches>
     <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
@@ -63,13 +63,15 @@ cd jenkins
 
 mkdir bin
 
+export ADDITIONAL_LIBRARY_DIRECTORY=/home/ci/work/cMT-SVR/build-${TRIGGER_PARAM_COM_BRANCH}-branch/lib
+
 if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; == &quot;cMT3000&quot; ]; then
 	export CRYPTO_EXTENSION_NAME=c30
 else
 	export CRYPTO_EXTENSION_NAME=e30
 fi
 
-${WORKSPACE}/build/${TRIGGER_PARAM_PLATFORM}/cmake_com.sh ${WORKSPACE} ${CRYPTO_EXTENSION_NAME}
+${WORKSPACE}/build/${TRIGGER_PARAM_PLATFORM}/cmake_com.sh ${WORKSPACE} ${ADDITIONAL_LIBRARY_DIRECTORY} ${CRYPTO_EXTENSION_NAME}
 
 make install
 
