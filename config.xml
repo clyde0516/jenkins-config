@@ -167,16 +167,15 @@
       <properties class="hudson.model.View$PropertyList"/>
       <gridBuilder class="au.com.centrumsystems.hudson.plugin.buildpipeline.DownstreamProjectGridBuilder">
         <firstJob>libweintek_dev_cMT-SVR</firstJob>
-        <firstJobLink>job/libweintek_dev_cMT-SVR/</firstJobLink>
       </gridBuilder>
       <noOfDisplayedBuilds>10</noOfDisplayedBuilds>
       <buildViewTitle>dev_cMT-SVR</buildViewTitle>
       <consoleOutputLinkStyle>Lightbox</consoleOutputLinkStyle>
       <cssUrl></cssUrl>
       <triggerOnlyLatestJob>false</triggerOnlyLatestJob>
-      <alwaysAllowManualTrigger>false</alwaysAllowManualTrigger>
-      <showPipelineParameters>false</showPipelineParameters>
-      <showPipelineParametersInHeaders>false</showPipelineParametersInHeaders>
+      <alwaysAllowManualTrigger>true</alwaysAllowManualTrigger>
+      <showPipelineParameters>true</showPipelineParameters>
+      <showPipelineParametersInHeaders>true</showPipelineParametersInHeaders>
       <startsWithParameters>false</startsWithParameters>
       <refreshFrequency>3</refreshFrequency>
       <showPipelineDefinitionHeader>false</showPipelineDefinitionHeader>
@@ -189,6 +188,7 @@
       <properties class="hudson.model.View$PropertyList"/>
       <gridBuilder class="au.com.centrumsystems.hudson.plugin.buildpipeline.DownstreamProjectGridBuilder">
         <firstJob>libweintek_dev_Ubuntu</firstJob>
+        <firstJobLink>job/libweintek_dev_Ubuntu/</firstJobLink>
       </gridBuilder>
       <noOfDisplayedBuilds>10</noOfDisplayedBuilds>
       <buildViewTitle>dev_Ubuntu</buildViewTitle>
