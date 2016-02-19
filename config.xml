@@ -210,7 +210,7 @@
       <filterQueue>false</filterQueue>
       <properties class="hudson.model.View$PropertyList"/>
       <gridBuilder class="au.com.centrumsystems.hudson.plugin.buildpipeline.DownstreamProjectGridBuilder">
-        <firstJob>dserver_dev-operation-log_cMT3000</firstJob>
+        <firstJob>libweintek_stable_cMT-SVR</firstJob>
       </gridBuilder>
       <noOfDisplayedBuilds>10</noOfDisplayedBuilds>
       <buildViewTitle>stable_cMT-SVR</buildViewTitle>
