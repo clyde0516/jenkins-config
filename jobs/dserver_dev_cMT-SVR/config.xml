@@ -57,7 +57,7 @@ rm -rf jenkins
 mkdir jenkins
 cd jenkins
 
-export LIBWEINTEK_PATH=${JENKINS_HOME}/jobs/libweintek_dev_cMT/workspace
+export LIBWEINTEK_PATH=${JENKINS_HOME}/jobs/libweintek_dev_cMT-SVR/workspace
 export INSTALL_PREFIX=/home/ci/work/cMT-SVR/build-dev-branch
 ${WORKSPACE}/build/cMT-SVR/cmake_dserver.sh ${WORKSPACE} ${LIBWEINTEK_PATH} ${INSTALL_PREFIX}
 
