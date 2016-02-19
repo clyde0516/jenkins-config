@@ -178,7 +178,7 @@
       <showPipelineParametersInHeaders>true</showPipelineParametersInHeaders>
       <startsWithParameters>false</startsWithParameters>
       <refreshFrequency>3</refreshFrequency>
-      <showPipelineDefinitionHeader>false</showPipelineDefinitionHeader>
+      <showPipelineDefinitionHeader>true</showPipelineDefinitionHeader>
     </au.com.centrumsystems.hudson.plugin.buildpipeline.BuildPipelineView>
     <au.com.centrumsystems.hudson.plugin.buildpipeline.BuildPipelineView plugin="build-pipeline-plugin@1.4.9">
       <owner class="hudson" reference="../../.."/>
