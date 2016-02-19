@@ -58,7 +58,7 @@
     <hudson.tasks.Shell>
       <command>cd ${WORKSPACE}/build
 #rm -rf jenkins
-mkdir jenkins
+#mkdir jenkins
 cd jenkins
 
 mkdir bin
