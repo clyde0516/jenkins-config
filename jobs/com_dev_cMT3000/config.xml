@@ -71,9 +71,9 @@ else
 	export CRYPTO_EXTENSION_NAME=e30
 fi
 
-${WORKSPACE}/build/${TRIGGER_PARAM_PLATFORM}/cmake_com.sh ${WORKSPACE} ${ADDITIONAL_LIBRARY_DIRECTORY} ${CRYPTO_EXTENSION_NAME}
+${WORKSPACE}/build/${TRIGGER_PARAM_PLATFORM}/cmake_com.sh ${WORKSPACE} ${CRYPTO_EXTENSION_NAME}
 
-make install
+make install VERBOSE=1
 
 cd ${WORKSPACE}/build/jenkins/bin
 /home/ci/work/crypto e com com.${CRYPTO_EXTENSION_NAME}
