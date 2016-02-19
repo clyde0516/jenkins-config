@@ -67,6 +67,7 @@
         <string>dserver_dev_cMT-SVR</string>
         <string>dserver_dev_cMT3000</string>
         <string>dserver_dev_Ubuntu</string>
+        <string>dserver_param</string>
         <string>dserver_stable_cMT-SVR</string>
         <string>dserver_stable_cMT3000</string>
       </jobNames>
@@ -121,7 +122,7 @@
       <properties class="hudson.model.View$PropertyList"/>
       <gridBuilder class="au.com.centrumsystems.hudson.plugin.buildpipeline.DownstreamProjectGridBuilder">
         <firstJob>libweintek_dev_cMT3000</firstJob>
-        <firstJobLink>view/Overview/job/libweintek_dev_cMT3000/</firstJobLink>
+        <firstJobLink>view/list_dserver/job/libweintek_dev_cMT3000/</firstJobLink>
       </gridBuilder>
       <noOfDisplayedBuilds>10</noOfDisplayedBuilds>
       <buildViewTitle>dev_cMT3000</buildViewTitle>
@@ -143,7 +144,7 @@
       <properties class="hudson.model.View$PropertyList"/>
       <gridBuilder class="au.com.centrumsystems.hudson.plugin.buildpipeline.DownstreamProjectGridBuilder">
         <firstJob>libweintek_stable_cMT3000</firstJob>
-        <firstJobLink>view/Overview/job/libweintek_stable_cMT3000/</firstJobLink>
+        <firstJobLink>view/list_dserver/job/libweintek_stable_cMT3000/</firstJobLink>
       </gridBuilder>
       <noOfDisplayedBuilds>10</noOfDisplayedBuilds>
       <buildViewTitle>stable_cMT3000</buildViewTitle>
@@ -165,7 +166,7 @@
       <properties class="hudson.model.View$PropertyList"/>
       <gridBuilder class="au.com.centrumsystems.hudson.plugin.buildpipeline.DownstreamProjectGridBuilder">
         <firstJob>libweintek_dev_cMT-SVR</firstJob>
-        <firstJobLink>view/Overview/job/libweintek_dev_cMT-SVR/</firstJobLink>
+        <firstJobLink>view/list_dserver/job/libweintek_dev_cMT-SVR/</firstJobLink>
       </gridBuilder>
       <noOfDisplayedBuilds>10</noOfDisplayedBuilds>
       <buildViewTitle>dev_cMT-SVR</buildViewTitle>
@@ -187,7 +188,7 @@
       <properties class="hudson.model.View$PropertyList"/>
       <gridBuilder class="au.com.centrumsystems.hudson.plugin.buildpipeline.DownstreamProjectGridBuilder">
         <firstJob>libweintek_dev_Ubuntu</firstJob>
-        <firstJobLink>view/Overview/job/libweintek_dev_Ubuntu/</firstJobLink>
+        <firstJobLink>view/list_dserver/job/libweintek_dev_Ubuntu/</firstJobLink>
       </gridBuilder>
       <noOfDisplayedBuilds>10</noOfDisplayedBuilds>
       <buildViewTitle>dev_Ubuntu</buildViewTitle>
@@ -209,7 +210,7 @@
       <properties class="hudson.model.View$PropertyList"/>
       <gridBuilder class="au.com.centrumsystems.hudson.plugin.buildpipeline.DownstreamProjectGridBuilder">
         <firstJob>dserver_dev-operation-log_cMT3000</firstJob>
-        <firstJobLink>view/Overview/job/dserver_dev-operation-log_cMT3000/</firstJobLink>
+        <firstJobLink>view/list_dserver/job/dserver_dev-operation-log_cMT3000/</firstJobLink>
       </gridBuilder>
       <noOfDisplayedBuilds>10</noOfDisplayedBuilds>
       <buildViewTitle>stable_cMT-SVR</buildViewTitle>
@@ -291,7 +292,7 @@
       <properties class="hudson.model.View$PropertyList"/>
       <gridBuilder class="au.com.centrumsystems.hudson.plugin.buildpipeline.DownstreamProjectGridBuilder">
         <firstJob>detonator_operation-log_cMT3000</firstJob>
-        <firstJobLink>view/Overview/job/detonator_operation-log_cMT3000/</firstJobLink>
+        <firstJobLink>view/list_dserver/job/detonator_operation-log_cMT3000/</firstJobLink>
       </gridBuilder>
       <noOfDisplayedBuilds>1</noOfDisplayedBuilds>
       <buildViewTitle></buildViewTitle>
