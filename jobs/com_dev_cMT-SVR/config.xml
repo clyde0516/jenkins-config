@@ -7,7 +7,7 @@
     <hudson.model.ParametersDefinitionProperty>
       <parameterDefinitions>
         <hudson.model.TextParameterDefinition>
-          <name>TRIGGER_PARAM_DSERVER_BRANCH</name>
+          <name>TRIGGER_PARAM_COM_BRANCH</name>
           <description></description>
           <defaultValue>5.03.02</defaultValue>
         </hudson.model.TextParameterDefinition>
@@ -36,7 +36,7 @@
     </userRemoteConfigs>
     <branches>
       <hudson.plugins.git.BranchSpec>
-        <name>*/${TRIGGER_PARAM_DSERVER_BRANCH}</name>
+        <name>*/${TRIGGER_PARAM_COM_BRANCH}</name>
       </hudson.plugins.git.BranchSpec>
     </branches>
     <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
@@ -62,6 +62,8 @@ mkdir jenkins
 cd jenkins
 
 mkdir bin
+
+export ADDITIONAL_LIBRARY_DIRECTORY=/home/ci/work/cMT-SVR/build-${TRIGGER_PARAM_COM_BRANCH}-branch/lib
 
 if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; == &quot;cMT3000&quot; ]; then
 	export CRYPTO_EXTENSION_NAME=c30
