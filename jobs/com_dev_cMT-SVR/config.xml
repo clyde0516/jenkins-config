@@ -12,9 +12,9 @@
           <defaultValue>5.03.02</defaultValue>
         </hudson.model.TextParameterDefinition>
         <hudson.model.TextParameterDefinition>
-          <name>TRIGGER_PARAM_INSTALL_FOLDER</name>
+          <name>TRIGGER_PARAM_PLATFORM</name>
           <description></description>
-          <defaultValue>build-dev-branch</defaultValue>
+          <defaultValue>cMT-SVR</defaultValue>
         </hudson.model.TextParameterDefinition>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
@@ -63,8 +63,13 @@ cd jenkins
 
 mkdir bin
 
-export CRYPTO_EXTENSION_NAME=e30
-${WORKSPACE}/build/cMT-SVR/cmake_com.sh ${WORKSPACE} ${CRYPTO_EXTENSION_NAME}
+if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; == &quot;cMT3000&quot; ]; then
+	export CRYPTO_EXTENSION_NAME=c30
+else
+	export CRYPTO_EXTENSION_NAME=e30
+fi
+
+${WORKSPACE}/build/${TRIGGER_PARAM_PLATFORM}/cmake_com.sh ${WORKSPACE} ${CRYPTO_EXTENSION_NAME}
 
 make install
 
@@ -74,9 +79,7 @@ cd ${WORKSPACE}/build/jenkins/bin
 cd ${WORKSPACE}
 rm -rf artifacts
 mkdir artifacts
-cp ${WORKSPACE}/build/jenkins/bin/com.${CRYPTO_EXTENSION_NAME} artifacts
-
-</command>
+cp ${WORKSPACE}/build/jenkins/bin/com.${CRYPTO_EXTENSION_NAME} artifacts</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
