@@ -31,7 +31,7 @@
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
-        <url>gitolite@192.168.1.220:d-server.git</url>
+        <url>gitolite@192.168.1.220:com.git</url>
       </hudson.plugins.git.UserRemoteConfig>
     </userRemoteConfigs>
     <branches>
@@ -56,53 +56,23 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>cd ${WORKSPACE}/build
+      <command>mkdir build
+cd ${WORKSPACE}/build
 rm -rf jenkins
 mkdir jenkins
 cd jenkins
 
-export UPSTREAM_JOB_PATH=${JENKINS_HOME}/jobs/libweintek_dev_cMT3000/workspace
-export INSTALL_PREFIX=/home/ci/work/cMT3000/${TRIGGER_PARAM_INSTALL_FOLDER}
-${WORKSPACE}/build/cMT3000/cmake_dserver.sh ${WORKSPACE} ${UPSTREAM_JOB_PATH} ${INSTALL_PREFIX}
+${WORKSPACE}/build/cMT3000/cmake_com.sh ${WORKSPACE}
 
 make install/strip
 
-cd ${INSTALL_PREFIX}/bin
-/home/ci/work/crypto e dserver dserver.c30
-
-cd ${WORKSPACE}
-rm -rf artifacts
-mkdir artifacts
-cp ${INSTALL_PREFIX}/bin/dserver.c30 artifacts
+# cd ${WORKSPACE}
+# rm -rf artifacts
+# mkdir artifacts
+# cp ${INSTALL_PREFIX}/bin/dserver.c30 artifacts
 </command>
     </hudson.tasks.Shell>
   </builders>
-  <publishers>
-    <hudson.tasks.ArtifactArchiver>
-      <artifacts>artifacts/dserver.c30</artifacts>
-      <allowEmptyArchive>false</allowEmptyArchive>
-      <onlyIfSuccessful>true</onlyIfSuccessful>
-      <fingerprint>false</fingerprint>
-      <defaultExcludes>true</defaultExcludes>
-      <caseSensitive>true</caseSensitive>
-    </hudson.tasks.ArtifactArchiver>
-    <hudson.plugins.parameterizedtrigger.BuildTrigger plugin="parameterized-trigger@2.30">
-      <configs>
-        <hudson.plugins.parameterizedtrigger.BuildTriggerConfig>
-          <configs>
-            <hudson.plugins.parameterizedtrigger.CurrentBuildParameters/>
-          </configs>
-          <projects>gui_dev_cMT3000</projects>
-          <condition>UNSTABLE_OR_BETTER</condition>
-          <triggerWithNoParameters>false</triggerWithNoParameters>
-        </hudson.plugins.parameterizedtrigger.BuildTriggerConfig>
-      </configs>
-    </hudson.plugins.parameterizedtrigger.BuildTrigger>
-    <hudson.tasks.Mailer plugin="mailer@1.16">
-      <recipients>katte@weintek.com paul@weintek.com zen@weintek.com easonwu@weintek.com jeremyhong@weintek.com clydeliu@weintek.com</recipients>
-      <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
-      <sendToIndividuals>false</sendToIndividuals>
-    </hudson.tasks.Mailer>
-  </publishers>
+  <publishers/>
   <buildWrappers/>
 </project>
