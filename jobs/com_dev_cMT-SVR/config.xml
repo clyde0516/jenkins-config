@@ -64,7 +64,7 @@ cd jenkins
 mkdir bin
 
 export CRYPTO_EXTENSION_NAME=e30
-${WORKSPACE}/build/cMT-iv5/cmake_com.sh ${WORKSPACE} ${CRYPTO_EXTENSION_NAME}
+${WORKSPACE}/build/cMT-SVR/cmake_com.sh ${WORKSPACE} ${CRYPTO_EXTENSION_NAME}
 
 make install
 
