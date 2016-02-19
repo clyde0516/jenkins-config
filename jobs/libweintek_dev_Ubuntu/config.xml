@@ -79,7 +79,7 @@ cppcheck --enable=all --inconclusive --xml --xml-version=2 weintek 2&gt; cppchec
         <configSeverityEvaluation>
           <threshold></threshold>
           <newThreshold></newThreshold>
-          <failureThreshold></failureThreshold>
+          <failureThreshold>386</failureThreshold>
           <newFailureThreshold>1</newFailureThreshold>
           <healthy></healthy>
           <unHealthy></unHealthy>
