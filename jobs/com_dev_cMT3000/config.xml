@@ -9,7 +9,7 @@
         <hudson.model.TextParameterDefinition>
           <name>TRIGGER_PARAM_DSERVER_BRANCH</name>
           <description></description>
-          <defaultValue>dev</defaultValue>
+          <defaultValue>5.03.02</defaultValue>
         </hudson.model.TextParameterDefinition>
         <hudson.model.TextParameterDefinition>
           <name>TRIGGER_PARAM_INSTALL_FOLDER</name>
@@ -61,15 +61,30 @@ rm -rf jenkins
 mkdir jenkins
 cd jenkins
 
-mkdir bin/com
+mkdir bin
 
-${WORKSPACE}/build/cMT3000/cmake_com.sh ${WORKSPACE}
+export CRYPTO_EXTENSION_NAME=c30
+${WORKSPACE}/build/cMT3000/cmake_com.sh ${WORKSPACE} ${CRYPTO_EXTENSION_NAME}
 
-# make install/strip
+make install/strip
+
+cd ${WORKSPACE}
+rm -rf artifacts
+mkdir artifacts
+cp build/cMT3000/bin/com.${CRYPTO_EXTENSION_NAME} artifacts
 
 </command>
     </hudson.tasks.Shell>
   </builders>
-  <publishers/>
+  <publishers>
+    <hudson.tasks.ArtifactArchiver>
+      <artifacts>artifacts/com.*</artifacts>
+      <allowEmptyArchive>false</allowEmptyArchive>
+      <onlyIfSuccessful>true</onlyIfSuccessful>
+      <fingerprint>false</fingerprint>
+      <defaultExcludes>true</defaultExcludes>
+      <caseSensitive>true</caseSensitive>
+    </hudson.tasks.ArtifactArchiver>
+  </publishers>
   <buildWrappers/>
 </project>
