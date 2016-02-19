@@ -75,7 +75,7 @@ cp ${INSTALL_PREFIX}/bin/dserver.c30 artifacts
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
       <command>cd ${WORKSPACE}
-cppcheck --enable=portability --inconclusive --suppress=syntaxError --xml --xml-version=2 dserver 2&gt; cppcheck.xml</command>
+cppcheck --enable=all --inconclusive --suppress=syntaxError --xml --xml-version=2 dserver 2&gt; cppcheck.xml</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
