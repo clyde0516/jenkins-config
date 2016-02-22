@@ -29,6 +29,7 @@
     <permission>hudson.model.Item.Cancel:clydeliu</permission>
     <permission>hudson.model.Item.Cancel:user</permission>
     <permission>hudson.model.Item.Configure:clydeliu</permission>
+    <permission>hudson.model.Item.Configure:user</permission>
     <permission>hudson.model.Item.Create:clydeliu</permission>
     <permission>hudson.model.Item.Create:user</permission>
     <permission>hudson.model.Item.Delete:clydeliu</permission>
