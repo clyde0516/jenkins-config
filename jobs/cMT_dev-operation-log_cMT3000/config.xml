@@ -243,11 +243,6 @@ if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; != &quot;cMT-SVR&quot; ]; then
     cp ${WORKSPACE}/gui/build/${TRIGGER_PARAM_PLATFORM}/features.pri .
     ${WORKSPACE}/gui/build/${TRIGGER_PARAM_PLATFORM}/qmake_gui.sh ${GUI_PATH} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${INSTALL_PREFIX}
 
-    if [ &quot;${TRIGGER_PARAM_GUI_BUILD_POLICY}&quot; = &quot;clean&quot; ]; then
-        make clean
-    fi
-    make
-
     cp ${INSTALL_PREFIX}/bin/gui.c30 ${WORKSPACE}/artifacts
 
 fi</command>
