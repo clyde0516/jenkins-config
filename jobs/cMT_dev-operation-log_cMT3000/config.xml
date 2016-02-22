@@ -142,24 +142,30 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command># Create the install folder for builds
+      <command># Setup environment for builds
+
+cd ${WORKSPACE}
+rm -rf artifacts
+mkdir artifacts
 
 cd /home/ci/work/${TRIGGER_PARAM_PLATFORM}
 if [ ! -d &quot;${TRIGGER_PARAM_INSTALL_FOLDER}&quot; ]; then
     cp -r ${TRIGGER_PARAM_BASE_INSTALL_FOLDER} ${TRIGGER_PARAM_INSTALL_FOLDER}
-fi</command>
+fi
+</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
       <command># Build libweintek
 
-cd ${WORKSPACE}/build
+cd ${WORKSPACE}/libweintek/build
 if [ ! -d &quot;jenkins&quot; ]; then
     mkdir jenkins
 fi
 cd jenkins
 
+export LIBWEINTEK_PATH=${WORKSPACE}/libweintek
 export INSTALL_PREFIX=/home/ci/work/${TRIGGER_PARAM_PLATFORM}/${TRIGGER_PARAM_INSTALL_FOLDER}
-${WORKSPACE}/libweintek/build/${TRIGGER_PARAM_PLATFORM}/cmake_libweintek.sh ${WORKSPACE}/libweintek ${INSTALL_PREFIX}
+${WORKSPACE}/libweintek/build/${TRIGGER_PARAM_PLATFORM}/cmake_libweintek.sh ${LIBWEINTEK_PATH} ${INSTALL_PREFIX}
     
 if [ &quot;${TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY}&quot; = &quot;clean&quot; ]; then
     make clean
@@ -167,9 +173,66 @@ fi
 make install</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
-      <command></command>
+      <command># Build dserver
+
+cd ${WORKSPACE}/dserver/build
+if [ ! -d &quot;jenkins&quot; ]; then
+    mkdir jenkins
+fi
+cd jenkins
+
+export DSERVER_PATH=${WORKSPACE}/dserver
+export LIBWEINTEK_PATH=${WORKSPACE}/libweintek
+export INSTALL_PREFIX=/home/ci/work/${TRIGGER_PARAM_PLATFORM}/${TRIGGER_PARAM_INSTALL_FOLDER}
+${WORKSPACE}/dserver/build/${TRIGGER_PARAM_PLATFORM}/cmake_dserver.sh ${DSERVER_PATH} ${LIBWEINTEK_PATH} ${INSTALL_PREFIX}
+
+if [ &quot;${TRIGGER_PARAM_DSERVER_BUILD_POLICY}&quot; = &quot;clean&quot; ]; then
+    make clean
+fi
+make install/strip
+
+if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT-SVR&quot; ]; then
+	export ENCRYPT_NAME=dserver.cmt
+elif [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT-iv5&quot; ]; then
+	export ENCRYPT_NAME=dserver.iv5
+else
+	export ENCRYPT_NAME=dserver.c30
+fi
+
+cd ${INSTALL_PREFIX}/bin
+/home/ci/work/crypto e dserver ${ENCRYPT_NAME}
+cp ${INSTALL_PREFIX}/bin/${ENCRYPT_NAME} ${WORKSPACE}/artifacts</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command># Build gui
+
+cd ${WORKSPACE}/gui/build
+if [ ! -d &quot;jenkins&quot; ]; then
+    mkdir jenkins
+fi
+cd jenkins
+
+export GUI_PATH=${WORKSPACE}/gui
+export DSERVER_PATH=${WORKSPACE}/dserver
+export LIBWEINTEK_PATH=${WORKSPACE}/libweintek
+export INSTALL_PREFIX=/home/ci/work/${TRIGGER_PARAM_PLATFORM}/${TRIGGER_PARAM_INSTALL_FOLDER}
+
+cp ${WORKSPACE}/gui/build/${TRIGGER_PARAM_PLATFORM}/features.pri .
+${WORKSPACE}/gui/build/${TRIGGER_PARAM_PLATFORM}/qmake_gui.sh ${GUI_PATH} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${INSTALL_PREFIX}
+
+cp ${INSTALL_PREFIX}/bin/gui.c30 ${WORKSPACE}/artifacts
+</command>
     </hudson.tasks.Shell>
   </builders>
-  <publishers/>
+  <publishers>
+    <hudson.tasks.ArtifactArchiver>
+      <artifacts>artifacts/*.*</artifacts>
+      <allowEmptyArchive>false</allowEmptyArchive>
+      <onlyIfSuccessful>false</onlyIfSuccessful>
+      <fingerprint>false</fingerprint>
+      <defaultExcludes>true</defaultExcludes>
+      <caseSensitive>true</caseSensitive>
+    </hudson.tasks.ArtifactArchiver>
+  </publishers>
   <buildWrappers/>
 </project>
