@@ -60,7 +60,7 @@ fi</command>
               <properties>TRIGGER_PARAM_BUILD_LIBWEINTEK=true
 TRIGGER_PARAM_BUILD_DSERVER=true
 TRIGGER_PARAM_BUILD_GUI=true
-TRIGGER_PARAM_LIBWEINTEK_BRANCH=dev
+TRIGGER_PARAM_LIBWEINTEK_BRANCH=dev_operation_log_wip
 TRIGGER_PARAM_DSERVER_BRANCH=dev_operation_log_wip
 TRIGGER_PARAM_GUI_BRANCH=dev_operation_log_wip</properties>
             </hudson.plugins.parameterizedtrigger.PredefinedBuildParameters>
