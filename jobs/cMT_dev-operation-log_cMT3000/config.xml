@@ -4,6 +4,14 @@
   <description></description>
   <keepDependencies>false</keepDependencies>
   <properties>
+    <hudson.security.AuthorizationMatrixProperty>
+      <permission>hudson.model.Item.Read:user</permission>
+      <permission>hudson.model.Item.Discover:user</permission>
+      <permission>hudson.model.Item.Build:user</permission>
+      <permission>hudson.model.Item.Cancel:user</permission>
+      <permission>hudson.model.Item.Delete:user</permission>
+      <permission>hudson.model.Item.Configure:user</permission>
+    </hudson.security.AuthorizationMatrixProperty>
     <hudson.model.ParametersDefinitionProperty>
       <parameterDefinitions>
         <hudson.model.ChoiceParameterDefinition>
