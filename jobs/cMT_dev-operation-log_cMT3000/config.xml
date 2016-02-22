@@ -6,11 +6,17 @@
   <properties>
     <hudson.model.ParametersDefinitionProperty>
       <parameterDefinitions>
-        <hudson.model.TextParameterDefinition>
+        <hudson.model.ChoiceParameterDefinition>
           <name>TRIGGER_PARAM_PLATFORM</name>
-          <description>options: cMT3000, cMT-SVR, cMT-iv5</description>
-          <defaultValue>cMT3000</defaultValue>
-        </hudson.model.TextParameterDefinition>
+          <description></description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>cMT3000</string>
+              <string>cMT-SVR</string>
+              <string>cMT-iv5</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
         <hudson.model.TextParameterDefinition>
           <name>TRIGGER_PARAM_INSTALL_FOLDER</name>
           <description></description>
