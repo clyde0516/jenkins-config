@@ -8,7 +8,7 @@
       <parameterDefinitions>
         <hudson.model.TextParameterDefinition>
           <name>TRIGGER_PARAM_PLATFORM</name>
-          <description></description>
+          <description>options: cMT3000, cMT-SVR, cMT-iv5</description>
           <defaultValue>cMT3000</defaultValue>
         </hudson.model.TextParameterDefinition>
         <hudson.model.TextParameterDefinition>
@@ -35,6 +35,21 @@
           <name>TRIGGER_PARAM_GUI_BRANCH</name>
           <description></description>
           <defaultValue>dev_operation_log_wip</defaultValue>
+        </hudson.model.TextParameterDefinition>
+        <hudson.model.TextParameterDefinition>
+          <name>TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY</name>
+          <description>options: incremental, clean</description>
+          <defaultValue>incremental</defaultValue>
+        </hudson.model.TextParameterDefinition>
+        <hudson.model.TextParameterDefinition>
+          <name>TRIGGER_PARAM_DSERVER_BUILD_POLICY</name>
+          <description>options: incremental, clean</description>
+          <defaultValue>incremental</defaultValue>
+        </hudson.model.TextParameterDefinition>
+        <hudson.model.TextParameterDefinition>
+          <name>TRIGGER_PARAM_GUI_BUILD_POLICY</name>
+          <description>options: incremental, clean</description>
+          <defaultValue>incremental</defaultValue>
         </hudson.model.TextParameterDefinition>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
@@ -128,10 +143,31 @@
   <builders>
     <hudson.tasks.Shell>
       <command># Create the install folder for builds
+
 cd /home/ci/work/${TRIGGER_PARAM_PLATFORM}
 if [ ! -d &quot;${TRIGGER_PARAM_INSTALL_FOLDER}&quot; ]; then
     cp -r ${TRIGGER_PARAM_BASE_INSTALL_FOLDER} ${TRIGGER_PARAM_INSTALL_FOLDER}
 fi</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command># Build libweintek
+
+cd ${WORKSPACE}/build
+if [ ! -d &quot;jenkins&quot; ]; then
+    mkdir jenkins
+fi
+cd jenkins
+
+export INSTALL_PREFIX=/home/ci/work/${TRIGGER_PARAM_PLATFORM}/${TRIGGER_PARAM_INSTALL_FOLDER}
+${WORKSPACE}/libweintek/build/${TRIGGER_PARAM_PLATFORM}/cmake_libweintek.sh ${WORKSPACE}/libweintek ${INSTALL_PREFIX}
+    
+if [ &quot;${TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY}&quot; = &quot;clean&quot; ]; then
+    make clean
+fi
+make install</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command></command>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>
