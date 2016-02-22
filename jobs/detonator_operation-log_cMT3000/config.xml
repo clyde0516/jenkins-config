@@ -4,6 +4,25 @@
   <description></description>
   <keepDependencies>false</keepDependencies>
   <properties>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.TextParameterDefinition>
+          <name>TRIGGER_PARAM_PLATFORM</name>
+          <description></description>
+          <defaultValue>cMT3000</defaultValue>
+        </hudson.model.TextParameterDefinition>
+        <hudson.model.TextParameterDefinition>
+          <name>TRIGGER_PARAM_INSTALL_FOLDER</name>
+          <description></description>
+          <defaultValue>build-dev-operation-log-branch</defaultValue>
+        </hudson.model.TextParameterDefinition>
+        <hudson.model.TextParameterDefinition>
+          <name>TRIGGER_PARAM_BASE_INSTALL_FOLDER</name>
+          <description></description>
+          <defaultValue>build-dev-branch</defaultValue>
+        </hudson.model.TextParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
     <jenkins.model.BuildDiscarderProperty>
       <strategy class="hudson.tasks.LogRotator">
         <daysToKeep>-1</daysToKeep>
@@ -26,10 +45,10 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>#export install_prefix=
-#if [ ! -d &quot;$DIRECTORY&quot; ]; then
-#    
-#fi</command>
+      <command>cd /home/ci/work/${TRIGGER_PARAM_PLATFORM}
+if [ ! -d &quot;${TRIGGER_PARAM_INSTALL_FOLDER}&quot; ]; then
+    cp -r ${TRIGGER_PARAM_BASE_INSTALL_FOLDER} ${TRIGGER_PARAM_INSTALL_FOLDER}
+fi</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
@@ -38,15 +57,14 @@
         <hudson.plugins.parameterizedtrigger.BuildTriggerConfig>
           <configs>
             <hudson.plugins.parameterizedtrigger.PredefinedBuildParameters>
-              <properties>TRIGGER_PARAM_PLATFORM=cMT3000
-TRIGGER_PARAM_INSTALL_FOLDER=build-dev-operation-log-branch
-TRIGGER_PARAM_BUILD_LIBWEINTEK=true
+              <properties>TRIGGER_PARAM_BUILD_LIBWEINTEK=true
 TRIGGER_PARAM_BUILD_DSERVER=true
 TRIGGER_PARAM_BUILD_GUI=true
 TRIGGER_PARAM_LIBWEINTEK_BRANCH=dev
 TRIGGER_PARAM_DSERVER_BRANCH=dev_operation_log_wip
 TRIGGER_PARAM_GUI_BRANCH=dev_operation_log_wip</properties>
             </hudson.plugins.parameterizedtrigger.PredefinedBuildParameters>
+            <hudson.plugins.parameterizedtrigger.CurrentBuildParameters/>
           </configs>
           <projects>libweintek_param</projects>
           <condition>ALWAYS</condition>
