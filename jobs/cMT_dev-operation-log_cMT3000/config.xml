@@ -42,21 +42,36 @@
           <description></description>
           <defaultValue>dev_operation_log_wip</defaultValue>
         </hudson.model.TextParameterDefinition>
-        <hudson.model.TextParameterDefinition>
+        <hudson.model.ChoiceParameterDefinition>
           <name>TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY</name>
-          <description>options: incremental, clean</description>
-          <defaultValue>incremental</defaultValue>
-        </hudson.model.TextParameterDefinition>
-        <hudson.model.TextParameterDefinition>
+          <description></description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>incremental</string>
+              <string>clean</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+        <hudson.model.ChoiceParameterDefinition>
           <name>TRIGGER_PARAM_DSERVER_BUILD_POLICY</name>
-          <description>options: incremental, clean</description>
-          <defaultValue>incremental</defaultValue>
-        </hudson.model.TextParameterDefinition>
-        <hudson.model.TextParameterDefinition>
+          <description></description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>incremental</string>
+              <string>clean</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+        <hudson.model.ChoiceParameterDefinition>
           <name>TRIGGER_PARAM_GUI_BUILD_POLICY</name>
-          <description>options: incremental, clean</description>
-          <defaultValue>incremental</defaultValue>
-        </hudson.model.TextParameterDefinition>
+          <description></description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>incremental</string>
+              <string>clean</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
     <jenkins.model.BuildDiscarderProperty>
