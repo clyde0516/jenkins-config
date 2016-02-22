@@ -64,7 +64,7 @@ export LIBWEINTEK_PATH=/var/lib/jenkins/jobs/libweintek_dev_Ubuntu/workspace
 export DSERVER_PATH=/var/lib/jenkins/jobs/dserver_dev_Ubuntu/workspace
 export INSTALL_PATH=/home/ci/work/Ubuntu/build-dev-branch
 
-${WORKSPACE}/build/Ubuntu/qmake_gui.sh ${WORKSPACE} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${INSTALL_PATH}
+${WORKSPACE}/build/Ubuntu/qmake_gui.sh ${WORKSPACE} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${INSTALL_PATH} clean
 
 ### Do not save artifact gui.c30 for Ubuntu, since there is no QtMEL library linking to executable on Ubuntu.
 # cd ${WORKSPACE}
