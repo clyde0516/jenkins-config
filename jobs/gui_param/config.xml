@@ -74,7 +74,7 @@
     export DSERVER_PATH=/var/lib/jenkins/jobs/dserver_param/workspace
     export INSTALL_PREFIX=/home/ci/work/${TRIGGER_PARAM_PLATFORM}/${TRIGGER_PARAM_INSTALL_FOLDER}
 
-    ${WORKSPACE}/build/${TRIGGER_PARAM_PLATFORM}/qmake_gui.sh ${WORKSPACE} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${INSTALL_PREFIX}
+    ${WORKSPACE}/build/${TRIGGER_PARAM_PLATFORM}/qmake_gui.sh ${WORKSPACE} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${INSTALL_PREFIX} clean
 
     cd ${WORKSPACE}
     rm -rf artifacts
