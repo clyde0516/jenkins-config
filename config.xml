@@ -11,6 +11,7 @@
     <permission>com.cloudbees.plugins.credentials.CredentialsProvider.ManageDomains:clydeliu</permission>
     <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Update:clydeliu</permission>
     <permission>com.cloudbees.plugins.credentials.CredentialsProvider.View:clydeliu</permission>
+    <permission>hudson.model.Computer.Build:anonymous</permission>
     <permission>hudson.model.Computer.Build:clydeliu</permission>
     <permission>hudson.model.Computer.Configure:clydeliu</permission>
     <permission>hudson.model.Computer.Connect:clydeliu</permission>
@@ -19,6 +20,7 @@
     <permission>hudson.model.Computer.Disconnect:clydeliu</permission>
     <permission>hudson.model.Hudson.Administer:clydeliu</permission>
     <permission>hudson.model.Hudson.ConfigureUpdateCenter:clydeliu</permission>
+    <permission>hudson.model.Hudson.Read:anonymous</permission>
     <permission>hudson.model.Hudson.Read:clydeliu</permission>
     <permission>hudson.model.Hudson.RunScripts:clydeliu</permission>
     <permission>hudson.model.Hudson.UploadPlugins:clydeliu</permission>
@@ -27,6 +29,7 @@
     <permission>hudson.model.Item.Cancel:anonymous</permission>
     <permission>hudson.model.Item.Cancel:clydeliu</permission>
     <permission>hudson.model.Item.Configure:clydeliu</permission>
+    <permission>hudson.model.Item.Create:anonymous</permission>
     <permission>hudson.model.Item.Create:clydeliu</permission>
     <permission>hudson.model.Item.Delete:clydeliu</permission>
     <permission>hudson.model.Item.Discover:clydeliu</permission>
@@ -37,6 +40,7 @@
     <permission>hudson.model.View.Configure:clydeliu</permission>
     <permission>hudson.model.View.Create:clydeliu</permission>
     <permission>hudson.model.View.Delete:clydeliu</permission>
+    <permission>hudson.model.View.Read:anonymous</permission>
     <permission>hudson.model.View.Read:clydeliu</permission>
     <permission>hudson.scm.SCM.Tag:clydeliu</permission>
   </authorizationStrategy>
