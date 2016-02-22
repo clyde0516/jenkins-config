@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <user>
-  <fullName>clydeliu</fullName>
+  <fullName>Clyde Liu</fullName>
   <properties>
     <jenkins.security.ApiTokenProperty>
       <apiToken>Go4QsUY5/b6ePeh46jcSI4cqqA6vZQvVqSg55dVorNCpaFao1eK4WwXGzbl2Xo8F</apiToken>
     </jenkins.security.ApiTokenProperty>
-    <com.cloudbees.plugins.credentials.UserCredentialsProvider_-UserCredentialsProperty plugin="credentials@1.14">
+    <com.cloudbees.plugins.credentials.UserCredentialsProvider_-UserCredentialsProperty plugin="credentials@1.24">
       <domainCredentialsMap class="hudson.util.CopyOnWriteMap$Hash"/>
     </com.cloudbees.plugins.credentials.UserCredentialsProvider_-UserCredentialsProperty>
     <hudson.model.MyViewsProperty>
@@ -25,7 +25,10 @@
     <hudson.search.UserSearchProperty>
       <insensitiveSearch>false</insensitiveSearch>
     </hudson.search.UserSearchProperty>
-    <hudson.tasks.Mailer_-UserProperty plugin="mailer@1.11">
+    <hudson.security.HudsonPrivateSecurityRealm_-Details>
+      <passwordHash>#jbcrypt:$2a$10$.ZEgCLzkgGgQuXkc8AYri.I4zjtsmA4Ds.vP81JDfqgeb1G5iuD2u</passwordHash>
+    </hudson.security.HudsonPrivateSecurityRealm_-Details>
+    <hudson.tasks.Mailer_-UserProperty plugin="mailer@1.16">
       <emailAddress>clydeliu@weintek.com</emailAddress>
     </hudson.tasks.Mailer_-UserProperty>
   </properties>
