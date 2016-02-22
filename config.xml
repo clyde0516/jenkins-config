@@ -5,7 +5,7 @@
   <numExecutors>2</numExecutors>
   <mode>NORMAL</mode>
   <useSecurity>true</useSecurity>
-  <authorizationStrategy class="hudson.security.GlobalMatrixAuthorizationStrategy">
+  <authorizationStrategy class="hudson.security.ProjectMatrixAuthorizationStrategy">
     <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Create:clydeliu</permission>
     <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Delete:clydeliu</permission>
     <permission>com.cloudbees.plugins.credentials.CredentialsProvider.ManageDomains:clydeliu</permission>
@@ -33,12 +33,12 @@
     <permission>hudson.model.Item.Create:clydeliu</permission>
     <permission>hudson.model.Item.Create:user</permission>
     <permission>hudson.model.Item.Delete:clydeliu</permission>
+    <permission>hudson.model.Item.Delete:user</permission>
     <permission>hudson.model.Item.Discover:clydeliu</permission>
     <permission>hudson.model.Item.Discover:user</permission>
     <permission>hudson.model.Item.Read:clydeliu</permission>
     <permission>hudson.model.Item.Read:user</permission>
     <permission>hudson.model.Item.Workspace:clydeliu</permission>
-    <permission>hudson.model.Item.Workspace:user</permission>
     <permission>hudson.model.Run.Delete:clydeliu</permission>
     <permission>hudson.model.Run.Update:clydeliu</permission>
     <permission>hudson.model.View.Configure:clydeliu</permission>
