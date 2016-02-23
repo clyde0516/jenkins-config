@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <user>
-  <fullName>easonwu</fullName>
+  <fullName>Eason Wu</fullName>
   <properties>
     <hudson.model.PaneStatusProperties>
       <collapsed/>
@@ -8,7 +8,7 @@
     <jenkins.security.ApiTokenProperty>
       <apiToken>Yjr2uFQeeJ/LevCxSLBTbo+tq+CAtemNAKdLQBZ9g5KpaFao1eK4WwXGzbl2Xo8F</apiToken>
     </jenkins.security.ApiTokenProperty>
-    <com.cloudbees.plugins.credentials.UserCredentialsProvider_-UserCredentialsProperty plugin="credentials@1.14">
+    <com.cloudbees.plugins.credentials.UserCredentialsProvider_-UserCredentialsProperty plugin="credentials@1.24">
       <domainCredentialsMap class="hudson.util.CopyOnWriteMap$Hash"/>
     </com.cloudbees.plugins.credentials.UserCredentialsProvider_-UserCredentialsProperty>
     <hudson.model.MyViewsProperty>
@@ -25,7 +25,10 @@
     <hudson.search.UserSearchProperty>
       <insensitiveSearch>false</insensitiveSearch>
     </hudson.search.UserSearchProperty>
-    <hudson.tasks.Mailer_-UserProperty plugin="mailer@1.11">
+    <hudson.security.HudsonPrivateSecurityRealm_-Details>
+      <passwordHash>#jbcrypt:$2a$10$2ehSMSs83K3.mZdmQu4BYuO9jjlgo82AVtyoKHt53ulNehmumR8z6</passwordHash>
+    </hudson.security.HudsonPrivateSecurityRealm_-Details>
+    <hudson.tasks.Mailer_-UserProperty plugin="mailer@1.16">
       <emailAddress>easonwu@weintek.com</emailAddress>
     </hudson.tasks.Mailer_-UserProperty>
   </properties>
