@@ -12,6 +12,7 @@
       <permission>hudson.model.Item.Workspace:darenyao</permission>
       <permission>hudson.model.Item.Delete:darenyao</permission>
       <permission>hudson.model.Item.Configure:darenyao</permission>
+      <permission>hudson.model.Run.Update:darenyao</permission>
     </hudson.security.AuthorizationMatrixProperty>
     <jenkins.model.BuildDiscarderProperty>
       <strategy class="hudson.tasks.LogRotator">
