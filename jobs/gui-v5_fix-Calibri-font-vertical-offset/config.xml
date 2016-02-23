@@ -4,6 +4,15 @@
   <description>GUI for eMT/iE/XE Series</description>
   <keepDependencies>false</keepDependencies>
   <properties>
+    <hudson.security.AuthorizationMatrixProperty>
+      <permission>hudson.model.Item.Read:darenyao</permission>
+      <permission>hudson.model.Item.Discover:darenyao</permission>
+      <permission>hudson.model.Item.Build:darenyao</permission>
+      <permission>hudson.model.Item.Cancel:darenyao</permission>
+      <permission>hudson.model.Item.Workspace:darenyao</permission>
+      <permission>hudson.model.Item.Delete:darenyao</permission>
+      <permission>hudson.model.Item.Configure:darenyao</permission>
+    </hudson.security.AuthorizationMatrixProperty>
     <jenkins.model.BuildDiscarderProperty>
       <strategy class="hudson.tasks.LogRotator">
         <daysToKeep>365</daysToKeep>
