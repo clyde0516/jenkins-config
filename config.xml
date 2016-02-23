@@ -7,44 +7,139 @@
   <useSecurity>true</useSecurity>
   <authorizationStrategy class="hudson.security.ProjectMatrixAuthorizationStrategy">
     <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Create:clydeliu</permission>
+    <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Create:katte</permission>
     <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Delete:clydeliu</permission>
+    <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Delete:katte</permission>
     <permission>com.cloudbees.plugins.credentials.CredentialsProvider.ManageDomains:clydeliu</permission>
+    <permission>com.cloudbees.plugins.credentials.CredentialsProvider.ManageDomains:katte</permission>
     <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Update:clydeliu</permission>
+    <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Update:katte</permission>
     <permission>com.cloudbees.plugins.credentials.CredentialsProvider.View:clydeliu</permission>
+    <permission>com.cloudbees.plugins.credentials.CredentialsProvider.View:katte</permission>
+    <permission>hudson.model.Computer.Build:anonymous</permission>
     <permission>hudson.model.Computer.Build:clydeliu</permission>
+    <permission>hudson.model.Computer.Build:darenyao</permission>
+    <permission>hudson.model.Computer.Build:easonwu</permission>
+    <permission>hudson.model.Computer.Build:edgarlee</permission>
+    <permission>hudson.model.Computer.Build:jeremyhong</permission>
+    <permission>hudson.model.Computer.Build:katte</permission>
+    <permission>hudson.model.Computer.Build:paul</permission>
     <permission>hudson.model.Computer.Build:user</permission>
+    <permission>hudson.model.Computer.Build:yichengchen</permission>
+    <permission>hudson.model.Computer.Build:zen</permission>
     <permission>hudson.model.Computer.Configure:clydeliu</permission>
+    <permission>hudson.model.Computer.Configure:katte</permission>
     <permission>hudson.model.Computer.Connect:clydeliu</permission>
+    <permission>hudson.model.Computer.Connect:katte</permission>
     <permission>hudson.model.Computer.Create:clydeliu</permission>
+    <permission>hudson.model.Computer.Create:katte</permission>
     <permission>hudson.model.Computer.Delete:clydeliu</permission>
+    <permission>hudson.model.Computer.Delete:katte</permission>
     <permission>hudson.model.Computer.Disconnect:clydeliu</permission>
+    <permission>hudson.model.Computer.Disconnect:katte</permission>
     <permission>hudson.model.Hudson.Administer:clydeliu</permission>
+    <permission>hudson.model.Hudson.Administer:katte</permission>
     <permission>hudson.model.Hudson.ConfigureUpdateCenter:clydeliu</permission>
+    <permission>hudson.model.Hudson.ConfigureUpdateCenter:katte</permission>
+    <permission>hudson.model.Hudson.Read:anonymous</permission>
     <permission>hudson.model.Hudson.Read:clydeliu</permission>
+    <permission>hudson.model.Hudson.Read:darenyao</permission>
+    <permission>hudson.model.Hudson.Read:easonwu</permission>
+    <permission>hudson.model.Hudson.Read:edgarlee</permission>
+    <permission>hudson.model.Hudson.Read:jeremyhong</permission>
+    <permission>hudson.model.Hudson.Read:katte</permission>
+    <permission>hudson.model.Hudson.Read:paul</permission>
     <permission>hudson.model.Hudson.Read:user</permission>
+    <permission>hudson.model.Hudson.Read:yichengchen</permission>
+    <permission>hudson.model.Hudson.Read:zen</permission>
     <permission>hudson.model.Hudson.RunScripts:clydeliu</permission>
+    <permission>hudson.model.Hudson.RunScripts:katte</permission>
     <permission>hudson.model.Hudson.UploadPlugins:clydeliu</permission>
+    <permission>hudson.model.Hudson.UploadPlugins:katte</permission>
+    <permission>hudson.model.Item.Build:anonymous</permission>
     <permission>hudson.model.Item.Build:clydeliu</permission>
+    <permission>hudson.model.Item.Build:darenyao</permission>
+    <permission>hudson.model.Item.Build:easonwu</permission>
+    <permission>hudson.model.Item.Build:edgarlee</permission>
+    <permission>hudson.model.Item.Build:jeremyhong</permission>
+    <permission>hudson.model.Item.Build:katte</permission>
+    <permission>hudson.model.Item.Build:paul</permission>
     <permission>hudson.model.Item.Build:user</permission>
+    <permission>hudson.model.Item.Build:yichengchen</permission>
+    <permission>hudson.model.Item.Build:zen</permission>
+    <permission>hudson.model.Item.Cancel:anonymous</permission>
     <permission>hudson.model.Item.Cancel:clydeliu</permission>
+    <permission>hudson.model.Item.Cancel:darenyao</permission>
+    <permission>hudson.model.Item.Cancel:easonwu</permission>
+    <permission>hudson.model.Item.Cancel:edgarlee</permission>
+    <permission>hudson.model.Item.Cancel:jeremyhong</permission>
+    <permission>hudson.model.Item.Cancel:katte</permission>
+    <permission>hudson.model.Item.Cancel:paul</permission>
     <permission>hudson.model.Item.Cancel:user</permission>
+    <permission>hudson.model.Item.Cancel:yichengchen</permission>
+    <permission>hudson.model.Item.Cancel:zen</permission>
     <permission>hudson.model.Item.Configure:clydeliu</permission>
+    <permission>hudson.model.Item.Configure:katte</permission>
+    <permission>hudson.model.Item.Create:anonymous</permission>
     <permission>hudson.model.Item.Create:clydeliu</permission>
+    <permission>hudson.model.Item.Create:darenyao</permission>
+    <permission>hudson.model.Item.Create:easonwu</permission>
+    <permission>hudson.model.Item.Create:edgarlee</permission>
+    <permission>hudson.model.Item.Create:jeremyhong</permission>
+    <permission>hudson.model.Item.Create:katte</permission>
+    <permission>hudson.model.Item.Create:paul</permission>
     <permission>hudson.model.Item.Create:user</permission>
+    <permission>hudson.model.Item.Create:yichengchen</permission>
+    <permission>hudson.model.Item.Create:zen</permission>
     <permission>hudson.model.Item.Delete:clydeliu</permission>
+    <permission>hudson.model.Item.Delete:katte</permission>
+    <permission>hudson.model.Item.Discover:anonymous</permission>
     <permission>hudson.model.Item.Discover:clydeliu</permission>
+    <permission>hudson.model.Item.Discover:darenyao</permission>
+    <permission>hudson.model.Item.Discover:easonwu</permission>
+    <permission>hudson.model.Item.Discover:edgarlee</permission>
+    <permission>hudson.model.Item.Discover:jeremyhong</permission>
+    <permission>hudson.model.Item.Discover:katte</permission>
+    <permission>hudson.model.Item.Discover:paul</permission>
     <permission>hudson.model.Item.Discover:user</permission>
+    <permission>hudson.model.Item.Discover:yichengchen</permission>
+    <permission>hudson.model.Item.Discover:zen</permission>
+    <permission>hudson.model.Item.Read:anonymous</permission>
     <permission>hudson.model.Item.Read:clydeliu</permission>
+    <permission>hudson.model.Item.Read:darenyao</permission>
+    <permission>hudson.model.Item.Read:easonwu</permission>
+    <permission>hudson.model.Item.Read:edgarlee</permission>
+    <permission>hudson.model.Item.Read:jeremyhong</permission>
+    <permission>hudson.model.Item.Read:katte</permission>
+    <permission>hudson.model.Item.Read:paul</permission>
     <permission>hudson.model.Item.Read:user</permission>
+    <permission>hudson.model.Item.Read:yichengchen</permission>
+    <permission>hudson.model.Item.Read:zen</permission>
     <permission>hudson.model.Item.Workspace:clydeliu</permission>
+    <permission>hudson.model.Item.Workspace:katte</permission>
     <permission>hudson.model.Run.Delete:clydeliu</permission>
+    <permission>hudson.model.Run.Delete:katte</permission>
     <permission>hudson.model.Run.Update:clydeliu</permission>
+    <permission>hudson.model.Run.Update:katte</permission>
     <permission>hudson.model.View.Configure:clydeliu</permission>
+    <permission>hudson.model.View.Configure:katte</permission>
     <permission>hudson.model.View.Create:clydeliu</permission>
+    <permission>hudson.model.View.Create:katte</permission>
     <permission>hudson.model.View.Delete:clydeliu</permission>
+    <permission>hudson.model.View.Delete:katte</permission>
+    <permission>hudson.model.View.Read:anonymous</permission>
     <permission>hudson.model.View.Read:clydeliu</permission>
+    <permission>hudson.model.View.Read:darenyao</permission>
+    <permission>hudson.model.View.Read:easonwu</permission>
+    <permission>hudson.model.View.Read:edgarlee</permission>
+    <permission>hudson.model.View.Read:jeremyhong</permission>
+    <permission>hudson.model.View.Read:katte</permission>
+    <permission>hudson.model.View.Read:paul</permission>
     <permission>hudson.model.View.Read:user</permission>
+    <permission>hudson.model.View.Read:yichengchen</permission>
+    <permission>hudson.model.View.Read:zen</permission>
     <permission>hudson.scm.SCM.Tag:clydeliu</permission>
+    <permission>hudson.scm.SCM.Tag:katte</permission>
   </authorizationStrategy>
   <securityRealm class="hudson.security.HudsonPrivateSecurityRealm">
     <disableSignup>false</disableSignup>
