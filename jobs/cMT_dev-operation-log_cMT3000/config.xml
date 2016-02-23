@@ -9,56 +9,56 @@
       <permission>hudson.model.Item.Read:jeremyhong</permission>
       <permission>hudson.model.Item.Read:edgarlee</permission>
       <permission>hudson.model.Item.Read:paul</permission>
-      <permission>hudson.model.Item.Read:yichengchen</permission>
       <permission>hudson.model.Item.Read:zen</permission>
+      <permission>hudson.model.Item.Read:yichengchen</permission>
       <permission>hudson.model.Item.Read:user</permission>
       <permission>hudson.model.Item.Read:easonwu</permission>
       <permission>hudson.model.Item.Discover:darenyao</permission>
       <permission>hudson.model.Item.Discover:jeremyhong</permission>
       <permission>hudson.model.Item.Discover:edgarlee</permission>
       <permission>hudson.model.Item.Discover:paul</permission>
-      <permission>hudson.model.Item.Discover:yichengchen</permission>
       <permission>hudson.model.Item.Discover:zen</permission>
+      <permission>hudson.model.Item.Discover:yichengchen</permission>
       <permission>hudson.model.Item.Discover:user</permission>
       <permission>hudson.model.Item.Discover:easonwu</permission>
       <permission>hudson.model.Item.Build:darenyao</permission>
       <permission>hudson.model.Item.Build:jeremyhong</permission>
       <permission>hudson.model.Item.Build:edgarlee</permission>
       <permission>hudson.model.Item.Build:paul</permission>
-      <permission>hudson.model.Item.Build:yichengchen</permission>
       <permission>hudson.model.Item.Build:zen</permission>
+      <permission>hudson.model.Item.Build:yichengchen</permission>
       <permission>hudson.model.Item.Build:user</permission>
       <permission>hudson.model.Item.Build:easonwu</permission>
       <permission>hudson.model.Item.Cancel:darenyao</permission>
       <permission>hudson.model.Item.Cancel:jeremyhong</permission>
       <permission>hudson.model.Item.Cancel:edgarlee</permission>
       <permission>hudson.model.Item.Cancel:paul</permission>
-      <permission>hudson.model.Item.Cancel:yichengchen</permission>
       <permission>hudson.model.Item.Cancel:zen</permission>
+      <permission>hudson.model.Item.Cancel:yichengchen</permission>
       <permission>hudson.model.Item.Cancel:user</permission>
       <permission>hudson.model.Item.Cancel:easonwu</permission>
       <permission>hudson.model.Item.Workspace:darenyao</permission>
       <permission>hudson.model.Item.Workspace:jeremyhong</permission>
       <permission>hudson.model.Item.Workspace:edgarlee</permission>
       <permission>hudson.model.Item.Workspace:paul</permission>
-      <permission>hudson.model.Item.Workspace:yichengchen</permission>
       <permission>hudson.model.Item.Workspace:zen</permission>
+      <permission>hudson.model.Item.Workspace:yichengchen</permission>
       <permission>hudson.model.Item.Workspace:user</permission>
       <permission>hudson.model.Item.Workspace:easonwu</permission>
       <permission>hudson.model.Item.Delete:darenyao</permission>
       <permission>hudson.model.Item.Delete:jeremyhong</permission>
       <permission>hudson.model.Item.Delete:edgarlee</permission>
       <permission>hudson.model.Item.Delete:paul</permission>
-      <permission>hudson.model.Item.Delete:yichengchen</permission>
       <permission>hudson.model.Item.Delete:zen</permission>
+      <permission>hudson.model.Item.Delete:yichengchen</permission>
       <permission>hudson.model.Item.Delete:user</permission>
       <permission>hudson.model.Item.Delete:easonwu</permission>
       <permission>hudson.model.Item.Configure:darenyao</permission>
       <permission>hudson.model.Item.Configure:jeremyhong</permission>
       <permission>hudson.model.Item.Configure:edgarlee</permission>
       <permission>hudson.model.Item.Configure:paul</permission>
-      <permission>hudson.model.Item.Configure:yichengchen</permission>
       <permission>hudson.model.Item.Configure:zen</permission>
+      <permission>hudson.model.Item.Configure:yichengchen</permission>
       <permission>hudson.model.Item.Configure:user</permission>
       <permission>hudson.model.Item.Configure:easonwu</permission>
     </hudson.security.AuthorizationMatrixProperty>
@@ -220,6 +220,23 @@
   </triggers>
   <concurrentBuild>false</concurrentBuild>
   <builders>
+    <org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder plugin="conditional-buildstep@1.3.3">
+      <condition class="org.jenkins_ci.plugins.run_condition.core.TimeCondition" plugin="run-condition@1.0">
+        <earliestHours>0</earliestHours>
+        <earliestMinutes>0</earliestMinutes>
+        <latestHours>8</latestHours>
+        <latestMinutes>0</latestMinutes>
+        <useBuildTime>true</useBuildTime>
+      </condition>
+      <buildStep class="hudson.tasks.Shell">
+        <command># Make clean builds for daily builds by removing build folder 
+
+rm -rf ${WORKSPACE}/libweintek/build/jenkins
+rm -rf ${WORKSPACE}/dserver/build/jenkins
+rm -rf ${WORKSPACE}/gui/build/jenkins</command>
+      </buildStep>
+      <runner class="org.jenkins_ci.plugins.run_condition.BuildStepRunner$Fail" plugin="run-condition@1.0"/>
+    </org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder>
     <hudson.tasks.Shell>
       <command># Setup environment for builds
 
