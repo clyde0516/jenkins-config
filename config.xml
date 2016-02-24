@@ -327,28 +327,6 @@
       <showStaticAnalysisResults>true</showStaticAnalysisResults>
       <regexpFirstJobs/>
     </se.diabol.jenkins.pipeline.DeliveryPipelineView>
-    <au.com.centrumsystems.hudson.plugin.buildpipeline.BuildPipelineView plugin="build-pipeline-plugin@1.4.9">
-      <owner class="hudson" reference="../../.."/>
-      <name>pipeline_param</name>
-      <filterExecutors>false</filterExecutors>
-      <filterQueue>false</filterQueue>
-      <properties class="hudson.model.View$PropertyList"/>
-      <gridBuilder class="au.com.centrumsystems.hudson.plugin.buildpipeline.DownstreamProjectGridBuilder">
-        <firstJob>libweintek_param</firstJob>
-        <firstJobLink>job/libweintek_param/</firstJobLink>
-      </gridBuilder>
-      <noOfDisplayedBuilds>10</noOfDisplayedBuilds>
-      <buildViewTitle>Pipeline param</buildViewTitle>
-      <consoleOutputLinkStyle>Lightbox</consoleOutputLinkStyle>
-      <cssUrl></cssUrl>
-      <triggerOnlyLatestJob>false</triggerOnlyLatestJob>
-      <alwaysAllowManualTrigger>true</alwaysAllowManualTrigger>
-      <showPipelineParameters>true</showPipelineParameters>
-      <showPipelineParametersInHeaders>true</showPipelineParametersInHeaders>
-      <startsWithParameters>false</startsWithParameters>
-      <refreshFrequency>3</refreshFrequency>
-      <showPipelineDefinitionHeader>true</showPipelineDefinitionHeader>
-    </au.com.centrumsystems.hudson.plugin.buildpipeline.BuildPipelineView>
     <listView>
       <owner class="hudson" reference="../../.."/>
       <name>Active</name>
