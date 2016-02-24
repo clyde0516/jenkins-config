@@ -502,6 +502,7 @@
         <hudson.views.BuildButtonColumn/>
       </columns>
       <recurse>false</recurse>
+      <statusFilter>true</statusFilter>
     </listView>
   </views>
   <primaryView>All</primaryView>
