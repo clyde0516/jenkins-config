@@ -237,7 +237,7 @@
         <useBuildTime>true</useBuildTime>
       </condition>
       <buildStep class="hudson.tasks.Shell">
-        <command># Make clean builds for daily builds by removing build folder 
+        <command># Make clean builds for daily builds by removing build folder
 
 rm -rf ${WORKSPACE}/libweintek/build/jenkins
 rm -rf ${WORKSPACE}/dserver/build/jenkins
@@ -260,6 +260,7 @@ fi
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
       <command># Build libweintek
+echo &quot;==== libweintek ==== libweintek ==== libweintek ==== libweintek ==== libweintek ==== libweintek ====&quot;
 
 cd ${WORKSPACE}/libweintek/build
 if [ ! -d &quot;jenkins&quot; ]; then
@@ -278,6 +279,7 @@ make install</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
       <command># Build dserver
+echo &quot;==== dserver ==== dserver ==== dserver ==== dserver ==== dserver ==== dserver ====&quot;
 
 cd ${WORKSPACE}/dserver/build
 if [ ! -d &quot;jenkins&quot; ]; then
@@ -316,7 +318,10 @@ cp ${INSTALL_PREFIX}/bin/${ENCRYPT_NAME} ${WORKSPACE}/artifacts</command>
         </condition>
       </condition>
       <buildStep class="hudson.tasks.Shell">
-        <command>cd ${WORKSPACE}/gui/build
+        <command># Build gui
+echo &quot;==== gui ==== gui ==== gui ==== gui ==== gui ==== gui ====&quot;
+
+cd ${WORKSPACE}/gui/build
 if [ ! -d &quot;jenkins&quot; ]; then
     mkdir jenkins
 fi
