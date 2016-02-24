@@ -275,6 +275,11 @@
       <properties class="hudson.model.View$PropertyList"/>
       <componentSpecs>
         <se.diabol.jenkins.pipeline.DeliveryPipelineView_-ComponentSpec>
+          <name>dev_Ubuntu</name>
+          <firstJob>libweintek_dev_Ubuntu</firstJob>
+          <lastJob></lastJob>
+        </se.diabol.jenkins.pipeline.DeliveryPipelineView_-ComponentSpec>
+        <se.diabol.jenkins.pipeline.DeliveryPipelineView_-ComponentSpec>
           <name>dev_cMT3000</name>
           <firstJob>libweintek_dev_cMT3000</firstJob>
           <lastJob></lastJob>
@@ -287,11 +292,6 @@
         <se.diabol.jenkins.pipeline.DeliveryPipelineView_-ComponentSpec>
           <name>dev_cMT-iv5</name>
           <firstJob>libweintek_dev_cMT-iv5</firstJob>
-          <lastJob></lastJob>
-        </se.diabol.jenkins.pipeline.DeliveryPipelineView_-ComponentSpec>
-        <se.diabol.jenkins.pipeline.DeliveryPipelineView_-ComponentSpec>
-          <name>dev_Ubuntu</name>
-          <firstJob>libweintek_dev_Ubuntu</firstJob>
           <lastJob></lastJob>
         </se.diabol.jenkins.pipeline.DeliveryPipelineView_-ComponentSpec>
         <se.diabol.jenkins.pipeline.DeliveryPipelineView_-ComponentSpec>
