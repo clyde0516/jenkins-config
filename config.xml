@@ -165,7 +165,7 @@
       <properties class="hudson.model.View$PropertyList"/>
       <gridBuilder class="au.com.centrumsystems.hudson.plugin.buildpipeline.DownstreamProjectGridBuilder">
         <firstJob>libweintek_dev_cMT3000</firstJob>
-        <firstJobLink>view/list_libweintek/job/libweintek_dev_cMT3000/</firstJobLink>
+        <firstJobLink>job/libweintek_dev_cMT3000/</firstJobLink>
       </gridBuilder>
       <noOfDisplayedBuilds>10</noOfDisplayedBuilds>
       <buildViewTitle>dev_cMT3000</buildViewTitle>
@@ -187,7 +187,7 @@
       <properties class="hudson.model.View$PropertyList"/>
       <gridBuilder class="au.com.centrumsystems.hudson.plugin.buildpipeline.DownstreamProjectGridBuilder">
         <firstJob>libweintek_stable_cMT3000</firstJob>
-        <firstJobLink>view/list_libweintek/job/libweintek_stable_cMT3000/</firstJobLink>
+        <firstJobLink>job/libweintek_stable_cMT3000/</firstJobLink>
       </gridBuilder>
       <noOfDisplayedBuilds>10</noOfDisplayedBuilds>
       <buildViewTitle>stable_cMT3000</buildViewTitle>
@@ -209,7 +209,7 @@
       <properties class="hudson.model.View$PropertyList"/>
       <gridBuilder class="au.com.centrumsystems.hudson.plugin.buildpipeline.DownstreamProjectGridBuilder">
         <firstJob>libweintek_dev_cMT-SVR</firstJob>
-        <firstJobLink>view/list_libweintek/job/libweintek_dev_cMT-SVR/</firstJobLink>
+        <firstJobLink>job/libweintek_dev_cMT-SVR/</firstJobLink>
       </gridBuilder>
       <noOfDisplayedBuilds>10</noOfDisplayedBuilds>
       <buildViewTitle>dev_cMT-SVR</buildViewTitle>
@@ -231,7 +231,7 @@
       <properties class="hudson.model.View$PropertyList"/>
       <gridBuilder class="au.com.centrumsystems.hudson.plugin.buildpipeline.DownstreamProjectGridBuilder">
         <firstJob>libweintek_dev_Ubuntu</firstJob>
-        <firstJobLink>view/list_libweintek/job/libweintek_dev_Ubuntu/</firstJobLink>
+        <firstJobLink>job/libweintek_dev_Ubuntu/</firstJobLink>
       </gridBuilder>
       <noOfDisplayedBuilds>10</noOfDisplayedBuilds>
       <buildViewTitle>dev_Ubuntu</buildViewTitle>
@@ -253,7 +253,7 @@
       <properties class="hudson.model.View$PropertyList"/>
       <gridBuilder class="au.com.centrumsystems.hudson.plugin.buildpipeline.DownstreamProjectGridBuilder">
         <firstJob>libweintek_stable_cMT-SVR</firstJob>
-        <firstJobLink>view/list_libweintek/job/libweintek_stable_cMT-SVR/</firstJobLink>
+        <firstJobLink>job/libweintek_stable_cMT-SVR/</firstJobLink>
       </gridBuilder>
       <noOfDisplayedBuilds>10</noOfDisplayedBuilds>
       <buildViewTitle>stable_cMT-SVR</buildViewTitle>
@@ -329,35 +329,13 @@
     </se.diabol.jenkins.pipeline.DeliveryPipelineView>
     <au.com.centrumsystems.hudson.plugin.buildpipeline.BuildPipelineView plugin="build-pipeline-plugin@1.4.9">
       <owner class="hudson" reference="../../.."/>
-      <name>pipeline_operation-log_cMT3000</name>
-      <filterExecutors>false</filterExecutors>
-      <filterQueue>false</filterQueue>
-      <properties class="hudson.model.View$PropertyList"/>
-      <gridBuilder class="au.com.centrumsystems.hudson.plugin.buildpipeline.DownstreamProjectGridBuilder">
-        <firstJob>detonator_operation-log_cMT3000</firstJob>
-        <firstJobLink>view/list_libweintek/job/detonator_operation-log_cMT3000/</firstJobLink>
-      </gridBuilder>
-      <noOfDisplayedBuilds>1</noOfDisplayedBuilds>
-      <buildViewTitle></buildViewTitle>
-      <consoleOutputLinkStyle>Lightbox</consoleOutputLinkStyle>
-      <cssUrl></cssUrl>
-      <triggerOnlyLatestJob>false</triggerOnlyLatestJob>
-      <alwaysAllowManualTrigger>true</alwaysAllowManualTrigger>
-      <showPipelineParameters>true</showPipelineParameters>
-      <showPipelineParametersInHeaders>true</showPipelineParametersInHeaders>
-      <startsWithParameters>false</startsWithParameters>
-      <refreshFrequency>3</refreshFrequency>
-      <showPipelineDefinitionHeader>true</showPipelineDefinitionHeader>
-    </au.com.centrumsystems.hudson.plugin.buildpipeline.BuildPipelineView>
-    <au.com.centrumsystems.hudson.plugin.buildpipeline.BuildPipelineView plugin="build-pipeline-plugin@1.4.9">
-      <owner class="hudson" reference="../../.."/>
       <name>pipeline_param</name>
       <filterExecutors>false</filterExecutors>
       <filterQueue>false</filterQueue>
       <properties class="hudson.model.View$PropertyList"/>
       <gridBuilder class="au.com.centrumsystems.hudson.plugin.buildpipeline.DownstreamProjectGridBuilder">
         <firstJob>libweintek_param</firstJob>
-        <firstJobLink>view/list_libweintek/job/libweintek_param/</firstJobLink>
+        <firstJobLink>job/libweintek_param/</firstJobLink>
       </gridBuilder>
       <noOfDisplayedBuilds>10</noOfDisplayedBuilds>
       <buildViewTitle>Pipeline param</buildViewTitle>
