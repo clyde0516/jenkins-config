@@ -16,7 +16,6 @@
           <description></description>
           <choices class="java.util.Arrays$ArrayList">
             <a class="string-array">
-              <string>TRUE</string>
               <string>cMT3000</string>
               <string>cMT-SVR</string>
             </a>
@@ -74,12 +73,16 @@ id
 echo $PATH
 export PATH=${PATH}:/opt/Qt5.4.2/5.4/gcc_64/bin
 
-echo match1
+export COMPARE_RESULT=${PARAM_COMBO_PLATFORM}=cMT3000
 </command>
     </hudson.tasks.Shell>
     <org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder plugin="conditional-buildstep@1.3.3">
-      <condition class="org.jenkins_ci.plugins.run_condition.core.BooleanCondition" plugin="run-condition@1.0">
-        <token>${PARAM_STRING_PLATFORM} = cMT3000</token>
+      <condition class="org.jenkins_ci.plugins.run_condition.logic.Not" plugin="run-condition@1.0">
+        <condition class="org.jenkins_ci.plugins.run_condition.core.StringsMatchCondition">
+          <arg1>${PARAM_COMBO_PLATFORM}</arg1>
+          <arg2>cMT-SVR</arg2>
+          <ignoreCase>false</ignoreCase>
+        </condition>
       </condition>
       <buildStep class="hudson.tasks.Shell">
         <command>echo match1</command>
