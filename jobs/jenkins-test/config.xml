@@ -67,8 +67,8 @@
 cat ~/.ssh/id_rsa.pub
 id
 
-git config --global user.email &quot;jenkins@SW-APP-CI&quot;
-git config --global user.name &quot;jenkins&quot;
+# git config --global user.email &quot;jenkins@SW-APP-CI&quot;
+# git config --global user.name &quot;jenkins&quot;
 
 echo $PATH
 export PATH=${PATH}:/opt/Qt5.4.2/5.4/gcc_64/bin
