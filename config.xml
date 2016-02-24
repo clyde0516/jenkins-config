@@ -152,7 +152,7 @@
     <hudson.model.AllView>
       <owner class="hudson" reference="../../.."/>
       <name>All</name>
-      <description>Active</description>
+      <description></description>
       <filterExecutors>false</filterExecutors>
       <filterQueue>false</filterQueue>
       <properties class="hudson.model.View$PropertyList"/>
