@@ -260,7 +260,7 @@ fi
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
       <command># Build libweintek
-echo &quot;==== libweintek ==== libweintek ==== libweintek ==== libweintek ==== libweintek ==== libweintek ==== libweintek ==== libweintek ==== libweintek ==== libweintek ==== libweintek ==== libweintek ====&quot;
+echo &quot;================================ libweintek ================================ libweintek ================================ libweintek ================================&quot;
 
 cd ${WORKSPACE}/libweintek/build
 if [ ! -d &quot;jenkins&quot; ]; then
@@ -279,7 +279,7 @@ make install</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
       <command># Build dserver
-echo &quot;==== dserver ==== dserver ==== dserver ==== dserver ==== dserver ==== dserver ==== dserver ==== dserver ==== dserver ==== dserver ==== dserver ==== dserver ====&quot;
+echo &quot;================================ dserver ================================ dserver ================================ dserver ================================&quot;
 
 cd ${WORKSPACE}/dserver/build
 if [ ! -d &quot;jenkins&quot; ]; then
@@ -319,7 +319,7 @@ cp ${INSTALL_PREFIX}/bin/${ENCRYPT_NAME} ${WORKSPACE}/artifacts</command>
       </condition>
       <buildStep class="hudson.tasks.Shell">
         <command># Build gui
-echo &quot;==== gui ==== gui ==== gui ==== gui ==== gui ==== gui ==== gui ==== gui ==== gui ==== gui ==== gui ==== gui ====&quot;
+echo &quot;================================ gui ================================ gui ================================ gui ================================&quot;
 
 cd ${WORKSPACE}/gui/build
 if [ ! -d &quot;jenkins&quot; ]; then
