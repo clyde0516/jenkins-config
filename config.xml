@@ -269,7 +269,7 @@
     </au.com.centrumsystems.hudson.plugin.buildpipeline.BuildPipelineView>
     <se.diabol.jenkins.pipeline.DeliveryPipelineView plugin="delivery-pipeline-plugin@0.9.8">
       <owner class="hudson" reference="../../.."/>
-      <name>pipeline_all</name>
+      <name>Overview</name>
       <filterExecutors>false</filterExecutors>
       <filterQueue>false</filterQueue>
       <properties class="hudson.model.View$PropertyList"/>
