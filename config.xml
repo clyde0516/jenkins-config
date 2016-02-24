@@ -490,6 +490,22 @@
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
+        <string>cMT_dev-operation-log_cMT3000</string>
+        <string>cMT_param</string>
+        <string>com_dev_cMT-SVR</string>
+        <string>com_dev_cMT3000</string>
+        <string>detonator_operation-log_cMT3000</string>
+        <string>dserver_dev_cMT-iv5</string>
+        <string>dserver_dev_cMT-SVR</string>
+        <string>dserver_dev_cMT3000</string>
+        <string>dserver_dev_Ubuntu</string>
+        <string>dserver_param</string>
+        <string>dserver_stable_cMT-SVR</string>
+        <string>dserver_stable_cMT3000</string>
+        <string>gui-v5_fix-Calibri-font-vertical-offset</string>
+        <string>gui-v5_release-5-01-03</string>
+        <string>gui_dev_cMT-iv5</string>
+        <string>gui_dev_cMT3000</string>
       </jobNames>
       <jobFilters/>
       <columns>
@@ -501,7 +517,6 @@
         <hudson.views.LastDurationColumn/>
         <hudson.views.BuildButtonColumn/>
       </columns>
-      <includeRegex>lib*</includeRegex>
       <recurse>false</recurse>
       <statusFilter>true</statusFilter>
     </listView>
