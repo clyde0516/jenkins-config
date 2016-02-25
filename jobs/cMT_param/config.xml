@@ -263,15 +263,6 @@ fi
 </command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
-      <command># Do static analysis by cppcheck
-
-cd ${WORKSPACE}/cppcheck
-
-cppcheck --enable=all --inconclusive --xml --xml-version=2 ${WORKSPACE}/libweintek/weintek 2&gt; cppcheck-libweintek.xml
-cppcheck --enable=all --inconclusive --xml --xml-version=2 ${WORKSPACE}/dserver/dserver 2&gt; cppcheck-dserver.xml
-cppcheck --enable=all --inconclusive --xml --xml-version=2 ${WORKSPACE}/gui/got 2&gt; cppcheck-gui.xml</command>
-    </hudson.tasks.Shell>
-    <hudson.tasks.Shell>
       <command># Build libweintek
 echo &quot;================================ libweintek ================================ libweintek ================================ libweintek ================================&quot;
 
@@ -352,6 +343,16 @@ cp ${INSTALL_PREFIX}/bin/gui.c30 ${WORKSPACE}/artifacts</command>
       </buildStep>
       <runner class="org.jenkins_ci.plugins.run_condition.BuildStepRunner$Fail" plugin="run-condition@1.0"/>
     </org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder>
+    <hudson.tasks.Shell>
+      <command># Do static analysis by cppcheck
+echo &quot;================================ cppcheck ================================ cppcheck ================================ cppcheck ================================&quot;
+
+cd ${WORKSPACE}/cppcheck
+
+cppcheck --enable=all --inconclusive --suppress=syntaxError --xml --xml-version=2 ${WORKSPACE}/libweintek/weintek 2&gt; cppcheck-libweintek.xml
+cppcheck --enable=all --inconclusive --suppress=syntaxError --xml --xml-version=2 ${WORKSPACE}/dserver/dserver 2&gt; cppcheck-dserver.xml
+cppcheck --enable=all --inconclusive --suppress=syntaxError --xml --xml-version=2 ${WORKSPACE}/gui/got 2&gt; cppcheck-gui.xml</command>
+    </hudson.tasks.Shell>
   </builders>
   <publishers>
     <org.jenkinsci.plugins.cppcheck.CppcheckPublisher plugin="cppcheck@1.21">
