@@ -117,10 +117,10 @@ cppcheck --enable=all --inconclusive --suppress=syntaxError --xml --xml-version=
           <severityError>true</severityError>
           <severityWarning>true</severityWarning>
           <severityStyle>true</severityStyle>
-          <severityPerformance>false</severityPerformance>
-          <severityInformation>false</severityInformation>
-          <severityNoCategory>false</severityNoCategory>
-          <severityPortability>false</severityPortability>
+          <severityPerformance>true</severityPerformance>
+          <severityInformation>true</severityInformation>
+          <severityNoCategory>true</severityNoCategory>
+          <severityPortability>true</severityPortability>
         </configSeverityEvaluation>
         <configGraph>
           <xSize>500</xSize>
