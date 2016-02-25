@@ -129,11 +129,11 @@ cppcheck --enable=all --inconclusive --suppress=syntaxError --xml --xml-version=
           <displayAllErrors>true</displayAllErrors>
           <displayErrorSeverity>true</displayErrorSeverity>
           <displayWarningSeverity>true</displayWarningSeverity>
-          <displayStyleSeverity>false</displayStyleSeverity>
-          <displayPerformanceSeverity>false</displayPerformanceSeverity>
-          <displayInformationSeverity>false</displayInformationSeverity>
-          <displayNoCategorySeverity>false</displayNoCategorySeverity>
-          <displayPortabilitySeverity>false</displayPortabilitySeverity>
+          <displayStyleSeverity>true</displayStyleSeverity>
+          <displayPerformanceSeverity>true</displayPerformanceSeverity>
+          <displayInformationSeverity>true</displayInformationSeverity>
+          <displayNoCategorySeverity>true</displayNoCategorySeverity>
+          <displayPortabilitySeverity>true</displayPortabilitySeverity>
         </configGraph>
       </cppcheckConfig>
     </org.jenkinsci.plugins.cppcheck.CppcheckPublisher>
