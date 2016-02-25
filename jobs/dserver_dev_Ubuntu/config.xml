@@ -116,16 +116,16 @@ cppcheck --enable=all --inconclusive --suppress=syntaxError --xml --xml-version=
           <threshold></threshold>
           <newThreshold></newThreshold>
           <failureThreshold>210</failureThreshold>
-          <newFailureThreshold></newFailureThreshold>
+          <newFailureThreshold>1</newFailureThreshold>
           <healthy></healthy>
           <unHealthy></unHealthy>
           <severityError>true</severityError>
           <severityWarning>true</severityWarning>
           <severityStyle>true</severityStyle>
           <severityPerformance>false</severityPerformance>
-          <severityInformation>false</severityInformation>
-          <severityNoCategory>false</severityNoCategory>
-          <severityPortability>false</severityPortability>
+          <severityInformation>true</severityInformation>
+          <severityNoCategory>true</severityNoCategory>
+          <severityPortability>true</severityPortability>
         </configSeverityEvaluation>
         <configGraph>
           <xSize>500</xSize>
@@ -134,11 +134,11 @@ cppcheck --enable=all --inconclusive --suppress=syntaxError --xml --xml-version=
           <displayAllErrors>true</displayAllErrors>
           <displayErrorSeverity>true</displayErrorSeverity>
           <displayWarningSeverity>true</displayWarningSeverity>
-          <displayStyleSeverity>false</displayStyleSeverity>
-          <displayPerformanceSeverity>false</displayPerformanceSeverity>
-          <displayInformationSeverity>false</displayInformationSeverity>
-          <displayNoCategorySeverity>false</displayNoCategorySeverity>
-          <displayPortabilitySeverity>false</displayPortabilitySeverity>
+          <displayStyleSeverity>true</displayStyleSeverity>
+          <displayPerformanceSeverity>true</displayPerformanceSeverity>
+          <displayInformationSeverity>true</displayInformationSeverity>
+          <displayNoCategorySeverity>true</displayNoCategorySeverity>
+          <displayPortabilitySeverity>true</displayPortabilitySeverity>
         </configGraph>
       </cppcheckConfig>
     </org.jenkinsci.plugins.cppcheck.CppcheckPublisher>
