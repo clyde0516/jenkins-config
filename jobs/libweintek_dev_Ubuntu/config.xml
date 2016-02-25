@@ -75,7 +75,7 @@ ${INSTALL_PREFIX}/bin/test-libweintek --gtest_output=xml:gtest.xml</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
       <command>cd ${WORKSPACE}
-cppcheck --enable=all --suppress=syntaxError --inconclusive --xml --xml-version=2 weintek 2&gt; cppcheck.xml</command>
+cppcheck --enable=all ---inconclusive -suppress=syntaxError -xml --xml-version=2 weintek 2&gt; cppcheck.xml</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
