@@ -44,6 +44,10 @@
   </triggers>
   <concurrentBuild>false</concurrentBuild>
   <builders>
+    <hudson.tasks.Shell>
+      <command>cd ${WORKSPACE}
+cppcheck --enable=all --inconclusive --suppress=syntaxError --xml --xml-version=2 weintek 2&gt; cppcheck.xml</command>
+    </hudson.tasks.Shell>
     <org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder plugin="conditional-buildstep@1.3.3">
       <condition class="org.jenkins_ci.plugins.run_condition.core.TimeCondition" plugin="run-condition@1.0">
         <earliestHours>0</earliestHours>
@@ -73,18 +77,8 @@ make install</command>
       <command>export INSTALL_PREFIX=/home/ci/work/Ubuntu/build-dev-branch
 ${INSTALL_PREFIX}/bin/test-libweintek --gtest_output=xml:gtest.xml</command>
     </hudson.tasks.Shell>
-    <hudson.tasks.Shell>
-      <command>cd ${WORKSPACE}
-cppcheck --enable=all --inconclusive --suppress=syntaxError --xml --xml-version=2 weintek 2&gt; cppcheck.xml</command>
-    </hudson.tasks.Shell>
   </builders>
   <publishers>
-    <hudson.tasks.junit.JUnitResultArchiver plugin="junit@1.10">
-      <testResults>gtest.xml</testResults>
-      <keepLongStdio>true</keepLongStdio>
-      <healthScaleFactor>1.0</healthScaleFactor>
-      <allowEmptyResults>false</allowEmptyResults>
-    </hudson.tasks.junit.JUnitResultArchiver>
     <org.jenkinsci.plugins.cppcheck.CppcheckPublisher plugin="cppcheck@1.21">
       <cppcheckConfig>
         <pattern>cppcheck.xml</pattern>
@@ -93,7 +87,7 @@ cppcheck --enable=all --inconclusive --suppress=syntaxError --xml --xml-version=
         <configSeverityEvaluation>
           <threshold></threshold>
           <newThreshold></newThreshold>
-          <failureThreshold>387</failureThreshold>
+          <failureThreshold>388</failureThreshold>
           <newFailureThreshold>1</newFailureThreshold>
           <healthy></healthy>
           <unHealthy></unHealthy>
@@ -120,6 +114,12 @@ cppcheck --enable=all --inconclusive --suppress=syntaxError --xml --xml-version=
         </configGraph>
       </cppcheckConfig>
     </org.jenkinsci.plugins.cppcheck.CppcheckPublisher>
+    <hudson.tasks.junit.JUnitResultArchiver plugin="junit@1.10">
+      <testResults>gtest.xml</testResults>
+      <keepLongStdio>true</keepLongStdio>
+      <healthScaleFactor>1.0</healthScaleFactor>
+      <allowEmptyResults>false</allowEmptyResults>
+    </hudson.tasks.junit.JUnitResultArchiver>
     <hudson.tasks.Mailer plugin="mailer@1.16">
       <recipients>katte@weintek.com paul@weintek.com zen@weintek.com easonwu@weintek.com jeremyhong@weintek.com clydeliu@weintek.com</recipients>
       <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
