@@ -328,7 +328,7 @@ cp ${INSTALL_PREFIX}/bin/${ENCRYPT_NAME} ${WORKSPACE}/artifacts</command>
         <condition class="org.jenkins_ci.plugins.run_condition.core.StringsMatchCondition">
           <arg1>${TRIGGER_PARAM_PLATFORM}</arg1>
           <arg2>cMT-SVR</arg2>
-          <ignoreCase>true</ignoreCase>
+          <ignoreCase>false</ignoreCase>
         </condition>
       </condition>
       <buildStep class="hudson.tasks.Shell">
