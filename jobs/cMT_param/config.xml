@@ -423,6 +423,12 @@ ${INSTALL_PREFIX}/bin/test-got --gtest_output=xml:gtest-got.xml</command>
         </configGraph>
       </cppcheckConfig>
     </org.jenkinsci.plugins.cppcheck.CppcheckPublisher>
+    <hudson.tasks.junit.JUnitResultArchiver plugin="junit@1.10">
+      <testResults>gtest/gtest-*.xml</testResults>
+      <keepLongStdio>true</keepLongStdio>
+      <healthScaleFactor>1.0</healthScaleFactor>
+      <allowEmptyResults>false</allowEmptyResults>
+    </hudson.tasks.junit.JUnitResultArchiver>
     <hudson.tasks.Mailer plugin="mailer@1.16">
       <recipients>memberA@weintek.com memberB@weintek.com </recipients>
       <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
