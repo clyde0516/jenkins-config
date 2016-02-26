@@ -257,6 +257,9 @@ mkdir artifacts
 rm -rf cppcheck
 mkdir cppcheck
 
+rm -rf gtest
+mkdir gtest
+
 cd /home/ci/work/${TRIGGER_PARAM_PLATFORM}
 if [ ! -d &quot;${TRIGGER_PARAM_INSTALL_FOLDER}&quot; ]; then
     cp -r ${TRIGGER_PARAM_BASE_INSTALL_FOLDER} ${TRIGGER_PARAM_INSTALL_FOLDER}
@@ -269,9 +272,7 @@ echo &quot;================================ cppcheck ===========================
 
 cd ${WORKSPACE}/cppcheck
 
-cppcheck --enable=all --inconclusive --suppress=syntaxError --xml --xml-version=2 ${WORKSPACE}/libweintek/weintek 2&gt; cppcheck-libweintek.xml
-cppcheck --enable=all --inconclusive --suppress=syntaxError --xml --xml-version=2 ${WORKSPACE}/dserver/dserver 2&gt; cppcheck-dserver.xml
-cppcheck --enable=all --inconclusive --suppress=syntaxError --xml --xml-version=2 ${WORKSPACE}/gui/got 2&gt; cppcheck-gui.xml</command>
+cppcheck --enable=all --inconclusive --suppress=syntaxError --xml --xml-version=2 ${WORKSPACE}/libweintek/weintek ${WORKSPACE}/dserver/dserver ${WORKSPACE}/gui/got 2&gt; cppcheck-result.xml</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
       <command># Build libweintek
