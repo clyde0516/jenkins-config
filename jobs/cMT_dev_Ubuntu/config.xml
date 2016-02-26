@@ -77,7 +77,7 @@
           <description></description>
           <choices class="java.util.Arrays$ArrayList">
             <a class="string-array">
-              <string>UBuntu</string>
+              <string>Ubuntu</string>
               <string>cMT3000</string>
               <string>cMT-SVR</string>
               <string>cMT-iv5</string>
