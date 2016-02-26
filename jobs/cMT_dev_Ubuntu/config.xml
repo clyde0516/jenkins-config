@@ -9,64 +9,64 @@
       <permission>hudson.model.Item.Read:jeremyhong</permission>
       <permission>hudson.model.Item.Read:edgarlee</permission>
       <permission>hudson.model.Item.Read:paul</permission>
-      <permission>hudson.model.Item.Read:yichengchen</permission>
       <permission>hudson.model.Item.Read:zen</permission>
+      <permission>hudson.model.Item.Read:yichengchen</permission>
       <permission>hudson.model.Item.Read:user</permission>
       <permission>hudson.model.Item.Read:easonwu</permission>
       <permission>hudson.model.Item.Discover:darenyao</permission>
       <permission>hudson.model.Item.Discover:jeremyhong</permission>
       <permission>hudson.model.Item.Discover:edgarlee</permission>
       <permission>hudson.model.Item.Discover:paul</permission>
-      <permission>hudson.model.Item.Discover:yichengchen</permission>
       <permission>hudson.model.Item.Discover:zen</permission>
+      <permission>hudson.model.Item.Discover:yichengchen</permission>
       <permission>hudson.model.Item.Discover:user</permission>
       <permission>hudson.model.Item.Discover:easonwu</permission>
       <permission>hudson.model.Item.Build:darenyao</permission>
       <permission>hudson.model.Item.Build:jeremyhong</permission>
       <permission>hudson.model.Item.Build:edgarlee</permission>
       <permission>hudson.model.Item.Build:paul</permission>
-      <permission>hudson.model.Item.Build:yichengchen</permission>
       <permission>hudson.model.Item.Build:zen</permission>
+      <permission>hudson.model.Item.Build:yichengchen</permission>
       <permission>hudson.model.Item.Build:user</permission>
       <permission>hudson.model.Item.Build:easonwu</permission>
       <permission>hudson.model.Item.Cancel:darenyao</permission>
       <permission>hudson.model.Item.Cancel:jeremyhong</permission>
       <permission>hudson.model.Item.Cancel:edgarlee</permission>
       <permission>hudson.model.Item.Cancel:paul</permission>
-      <permission>hudson.model.Item.Cancel:yichengchen</permission>
       <permission>hudson.model.Item.Cancel:zen</permission>
+      <permission>hudson.model.Item.Cancel:yichengchen</permission>
       <permission>hudson.model.Item.Cancel:user</permission>
       <permission>hudson.model.Item.Cancel:easonwu</permission>
-      <permission>hudson.model.Item.Configure:darenyao</permission>
-      <permission>hudson.model.Item.Configure:jeremyhong</permission>
-      <permission>hudson.model.Item.Configure:edgarlee</permission>
-      <permission>hudson.model.Item.Configure:paul</permission>
-      <permission>hudson.model.Item.Configure:yichengchen</permission>
-      <permission>hudson.model.Item.Configure:zen</permission>
-      <permission>hudson.model.Item.Configure:user</permission>
-      <permission>hudson.model.Item.Configure:easonwu</permission>
-      <permission>hudson.model.Item.Delete:darenyao</permission>
-      <permission>hudson.model.Item.Delete:jeremyhong</permission>
-      <permission>hudson.model.Item.Delete:edgarlee</permission>
-      <permission>hudson.model.Item.Delete:paul</permission>
-      <permission>hudson.model.Item.Delete:yichengchen</permission>
-      <permission>hudson.model.Item.Delete:zen</permission>
-      <permission>hudson.model.Item.Delete:user</permission>
-      <permission>hudson.model.Item.Delete:easonwu</permission>
       <permission>hudson.model.Item.Workspace:darenyao</permission>
       <permission>hudson.model.Item.Workspace:jeremyhong</permission>
       <permission>hudson.model.Item.Workspace:edgarlee</permission>
       <permission>hudson.model.Item.Workspace:paul</permission>
-      <permission>hudson.model.Item.Workspace:yichengchen</permission>
       <permission>hudson.model.Item.Workspace:zen</permission>
+      <permission>hudson.model.Item.Workspace:yichengchen</permission>
       <permission>hudson.model.Item.Workspace:user</permission>
       <permission>hudson.model.Item.Workspace:easonwu</permission>
+      <permission>hudson.model.Item.Delete:darenyao</permission>
+      <permission>hudson.model.Item.Delete:jeremyhong</permission>
+      <permission>hudson.model.Item.Delete:edgarlee</permission>
+      <permission>hudson.model.Item.Delete:paul</permission>
+      <permission>hudson.model.Item.Delete:zen</permission>
+      <permission>hudson.model.Item.Delete:yichengchen</permission>
+      <permission>hudson.model.Item.Delete:user</permission>
+      <permission>hudson.model.Item.Delete:easonwu</permission>
+      <permission>hudson.model.Item.Configure:darenyao</permission>
+      <permission>hudson.model.Item.Configure:jeremyhong</permission>
+      <permission>hudson.model.Item.Configure:edgarlee</permission>
+      <permission>hudson.model.Item.Configure:paul</permission>
+      <permission>hudson.model.Item.Configure:zen</permission>
+      <permission>hudson.model.Item.Configure:yichengchen</permission>
+      <permission>hudson.model.Item.Configure:user</permission>
+      <permission>hudson.model.Item.Configure:easonwu</permission>
       <permission>hudson.model.Run.Update:darenyao</permission>
       <permission>hudson.model.Run.Update:jeremyhong</permission>
       <permission>hudson.model.Run.Update:edgarlee</permission>
       <permission>hudson.model.Run.Update:paul</permission>
-      <permission>hudson.model.Run.Update:yichengchen</permission>
       <permission>hudson.model.Run.Update:zen</permission>
+      <permission>hudson.model.Run.Update:yichengchen</permission>
       <permission>hudson.model.Run.Update:user</permission>
       <permission>hudson.model.Run.Update:easonwu</permission>
     </hudson.security.AuthorizationMatrixProperty>
@@ -77,6 +77,7 @@
           <description></description>
           <choices class="java.util.Arrays$ArrayList">
             <a class="string-array">
+              <string>UBuntu</string>
               <string>cMT3000</string>
               <string>cMT-SVR</string>
               <string>cMT-iv5</string>
@@ -256,10 +257,22 @@ mkdir artifacts
 rm -rf cppcheck
 mkdir cppcheck
 
+rm -rf gtest
+mkdir gtest
+
 cd /home/ci/work/${TRIGGER_PARAM_PLATFORM}
 if [ ! -d &quot;${TRIGGER_PARAM_INSTALL_FOLDER}&quot; ]; then
     cp -r ${TRIGGER_PARAM_BASE_INSTALL_FOLDER} ${TRIGGER_PARAM_INSTALL_FOLDER}
 fi
+</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command># Do static analysis by cppcheck
+echo &quot;================================ cppcheck ================================ cppcheck ================================ cppcheck ================================&quot;
+
+cd ${WORKSPACE}/cppcheck
+
+cppcheck --enable=all --inconclusive --suppress=syntaxError --xml --xml-version=2 ${WORKSPACE}/libweintek/weintek ${WORKSPACE}/dserver/dserver ${WORKSPACE}/gui/got 2&gt; cppcheck-result.xml
 </command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
@@ -313,46 +326,32 @@ cd ${INSTALL_PREFIX}/bin
 /home/ci/work/crypto e dserver ${ENCRYPT_NAME}
 cp ${INSTALL_PREFIX}/bin/${ENCRYPT_NAME} ${WORKSPACE}/artifacts</command>
     </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command></command>
+    </hudson.tasks.Shell>
     <org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder plugin="conditional-buildstep@1.3.3">
-      <condition class="org.jenkins_ci.plugins.run_condition.logic.Not" plugin="run-condition@1.0">
-        <condition class="org.jenkins_ci.plugins.run_condition.core.StringsMatchCondition">
-          <arg1>${TRIGGER_PARAM_PLATFORM}</arg1>
-          <arg2>cMT-SVR</arg2>
-          <ignoreCase>true</ignoreCase>
-        </condition>
+      <condition class="org.jenkins_ci.plugins.run_condition.core.StringsMatchCondition" plugin="run-condition@1.0">
+        <arg1>${TRIGGER_PARAM_PLATFORM}</arg1>
+        <arg2>Ubuntu</arg2>
+        <ignoreCase>false</ignoreCase>
       </condition>
       <buildStep class="hudson.tasks.Shell">
         <command># Build gui
-echo &quot;================================ gui ================================ gui ================================ gui ================================&quot;
+echo &quot;================================ unit-test ================================ unit-test ================================ unit-test ================================&quot;
 
 cd ${WORKSPACE}/gui/build
-if [ ! -d &quot;jenkins&quot; ]; then
-    mkdir jenkins
+if [ ! -d &quot;gtest&quot; ]; then
+    mkdir gtest
 fi
-cd jenkins
+cd gtest
 
-export GUI_PATH=${WORKSPACE}/gui
-export DSERVER_PATH=${WORKSPACE}/dserver
-export LIBWEINTEK_PATH=${WORKSPACE}/libweintek
 export INSTALL_PREFIX=/home/ci/work/${TRIGGER_PARAM_PLATFORM}/${TRIGGER_PARAM_INSTALL_FOLDER}
-
-cp ${WORKSPACE}/gui/build/${TRIGGER_PARAM_PLATFORM}/features.pri .
-${WORKSPACE}/gui/build/${TRIGGER_PARAM_PLATFORM}/qmake_gui.sh ${GUI_PATH} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${INSTALL_PREFIX} ${TRIGGER_PARAM_GUI_BUILD_POLICY}
-
-cp ${INSTALL_PREFIX}/bin/gui.c30 ${WORKSPACE}/artifacts</command>
+${INSTALL_PREFIX}/bin/test-libweintek --gtest_output=xml:gtest-libweintek.xml
+${INSTALL_PREFIX}/bin/test-dserver --gtest_output=xml:gtest-dserver.xml
+${INSTALL_PREFIX}/bin/test-got --gtest_output=xml:gtest-got.xml</command>
       </buildStep>
       <runner class="org.jenkins_ci.plugins.run_condition.BuildStepRunner$Fail" plugin="run-condition@1.0"/>
     </org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder>
-    <hudson.tasks.Shell>
-      <command># Do static analysis by cppcheck
-echo &quot;================================ cppcheck ================================ cppcheck ================================ cppcheck ================================&quot;
-
-cd ${WORKSPACE}/cppcheck
-
-cppcheck --enable=all --inconclusive --suppress=syntaxError --xml --xml-version=2 ${WORKSPACE}/libweintek/weintek 2&gt; cppcheck-libweintek.xml
-cppcheck --enable=all --inconclusive --suppress=syntaxError --xml --xml-version=2 ${WORKSPACE}/dserver/dserver 2&gt; cppcheck-dserver.xml
-cppcheck --enable=all --inconclusive --suppress=syntaxError --xml --xml-version=2 ${WORKSPACE}/gui/got 2&gt; cppcheck-gui.xml</command>
-    </hudson.tasks.Shell>
   </builders>
   <publishers>
     <hudson.tasks.ArtifactArchiver>
@@ -365,7 +364,7 @@ cppcheck --enable=all --inconclusive --suppress=syntaxError --xml --xml-version=
     </hudson.tasks.ArtifactArchiver>
     <org.jenkinsci.plugins.cppcheck.CppcheckPublisher plugin="cppcheck@1.21">
       <cppcheckConfig>
-        <pattern>cppcheck/cppcheck-*.xml</pattern>
+        <pattern>cppcheck/cppcheck-result.xml</pattern>
         <ignoreBlankFiles>false</ignoreBlankFiles>
         <allowNoReport>false</allowNoReport>
         <configSeverityEvaluation>
@@ -398,6 +397,12 @@ cppcheck --enable=all --inconclusive --suppress=syntaxError --xml --xml-version=
         </configGraph>
       </cppcheckConfig>
     </org.jenkinsci.plugins.cppcheck.CppcheckPublisher>
+    <hudson.tasks.junit.JUnitResultArchiver plugin="junit@1.10">
+      <testResults>gtest/gtest-*.xml</testResults>
+      <keepLongStdio>true</keepLongStdio>
+      <healthScaleFactor>1.0</healthScaleFactor>
+      <allowEmptyResults>false</allowEmptyResults>
+    </hudson.tasks.junit.JUnitResultArchiver>
     <hudson.tasks.Mailer plugin="mailer@1.16">
       <recipients>memberA@weintek.com memberB@weintek.com </recipients>
       <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
