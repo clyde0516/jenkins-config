@@ -80,6 +80,7 @@
               <string>cMT3000</string>
               <string>cMT-SVR</string>
               <string>cMT-iv5</string>
+              <string>Ubuntu</string>
             </a>
           </choices>
         </hudson.model.ChoiceParameterDefinition>
@@ -350,6 +351,29 @@ cp ${WORKSPACE}/gui/build/${TRIGGER_PARAM_PLATFORM}/features.pri .
 ${WORKSPACE}/gui/build/${TRIGGER_PARAM_PLATFORM}/qmake_gui.sh ${GUI_PATH} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${INSTALL_PREFIX} ${TRIGGER_PARAM_GUI_BUILD_POLICY}
 
 cp ${INSTALL_PREFIX}/bin/gui.c30 ${WORKSPACE}/artifacts</command>
+      </buildStep>
+      <runner class="org.jenkins_ci.plugins.run_condition.BuildStepRunner$Fail" plugin="run-condition@1.0"/>
+    </org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder>
+    <org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder plugin="conditional-buildstep@1.3.3">
+      <condition class="org.jenkins_ci.plugins.run_condition.core.StringsMatchCondition" plugin="run-condition@1.0">
+        <arg1>${TRIGGER_PARAM_PLATFORM}</arg1>
+        <arg2>Ubuntu</arg2>
+        <ignoreCase>false</ignoreCase>
+      </condition>
+      <buildStep class="hudson.tasks.Shell">
+        <command># Build gui
+echo &quot;================================ unit-test ================================ unit-test ================================ unit-test ================================&quot;
+
+cd ${WORKSPACE}/gui/build
+if [ ! -d &quot;gtest&quot; ]; then
+    mkdir gtest
+fi
+cd gtest
+
+export INSTALL_PREFIX=/home/ci/work/${TRIGGER_PARAM_PLATFORM}/${TRIGGER_PARAM_INSTALL_FOLDER}
+${INSTALL_PREFIX}/bin/test-libweintek --gtest_output=xml:gtest-libweintek.xml
+${INSTALL_PREFIX}/bin/test-dserver --gtest_output=xml:gtest-dserver.xml
+${INSTALL_PREFIX}/bin/test-got --gtest_output=xml:gtest-got.xml</command>
       </buildStep>
       <runner class="org.jenkins_ci.plugins.run_condition.BuildStepRunner$Fail" plugin="run-condition@1.0"/>
     </org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder>
