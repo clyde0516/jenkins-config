@@ -315,7 +315,9 @@ fi
 make install/strip
 
 cd ${INSTALL_PREFIX}/bin
-if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;Ubuntu&quot; ]; then
+if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; == &quot;Ubuntu&quot; ]; then
+    export ENCRYPT_NAME=dserver
+else
     if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT-SVR&quot; ]; then
 	    export ENCRYPT_NAME=dserver.cmt
     elif [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT-iv5&quot; ]; then
@@ -324,8 +326,6 @@ if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;Ubuntu&quot; ]; then
 	    export ENCRYPT_NAME=dserver.c30
     fi
     /home/ci/work/crypto e dserver ${ENCRYPT_NAME}
-else
-    export ENCRYPT_NAME=dserver
 fi
 cp ${INSTALL_PREFIX}/bin/${ENCRYPT_NAME} ${WORKSPACE}/artifacts</command>
     </hudson.tasks.Shell>
