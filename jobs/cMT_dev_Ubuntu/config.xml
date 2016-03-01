@@ -377,7 +377,7 @@ fi
         <command># Unit tests
 echo &quot;================================ unit-test ================================ unit-test ================================ unit-test ================================&quot;
 
-cd ${WORKSPACE}/gui/build
+cd ${WORKSPACE}
 if [ ! -d &quot;gtest&quot; ]; then
     mkdir gtest
 fi
