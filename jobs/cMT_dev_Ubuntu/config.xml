@@ -315,7 +315,7 @@ fi
 make install/strip
 
 cd ${INSTALL_PREFIX}/bin
-if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;UBuntu&quot; ]; then
+if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;Ubuntu&quot; ]; then
     if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT-SVR&quot; ]; then
 	    export ENCRYPT_NAME=dserver.cmt
     elif [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT-iv5&quot; ]; then
@@ -352,7 +352,7 @@ export DSERVER_PATH=${WORKSPACE}/dserver
 export LIBWEINTEK_PATH=${WORKSPACE}/libweintek
 export INSTALL_PREFIX=/home/ci/work/${TRIGGER_PARAM_PLATFORM}/${TRIGGER_PARAM_INSTALL_FOLDER}
 
-if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;UBuntu&quot; ]; then
+if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;Ubuntu&quot; ]; then
    export PATH=/opt/Qt5.4.2/5.4/gcc_64/bin:${PATH}
 fi
 
