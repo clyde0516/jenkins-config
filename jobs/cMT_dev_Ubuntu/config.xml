@@ -352,12 +352,17 @@ export DSERVER_PATH=${WORKSPACE}/dserver
 export LIBWEINTEK_PATH=${WORKSPACE}/libweintek
 export INSTALL_PREFIX=/home/ci/work/${TRIGGER_PARAM_PLATFORM}/${TRIGGER_PARAM_INSTALL_FOLDER}
 
+if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; == &quot;UBuntu&quot; ]; then
+   export PATH=/opt/Qt5.4.2/5.4/gcc_64/bin:${PATH}
+fi
+
 cp ${WORKSPACE}/gui/build/${TRIGGER_PARAM_PLATFORM}/features.pri .
 ${WORKSPACE}/gui/build/${TRIGGER_PARAM_PLATFORM}/qmake_gui.sh ${GUI_PATH} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${INSTALL_PREFIX} ${TRIGGER_PARAM_GUI_BUILD_POLICY}
 
 if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; != &quot;UBuntu&quot; ]; then
     cp ${INSTALL_PREFIX}/bin/gui.c30 ${WORKSPACE}/artifacts
-fi</command>
+fi
+</command>
       </buildStep>
       <runner class="org.jenkins_ci.plugins.run_condition.BuildStepRunner$Fail" plugin="run-condition@1.0"/>
     </org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder>
@@ -368,7 +373,7 @@ fi</command>
         <ignoreCase>false</ignoreCase>
       </condition>
       <buildStep class="hudson.tasks.Shell">
-        <command># Build gui
+        <command># Unit tests
 echo &quot;================================ unit-test ================================ unit-test ================================ unit-test ================================&quot;
 
 cd ${WORKSPACE}/gui/build
