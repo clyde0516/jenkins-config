@@ -315,7 +315,7 @@ fi
 make install/strip
 
 cd ${INSTALL_PREFIX}/bin
-if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; == &quot;Ubuntu&quot; ]; then
+if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;Ubuntu&quot; ]; then
     export ENCRYPT_NAME=dserver
 else
     if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT-SVR&quot; ]; then
