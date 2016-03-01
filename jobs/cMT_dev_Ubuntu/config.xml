@@ -360,7 +360,7 @@ cp ${WORKSPACE}/gui/build/${TRIGGER_PARAM_PLATFORM}/features.pri .
 ${WORKSPACE}/gui/build/${TRIGGER_PARAM_PLATFORM}/qmake_gui.sh ${GUI_PATH} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${INSTALL_PREFIX} ${TRIGGER_PARAM_GUI_BUILD_POLICY}
 
 # Do not save artifact gui for Ubuntu, since there is no QtMEL library linking to executable on Ubuntu.
-if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; != &quot;UBuntu&quot; ]; then
+if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; != &quot;Ubuntu&quot; ]; then
     cp ${INSTALL_PREFIX}/bin/gui.c30 ${WORKSPACE}/artifacts
 fi
 </command>
