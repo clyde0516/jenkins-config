@@ -382,6 +382,7 @@ if [ ! -d &quot;gtest&quot; ]; then
     mkdir gtest
 fi
 cd gtest
+cp ${WORKSPACE}/test-database.db .
 
 export INSTALL_PREFIX=/home/ci/work/${TRIGGER_PARAM_PLATFORM}/${TRIGGER_PARAM_INSTALL_FOLDER}
 ${INSTALL_PREFIX}/bin/test-libweintek --gtest_output=xml:gtest-libweintek.xml
