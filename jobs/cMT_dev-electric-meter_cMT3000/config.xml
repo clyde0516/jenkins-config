@@ -256,10 +256,22 @@ mkdir artifacts
 rm -rf cppcheck
 mkdir cppcheck
 
+rm -rf gtest
+mkdir gtest
+
 cd /home/ci/work/${TRIGGER_PARAM_PLATFORM}
 if [ ! -d &quot;${TRIGGER_PARAM_INSTALL_FOLDER}&quot; ]; then
     cp -r ${TRIGGER_PARAM_BASE_INSTALL_FOLDER} ${TRIGGER_PARAM_INSTALL_FOLDER}
 fi
+</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command># Do static analysis by cppcheck
+echo &quot;================================ cppcheck ================================ cppcheck ================================ cppcheck ================================&quot;
+
+cd ${WORKSPACE}/cppcheck
+
+cppcheck --enable=all --inconclusive --suppress=syntaxError --xml --xml-version=2 ${WORKSPACE}/libweintek/weintek ${WORKSPACE}/dserver/dserver ${WORKSPACE}/gui/got 2&gt; cppcheck-result.xml
 </command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
@@ -270,7 +282,10 @@ cd ${WORKSPACE}/libweintek/build
 if [ ! -d &quot;jenkins&quot; ]; then
     mkdir jenkins
 fi
-cd jenkins
+if [ ! -d &quot;jenkins/${TRIGGER_PARAM_PLATFORM}&quot; ]; then
+    mkdir jenkins/${TRIGGER_PARAM_PLATFORM}
+fi
+cd jenkins/${TRIGGER_PARAM_PLATFORM}
 
 export LIBWEINTEK_PATH=${WORKSPACE}/libweintek
 export INSTALL_PREFIX=/home/ci/work/${TRIGGER_PARAM_PLATFORM}/${TRIGGER_PARAM_INSTALL_FOLDER}
@@ -289,7 +304,10 @@ cd ${WORKSPACE}/dserver/build
 if [ ! -d &quot;jenkins&quot; ]; then
     mkdir jenkins
 fi
-cd jenkins
+if [ ! -d &quot;jenkins/${TRIGGER_PARAM_PLATFORM}&quot; ]; then
+    mkdir jenkins/${TRIGGER_PARAM_PLATFORM}
+fi
+cd jenkins/${TRIGGER_PARAM_PLATFORM}
 
 export DSERVER_PATH=${WORKSPACE}/dserver
 export LIBWEINTEK_PATH=${WORKSPACE}/libweintek
@@ -301,16 +319,19 @@ if [ &quot;${TRIGGER_PARAM_DSERVER_BUILD_POLICY}&quot; = &quot;clean&quot; ]; th
 fi
 make install/strip
 
-if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT-SVR&quot; ]; then
-	export ENCRYPT_NAME=dserver.cmt
-elif [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT-iv5&quot; ]; then
-	export ENCRYPT_NAME=dserver.iv5
-else
-	export ENCRYPT_NAME=dserver.c30
-fi
-
 cd ${INSTALL_PREFIX}/bin
-/home/ci/work/crypto e dserver ${ENCRYPT_NAME}
+if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;Ubuntu&quot; ]; then
+    export ENCRYPT_NAME=dserver
+else
+    if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT-SVR&quot; ]; then
+	    export ENCRYPT_NAME=dserver.cmt
+    elif [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT-iv5&quot; ]; then
+	    export ENCRYPT_NAME=dserver.iv5
+    else
+	    export ENCRYPT_NAME=dserver.c30
+    fi
+    /home/ci/work/crypto e dserver ${ENCRYPT_NAME}
+fi
 cp ${INSTALL_PREFIX}/bin/${ENCRYPT_NAME} ${WORKSPACE}/artifacts</command>
     </hudson.tasks.Shell>
     <org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder plugin="conditional-buildstep@1.3.3">
@@ -329,34 +350,62 @@ cd ${WORKSPACE}/gui/build
 if [ ! -d &quot;jenkins&quot; ]; then
     mkdir jenkins
 fi
-cd jenkins
+if [ ! -d &quot;jenkins/${TRIGGER_PARAM_PLATFORM}&quot; ]; then
+    mkdir jenkins/${TRIGGER_PARAM_PLATFORM}
+fi
+cd jenkins/${TRIGGER_PARAM_PLATFORM}
 
 export GUI_PATH=${WORKSPACE}/gui
 export DSERVER_PATH=${WORKSPACE}/dserver
 export LIBWEINTEK_PATH=${WORKSPACE}/libweintek
 export INSTALL_PREFIX=/home/ci/work/${TRIGGER_PARAM_PLATFORM}/${TRIGGER_PARAM_INSTALL_FOLDER}
 
+if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;Ubuntu&quot; ]; then
+   export PATH=/opt/Qt5.4.2/5.4/gcc_64/bin:${PATH}
+fi
+
 cp ${WORKSPACE}/gui/build/${TRIGGER_PARAM_PLATFORM}/features.pri .
 ${WORKSPACE}/gui/build/${TRIGGER_PARAM_PLATFORM}/qmake_gui.sh ${GUI_PATH} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${INSTALL_PREFIX} ${TRIGGER_PARAM_GUI_BUILD_POLICY}
 
-cp ${INSTALL_PREFIX}/bin/gui.c30 ${WORKSPACE}/artifacts</command>
+# Do not save artifact gui for Ubuntu, since there is no QtMEL library linking to executable on Ubuntu.
+if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; != &quot;Ubuntu&quot; ]; then
+    cp ${INSTALL_PREFIX}/bin/gui.c30 ${WORKSPACE}/artifacts
+fi
+</command>
       </buildStep>
       <runner class="org.jenkins_ci.plugins.run_condition.BuildStepRunner$Fail" plugin="run-condition@1.0"/>
     </org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder>
-    <hudson.tasks.Shell>
-      <command># Do static analysis by cppcheck
-echo &quot;================================ cppcheck ================================ cppcheck ================================ cppcheck ================================&quot;
+    <org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder plugin="conditional-buildstep@1.3.3">
+      <condition class="org.jenkins_ci.plugins.run_condition.core.StringsMatchCondition" plugin="run-condition@1.0">
+        <arg1>${TRIGGER_PARAM_PLATFORM}</arg1>
+        <arg2>Ubuntu</arg2>
+        <ignoreCase>false</ignoreCase>
+      </condition>
+      <buildStep class="hudson.tasks.Shell">
+        <command># Unit tests
+echo &quot;================================ unit-test ================================ unit-test ================================ unit-test ================================&quot;
 
-cd ${WORKSPACE}/cppcheck
+export INSTALL_PREFIX=/home/ci/work/${TRIGGER_PARAM_PLATFORM}/${TRIGGER_PARAM_INSTALL_FOLDER}
+cd ${WORKSPACE}/gtest
+mkdir test-libweintek
+mkdir test-dserver
+mkdir test-got
 
-cppcheck --enable=all --inconclusive --suppress=syntaxError --xml --xml-version=2 ${WORKSPACE}/libweintek/weintek 2&gt; cppcheck-libweintek.xml
-cppcheck --enable=all --inconclusive --suppress=syntaxError --xml --xml-version=2 ${WORKSPACE}/dserver/dserver 2&gt; cppcheck-dserver.xml
-cppcheck --enable=all --inconclusive --suppress=syntaxError --xml --xml-version=2 ${WORKSPACE}/gui/got 2&gt; cppcheck-gui.xml</command>
-    </hudson.tasks.Shell>
+cd ${WORKSPACE}/gtest/test-libweintek
+${INSTALL_PREFIX}/bin/test-libweintek --gtest_output=xml:${WORKSPACE}/gtest/gtest-libweintek.xml
+
+cd ${WORKSPACE}/gtest/test-dserver
+${INSTALL_PREFIX}/bin/test-dserver --gtest_output=xml:${WORKSPACE}/gtest/gtest-dserver.xml
+
+cd ${WORKSPACE}/gtest/test-got
+${INSTALL_PREFIX}/bin/test-got --gtest_output=xml:${WORKSPACE}/gtest/gtest-got.xml</command>
+      </buildStep>
+      <runner class="org.jenkins_ci.plugins.run_condition.BuildStepRunner$Fail" plugin="run-condition@1.0"/>
+    </org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder>
   </builders>
   <publishers>
     <hudson.tasks.ArtifactArchiver>
-      <artifacts>artifacts/*.*</artifacts>
+      <artifacts>artifacts/*</artifacts>
       <allowEmptyArchive>false</allowEmptyArchive>
       <onlyIfSuccessful>false</onlyIfSuccessful>
       <fingerprint>false</fingerprint>
@@ -365,7 +414,7 @@ cppcheck --enable=all --inconclusive --suppress=syntaxError --xml --xml-version=
     </hudson.tasks.ArtifactArchiver>
     <org.jenkinsci.plugins.cppcheck.CppcheckPublisher plugin="cppcheck@1.21">
       <cppcheckConfig>
-        <pattern>cppcheck/cppcheck-*.xml</pattern>
+        <pattern>cppcheck/cppcheck-result.xml</pattern>
         <ignoreBlankFiles>false</ignoreBlankFiles>
         <allowNoReport>false</allowNoReport>
         <configSeverityEvaluation>
@@ -398,6 +447,12 @@ cppcheck --enable=all --inconclusive --suppress=syntaxError --xml --xml-version=
         </configGraph>
       </cppcheckConfig>
     </org.jenkinsci.plugins.cppcheck.CppcheckPublisher>
+    <hudson.tasks.junit.JUnitResultArchiver plugin="junit@1.10">
+      <testResults>gtest/gtest-*.xml</testResults>
+      <keepLongStdio>true</keepLongStdio>
+      <healthScaleFactor>1.0</healthScaleFactor>
+      <allowEmptyResults>true</allowEmptyResults>
+    </hudson.tasks.junit.JUnitResultArchiver>
     <hudson.tasks.Mailer plugin="mailer@1.16">
       <recipients>clydeliu@weintek.com easonwu@weintek.com </recipients>
       <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
