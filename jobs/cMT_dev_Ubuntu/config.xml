@@ -283,7 +283,7 @@ cd ${WORKSPACE}/libweintek/build
 if [ ! -d &quot;jenkins&quot; ]; then
     mkdir jenkins
 fi
-if [ ! -d &quot;${TRIGGER_PARAM_PLATFORM}&quot; ]; then
+if [ ! -d &quot;jenkins/${TRIGGER_PARAM_PLATFORM}&quot; ]; then
     mkdir jenkins/${TRIGGER_PARAM_PLATFORM}
 fi
 cd jenkins/${TRIGGER_PARAM_PLATFORM}
@@ -305,7 +305,7 @@ cd ${WORKSPACE}/dserver/build
 if [ ! -d &quot;jenkins&quot; ]; then
     mkdir jenkins
 fi
-if [ ! -d &quot;${TRIGGER_PARAM_PLATFORM}&quot; ]; then
+if [ ! -d &quot;jenkins/${TRIGGER_PARAM_PLATFORM}&quot; ]; then
     mkdir jenkins/${TRIGGER_PARAM_PLATFORM}
 fi
 cd jenkins/${TRIGGER_PARAM_PLATFORM}
@@ -351,7 +351,7 @@ cd ${WORKSPACE}/gui/build
 if [ ! -d &quot;jenkins&quot; ]; then
     mkdir jenkins
 fi
-if [ ! -d &quot;${TRIGGER_PARAM_PLATFORM}&quot; ]; then
+if [ ! -d &quot;jenkins/${TRIGGER_PARAM_PLATFORM}&quot; ]; then
     mkdir jenkins/${TRIGGER_PARAM_PLATFORM}
 fi
 cd jenkins/${TRIGGER_PARAM_PLATFORM}
