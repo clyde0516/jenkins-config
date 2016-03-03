@@ -452,7 +452,7 @@ ${INSTALL_PREFIX}/bin/test-got --gtest_output=xml:${WORKSPACE}/gtest/gtest-got.x
       <testResults>gtest/gtest-*.xml</testResults>
       <keepLongStdio>true</keepLongStdio>
       <healthScaleFactor>1.0</healthScaleFactor>
-      <allowEmptyResults>false</allowEmptyResults>
+      <allowEmptyResults>true</allowEmptyResults>
     </hudson.tasks.junit.JUnitResultArchiver>
     <hudson.tasks.Mailer plugin="mailer@1.16">
       <recipients>memberA@weintek.com memberB@weintek.com </recipients>
