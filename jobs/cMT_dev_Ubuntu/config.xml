@@ -377,17 +377,20 @@ fi
         <command># Unit tests
 echo &quot;================================ unit-test ================================ unit-test ================================ unit-test ================================&quot;
 
-cd ${WORKSPACE}
-if [ ! -d &quot;gtest&quot; ]; then
-    mkdir gtest
-fi
-cd gtest
-cp ${WORKSPACE}/test-database.db .
-
 export INSTALL_PREFIX=/home/ci/work/${TRIGGER_PARAM_PLATFORM}/${TRIGGER_PARAM_INSTALL_FOLDER}
-${INSTALL_PREFIX}/bin/test-libweintek --gtest_output=xml:gtest-libweintek.xml
-${INSTALL_PREFIX}/bin/test-dserver --gtest_output=xml:gtest-dserver.xml
-${INSTALL_PREFIX}/bin/test-got --gtest_output=xml:gtest-got.xml</command>
+cd ${WORKSPACE}/gtest
+mkdir test-libweintek
+mkdir test-dserver
+mkdir test-got
+
+cd ${WORKSPACE}/gtest/test-libweintek
+${INSTALL_PREFIX}/bin/test-libweintek --gtest_output=xml:${WORKSPACE}/gtest/gtest-libweintek.xml
+
+cd ${WORKSPACE}/gtest/test-dserver
+${INSTALL_PREFIX}/bin/test-dserver --gtest_output=xml:${WORKSPACE}/gtest/gtest-dserver.xml
+
+cd ${WORKSPACE}/gtest/test-got
+${INSTALL_PREFIX}/bin/test-got --gtest_output=xml:${WORKSPACE}/gtest/gtest-got.xml</command>
       </buildStep>
       <runner class="org.jenkins_ci.plugins.run_condition.BuildStepRunner$Fail" plugin="run-condition@1.0"/>
     </org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder>
