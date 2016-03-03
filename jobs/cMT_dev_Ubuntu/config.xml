@@ -282,8 +282,11 @@ echo &quot;================================ libweintek =========================
 cd ${WORKSPACE}/libweintek/build
 if [ ! -d &quot;jenkins&quot; ]; then
     mkdir jenkins
+    if [ ! -d &quot;${TRIGGER_PARAM_PLATFORM}&quot; ]; then
+        mkdir jenkins/${TRIGGER_PARAM_PLATFORM}
+    fi
 fi
-cd jenkins
+cd jenkins/${TRIGGER_PARAM_PLATFORM}
 
 export LIBWEINTEK_PATH=${WORKSPACE}/libweintek
 export INSTALL_PREFIX=/home/ci/work/${TRIGGER_PARAM_PLATFORM}/${TRIGGER_PARAM_INSTALL_FOLDER}
@@ -301,8 +304,11 @@ echo &quot;================================ dserver ============================
 cd ${WORKSPACE}/dserver/build
 if [ ! -d &quot;jenkins&quot; ]; then
     mkdir jenkins
+    if [ ! -d &quot;${TRIGGER_PARAM_PLATFORM}&quot; ]; then
+        mkdir jenkins/${TRIGGER_PARAM_PLATFORM}
+    fi
 fi
-cd jenkins
+cd jenkins/${TRIGGER_PARAM_PLATFORM}
 
 export DSERVER_PATH=${WORKSPACE}/dserver
 export LIBWEINTEK_PATH=${WORKSPACE}/libweintek
@@ -344,8 +350,11 @@ echo &quot;================================ gui ================================
 cd ${WORKSPACE}/gui/build
 if [ ! -d &quot;jenkins&quot; ]; then
     mkdir jenkins
+    if [ ! -d &quot;${TRIGGER_PARAM_PLATFORM}&quot; ]; then
+        mkdir jenkins/${TRIGGER_PARAM_PLATFORM}
+    fi
 fi
-cd jenkins
+cd jenkins/${TRIGGER_PARAM_PLATFORM}
 
 export GUI_PATH=${WORKSPACE}/gui
 export DSERVER_PATH=${WORKSPACE}/dserver
