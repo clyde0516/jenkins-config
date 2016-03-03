@@ -330,9 +330,9 @@
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
+        <string>cMT_dev-electric-meter_cMT3000</string>
         <string>cMT_dev-operation-log_cMT3000</string>
         <string>cMT_dev_Ubuntu</string>
-        <string>cMT_feature-electric-meter_cMT3000</string>
         <string>cMT_param</string>
         <string>com_dev_cMT-SVR</string>
         <string>com_dev_cMT3000</string>
