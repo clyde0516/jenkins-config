@@ -421,7 +421,7 @@ ${INSTALL_PREFIX}/bin/test-got --gtest_output=xml:${WORKSPACE}/gtest/gtest-got.x
         <configSeverityEvaluation>
           <threshold></threshold>
           <newThreshold></newThreshold>
-          <failureThreshold>855</failureThreshold>
+          <failureThreshold>727</failureThreshold>
           <newFailureThreshold>1</newFailureThreshold>
           <healthy></healthy>
           <unHealthy></unHealthy>
