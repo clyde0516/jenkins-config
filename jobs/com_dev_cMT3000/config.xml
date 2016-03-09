@@ -97,7 +97,7 @@ cp ${WORKSPACE}/build/jenkins/bin/com.${CRYPTO_EXTENSION_NAME} artifacts
       <caseSensitive>true</caseSensitive>
     </hudson.tasks.ArtifactArchiver>
     <hudson.tasks.Mailer plugin="mailer@1.16">
-      <recipients>paul@weintek.com clydeliu@weintek.com</recipients>
+      <recipients>kevin@weintek.com paul@weintek.com clydeliu@weintek.com</recipients>
       <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
       <sendToIndividuals>false</sendToIndividuals>
     </hudson.tasks.Mailer>
