@@ -114,7 +114,7 @@ export LIBWEINTEK_PATH=${JENKINS_HOME}/jobs/libweintek_stable_cMT-SVR/workspace
 export INSTALL_PREFIX=/home/ci/work/cMT-SVR/build-stable-branch
 cmake -DCMAKE_BUILD_TYPE=${BUILD_TYPE} \
       -DCMAKE_INSTALL_PREFIX=${INSTALL_PREFIX} \
-      -DCMAKE_TOOLCHAIN_FILE=${LIBWEINTEK_PATH}/build/cMT-SVR/Toolchain-arm-fsl-linux-gnueabi.cmake
+      -DCMAKE_TOOLCHAIN_FILE=${LIBWEINTEK_PATH}/build/cMT-SVR/Toolchain-arm-fsl-linux-gnueabi.cmake ..
       
 
 make install/strip</command>
@@ -131,7 +131,7 @@ export LIBWEINTEK_PATH=${JENKINS_HOME}/jobs/libweintek_stable_cMT-SVR/workspace
 export INSTALL_PREFIX=/home/ci/work/cMT-SVR/build-stable-branch
 cmake -DCMAKE_BUILD_TYPE=${BUILD_TYPE} \
       -DCMAKE_INSTALL_PREFIX=${INSTALL_PREFIX} \
-      -DCMAKE_TOOLCHAIN_FILE=${LIBWEINTEK_PATH}/build/cMT-SVR/Toolchain-arm-fsl-linux-gnueabi.cmake
+      -DCMAKE_TOOLCHAIN_FILE=${LIBWEINTEK_PATH}/build/cMT-SVR/Toolchain-arm-fsl-linux-gnueabi.cmake ..
       
 make install/strip
 
