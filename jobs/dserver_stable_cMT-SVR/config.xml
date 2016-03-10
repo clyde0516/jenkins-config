@@ -62,10 +62,10 @@ export UPSTREAM_JOB_PATH=${JENKINS_HOME}/jobs/${UPSTREAM_JOB}/workspace
 export INSTALL_PREFIX=/home/ci/work/cMT-SVR/build-stable-branch
 ${WORKSPACE}/build/cMT-SVR/cmake_dserver.sh ${WORKSPACE} ${UPSTREAM_JOB_PATH} ${INSTALL_PREFIX}
 
-make install
+make VERBOSE=1 install
 mv ${INSTALL_PREFIX}/bin/dserver ${INSTALL_PREFIX}/bin/dserver.RelWithDebInfo
 
-make install/strip
+make VERBOSE=1 install/strip
 
 cd ${INSTALL_PREFIX}/bin
 /home/ci/work/crypto e dserver dserver.cmt
