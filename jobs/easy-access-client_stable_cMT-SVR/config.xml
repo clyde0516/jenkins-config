@@ -111,6 +111,7 @@ cd jenkins
 
 export BUILD_TYPE=Release
 export LIBWEINTEK_PATH=${JENKINS_HOME}/jobs/libweintek_stable_cMT-SVR/workspace
+export LIBWEINTEK_ROOT=${LIBWEINTEK_PATH}
 export INSTALL_PREFIX=/home/ci/work/cMT-SVR/build-stable-branch
 cmake -DCMAKE_BUILD_TYPE=${BUILD_TYPE} \
       -DMODEL=E30 \
@@ -129,6 +130,7 @@ cd jenkins
 
 export BUILD_TYPE=Release
 export LIBWEINTEK_PATH=${JENKINS_HOME}/jobs/libweintek_stable_cMT-SVR/workspace
+export LIBWEINTEK_ROOT=${LIBWEINTEK_PATH}
 export INSTALL_PREFIX=/home/ci/work/cMT-SVR/build-stable-branch
 cmake -DCMAKE_BUILD_TYPE=${BUILD_TYPE} \
       -DMODEL=E30 \
