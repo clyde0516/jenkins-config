@@ -112,7 +112,7 @@ if [ ! -d &quot;jenkins&quot; ]; then
 fi
 cd jenkins
 
-. /home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
+source /home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
 
 export BUILD_TYPE=Release
 export LIBWEINTEK_PATH=${JENKINS_HOME}/jobs/libweintek_stable_cMT3000/workspace
@@ -142,7 +142,7 @@ cd jenkins
 
 touch ${WORKSPACE}/rma/AuthClient/easy_access_client_manager.bin.cpp
 
-. /home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
+source /home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
 
 export BUILD_TYPE=Release
 export LIBWEINTEK_PATH=${JENKINS_HOME}/jobs/libweintek_stable_cMT3000/workspace
