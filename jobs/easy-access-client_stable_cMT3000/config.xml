@@ -103,7 +103,9 @@ rm -rf ${WORKSPACE}/weintek-p2p/jenkins</command>
       <runner class="org.jenkins_ci.plugins.run_condition.BuildStepRunner$Fail" plugin="run-condition@1.0"/>
     </org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder>
     <hudson.tasks.Shell>
-      <command>cd ${WORKSPACE}/weintek-p2p
+      <command>#!/bin/bash
+
+cd ${WORKSPACE}/weintek-p2p
 cp config_linux.h config.h
 if [ ! -d &quot;jenkins&quot; ]; then
     mkdir jenkins
@@ -130,7 +132,9 @@ cd ${INSTALL_PREFIX}/bin
 upx weintek-p2p</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
-      <command>cd ${WORKSPACE}/rma
+      <command>#!/bin/bash
+
+cd ${WORKSPACE}/rma
 if [ ! -d &quot;jenkins&quot; ]; then
     mkdir jenkins
 fi
