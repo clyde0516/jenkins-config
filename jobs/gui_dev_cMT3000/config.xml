@@ -77,7 +77,6 @@ export LIBWEINTEK_PATH=/var/lib/jenkins/jobs/libweintek_dev_cMT3000/workspace
 export DSERVER_PATH=/var/lib/jenkins/jobs/dserver_dev_cMT3000/workspace
 export INSTALL_PREFIX=/home/ci/work/cMT3000/build-dev-branch
 
-rm ${INSTALL_PREFIX}/bin/gui
 ${WORKSPACE}/build/cMT3000/qmake_gui.sh ${WORKSPACE} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${INSTALL_PREFIX} incremental
 
 cd ${WORKSPACE}
