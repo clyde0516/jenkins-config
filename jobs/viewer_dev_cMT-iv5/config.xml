@@ -75,8 +75,8 @@ cp ${WORKSPACE}/build/cMT3000/*features.pri .
 
 export CLOUDHMI_PATH=${WORKSPACE}/CloudHmi
 export LIBWEINTEK_PATH=/var/lib/jenkins/jobs/libweintek_dev_cMT-iv5/workspace
-export DSERVER_PATH=/var/lib/jenkins/jobs/dserver_dev_iv5/workspace
-export GUI_PATH=/var/lib/jenkins/jobs/gui_dev_iv5/workspace
+export DSERVER_PATH=/var/lib/jenkins/jobs/dserver_dev_cMT-iv5/workspace
+export GUI_PATH=/var/lib/jenkins/jobs/gui_dev_cMT-iv5/workspace
 export INSTALL_PREFIX=/home/ci/work/cMT-iv5/build-dev-branch
 
 ${WORKSPACE}/build/cMT3000/qmake_viewer.sh ${CLOUDHMI_PATH} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${GUI_PATH} ${INSTALL_PREFIX} incremental
