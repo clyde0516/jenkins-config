@@ -73,23 +73,23 @@ cd jenkins
 
 export LIBWEINTEK_PATH=${JENKINS_HOME}/jobs/libweintek_dev_cMT-iv5/workspace
 export INSTALL_PREFIX=/home/ci/work/cMT-iv5/build-dev-branch
-${WORKSPACE}/build/cMT-iv5/cmake_dserver.sh ${WORKSPACE} ${LIBWEINTEK_PATH} ${INSTALL_PREFIX}
+${WORKSPACE}/build/cMT3000/cmake_dserver.sh ${WORKSPACE} ${LIBWEINTEK_PATH} ${INSTALL_PREFIX}
 
 make install/strip
 
 cd ${INSTALL_PREFIX}/bin
-/home/ci/work/crypto e dserver dserver.iv5
+/home/ci/work/crypto e dserver dserver.c30
 
 cd ${WORKSPACE}
 rm -rf artifacts
 mkdir artifacts
-cp ${INSTALL_PREFIX}/bin/dserver.iv5 artifacts
+cp ${INSTALL_PREFIX}/bin/dserver.c30 artifacts
 </command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
     <hudson.tasks.ArtifactArchiver>
-      <artifacts>artifacts/dserver.iv5</artifacts>
+      <artifacts>artifacts/*</artifacts>
       <allowEmptyArchive>false</allowEmptyArchive>
       <onlyIfSuccessful>true</onlyIfSuccessful>
       <fingerprint>false</fingerprint>
