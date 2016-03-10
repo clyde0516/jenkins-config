@@ -116,6 +116,7 @@ export LIBWEINTEK_ROOT=${LIBWEINTEK_PATH}
 export INSTALL_PREFIX=/home/ci/work/cMT-SVR/build-stable-branch
 cmake -DCMAKE_BUILD_TYPE=${BUILD_TYPE} \
       -DMODEL=E30 \
+      -DGOOGLE_BREAKPAD_DIR=/home/ci/work/cMT-SVR/google-breakpad \
       -DCMAKE_INSTALL_PREFIX=${INSTALL_PREFIX} \
       -DCMAKE_TOOLCHAIN_FILE=${LIBWEINTEK_PATH}/build/cMT-SVR/Toolchain-arm-fsl-linux-gnueabi.cmake ..
       
@@ -135,6 +136,7 @@ export LIBWEINTEK_ROOT=${LIBWEINTEK_PATH}
 export INSTALL_PREFIX=/home/ci/work/cMT-SVR/build-stable-branch
 cmake -DCMAKE_BUILD_TYPE=${BUILD_TYPE} \
       -DMODEL=E30 \
+      -DGOOGLE_BREAKPAD_DIR=/home/ci/work/cMT-SVR/google-breakpad \
       -DCMAKE_INSTALL_PREFIX=${INSTALL_PREFIX} \
       -DCMAKE_TOOLCHAIN_FILE=${LIBWEINTEK_PATH}/build/cMT-SVR/Toolchain-arm-fsl-linux-gnueabi.cmake ..
       
