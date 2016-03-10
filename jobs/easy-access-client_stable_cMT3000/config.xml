@@ -126,10 +126,10 @@ cmake -DCMAKE_BUILD_TYPE=${BUILD_TYPE} \
        ..
       
 cd client
-make install/strip
+make install
 
 cd ${INSTALL_PREFIX}/bin
-upx weintek-p2p</command>
+#upx weintek-p2p</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
       <command>#!/bin/bash
