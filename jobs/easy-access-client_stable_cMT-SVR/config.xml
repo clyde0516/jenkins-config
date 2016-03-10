@@ -104,6 +104,7 @@ rm -rf ${WORKSPACE}/weintek-p2p/jenkins</command>
     </org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder>
     <hudson.tasks.Shell>
       <command>cd ${WORKSPACE}/weintek-p2p
+cp config_linux.h config.h
 if [ ! -d &quot;jenkins&quot; ]; then
     mkdir jenkins
 fi
