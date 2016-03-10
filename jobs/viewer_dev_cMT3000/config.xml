@@ -17,7 +17,7 @@
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
-        <url>gitolite@192.168.1.220:gui.qt4.graphicsview.git</url>
+        <url>gitolite@192.168.1.220:QmlCloudHmi.git</url>
       </hudson.plugins.git.UserRemoteConfig>
     </userRemoteConfigs>
     <branches>
@@ -36,7 +36,7 @@
   <triggers>
     <jenkins.triggers.ReverseBuildTrigger>
       <spec></spec>
-      <upstreamProjects>dserver_dev_cMT3000</upstreamProjects>
+      <upstreamProjects>gui_dev_cMT3000</upstreamProjects>
       <threshold>
         <name>UNSTABLE</name>
         <ordinal>1</ordinal>
@@ -71,36 +71,33 @@ if [ ! -d &quot;jenkins&quot; ]; then
 fi
 cd jenkins
 
-cp ${WORKSPACE}/build/cMT3000/features.pri .
+cp ${WORKSPACE}/build/cMT3000/*features.pri .
 
+export CLOUDHMI_PATH=${WORKSPACE}/CloudHmi
 export LIBWEINTEK_PATH=/var/lib/jenkins/jobs/libweintek_dev_cMT3000/workspace
 export DSERVER_PATH=/var/lib/jenkins/jobs/dserver_dev_cMT3000/workspace
+export GUI_PATH=/var/lib/jenkins/jobs/gui_dev_cMT3000/workspace
 export INSTALL_PREFIX=/home/ci/work/cMT3000/build-dev-branch
 
 rm ${INSTALL_PREFIX}/bin/gui
-${WORKSPACE}/build/cMT3000/qmake_gui.sh ${WORKSPACE} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${INSTALL_PREFIX} incremental
+${WORKSPACE}/build/cMT3000/qmake_gui.sh ${CLOUDHMI_PATH} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${INSTALL_PREFIX} incremental
 
 cd ${WORKSPACE}
 rm -rf artifacts
 mkdir artifacts
-cp ${INSTALL_PREFIX}/bin/gui.c30 artifacts
+cp ${INSTALL_PREFIX}/bin/CloudHmi.iv5 artifacts
 </command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
     <hudson.tasks.ArtifactArchiver>
-      <artifacts>artifacts/gui.c30</artifacts>
+      <artifacts>artifacts/CloudHmi.iv5</artifacts>
       <allowEmptyArchive>false</allowEmptyArchive>
       <onlyIfSuccessful>true</onlyIfSuccessful>
       <fingerprint>false</fingerprint>
       <defaultExcludes>true</defaultExcludes>
       <caseSensitive>true</caseSensitive>
     </hudson.tasks.ArtifactArchiver>
-    <hudson.tasks.Mailer plugin="mailer@1.16">
-      <recipients>katte@weintek.com paul@weintek.com zen@weintek.com easonwu@weintek.com jeremyhong@weintek.com clydeliu@weintek.com</recipients>
-      <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
-      <sendToIndividuals>false</sendToIndividuals>
-    </hudson.tasks.Mailer>
   </publishers>
   <buildWrappers/>
 </project>
