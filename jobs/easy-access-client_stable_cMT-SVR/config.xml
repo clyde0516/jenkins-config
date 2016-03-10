@@ -121,7 +121,10 @@ cmake -DCMAKE_BUILD_TYPE=${BUILD_TYPE} \
       -DCMAKE_TOOLCHAIN_FILE=${LIBWEINTEK_PATH}/build/cMT-SVR/Toolchain-arm-fsl-linux-gnueabi.cmake ..
       
 
-make install/strip</command>
+make install/strip
+
+cd ${INSTALL_PREFIX}/bin
+upx weintek-p2p</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
       <command>cd ${WORKSPACE}/rma
@@ -129,6 +132,8 @@ if [ ! -d &quot;jenkins&quot; ]; then
     mkdir jenkins
 fi
 cd jenkins
+
+touch ${WORKSPACE}/rma/AuthClient/easy_access_client_manager.bin.cpp
 
 export BUILD_TYPE=Release
 export LIBWEINTEK_PATH=${JENKINS_HOME}/jobs/libweintek_stable_cMT-SVR/workspace
@@ -139,10 +144,19 @@ cmake -DCMAKE_BUILD_TYPE=${BUILD_TYPE} \
       -DGOOGLE_BREAKPAD_DIR=/home/ci/work/cMT-SVR/google-breakpad \
       -DCMAKE_INSTALL_PREFIX=${INSTALL_PREFIX} \
       -DCMAKE_TOOLCHAIN_FILE=${LIBWEINTEK_PATH}/build/cMT-SVR/Toolchain-arm-fsl-linux-gnueabi.cmake ..
-      
+
+cd AuthClient
+make easy_access_client_manager
+strip easy_access_client_manager
+upx easy_access_client_manager
+bin2cpp easy_access_client_manager
+cp easy_access_client_manager.bin.cpp  ${WORKSPACE}/rma/AuthClient
+cd ..
+
 make install/strip
 
 cd ${INSTALL_PREFIX}/bin
+upx easy_access_client
 /home/ci/work/crypto e easy_access_client easy_access_client.e30.${PARAM_EAC_VERSION}
 
 </command>
