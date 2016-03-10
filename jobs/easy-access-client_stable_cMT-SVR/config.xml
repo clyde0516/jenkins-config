@@ -157,10 +157,10 @@ make install/strip
 # strip easy_access_client
 # upx easy_access_client
 # cp easy_access_client ${INSTALL_PREFIX}/bin
-# cd ../RemoteAccessActivator
-# make easy_access_activator
-# strip easy_access_activator
-# cp easy_access_activator ${INSTALL_PREFIX}/bin
+cd ../RemoteAccessActivator
+make easy_access_activator
+strip easy_access_activator
+cp easy_access_activator ${INSTALL_PREFIX}/bin
 
 
 cd ${INSTALL_PREFIX}/bin
