@@ -1,9 +1,18 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description></description>
+  <description>build easy_access_client, easy_access_activator, weintek-p2p for cMT-SVR</description>
   <keepDependencies>false</keepDependencies>
   <properties>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.TextParameterDefinition>
+          <name>PARAM_VERSION</name>
+          <description></description>
+          <defaultValue>2.3.0</defaultValue>
+        </hudson.model.TextParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
     <jenkins.model.BuildDiscarderProperty>
       <strategy class="hudson.tasks.LogRotator">
         <daysToKeep>-1</daysToKeep>
@@ -13,21 +22,49 @@
       </strategy>
     </jenkins.model.BuildDiscarderProperty>
   </properties>
-  <scm class="hudson.plugins.git.GitSCM" plugin="git@2.4.2">
-    <configVersion>2</configVersion>
-    <userRemoteConfigs>
-      <hudson.plugins.git.UserRemoteConfig>
-        <url>gitolite@192.168.1.220:d-server.git</url>
-      </hudson.plugins.git.UserRemoteConfig>
-    </userRemoteConfigs>
-    <branches>
-      <hudson.plugins.git.BranchSpec>
-        <name>*/dev</name>
-      </hudson.plugins.git.BranchSpec>
-    </branches>
-    <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
-    <submoduleCfg class="list"/>
-    <extensions/>
+  <scm class="org.jenkinsci.plugins.multiplescms.MultiSCM" plugin="multiple-scms@0.5">
+    <scms>
+      <hudson.plugins.git.GitSCM plugin="git@2.4.2">
+        <configVersion>2</configVersion>
+        <userRemoteConfigs>
+          <hudson.plugins.git.UserRemoteConfig>
+            <url>gitolite@192.168.1.220:rma.git</url>
+          </hudson.plugins.git.UserRemoteConfig>
+        </userRemoteConfigs>
+        <branches>
+          <hudson.plugins.git.BranchSpec>
+            <name>*/stable</name>
+          </hudson.plugins.git.BranchSpec>
+        </branches>
+        <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+        <submoduleCfg class="list"/>
+        <extensions>
+          <hudson.plugins.git.extensions.impl.RelativeTargetDirectory>
+            <relativeTargetDir>rma</relativeTargetDir>
+          </hudson.plugins.git.extensions.impl.RelativeTargetDirectory>
+        </extensions>
+      </hudson.plugins.git.GitSCM>
+      <hudson.plugins.git.GitSCM plugin="git@2.4.2">
+        <configVersion>2</configVersion>
+        <userRemoteConfigs>
+          <hudson.plugins.git.UserRemoteConfig>
+            <url>gitolite@192.168.1.220:campagnol.git</url>
+          </hudson.plugins.git.UserRemoteConfig>
+        </userRemoteConfigs>
+        <branches>
+          <hudson.plugins.git.BranchSpec>
+            <name>*/stable</name>
+          </hudson.plugins.git.BranchSpec>
+        </branches>
+        <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+        <submoduleCfg class="list"/>
+        <extensions>
+          <hudson.plugins.git.extensions.impl.RelativeTargetDirectory>
+            <relativeTargetDir>weintek-p2p</relativeTargetDir>
+          </hudson.plugins.git.extensions.impl.RelativeTargetDirectory>
+        </extensions>
+      </hudson.plugins.git.GitSCM>
+    </scms>
   </scm>
   <canRoam>true</canRoam>
   <disabled>false</disabled>
@@ -36,7 +73,7 @@
   <triggers>
     <jenkins.triggers.ReverseBuildTrigger>
       <spec></spec>
-      <upstreamProjects>libweintek_dev_cMT-SVR</upstreamProjects>
+      <upstreamProjects>libweintek_stable_cMT-SVR</upstreamProjects>
       <threshold>
         <name>UNSTABLE</name>
         <ordinal>1</ordinal>
@@ -60,38 +97,61 @@
         <useBuildTime>true</useBuildTime>
       </condition>
       <buildStep class="hudson.tasks.Shell">
-        <command>rm -rf ${WORKSPACE}/build/jenkins</command>
+        <command>rm -rf ${WORKSPACE}/rma/jenkins
+rm -rf ${WORKSPACE}/weintek-p2p/jenkins</command>
       </buildStep>
       <runner class="org.jenkins_ci.plugins.run_condition.BuildStepRunner$Fail" plugin="run-condition@1.0"/>
     </org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder>
     <hudson.tasks.Shell>
-      <command>cd ${WORKSPACE}/build
+      <command>cd ${WORKSPACE}/weintek-p2p
 if [ ! -d &quot;jenkins&quot; ]; then
     mkdir jenkins
 fi
 cd jenkins
 
-export LIBWEINTEK_PATH=${JENKINS_HOME}/jobs/libweintek_dev_cMT-SVR/workspace
-export INSTALL_PREFIX=/home/ci/work/cMT-SVR/build-dev-branch
-${WORKSPACE}/build/cMT-SVR/cmake_dserver.sh ${WORKSPACE} ${LIBWEINTEK_PATH} ${INSTALL_PREFIX}
+export BUILD_TYPE=Release
+export LIBWEINTEK_PATH=${JENKINS_HOME}/jobs/libweintek_stable_cMT-SVR/workspace
+export INSTALL_PREFIX=/home/ci/work/cMT-SVR/build-stable-branch
+cmake -DCMAKE_BUILD_TYPE=${BUILD_TYPE} \
+      -DCMAKE_INSTALL_PREFIX=${INSTALL_PREFIX} \
+      -DCMAKE_TOOLCHAIN_FILE=${LIBWEINTEK_PATH}/build/cMT-SVR/Toolchain-arm-fsl-linux-gnueabi.cmake
+      
 
-make install
-mv ${INSTALL_PREFIX}/bin/dserver ${INSTALL_PREFIX}/bin/dserver.RelWithDebInfo
+make install/strip</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>cd ${WORKSPACE}/rma
+if [ ! -d &quot;jenkins&quot; ]; then
+    mkdir jenkins
+fi
+cd jenkins
 
+export BUILD_TYPE=Release
+export LIBWEINTEK_PATH=${JENKINS_HOME}/jobs/libweintek_stable_cMT-SVR/workspace
+export INSTALL_PREFIX=/home/ci/work/cMT-SVR/build-stable-branch
+cmake -DCMAKE_BUILD_TYPE=${BUILD_TYPE} \
+      -DCMAKE_INSTALL_PREFIX=${INSTALL_PREFIX} \
+      -DCMAKE_TOOLCHAIN_FILE=${LIBWEINTEK_PATH}/build/cMT-SVR/Toolchain-arm-fsl-linux-gnueabi.cmake
+      
 make install/strip
 
 cd ${INSTALL_PREFIX}/bin
-/home/ci/work/crypto e dserver dserver.cmt
+/home/ci/work/crypto e easy_access_client easy_access_client.e30.${PARAM_VERSION}
 
-cd ${WORKSPACE}
+</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>cd ${WORKSPACE}
 rm -rf artifacts
 mkdir artifacts
-cp ${INSTALL_PREFIX}/bin/dserver.cmt artifacts</command>
+cp ${INSTALL_PREFIX}/bin/easy_access_client* artifacts
+cp ${INSTALL_PREFIX}/bin/easy_access_activator artifacts
+cp ${INSTALL_PREFIX}/bin/weintek-p2p artifacts</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
     <hudson.tasks.ArtifactArchiver>
-      <artifacts>artifacts/dserver.cmt</artifacts>
+      <artifacts>artifacts/*</artifacts>
       <allowEmptyArchive>false</allowEmptyArchive>
       <onlyIfSuccessful>true</onlyIfSuccessful>
       <fingerprint>false</fingerprint>
@@ -99,7 +159,7 @@ cp ${INSTALL_PREFIX}/bin/dserver.cmt artifacts</command>
       <caseSensitive>true</caseSensitive>
     </hudson.tasks.ArtifactArchiver>
     <hudson.tasks.Mailer plugin="mailer@1.16">
-      <recipients>katte@weintek.com paul@weintek.com zen@weintek.com easonwu@weintek.com jeremyhong@weintek.com clydeliu@weintek.com</recipients>
+      <recipients>zen@weintek.com</recipients>
       <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
       <sendToIndividuals>false</sendToIndividuals>
     </hudson.tasks.Mailer>
