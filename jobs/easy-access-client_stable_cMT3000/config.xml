@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description>build easy_access_client, easy_access_activator, weintek-p2p for cMT-SVR</description>
+  <description>build easy_access_client, easy_access_activator, weintek-p2p for cMT3000</description>
   <keepDependencies>false</keepDependencies>
   <properties>
     <hudson.model.ParametersDefinitionProperty>
@@ -73,7 +73,7 @@
   <triggers>
     <jenkins.triggers.ReverseBuildTrigger>
       <spec></spec>
-      <upstreamProjects>libweintek_stable_cMT-SVR</upstreamProjects>
+      <upstreamProjects>libweintek_stable_cMT3000, </upstreamProjects>
       <threshold>
         <name>UNSTABLE</name>
         <ordinal>1</ordinal>
@@ -103,7 +103,9 @@ rm -rf ${WORKSPACE}/weintek-p2p/jenkins</command>
       <runner class="org.jenkins_ci.plugins.run_condition.BuildStepRunner$Fail" plugin="run-condition@1.0"/>
     </org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder>
     <hudson.tasks.Shell>
-      <command>cd ${WORKSPACE}/weintek-p2p
+      <command>source /home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
+
+cd ${WORKSPACE}/weintek-p2p
 cp config_linux.h config.h
 if [ ! -d &quot;jenkins&quot; ]; then
     mkdir jenkins
@@ -111,14 +113,14 @@ fi
 cd jenkins
 
 export BUILD_TYPE=Release
-export LIBWEINTEK_PATH=${JENKINS_HOME}/jobs/libweintek_stable_cMT-SVR/workspace
+export LIBWEINTEK_PATH=${JENKINS_HOME}/jobs/libweintek_stable_cMT3000/workspace
 export LIBWEINTEK_ROOT=${LIBWEINTEK_PATH}
-export INSTALL_PREFIX=/home/ci/work/cMT-SVR/build-stable-branch
+export INSTALL_PREFIX=/home/ci/work/cMT3000/build-stable-branch
 cmake -DCMAKE_BUILD_TYPE=${BUILD_TYPE} \
-      -DMODEL=E30 \
-      -DGOOGLE_BREAKPAD_DIR=/home/ci/work/cMT-SVR/google-breakpad \
+      -DMODEL=E60 \
+      -DGOOGLE_BREAKPAD_DIR=/home/ci/work/cMT3000/google-breakpad \
       -DCMAKE_INSTALL_PREFIX=${INSTALL_PREFIX} \
-      -DCMAKE_TOOLCHAIN_FILE=${LIBWEINTEK_PATH}/build/cMT-SVR/Toolchain-arm-fsl-linux-gnueabi.cmake ..
+       ..
       
 
 make install/strip
@@ -127,7 +129,9 @@ cd ${INSTALL_PREFIX}/bin
 upx weintek-p2p</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
-      <command>cd ${WORKSPACE}/rma
+      <command>source /home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
+
+cd ${WORKSPACE}/rma
 if [ ! -d &quot;jenkins&quot; ]; then
     mkdir jenkins
 fi
@@ -136,14 +140,14 @@ cd jenkins
 touch ${WORKSPACE}/rma/AuthClient/easy_access_client_manager.bin.cpp
 
 export BUILD_TYPE=Release
-export LIBWEINTEK_PATH=${JENKINS_HOME}/jobs/libweintek_stable_cMT-SVR/workspace
+export LIBWEINTEK_PATH=${JENKINS_HOME}/jobs/libweintek_stable_cMT3000/workspace
 export LIBWEINTEK_ROOT=${LIBWEINTEK_PATH}
-export INSTALL_PREFIX=/home/ci/work/cMT-SVR/build-stable-branch
+export INSTALL_PREFIX=/home/ci/work/cMT3000/build-stable-branch
 cmake -DCMAKE_BUILD_TYPE=${BUILD_TYPE} \
-      -DMODEL=E30 \
-      -DGOOGLE_BREAKPAD_DIR=/home/ci/work/cMT-SVR/google-breakpad \
+      -DMODEL=E60 \
+      -DGOOGLE_BREAKPAD_DIR=/home/ci/work/cMT3000/google-breakpad \
       -DCMAKE_INSTALL_PREFIX=${INSTALL_PREFIX} \
-      -DCMAKE_TOOLCHAIN_FILE=${LIBWEINTEK_PATH}/build/cMT-SVR/Toolchain-arm-fsl-linux-gnueabi.cmake ..
+      ..
 
 cd AuthClient
 rm easy_access_client_manager
@@ -165,13 +169,13 @@ cp easy_access_activator ${INSTALL_PREFIX}/bin
 
 cd ${INSTALL_PREFIX}/bin
 upx easy_access_client
-/home/ci/work/crypto e easy_access_client easy_access_client.e30.${PARAM_EAC_VERSION}
+/home/ci/work/crypto e easy_access_client easy_access_client.c30.${PARAM_EAC_VERSION}
 
 </command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
       <command>cd ${WORKSPACE}
-export INSTALL_PREFIX=/home/ci/work/cMT-SVR/build-stable-branch
+export INSTALL_PREFIX=/home/ci/work/cMT3000/build-stable-branch
 rm -rf artifacts
 mkdir artifacts
 cp ${INSTALL_PREFIX}/bin/easy_access_client* artifacts
