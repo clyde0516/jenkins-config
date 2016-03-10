@@ -152,13 +152,13 @@ strip easy_access_client_manager
 upx easy_access_client_manager
 bin2cpp easy_access_client_manager
 cp easy_access_client_manager.bin.cpp  ${WORKSPACE}/rma/AuthClient
-make install/strip
+make VERBOSE=1 install/strip
 # make easy_access_client
 # strip easy_access_client
 # upx easy_access_client
 # cp easy_access_client ${INSTALL_PREFIX}/bin
 cd ../RemoteAccessActivator
-make easy_access_activator
+make VERBOSE=1 easy_access_activator
 strip easy_access_activator
 cp easy_access_activator ${INSTALL_PREFIX}/bin
 
