@@ -120,6 +120,7 @@ cmake -DCMAKE_BUILD_TYPE=${BUILD_TYPE} \
       -DMODEL=E60 \
       -DGOOGLE_BREAKPAD_DIR=/home/ci/work/cMT3000/google-breakpad \
       -DCMAKE_INSTALL_PREFIX=${INSTALL_PREFIX} \
+      -DCMAKE_CXX_FLAGS=&quot;-std=gnu++0x&quot; \
        ..
       
 cd client
@@ -147,6 +148,7 @@ cmake -DCMAKE_BUILD_TYPE=${BUILD_TYPE} \
       -DMODEL=E60 \
       -DGOOGLE_BREAKPAD_DIR=/home/ci/work/cMT3000/google-breakpad \
       -DCMAKE_INSTALL_PREFIX=${INSTALL_PREFIX} \
+      -DCMAKE_CXX_FLAGS=&quot;-std=gnu++0x&quot; \
       ..
 
 cd AuthClient
