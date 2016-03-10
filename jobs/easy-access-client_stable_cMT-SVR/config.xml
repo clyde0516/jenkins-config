@@ -171,6 +171,7 @@ upx easy_access_client
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
       <command>cd ${WORKSPACE}
+export INSTALL_PREFIX=/home/ci/work/cMT-SVR/build-stable-branch
 rm -rf artifacts
 mkdir artifacts
 cp ${INSTALL_PREFIX}/bin/easy_access_client* artifacts
