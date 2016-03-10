@@ -103,14 +103,14 @@ rm -rf ${WORKSPACE}/weintek-p2p/jenkins</command>
       <runner class="org.jenkins_ci.plugins.run_condition.BuildStepRunner$Fail" plugin="run-condition@1.0"/>
     </org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder>
     <hudson.tasks.Shell>
-      <command>source /home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
-
-cd ${WORKSPACE}/weintek-p2p
+      <command>cd ${WORKSPACE}/weintek-p2p
 cp config_linux.h config.h
 if [ ! -d &quot;jenkins&quot; ]; then
     mkdir jenkins
 fi
 cd jenkins
+
+source /home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
 
 export BUILD_TYPE=Release
 export LIBWEINTEK_PATH=${JENKINS_HOME}/jobs/libweintek_stable_cMT3000/workspace
@@ -129,15 +129,15 @@ cd ${INSTALL_PREFIX}/bin
 upx weintek-p2p</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
-      <command>source /home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
-
-cd ${WORKSPACE}/rma
+      <command>cd ${WORKSPACE}/rma
 if [ ! -d &quot;jenkins&quot; ]; then
     mkdir jenkins
 fi
 cd jenkins
 
 touch ${WORKSPACE}/rma/AuthClient/easy_access_client_manager.bin.cpp
+
+source /home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
 
 export BUILD_TYPE=Release
 export LIBWEINTEK_PATH=${JENKINS_HOME}/jobs/libweintek_stable_cMT3000/workspace
