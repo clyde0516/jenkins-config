@@ -7,7 +7,7 @@
     <hudson.model.ParametersDefinitionProperty>
       <parameterDefinitions>
         <hudson.model.TextParameterDefinition>
-          <name>PARAM_VERSION</name>
+          <name>PARAM_EAC_VERSION</name>
           <description></description>
           <defaultValue>2.3.0</defaultValue>
         </hudson.model.TextParameterDefinition>
@@ -136,7 +136,7 @@ cmake -DCMAKE_BUILD_TYPE=${BUILD_TYPE} \
 make install/strip
 
 cd ${INSTALL_PREFIX}/bin
-/home/ci/work/crypto e easy_access_client easy_access_client.e30.${PARAM_VERSION}
+/home/ci/work/crypto e easy_access_client easy_access_client.e30.${PARAM_EAC_VERSION}
 
 </command>
     </hudson.tasks.Shell>
