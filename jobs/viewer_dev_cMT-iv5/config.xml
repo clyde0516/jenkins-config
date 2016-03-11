@@ -84,7 +84,7 @@ ${WORKSPACE}/build/cMT3000/qmake_viewer.sh ${CLOUDHMI_PATH} ${LIBWEINTEK_PATH} $
 cd ${WORKSPACE}
 rm -rf artifacts
 mkdir artifacts
-cp ${INSTALL_PREFIX}/bin/CloudHmi.iv5 artifacts
+cp ${INSTALL_PREFIX}/bin/cMTViewer.iv5 artifacts
 </command>
     </hudson.tasks.Shell>
   </builders>
