@@ -146,7 +146,7 @@ cmake -DCMAKE_BUILD_TYPE=${BUILD_TYPE} \
       -DCMAKE_TOOLCHAIN_FILE=${LIBWEINTEK_PATH}/build/cMT-SVR/Toolchain-arm-fsl-linux-gnueabi.cmake ..
 
 cd AuthClient
-rm easy_access_client_manager
+rm -f easy_access_client_manager
 make VERBOSE=1 easy_access_client_manager
 strip easy_access_client_manager
 upx easy_access_client_manager
