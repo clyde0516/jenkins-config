@@ -147,11 +147,11 @@ export BUILD_TYPE=Release
 export LIBWEINTEK_PATH=${JENKINS_HOME}/jobs/libweintek_stable_cMT3000/workspace
 export LIBWEINTEK_ROOT=${LIBWEINTEK_PATH}
 export INSTALL_PREFIX=/home/ci/work/cMT3000/build-stable-branch
+export BREAKPAD_INCLUDE_DIR=/home/ci/work/cMT3000/target/sysroots/armv7ahf-vfp-neon-weintek-linux-gnueabi/usr/include/breakpad
 cmake -DCMAKE_BUILD_TYPE=${BUILD_TYPE} \
       -DMODEL=E60 \
       -DGOOGLE_BREAKPAD_DIR=/home/ci/work/cMT3000/google-breakpad \
       -DCMAKE_INSTALL_PREFIX=${INSTALL_PREFIX} \
-      -DCMAKE_INCLUDE_FLAG_CXX=&quot;-I/home/ci/work/cMT3000/target/sysroots/armv7ahf-vfp-neon-weintek-linux-gnueabi/usr/include/breakpad&quot; \
       ..
 
 cd AuthClient
