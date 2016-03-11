@@ -157,7 +157,7 @@ cd AuthClient
 rm easy_access_client_manager
 make VERBOSE=1 easy_access_client_manager
 strip easy_access_client_manager
-upx easy_access_client_manager
+# upx easy_access_client_manager
 bin2cpp easy_access_client_manager
 cp easy_access_client_manager.bin.cpp  ${WORKSPACE}/rma/AuthClient
 make VERBOSE=1 install/strip
@@ -172,7 +172,7 @@ cp easy_access_activator ${INSTALL_PREFIX}/bin
 
 
 cd ${INSTALL_PREFIX}/bin
-upx easy_access_client
+#upx easy_access_client
 /home/ci/work/crypto e easy_access_client easy_access_client.c30.${PARAM_EAC_VERSION}
 
 </command>
