@@ -125,7 +125,7 @@ cmake -DCMAKE_BUILD_TYPE=${BUILD_TYPE} \
        ..
       
 cd client
-make VERBOSE=1 install
+make VERBOSE=1 install/strip
 
 cd ${INSTALL_PREFIX}/bin
 #upx weintek-p2p</command>
