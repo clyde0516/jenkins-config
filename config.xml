@@ -374,6 +374,7 @@
         <string>dserver_param</string>
         <string>dserver_stable_cMT-SVR</string>
         <string>dserver_stable_cMT3000</string>
+        <string>dserver_stable_cMT3000_RelWithDebInfo</string>
         <string>easy-access-client_stable_cMT-SVR</string>
         <string>easy-access-client_stable_cMT3000</string>
         <string>gui-v5_fix-Calibri-font-vertical-offset</string>
