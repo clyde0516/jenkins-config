@@ -74,20 +74,20 @@ if [ ! -d &quot;jenkins&quot; ]; then
 fi
 cd jenkins
 
-cp ${WORKSPACE}/build/cMT-iv5/*features.pri .
+cp ${WORKSPACE}/build/Ubuntu/*features.pri .
 
 export CLOUDHMI_PATH=${WORKSPACE}/CloudHmi
 export LIBWEINTEK_PATH=/var/lib/jenkins/jobs/libweintek_dev_cMT-iv5/workspace
 export DSERVER_PATH=/var/lib/jenkins/jobs/dserver_dev_cMT-iv5/workspace
 export GUI_PATH=/var/lib/jenkins/jobs/gui_dev_cMT-iv5/workspace
-export INSTALL_PREFIX=/home/ci/work/cMT-iv5/build-dev-branch
+export INSTALL_PREFIX=/home/ci/work/Ubuntu/build-dev-branch
 
-${WORKSPACE}/build/cMT-iv5/qmake_viewer.sh ${CLOUDHMI_PATH} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${GUI_PATH} ${INSTALL_PREFIX} incremental
+${WORKSPACE}/build/Ubuntu/qmake_viewer.sh ${CLOUDHMI_PATH} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${GUI_PATH} ${INSTALL_PREFIX} incremental
 
 cd ${WORKSPACE}
 rm -rf artifacts
 mkdir artifacts
-cp ${INSTALL_PREFIX}/bin/cMTViewer.iv5 artifacts
+cp ${INSTALL_PREFIX}/bin/cMTViewer.tar artifacts
 </command>
     </hudson.tasks.Shell>
   </builders>
