@@ -73,7 +73,7 @@ cd jenkins
 
 export LIBWEINTEK_PATH=${JENKINS_HOME}/jobs/libweintek_dev_cMT-iv5/workspace
 export INSTALL_PREFIX=/home/ci/work/cMT-iv5/build-dev-branch
-${WORKSPACE}/build/cMT3000/cmake_dserver.sh ${WORKSPACE} ${LIBWEINTEK_PATH} ${INSTALL_PREFIX}
+${WORKSPACE}/build/cMT-iv5/cmake_dserver.sh ${WORKSPACE} ${LIBWEINTEK_PATH} ${INSTALL_PREFIX}
 
 make install/strip
 
