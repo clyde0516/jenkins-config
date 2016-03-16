@@ -402,6 +402,7 @@
         <string>libweintek_stable_cMT-iv5</string>
         <string>libweintek_stable_cMT-SVR</string>
         <string>libweintek_stable_cMT3000</string>
+        <string>libweintek_stable_cMT3000_bak</string>
         <string>viewer_dev_cMT-iv5</string>
         <string>viewer_dev_cMT-iv5-3000</string>
         <string>viewer_stable_cMT-iv5</string>
@@ -471,6 +472,7 @@
       <properties class="hudson.model.View$PropertyList"/>
       <gridBuilder class="au.com.centrumsystems.hudson.plugin.buildpipeline.DownstreamProjectGridBuilder">
         <firstJob>libweintek_stable_cMT-iv5</firstJob>
+        <firstJobLink>job/libweintek_stable_cMT-iv5/</firstJobLink>
       </gridBuilder>
       <noOfDisplayedBuilds>10</noOfDisplayedBuilds>
       <buildViewTitle></buildViewTitle>
