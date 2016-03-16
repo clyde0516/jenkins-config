@@ -195,6 +195,7 @@
       <properties class="hudson.model.View$PropertyList"/>
       <gridBuilder class="au.com.centrumsystems.hudson.plugin.buildpipeline.DownstreamProjectGridBuilder">
         <firstJob>libweintek_dev_cMT3000</firstJob>
+        <firstJobLink>job/libweintek_dev_cMT3000/</firstJobLink>
       </gridBuilder>
       <noOfDisplayedBuilds>10</noOfDisplayedBuilds>
       <buildViewTitle>dev_cMT3000</buildViewTitle>
@@ -422,19 +423,18 @@
       <properties class="hudson.model.View$PropertyList"/>
       <gridBuilder class="au.com.centrumsystems.hudson.plugin.buildpipeline.DownstreamProjectGridBuilder">
         <firstJob>libweintek_dev_cMT-iv5</firstJob>
-        <firstJobLink>job/libweintek_dev_cMT-iv5/</firstJobLink>
       </gridBuilder>
-      <noOfDisplayedBuilds>1</noOfDisplayedBuilds>
+      <noOfDisplayedBuilds>10</noOfDisplayedBuilds>
       <buildViewTitle></buildViewTitle>
       <consoleOutputLinkStyle>Lightbox</consoleOutputLinkStyle>
       <cssUrl></cssUrl>
       <triggerOnlyLatestJob>false</triggerOnlyLatestJob>
-      <alwaysAllowManualTrigger>false</alwaysAllowManualTrigger>
-      <showPipelineParameters>false</showPipelineParameters>
+      <alwaysAllowManualTrigger>true</alwaysAllowManualTrigger>
+      <showPipelineParameters>true</showPipelineParameters>
       <showPipelineParametersInHeaders>false</showPipelineParametersInHeaders>
       <startsWithParameters>false</startsWithParameters>
       <refreshFrequency>3</refreshFrequency>
-      <showPipelineDefinitionHeader>false</showPipelineDefinitionHeader>
+      <showPipelineDefinitionHeader>true</showPipelineDefinitionHeader>
     </au.com.centrumsystems.hudson.plugin.buildpipeline.BuildPipelineView>
   </views>
   <primaryView>Active</primaryView>
