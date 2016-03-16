@@ -381,6 +381,7 @@
         <string>dserver_stable_cMT-iv5</string>
         <string>dserver_stable_cMT-SVR</string>
         <string>dserver_stable_cMT3000</string>
+        <string>dserver_stable_cMT3000_bak</string>
         <string>dserver_stable_cMT3000_RelWithDebInfo</string>
         <string>easy-access-client_stable_cMT-SVR</string>
         <string>easy-access-client_stable_cMT3000</string>
