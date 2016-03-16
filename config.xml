@@ -394,6 +394,7 @@
         <string>libweintek_param</string>
         <string>libweintek_stable_cMT-SVR</string>
         <string>libweintek_stable_cMT3000</string>
+        <string>viewer_dev_cMT-iv5</string>
         <string>viewer_dev_cMT-iv5-3000</string>
       </jobNames>
       <jobFilters/>
