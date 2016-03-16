@@ -65,7 +65,7 @@ fi
 cd jenkins
 
 export INSTALL_PREFIX=/home/ci/work/cMT-iv5/build-dev-branch
-${WORKSPACE}/build/cMT-3000/cmake_libweintek.sh ${WORKSPACE} ${INSTALL_PREFIX}
+${WORKSPACE}/build/cMT3000/cmake_libweintek.sh ${WORKSPACE} ${INSTALL_PREFIX}
 
 make install</command>
     </hudson.tasks.Shell>
