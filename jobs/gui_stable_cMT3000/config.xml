@@ -22,7 +22,7 @@
     </userRemoteConfigs>
     <branches>
       <hudson.plugins.git.BranchSpec>
-        <name>*/dev</name>
+        <name>*/v1-stable</name>
       </hudson.plugins.git.BranchSpec>
     </branches>
     <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
@@ -36,7 +36,7 @@
   <triggers>
     <jenkins.triggers.ReverseBuildTrigger>
       <spec></spec>
-      <upstreamProjects>dserver_dev_cMT3000</upstreamProjects>
+      <upstreamProjects>dserver_stable_cMT3000</upstreamProjects>
       <threshold>
         <name>UNSTABLE</name>
         <ordinal>1</ordinal>
@@ -73,9 +73,9 @@ cd jenkins
 
 cp ${WORKSPACE}/build/cMT3000/features.pri .
 
-export LIBWEINTEK_PATH=/var/lib/jenkins/jobs/libweintek_dev_cMT3000/workspace
-export DSERVER_PATH=/var/lib/jenkins/jobs/dserver_dev_cMT3000/workspace
-export INSTALL_PREFIX=/home/ci/work/cMT3000/build-dev-branch
+export LIBWEINTEK_PATH=/var/lib/jenkins/jobs/libweintek_stable_cMT3000/workspace
+export DSERVER_PATH=/var/lib/jenkins/jobs/dserver_stable_cMT3000/workspace
+export INSTALL_PREFIX=/home/ci/work/cMT3000/build-stable-branch
 
 ${WORKSPACE}/build/cMT3000/qmake_gui.sh ${WORKSPACE} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${INSTALL_PREFIX} incremental
 
@@ -88,7 +88,7 @@ cp ${INSTALL_PREFIX}/bin/gui.c30 artifacts
   </builders>
   <publishers>
     <hudson.tasks.ArtifactArchiver>
-      <artifacts>artifacts/gui.c30</artifacts>
+      <artifacts>artifacts/*</artifacts>
       <allowEmptyArchive>false</allowEmptyArchive>
       <onlyIfSuccessful>true</onlyIfSuccessful>
       <fingerprint>false</fingerprint>
