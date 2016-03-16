@@ -89,7 +89,7 @@ cp ${INSTALL_PREFIX}/bin/dserver.c30 artifacts
   </builders>
   <publishers>
     <hudson.tasks.ArtifactArchiver>
-      <artifacts>artifacts/dserver.c30</artifacts>
+      <artifacts>artifacts/*</artifacts>
       <allowEmptyArchive>false</allowEmptyArchive>
       <onlyIfSuccessful>true</onlyIfSuccessful>
       <fingerprint>false</fingerprint>
