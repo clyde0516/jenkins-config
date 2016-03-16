@@ -22,7 +22,7 @@
     </userRemoteConfigs>
     <branches>
       <hudson.plugins.git.BranchSpec>
-        <name>*/dev</name>
+        <name>*/v1-stable</name>
       </hudson.plugins.git.BranchSpec>
     </branches>
     <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
@@ -64,7 +64,7 @@ if [ ! -d &quot;jenkins&quot; ]; then
 fi
 cd jenkins
 
-export INSTALL_PREFIX=/home/ci/work/cMT-iv5/build-dev-branch
+export INSTALL_PREFIX=/home/ci/work/cMT-iv5/build-stable-branch
 ${WORKSPACE}/build/cMT-iv5/cmake_libweintek.sh ${WORKSPACE} ${INSTALL_PREFIX}
 
 make install</command>
