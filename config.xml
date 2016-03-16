@@ -200,7 +200,7 @@
       <buildViewTitle>dev_cMT3000</buildViewTitle>
       <consoleOutputLinkStyle>Lightbox</consoleOutputLinkStyle>
       <cssUrl></cssUrl>
-      <triggerOnlyLatestJob>true</triggerOnlyLatestJob>
+      <triggerOnlyLatestJob>false</triggerOnlyLatestJob>
       <alwaysAllowManualTrigger>true</alwaysAllowManualTrigger>
       <showPipelineParameters>true</showPipelineParameters>
       <showPipelineParametersInHeaders>true</showPipelineParametersInHeaders>
