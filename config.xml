@@ -405,6 +405,7 @@
         <string>libweintek_stable_cMT3000_bak</string>
         <string>viewer_dev_cMT-iv5</string>
         <string>viewer_dev_cMT-iv5-3000</string>
+        <string>viewer_dev_Ubuntu</string>
         <string>viewer_stable_cMT-iv5</string>
       </jobNames>
       <jobFilters/>
