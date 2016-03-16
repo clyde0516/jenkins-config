@@ -78,12 +78,12 @@ ${WORKSPACE}/build/cMT3000/cmake_dserver.sh ${WORKSPACE} ${LIBWEINTEK_PATH} ${IN
 make install/strip
 
 cd ${INSTALL_PREFIX}/bin
-/home/ci/work/crypto e dserver dserver.iv5
+/home/ci/work/crypto e dserver dserver.c30
 
 cd ${WORKSPACE}
 rm -rf artifacts
 mkdir artifacts
-cp ${INSTALL_PREFIX}/bin/dserver.iv5 artifacts
+cp ${INSTALL_PREFIX}/bin/dserver.c30 artifacts
 </command>
     </hudson.tasks.Shell>
   </builders>
