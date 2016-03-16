@@ -26,6 +26,9 @@
       </hudson.plugins.git.BranchSpec>
     </branches>
     <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+    <browser class="hudson.plugins.git.browser.AssemblaWeb">
+      <url></url>
+    </browser>
     <submoduleCfg class="list"/>
     <extensions/>
   </scm>
@@ -55,7 +58,7 @@
       <condition class="org.jenkins_ci.plugins.run_condition.core.TimeCondition" plugin="run-condition@1.0">
         <earliestHours>0</earliestHours>
         <earliestMinutes>0</earliestMinutes>
-        <latestHours>8</latestHours>
+        <latestHours>23</latestHours>
         <latestMinutes>0</latestMinutes>
         <useBuildTime>true</useBuildTime>
       </condition>
