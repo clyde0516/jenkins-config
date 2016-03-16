@@ -22,7 +22,7 @@
     </userRemoteConfigs>
     <branches>
       <hudson.plugins.git.BranchSpec>
-        <name>*/dev</name>
+        <name>*/v1-stable</name>
       </hudson.plugins.git.BranchSpec>
     </branches>
     <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
@@ -36,7 +36,7 @@
   <triggers>
     <jenkins.triggers.ReverseBuildTrigger>
       <spec></spec>
-      <upstreamProjects>dserver_dev_cMT-iv5</upstreamProjects>
+      <upstreamProjects>dserver_stable_cMT-iv5, </upstreamProjects>
       <threshold>
         <name>UNSTABLE</name>
         <ordinal>1</ordinal>
@@ -73,9 +73,9 @@ cd jenkins
 
 cp ${WORKSPACE}/build/cMT-iv5/features.pri .
 
-export LIBWEINTEK_PATH=/var/lib/jenkins/jobs/libweintek_dev_cMT-iv5/workspace
-export DSERVER_PATH=/var/lib/jenkins/jobs/dserver_dev_cMT-iv5/workspace
-export INSTALL_PREFIX=/home/ci/work/cMT-iv5/build-dev-branch
+export LIBWEINTEK_PATH=/var/lib/jenkins/jobs/libweintek_stable_cMT-iv5/workspace
+export DSERVER_PATH=/var/lib/jenkins/jobs/dserver_stable_cMT-iv5/workspace
+export INSTALL_PREFIX=/home/ci/work/cMT-iv5/build-stable-branch
 
 ${WORKSPACE}/build/cMT-iv5/qmake_gui.sh ${WORKSPACE} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${INSTALL_PREFIX} incremental
 
