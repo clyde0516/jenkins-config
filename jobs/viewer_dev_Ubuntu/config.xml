@@ -39,7 +39,7 @@
   <triggers>
     <jenkins.triggers.ReverseBuildTrigger>
       <spec></spec>
-      <upstreamProjects>gui_dev_cMT-iv5</upstreamProjects>
+      <upstreamProjects>cMT_dev_Ubuntu</upstreamProjects>
       <threshold>
         <name>UNSTABLE</name>
         <ordinal>1</ordinal>
