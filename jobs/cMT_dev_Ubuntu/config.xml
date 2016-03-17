@@ -344,7 +344,10 @@ cp ${INSTALL_PREFIX}/bin/${ENCRYPT_NAME} ${WORKSPACE}/artifacts</command>
         </condition>
       </condition>
       <buildStep class="hudson.tasks.Shell">
-        <command># Build gui
+        <command>
+rm -rf ${WORKSPACE}/gui/build/jenkins
+
+# Build gui
 echo &quot;================================ gui ================================ gui ================================ gui ================================&quot;
 
 cd ${WORKSPACE}/gui/build
