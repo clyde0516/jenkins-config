@@ -383,13 +383,19 @@ export GUI_PATH=${WORKSPACE}/gui
 export DSERVER_PATH=${WORKSPACE}/dserver
 export LIBWEINTEK_PATH=${WORKSPACE}/libweintek
 export INSTALL_PREFIX=/home/ci/work/${TRIGGER_PARAM_PLATFORM}/${TRIGGER_PARAM_INSTALL_FOLDER}
+export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
 
 if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;Ubuntu&quot; ]; then
    export PATH=/opt/Qt5.4.2/5.4/gcc_64/bin:${PATH}
 fi
 
 cp ${WORKSPACE}/gui/build/${TRIGGER_PARAM_PLATFORM}/features.pri .
-${WORKSPACE}/gui/build/${TRIGGER_PARAM_PLATFORM}/qmake_gui.sh ${GUI_PATH} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${INSTALL_PREFIX} ${TRIGGER_PARAM_GUI_BUILD_POLICY}
+${WORKSPACE}/gui/build/${TRIGGER_PARAM_PLATFORM}/qmake_gui.sh ${GUI_PATH} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN}
+
+if [ &quot;${TRIGGER_PARAM_DSERVER_BUILD_POLICY}&quot; = &quot;clean&quot; ]; then
+    make clean
+fi
+make
 
 if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;Ubuntu&quot; ]; then
     cp ${INSTALL_PREFIX}/bin/gui ${WORKSPACE}/artifacts
