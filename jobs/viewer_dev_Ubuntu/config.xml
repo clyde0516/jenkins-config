@@ -84,9 +84,7 @@ export INSTALL_PREFIX=/home/ci/work/Ubuntu/build-dev-branch
 
 export PATH=/opt/Qt5.4.2/5.4/gcc_64/bin:${PATH}
 
-${WORKSPACE}/build/Ubuntu/qmake_viewer.sh ${CLOUDHMI_PATH} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${GUI_PATH} ${INSTALL_PREFIX}
-
-make
+${WORKSPACE}/build/Ubuntu/qmake_viewer.sh ${CLOUDHMI_PATH} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${GUI_PATH} ${INSTALL_PREFIX} increamental
 
 cd ${WORKSPACE}
 rm -rf artifacts
