@@ -296,8 +296,6 @@ if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT3000&quot; ]; then
     export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
 elif [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT-iv5&quot; ]; then
     export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT-iv5/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
-else
-	export CROSS_COMPILER_TOOLCHAIN=
 fi
 
 ${WORKSPACE}/libweintek/build/${TRIGGER_PARAM_PLATFORM}/cmake_libweintek.sh ${LIBWEINTEK_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} ${BUILD_TYPE}
@@ -322,8 +320,20 @@ cd jenkins/${TRIGGER_PARAM_PLATFORM}
 
 export DSERVER_PATH=${WORKSPACE}/dserver
 export LIBWEINTEK_PATH=${WORKSPACE}/libweintek
+export MARIADB_CONNECTOR_C_PATH=/home/ci/work/mariadb-connector-c
 export INSTALL_PREFIX=/home/ci/work/${TRIGGER_PARAM_PLATFORM}/${TRIGGER_PARAM_INSTALL_FOLDER}
-${WORKSPACE}/dserver/build/${TRIGGER_PARAM_PLATFORM}/cmake_dserver.sh ${DSERVER_PATH} ${LIBWEINTEK_PATH} ${INSTALL_PREFIX}
+
+if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT-SVR&quot; ]; then
+    export GOOGLE_BREAKPAD_PATH=/home/ci/work/cMT-SVR/google-breakpad
+fi
+
+if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT3000&quot; ]; then
+    export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
+elif [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT-iv5&quot; ]; then
+    export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT-iv5/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
+fi
+
+${WORKSPACE}/dserver/build/${TRIGGER_PARAM_PLATFORM}/cmake_dserver.sh ${DSERVER_PATH} ${LIBWEINTEK_PATH} ${MARIADB_CONNECTOR_C_PATH} ${GOOGLE_BREAKPAD_PATH} ${INSTALL_PREFIX} ${BUILD_TYPE}
 
 if [ &quot;${TRIGGER_PARAM_DSERVER_BUILD_POLICY}&quot; = &quot;clean&quot; ]; then
     make clean
