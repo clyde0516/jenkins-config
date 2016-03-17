@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <hudson.plugins.git.GitSCM_-DescriptorImpl plugin="git@2.4.2">
-  <generation>285</generation>
+  <generation>343</generation>
   <globalConfigName>ci</globalConfigName>
   <globalConfigEmail>ci@weintek.com</globalConfigEmail>
   <createAccountBasedOnEmail>false</createAccountBasedOnEmail>
