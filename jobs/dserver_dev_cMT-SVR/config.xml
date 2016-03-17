@@ -72,8 +72,11 @@ fi
 cd jenkins
 
 export LIBWEINTEK_PATH=${JENKINS_HOME}/jobs/libweintek_dev_cMT-SVR/workspace
+export MARIADB_CONNECTOR_C_PATH=/home/ci/work/mariadb-connector-c
+export GOOGLE_BREAKPAD_PATH=/home/ci/work/cMT-SVR/google-breakpad
 export INSTALL_PREFIX=/home/ci/work/cMT-SVR/build-dev-branch
-${WORKSPACE}/build/cMT-SVR/cmake_dserver.sh ${WORKSPACE} ${LIBWEINTEK_PATH} ${INSTALL_PREFIX}
+export BUILD_TYPE=RelWithDebInfo
+${WORKSPACE}/build/cMT-SVR/cmake_dserver.sh ${WORKSPACE} ${LIBWEINTEK_PATH} ${MARIADB_CONNECTOR_C_PATH} ${GOOGLE_BREAKPAD_PATH} ${INSTALL_PREFIX} ${BUILD_TYPE}
 
 make install
 mv ${INSTALL_PREFIX}/bin/dserver ${INSTALL_PREFIX}/bin/dserver.RelWithDebInfo
