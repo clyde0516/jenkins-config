@@ -65,7 +65,9 @@ fi
 cd jenkins
 
 export INSTALL_PREFIX=/home/ci/work/cMT-iv5/build-dev-branch
-${WORKSPACE}/build/cMT-iv5/cmake_libweintek.sh ${WORKSPACE} ${INSTALL_PREFIX}
+export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT-iv5/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
+export BUILD_TYPE=RelWithDebInfo
+${WORKSPACE}/build/cMT-iv5/cmake_libweintek.sh ${WORKSPACE} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} ${BUILD_TYPE}
 
 make install</command>
     </hudson.tasks.Shell>
