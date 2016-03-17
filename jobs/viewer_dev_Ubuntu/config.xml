@@ -89,7 +89,7 @@ ${WORKSPACE}/build/Ubuntu/qmake_viewer.sh ${CLOUDHMI_PATH} ${LIBWEINTEK_PATH} ${
 cd ${WORKSPACE}
 rm -rf artifacts
 mkdir artifacts
-cp ${INSTALL_PREFIX}/bin/cMTViewer.tar artifacts
+cp ${INSTALL_PREFIX}/bin/CloudHmi.tar artifacts
 </command>
     </hudson.tasks.Shell>
   </builders>
