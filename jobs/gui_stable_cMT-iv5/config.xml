@@ -76,8 +76,11 @@ cp ${WORKSPACE}/build/cMT-iv5/features.pri .
 export LIBWEINTEK_PATH=/var/lib/jenkins/jobs/libweintek_stable_cMT-iv5/workspace
 export DSERVER_PATH=/var/lib/jenkins/jobs/dserver_stable_cMT-iv5/workspace
 export INSTALL_PREFIX=/home/ci/work/cMT-iv5/build-stable-branch
+export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT-iv5/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
 
-${WORKSPACE}/build/cMT-iv5/qmake_gui.sh ${WORKSPACE} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${INSTALL_PREFIX} incremental
+${WORKSPACE}/build/cMT-iv5/qmake_gui.sh ${WORKSPACE} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN}
+
+make
 
 # Do not archive artifact, since only library built for cMT-iv5
 #cd ${WORKSPACE}
