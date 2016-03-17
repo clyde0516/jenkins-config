@@ -81,8 +81,11 @@ export LIBWEINTEK_PATH=/var/lib/jenkins/jobs/libweintek_dev_cMT-iv5/workspace
 export DSERVER_PATH=/var/lib/jenkins/jobs/dserver_dev_cMT-iv5/workspace
 export GUI_PATH=/var/lib/jenkins/jobs/gui_dev_cMT-iv5/workspace
 export INSTALL_PREFIX=/home/ci/work/cMT-iv5/build-dev-branch
+export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT-iv5/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
 
-${WORKSPACE}/build/cMT-iv5/qmake_viewer.sh ${CLOUDHMI_PATH} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${GUI_PATH} ${INSTALL_PREFIX} incremental
+${WORKSPACE}/build/cMT-iv5/qmake_viewer.sh ${CLOUDHMI_PATH} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${GUI_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN}
+
+make
 
 cd ${WORKSPACE}
 rm -rf artifacts
