@@ -116,6 +116,7 @@
             <a class="string-array">
               <string>incremental</string>
               <string>clean</string>
+              <string>brandnew</string>
             </a>
           </choices>
         </hudson.model.ChoiceParameterDefinition>
@@ -126,6 +127,7 @@
             <a class="string-array">
               <string>incremental</string>
               <string>clean</string>
+              <string>brandnew</string>
             </a>
           </choices>
         </hudson.model.ChoiceParameterDefinition>
@@ -136,6 +138,7 @@
             <a class="string-array">
               <string>incremental</string>
               <string>clean</string>
+              <string>brandnew</string>
             </a>
           </choices>
         </hudson.model.ChoiceParameterDefinition>
