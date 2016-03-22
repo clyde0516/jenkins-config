@@ -338,7 +338,7 @@ ${WORKSPACE}/dserver/build/${TRIGGER_PARAM_PLATFORM}/cmake_dserver.sh ${DSERVER_
 if [ &quot;${TRIGGER_PARAM_DSERVER_BUILD_POLICY}&quot; = &quot;clean&quot; ]; then
     make clean
 fi
-make install/strip
+make install/strip VERBOSE=1
 
 cd ${INSTALL_PREFIX}/bin
 if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;Ubuntu&quot; ]; then
