@@ -322,6 +322,7 @@ export DSERVER_PATH=${WORKSPACE}/dserver
 export LIBWEINTEK_PATH=${WORKSPACE}/libweintek
 export MARIADB_CONNECTOR_C_PATH=/home/ci/work/mariadb-connector-c
 export INSTALL_PREFIX=/home/ci/work/${TRIGGER_PARAM_PLATFORM}/${TRIGGER_PARAM_INSTALL_FOLDER}
+export BUILD_TYPE=RelWithDebInfo
 
 if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT-SVR&quot; ]; then
     export GOOGLE_BREAKPAD_PATH=/home/ci/work/cMT-SVR/google-breakpad
