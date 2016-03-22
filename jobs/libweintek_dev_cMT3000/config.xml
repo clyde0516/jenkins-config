@@ -48,7 +48,7 @@
       <condition class="org.jenkins_ci.plugins.run_condition.core.TimeCondition" plugin="run-condition@1.0">
         <earliestHours>0</earliestHours>
         <earliestMinutes>0</earliestMinutes>
-        <latestHours>8</latestHours>
+        <latestHours>23</latestHours>
         <latestMinutes>0</latestMinutes>
         <useBuildTime>true</useBuildTime>
       </condition>
@@ -69,7 +69,7 @@ export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT3000/target/environment-setup-a
 export BUILD_TYPE=RelWithDebInfo
 ${WORKSPACE}/build/cMT3000/cmake_libweintek.sh ${WORKSPACE} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} ${BUILD_TYPE}
 
-make install</command>
+make install VERBOSE=1</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
