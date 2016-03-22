@@ -116,6 +116,7 @@
             <a class="string-array">
               <string>incremental</string>
               <string>clean</string>
+              <string>brandnew</string>
             </a>
           </choices>
         </hudson.model.ChoiceParameterDefinition>
@@ -126,6 +127,7 @@
             <a class="string-array">
               <string>incremental</string>
               <string>clean</string>
+              <string>brandnew</string>
             </a>
           </choices>
         </hudson.model.ChoiceParameterDefinition>
@@ -136,6 +138,7 @@
             <a class="string-array">
               <string>incremental</string>
               <string>clean</string>
+              <string>brandnew</string>
             </a>
           </choices>
         </hudson.model.ChoiceParameterDefinition>
@@ -283,6 +286,9 @@ cd ${WORKSPACE}/libweintek/build
 if [ ! -d &quot;jenkins&quot; ]; then
     mkdir jenkins
 fi
+if [ &quot;${TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY}&quot; = &quot;brandnew&quot; ]; then
+    rm -rf jenkins/${TRIGGER_PARAM_PLATFORM}
+fi
 if [ ! -d &quot;jenkins/${TRIGGER_PARAM_PLATFORM}&quot; ]; then
     mkdir jenkins/${TRIGGER_PARAM_PLATFORM}
 fi
@@ -312,6 +318,9 @@ echo &quot;================================ dserver ============================
 cd ${WORKSPACE}/dserver/build
 if [ ! -d &quot;jenkins&quot; ]; then
     mkdir jenkins
+fi
+if [ &quot;${TRIGGER_PARAM_DSERVER_BUILD_POLICY}&quot; = &quot;brandnew&quot; ]; then
+    rm -rf jenkins/${TRIGGER_PARAM_PLATFORM}
 fi
 if [ ! -d &quot;jenkins/${TRIGGER_PARAM_PLATFORM}&quot; ]; then
     mkdir jenkins/${TRIGGER_PARAM_PLATFORM}
@@ -375,6 +384,9 @@ cd ${WORKSPACE}/gui/build
 if [ ! -d &quot;jenkins&quot; ]; then
     mkdir jenkins
 fi
+if [ &quot;${TRIGGER_PARAM_GUI_BUILD_POLICY}&quot; = &quot;brandnew&quot; ]; then
+    rm -rf jenkins/${TRIGGER_PARAM_PLATFORM}
+fi
 if [ ! -d &quot;jenkins/${TRIGGER_PARAM_PLATFORM}&quot; ]; then
     mkdir jenkins/${TRIGGER_PARAM_PLATFORM}
 fi
@@ -398,7 +410,7 @@ fi
 cp ${WORKSPACE}/gui/build/${TRIGGER_PARAM_PLATFORM}/features.pri .
 ${WORKSPACE}/gui/build/${TRIGGER_PARAM_PLATFORM}/qmake_gui.sh ${GUI_PATH} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN}
 
-if [ &quot;${TRIGGER_PARAM_DSERVER_BUILD_POLICY}&quot; = &quot;clean&quot; ]; then
+if [ &quot;${TRIGGER_PARAM_GUI_BUILD_POLICY}&quot; = &quot;clean&quot; ]; then
     make clean
 fi
 make
