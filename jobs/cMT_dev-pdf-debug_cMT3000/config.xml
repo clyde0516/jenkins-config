@@ -303,7 +303,7 @@ ${WORKSPACE}/libweintek/build/${TRIGGER_PARAM_PLATFORM}/cmake_libweintek.sh ${LI
 if [ &quot;${TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY}&quot; = &quot;clean&quot; ]; then
     make clean
 fi
-make install</command>
+make install VERBOSE=1</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
       <command># Build dserver
