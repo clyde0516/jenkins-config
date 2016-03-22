@@ -309,6 +309,7 @@ make install VERBOSE=1</command>
       <command># Build dserver
 echo &quot;================================ dserver ================================ dserver ================================ dserver ================================&quot;
 
+rm -rf ${WORKSPACE}/dserver/build/jenkins
 cd ${WORKSPACE}/dserver/build
 if [ ! -d &quot;jenkins&quot; ]; then
     mkdir jenkins
