@@ -72,7 +72,7 @@ export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT-iv5/target/environment-setup-a
 export BUILD_TYPE=RelWithDebInfo
 export CRYPTO_EXTENSION_NAME=c30
 
-rm ${INSTALL_PREFIX}/bin/dserver*
+rm -f ${INSTALL_PREFIX}/bin/dserver*
 rm -rf ${WORKSPACE}/artifacts
 mkdir ${WORKSPACE}/artifacts
 
