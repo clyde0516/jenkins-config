@@ -81,7 +81,10 @@ fi
 
 rm -rf ${WORKSPACE}/artifacts
 mkdir ${WORKSPACE}/artifacts
-rm ${WORKSPACE}/build/jenkins/bin/com*
+
+if [ &quot;${WORKSPACE}/build/jenkins/bin/com*&quot; ]; then
+    rm ${WORKSPACE}/build/jenkins/bin/com*
+fi
 
 cd ${WORKSPACE}/build
 if [ ! -d &quot;jenkins&quot; ]; then
