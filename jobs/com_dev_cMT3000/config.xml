@@ -89,7 +89,9 @@ if [ ! -d &quot;jenkins&quot; ]; then
 fi
 cd jenkins
 
-mkdir bin
+if [ ! -d &quot;bin&quot; ]; then
+    mkdir bin
+fi
 
 ${WORKSPACE}/build/${TRIGGER_PARAM_PLATFORM}/cmake_com.sh ${WORKSPACE} ${CRYPTO_EXTENSION_NAME} ${CROSS_COMPILER_TOOLCHAIN} RelWithDebInfo
 
