@@ -293,15 +293,10 @@ elif [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT-iv5&quot; ]; then
 fi
 
 cd ${WORKSPACE}/libweintek/build
-if [ ! -d &quot;jenkins&quot; ]; then
-    mkdir jenkins
-fi
 if [ &quot;${TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY}&quot; = &quot;brandnew&quot; ]; then
     rm -rf jenkins/${TRIGGER_PARAM_PLATFORM}
 fi
-if [ ! -d &quot;jenkins/${TRIGGER_PARAM_PLATFORM}&quot; ]; then
-    mkdir jenkins/${TRIGGER_PARAM_PLATFORM}
-fi
+mkdir -p jenkins/${TRIGGER_PARAM_PLATFORM}
 cd jenkins/${TRIGGER_PARAM_PLATFORM}
 
 ${WORKSPACE}/libweintek/build/${TRIGGER_PARAM_PLATFORM}/cmake_libweintek.sh ${LIBWEINTEK_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} ${BUILD_TYPE}
@@ -332,15 +327,10 @@ elif [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT-iv5&quot; ]; then
 fi
 
 cd ${WORKSPACE}/dserver/build
-if [ ! -d &quot;jenkins&quot; ]; then
-    mkdir jenkins
-fi
 if [ &quot;${TRIGGER_PARAM_DSERVER_BUILD_POLICY}&quot; = &quot;brandnew&quot; ]; then
     rm -rf jenkins/${TRIGGER_PARAM_PLATFORM}
 fi
-if [ ! -d &quot;jenkins/${TRIGGER_PARAM_PLATFORM}&quot; ]; then
-    mkdir jenkins/${TRIGGER_PARAM_PLATFORM}
-fi
+mkdir -p jenkins/${TRIGGER_PARAM_PLATFORM}
 cd jenkins/${TRIGGER_PARAM_PLATFORM}
 
 ${WORKSPACE}/dserver/build/${TRIGGER_PARAM_PLATFORM}/cmake_dserver.sh ${DSERVER_PATH} ${LIBWEINTEK_PATH} ${MARIADB_CONNECTOR_C_PATH} ${GOOGLE_BREAKPAD_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} ${BUILD_TYPE}
@@ -398,15 +388,10 @@ if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;Ubuntu&quot; ]; then
 fi
 
 cd ${WORKSPACE}/gui/build
-if [ ! -d &quot;jenkins&quot; ]; then
-    mkdir jenkins
-fi
 if [ &quot;${TRIGGER_PARAM_GUI_BUILD_POLICY}&quot; = &quot;brandnew&quot; ]; then
     rm -rf jenkins/${TRIGGER_PARAM_PLATFORM}
 fi
-if [ ! -d &quot;jenkins/${TRIGGER_PARAM_PLATFORM}&quot; ]; then
-    mkdir jenkins/${TRIGGER_PARAM_PLATFORM}
-fi
+mkdir -p jenkins/${TRIGGER_PARAM_PLATFORM}
 cd jenkins/${TRIGGER_PARAM_PLATFORM}
 
 cp ${WORKSPACE}/gui/build/${TRIGGER_PARAM_PLATFORM}/features.pri .
