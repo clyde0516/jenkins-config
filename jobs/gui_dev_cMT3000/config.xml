@@ -65,25 +65,25 @@
       <runner class="org.jenkins_ci.plugins.run_condition.BuildStepRunner$Fail" plugin="run-condition@1.0"/>
     </org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder>
     <hudson.tasks.Shell>
-      <command>cd ${WORKSPACE}/build
+      <command>export LIBWEINTEK_PATH=/var/lib/jenkins/jobs/libweintek_dev_cMT3000/workspace
+export DSERVER_PATH=/var/lib/jenkins/jobs/dserver_dev_cMT3000/workspace
+export INSTALL_PREFIX=/home/ci/work/cMT3000/build-dev-branch
+export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
+
+rm -f ${INSTALL_PREFIX}/bin/gui*
+rm -rf ${WORKSPACE}/artifacts
+mkdir ${WORKSPACE}/artifacts
+
+cd ${WORKSPACE}/build
 if [ ! -d &quot;jenkins&quot; ]; then
     mkdir jenkins
 fi
 cd jenkins
 
 cp ${WORKSPACE}/build/cMT3000/features.pri .
-
-export LIBWEINTEK_PATH=/var/lib/jenkins/jobs/libweintek_dev_cMT3000/workspace
-export DSERVER_PATH=/var/lib/jenkins/jobs/dserver_dev_cMT3000/workspace
-export INSTALL_PREFIX=/home/ci/work/cMT3000/build-dev-branch
-export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
-
 ${WORKSPACE}/build/cMT3000/qmake_gui.sh ${WORKSPACE} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} increamental
 
-cd ${WORKSPACE}
-rm -rf artifacts
-mkdir artifacts
-cp ${INSTALL_PREFIX}/bin/gui.c30 artifacts
+cp ${INSTALL_PREFIX}/bin/gui.c30 ${WORKSPACE}/artifacts
 </command>
     </hudson.tasks.Shell>
   </builders>
