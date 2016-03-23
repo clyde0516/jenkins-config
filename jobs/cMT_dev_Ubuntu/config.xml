@@ -278,6 +278,45 @@ cd ${WORKSPACE}/cppcheck
 cppcheck --enable=all --inconclusive --suppress=syntaxError --xml --xml-version=2 ${WORKSPACE}/libweintek/weintek ${WORKSPACE}/dserver/dserver ${WORKSPACE}/gui/got 2&gt; cppcheck-result.xml
 </command>
     </hudson.tasks.Shell>
+    <org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder plugin="conditional-buildstep@1.3.3">
+      <condition class="org.jenkins_ci.plugins.run_condition.core.AlwaysRun" plugin="run-condition@1.0"/>
+      <buildStep class="org.jenkinsci.plugins.cppcheck.CppcheckPublisher" plugin="cppcheck@1.21">
+        <cppcheckConfig>
+          <pattern>cppcheck/cppcheck-result.xml</pattern>
+          <ignoreBlankFiles>false</ignoreBlankFiles>
+          <allowNoReport>false</allowNoReport>
+          <configSeverityEvaluation>
+            <threshold></threshold>
+            <newThreshold></newThreshold>
+            <failureThreshold>733</failureThreshold>
+            <newFailureThreshold>1</newFailureThreshold>
+            <healthy></healthy>
+            <unHealthy></unHealthy>
+            <severityError>true</severityError>
+            <severityWarning>true</severityWarning>
+            <severityStyle>true</severityStyle>
+            <severityPerformance>true</severityPerformance>
+            <severityInformation>true</severityInformation>
+            <severityNoCategory>true</severityNoCategory>
+            <severityPortability>true</severityPortability>
+          </configSeverityEvaluation>
+          <configGraph>
+            <xSize>500</xSize>
+            <ySize>200</ySize>
+            <numBuildsInGraph>0</numBuildsInGraph>
+            <displayAllErrors>true</displayAllErrors>
+            <displayErrorSeverity>true</displayErrorSeverity>
+            <displayWarningSeverity>true</displayWarningSeverity>
+            <displayStyleSeverity>true</displayStyleSeverity>
+            <displayPerformanceSeverity>true</displayPerformanceSeverity>
+            <displayInformationSeverity>true</displayInformationSeverity>
+            <displayNoCategorySeverity>true</displayNoCategorySeverity>
+            <displayPortabilitySeverity>true</displayPortabilitySeverity>
+          </configGraph>
+        </cppcheckConfig>
+      </buildStep>
+      <runner class="org.jenkins_ci.plugins.run_condition.BuildStepRunner$Fail" plugin="run-condition@1.0"/>
+    </org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder>
     <hudson.tasks.Shell>
       <command># Build libweintek
 echo &quot;================================ libweintek ================================ libweintek ================================ libweintek ================================&quot;
