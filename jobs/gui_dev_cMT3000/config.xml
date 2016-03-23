@@ -75,9 +75,7 @@ rm -rf ${WORKSPACE}/artifacts
 mkdir ${WORKSPACE}/artifacts
 
 cd ${WORKSPACE}/build
-if [ ! -d &quot;jenkins&quot; ]; then
-    mkdir jenkins
-fi
+mkdir -p jenkins
 cd jenkins
 
 cp ${WORKSPACE}/build/cMT3000/features.pri .
