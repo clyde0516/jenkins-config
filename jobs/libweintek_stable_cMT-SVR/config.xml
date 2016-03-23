@@ -59,9 +59,7 @@
     </org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder>
     <hudson.tasks.Shell>
       <command>cd ${WORKSPACE}/build
-if [ ! -d &quot;jenkins&quot; ]; then
-    mkdir jenkins
-fi
+mkdir -p jenkins
 cd jenkins
 
 export INSTALL_PREFIX=/home/ci/work/cMT-SVR/build-stable-branch
