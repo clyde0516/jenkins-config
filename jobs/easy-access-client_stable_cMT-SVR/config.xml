@@ -105,9 +105,7 @@ rm -rf ${WORKSPACE}/weintek-p2p/jenkins</command>
     <hudson.tasks.Shell>
       <command>cd ${WORKSPACE}/weintek-p2p
 cp config_linux.h config.h
-if [ ! -d &quot;jenkins&quot; ]; then
-    mkdir jenkins
-fi
+mkdir -p jenkins
 cd jenkins
 
 export BUILD_TYPE=Release
@@ -128,9 +126,7 @@ upx weintek-p2p</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
       <command>cd ${WORKSPACE}/rma
-if [ ! -d &quot;jenkins&quot; ]; then
-    mkdir jenkins
-fi
+mkdir -p jenkins
 cd jenkins
 
 touch ${WORKSPACE}/rma/AuthClient/easy_access_client_manager.bin.cpp
