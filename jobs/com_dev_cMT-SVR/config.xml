@@ -59,7 +59,14 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>cd ${WORKSPACE}
+      <command>if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT3000&quot; ]; then
+    export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
+	export CRYPTO_EXTENSION_NAME=c30
+else
+	export CRYPTO_EXTENSION_NAME=e30
+fi
+
+cd ${WORKSPACE}
 rm -rf artifacts
 mkdir artifacts
 rm ${WORKSPACE}/build/jenkins/bin/com*
@@ -71,21 +78,13 @@ cd jenkins
 
 mkdir bin
 
-if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT3000&quot; ]; then
-    export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
-	export CRYPTO_EXTENSION_NAME=c30
-else
-	export CRYPTO_EXTENSION_NAME=e30
-fi
-
 ${WORKSPACE}/build/${TRIGGER_PARAM_PLATFORM}/cmake_com.sh ${WORKSPACE} ${CRYPTO_EXTENSION_NAME} ${CROSS_COMPILER_TOOLCHAIN} RelWithDebInfo
 
 make install VERBOSE=1
-cp ${WORKSPACE}/build/jenkins/bin/com artifacts
+cp ${WORKSPACE}/build/jenkins/bin/com ${WORKSPACE}/artifacts
 
-cd ${WORKSPACE}/build/jenkins/bin
-/home/ci/work/crypto e com com.${CRYPTO_EXTENSION_NAME}
-cp com.${CRYPTO_EXTENSION_NAME} artifacts</command>
+/home/ci/work/crypto e ${WORKSPACE}/build/jenkins/bin/com {WORKSPACE}/build/jenkins/bin/com.${CRYPTO_EXTENSION_NAME}
+cp {WORKSPACE}/build/jenkins/bin/com.${CRYPTO_EXTENSION_NAME} ${WORKSPACE}/artifacts</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
