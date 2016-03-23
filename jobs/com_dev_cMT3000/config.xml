@@ -100,7 +100,7 @@ make install VERBOSE=1
 cp ${WORKSPACE}/build/jenkins/bin/com ${WORKSPACE}/artifacts
 
 /home/ci/work/crypto e ${WORKSPACE}/build/jenkins/bin/com ${WORKSPACE}/build/jenkins/bin/com.${CRYPTO_EXTENSION_NAME}
-cp {WORKSPACE}/build/jenkins/bin/com.${CRYPTO_EXTENSION_NAME} ${WORKSPACE}/artifacts</command>
+cp ${WORKSPACE}/build/jenkins/bin/com.${CRYPTO_EXTENSION_NAME} ${WORKSPACE}/artifacts</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
