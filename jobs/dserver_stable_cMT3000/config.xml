@@ -77,9 +77,7 @@ rm -rf ${WORKSPACE}/artifacts
 mkdir ${WORKSPACE}/artifacts
 
 cd ${WORKSPACE}/build
-if [ ! -d &quot;jenkins&quot; ]; then
-    mkdir jenkins
-fi
+mkdir -p jenkins
 cd jenkins
 
 ${WORKSPACE}/build/cMT3000/cmake_dserver.sh ${WORKSPACE} ${LIBWEINTEK_PATH} ${MARIADB_CONNECTOR_C_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} ${BUILD_TYPE}
