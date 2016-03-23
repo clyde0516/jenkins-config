@@ -497,41 +497,6 @@ ${INSTALL_PREFIX}/bin/test-got --gtest_output=xml:${WORKSPACE}/gtest/gtest-got.x
       <defaultExcludes>true</defaultExcludes>
       <caseSensitive>true</caseSensitive>
     </hudson.tasks.ArtifactArchiver>
-    <org.jenkinsci.plugins.cppcheck.CppcheckPublisher plugin="cppcheck@1.21">
-      <cppcheckConfig>
-        <pattern>cppcheck/cppcheck-result.xml</pattern>
-        <ignoreBlankFiles>false</ignoreBlankFiles>
-        <allowNoReport>false</allowNoReport>
-        <configSeverityEvaluation>
-          <threshold></threshold>
-          <newThreshold></newThreshold>
-          <failureThreshold>733</failureThreshold>
-          <newFailureThreshold>1</newFailureThreshold>
-          <healthy></healthy>
-          <unHealthy></unHealthy>
-          <severityError>true</severityError>
-          <severityWarning>true</severityWarning>
-          <severityStyle>true</severityStyle>
-          <severityPerformance>true</severityPerformance>
-          <severityInformation>true</severityInformation>
-          <severityNoCategory>true</severityNoCategory>
-          <severityPortability>true</severityPortability>
-        </configSeverityEvaluation>
-        <configGraph>
-          <xSize>500</xSize>
-          <ySize>200</ySize>
-          <numBuildsInGraph>0</numBuildsInGraph>
-          <displayAllErrors>true</displayAllErrors>
-          <displayErrorSeverity>true</displayErrorSeverity>
-          <displayWarningSeverity>true</displayWarningSeverity>
-          <displayStyleSeverity>true</displayStyleSeverity>
-          <displayPerformanceSeverity>true</displayPerformanceSeverity>
-          <displayInformationSeverity>true</displayInformationSeverity>
-          <displayNoCategorySeverity>true</displayNoCategorySeverity>
-          <displayPortabilitySeverity>true</displayPortabilitySeverity>
-        </configGraph>
-      </cppcheckConfig>
-    </org.jenkinsci.plugins.cppcheck.CppcheckPublisher>
     <hudson.tasks.junit.JUnitResultArchiver plugin="junit@1.10">
       <testResults>gtest/gtest-*.xml</testResults>
       <keepLongStdio>true</keepLongStdio>
