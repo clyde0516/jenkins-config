@@ -105,7 +105,7 @@ cp ${WORKSPACE}/build/jenkins/bin/com.${CRYPTO_EXTENSION_NAME} ${WORKSPACE}/arti
   </builders>
   <publishers>
     <hudson.tasks.ArtifactArchiver>
-      <artifacts>artifacts/com.*</artifacts>
+      <artifacts>artifacts/*</artifacts>
       <allowEmptyArchive>false</allowEmptyArchive>
       <onlyIfSuccessful>true</onlyIfSuccessful>
       <fingerprint>false</fingerprint>
