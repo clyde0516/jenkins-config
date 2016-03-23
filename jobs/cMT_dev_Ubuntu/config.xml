@@ -282,6 +282,16 @@ cppcheck --enable=all --inconclusive --suppress=syntaxError --xml --xml-version=
       <command># Build libweintek
 echo &quot;================================ libweintek ================================ libweintek ================================ libweintek ================================&quot;
 
+export LIBWEINTEK_PATH=${WORKSPACE}/libweintek
+export INSTALL_PREFIX=/home/ci/work/${TRIGGER_PARAM_PLATFORM}/${TRIGGER_PARAM_INSTALL_FOLDER}
+export BUILD_TYPE=RelWithDebInfo
+
+if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT3000&quot; ]; then
+    export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
+elif [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT-iv5&quot; ]; then
+    export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT-iv5/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
+fi
+
 cd ${WORKSPACE}/libweintek/build
 if [ ! -d &quot;jenkins&quot; ]; then
     mkdir jenkins
@@ -294,16 +304,6 @@ if [ ! -d &quot;jenkins/${TRIGGER_PARAM_PLATFORM}&quot; ]; then
 fi
 cd jenkins/${TRIGGER_PARAM_PLATFORM}
 
-export LIBWEINTEK_PATH=${WORKSPACE}/libweintek
-export INSTALL_PREFIX=/home/ci/work/${TRIGGER_PARAM_PLATFORM}/${TRIGGER_PARAM_INSTALL_FOLDER}
-export BUILD_TYPE=RelWithDebInfo
-
-if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT3000&quot; ]; then
-    export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
-elif [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT-iv5&quot; ]; then
-    export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT-iv5/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
-fi
-
 ${WORKSPACE}/libweintek/build/${TRIGGER_PARAM_PLATFORM}/cmake_libweintek.sh ${LIBWEINTEK_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} ${BUILD_TYPE}
     
 if [ &quot;${TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY}&quot; = &quot;clean&quot; ]; then
@@ -314,18 +314,6 @@ make install</command>
     <hudson.tasks.Shell>
       <command># Build dserver
 echo &quot;================================ dserver ================================ dserver ================================ dserver ================================&quot;
-
-cd ${WORKSPACE}/dserver/build
-if [ ! -d &quot;jenkins&quot; ]; then
-    mkdir jenkins
-fi
-if [ &quot;${TRIGGER_PARAM_DSERVER_BUILD_POLICY}&quot; = &quot;brandnew&quot; ]; then
-    rm -rf jenkins/${TRIGGER_PARAM_PLATFORM}
-fi
-if [ ! -d &quot;jenkins/${TRIGGER_PARAM_PLATFORM}&quot; ]; then
-    mkdir jenkins/${TRIGGER_PARAM_PLATFORM}
-fi
-cd jenkins/${TRIGGER_PARAM_PLATFORM}
 
 export DSERVER_PATH=${WORKSPACE}/dserver
 export LIBWEINTEK_PATH=${WORKSPACE}/libweintek
@@ -343,14 +331,28 @@ elif [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT-iv5&quot; ]; then
     export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT-iv5/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
 fi
 
+cd ${WORKSPACE}/dserver/build
+if [ ! -d &quot;jenkins&quot; ]; then
+    mkdir jenkins
+fi
+if [ &quot;${TRIGGER_PARAM_DSERVER_BUILD_POLICY}&quot; = &quot;brandnew&quot; ]; then
+    rm -rf jenkins/${TRIGGER_PARAM_PLATFORM}
+fi
+if [ ! -d &quot;jenkins/${TRIGGER_PARAM_PLATFORM}&quot; ]; then
+    mkdir jenkins/${TRIGGER_PARAM_PLATFORM}
+fi
+cd jenkins/${TRIGGER_PARAM_PLATFORM}
+
 ${WORKSPACE}/dserver/build/${TRIGGER_PARAM_PLATFORM}/cmake_dserver.sh ${DSERVER_PATH} ${LIBWEINTEK_PATH} ${MARIADB_CONNECTOR_C_PATH} ${GOOGLE_BREAKPAD_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} ${BUILD_TYPE}
 
 if [ &quot;${TRIGGER_PARAM_DSERVER_BUILD_POLICY}&quot; = &quot;clean&quot; ]; then
     make clean
 fi
-make install/strip
 
-cd ${INSTALL_PREFIX}/bin
+make install VERBOSE=1
+cp ${INSTALL_PREFIX}/bin/dserver ${WORKSPACE}/artifacts
+
+make install/strip VERBOSE=1
 if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;Ubuntu&quot; ]; then
     export ENCRYPT_NAME=dserver
 else
@@ -361,7 +363,7 @@ else
     else
 	    export ENCRYPT_NAME=dserver.c30
     fi
-    /home/ci/work/crypto e dserver ${ENCRYPT_NAME}
+    /home/ci/work/crypto e ${INSTALL_PREFIX}/bin/dserver ${INSTALL_PREFIX}/bin/${ENCRYPT_NAME}
 fi
 cp ${INSTALL_PREFIX}/bin/${ENCRYPT_NAME} ${WORKSPACE}/artifacts</command>
     </hudson.tasks.Shell>
@@ -380,18 +382,6 @@ rm -rf ${WORKSPACE}/gui/build/jenkins
 # Build gui
 echo &quot;================================ gui ================================ gui ================================ gui ================================&quot;
 
-cd ${WORKSPACE}/gui/build
-if [ ! -d &quot;jenkins&quot; ]; then
-    mkdir jenkins
-fi
-if [ &quot;${TRIGGER_PARAM_GUI_BUILD_POLICY}&quot; = &quot;brandnew&quot; ]; then
-    rm -rf jenkins/${TRIGGER_PARAM_PLATFORM}
-fi
-if [ ! -d &quot;jenkins/${TRIGGER_PARAM_PLATFORM}&quot; ]; then
-    mkdir jenkins/${TRIGGER_PARAM_PLATFORM}
-fi
-cd jenkins/${TRIGGER_PARAM_PLATFORM}
-
 export GUI_PATH=${WORKSPACE}/gui
 export DSERVER_PATH=${WORKSPACE}/dserver
 export LIBWEINTEK_PATH=${WORKSPACE}/libweintek
@@ -406,6 +396,18 @@ fi
 if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;Ubuntu&quot; ]; then
    export PATH=/opt/Qt5.4.2/5.4/gcc_64/bin:${PATH}
 fi
+
+cd ${WORKSPACE}/gui/build
+if [ ! -d &quot;jenkins&quot; ]; then
+    mkdir jenkins
+fi
+if [ &quot;${TRIGGER_PARAM_GUI_BUILD_POLICY}&quot; = &quot;brandnew&quot; ]; then
+    rm -rf jenkins/${TRIGGER_PARAM_PLATFORM}
+fi
+if [ ! -d &quot;jenkins/${TRIGGER_PARAM_PLATFORM}&quot; ]; then
+    mkdir jenkins/${TRIGGER_PARAM_PLATFORM}
+fi
+cd jenkins/${TRIGGER_PARAM_PLATFORM}
 
 cp ${WORKSPACE}/gui/build/${TRIGGER_PARAM_PLATFORM}/features.pri .
 ${WORKSPACE}/gui/build/${TRIGGER_PARAM_PLATFORM}/qmake_gui.sh ${GUI_PATH} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} ${TRIGGER_PARAM_GUI_BUILD_POLICY}
