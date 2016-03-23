@@ -65,7 +65,9 @@
       <runner class="org.jenkins_ci.plugins.run_condition.BuildStepRunner$Fail" plugin="run-condition@1.0"/>
     </org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder>
     <hudson.tasks.Shell>
-      <command>cd ${WORKSPACE}/build
+      <command>rm ${INSTALL_PREFIX}/bin/dserver*
+
+cd ${WORKSPACE}/build
 if [ ! -d &quot;jenkins&quot; ]; then
     mkdir jenkins
 fi
