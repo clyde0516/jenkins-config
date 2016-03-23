@@ -78,7 +78,8 @@ export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT3000/target/environment-setup-a
 export BUILD_TYPE=RelWithDebInfo
 ${WORKSPACE}/build/cMT3000/cmake_dserver.sh ${WORKSPACE} ${LIBWEINTEK_PATH} ${MARIADB_CONNECTOR_C_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} ${BUILD_TYPE}
 
-make install/strip
+rm ${INSTALL_PREFIX}/bin/dserver*
+make install/strip VERBOSE=1
 
 cd ${INSTALL_PREFIX}/bin
 /home/ci/work/crypto e dserver dserver.c30
