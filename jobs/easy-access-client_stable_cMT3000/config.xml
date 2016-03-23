@@ -107,9 +107,7 @@ rm -rf ${WORKSPACE}/weintek-p2p/jenkins</command>
 
 cd ${WORKSPACE}/weintek-p2p
 cp config_linux.h config.h
-if [ ! -d &quot;jenkins&quot; ]; then
-    mkdir jenkins
-fi
+mkdir -p jenkins
 cd jenkins
 
 source /home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
@@ -134,9 +132,7 @@ cd ${INSTALL_PREFIX}/bin
       <command>#!/bin/bash
 
 cd ${WORKSPACE}/rma
-if [ ! -d &quot;jenkins&quot; ]; then
-    mkdir jenkins
-fi
+mkdir -p jenkins
 cd jenkins
 
 touch ${WORKSPACE}/rma/AuthClient/easy_access_client_manager.bin.cpp
