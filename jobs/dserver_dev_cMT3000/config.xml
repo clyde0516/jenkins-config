@@ -85,7 +85,7 @@ cd jenkins
 ${WORKSPACE}/build/cMT3000/cmake_dserver.sh ${WORKSPACE} ${LIBWEINTEK_PATH} ${MARIADB_CONNECTOR_C_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} ${BUILD_TYPE}
 
 make install VERBOSE=1
-cp ${INSTALL_PREFIX}/bin/dserver ${WORKSPACE}/artifacts
+cp ${INSTALL_PREFIX}/bin/dserver ${WORKSPACE}/artifacts/dserver.RelWithDebInfo
 
 make install/strip VERBOSE=1
 /home/ci/work/crypto e ${INSTALL_PREFIX}/bin/dserver ${INSTALL_PREFIX}/bin/dserver.${CRYPTO_EXTENSION_NAME}
