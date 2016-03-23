@@ -330,7 +330,12 @@ cd ${WORKSPACE}/dserver/build
 if [ &quot;${TRIGGER_PARAM_DSERVER_BUILD_POLICY}&quot; = &quot;brandnew&quot; ]; then
     rm -rf jenkins/${TRIGGER_PARAM_PLATFORM}
 fi
-mkdir -p jenkins/${TRIGGER_PARAM_PLATFORM}
+if [ ! -d &quot;jenkins&quot; ]; then
+    mkdir -p jenkins
+fi
+if [ ! -d &quot;jenkins/${TRIGGER_PARAM_PLATFORM}&quot; ]; then
+    mkdir -p jenkins/${TRIGGER_PARAM_PLATFORM}
+fi
 cd jenkins/${TRIGGER_PARAM_PLATFORM}
 
 ${WORKSPACE}/dserver/build/${TRIGGER_PARAM_PLATFORM}/cmake_dserver.sh ${DSERVER_PATH} ${LIBWEINTEK_PATH} ${MARIADB_CONNECTOR_C_PATH} ${GOOGLE_BREAKPAD_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} ${BUILD_TYPE}
@@ -391,7 +396,12 @@ cd ${WORKSPACE}/gui/build
 if [ &quot;${TRIGGER_PARAM_GUI_BUILD_POLICY}&quot; = &quot;brandnew&quot; ]; then
     rm -rf jenkins/${TRIGGER_PARAM_PLATFORM}
 fi
-mkdir -p jenkins/${TRIGGER_PARAM_PLATFORM}
+if [ ! -d &quot;jenkins&quot; ]; then
+    mkdir -p jenkins
+fi
+if [ ! -d &quot;jenkins/${TRIGGER_PARAM_PLATFORM}&quot; ]; then
+    mkdir -p jenkins/${TRIGGER_PARAM_PLATFORM}
+fi
 cd jenkins/${TRIGGER_PARAM_PLATFORM}
 
 cp ${WORKSPACE}/gui/build/${TRIGGER_PARAM_PLATFORM}/features.pri .
