@@ -85,14 +85,9 @@ mkdir ${WORKSPACE}/artifacts
 rm -f ${WORKSPACE}/build/jenkins/bin/com*
 
 cd ${WORKSPACE}/build
-if [ ! -d &quot;jenkins&quot; ]; then
-    mkdir jenkins
-fi
+mkdir -p jenkins
 cd jenkins
-
-if [ ! -d &quot;bin&quot; ]; then
-    mkdir bin
-fi
+mkdir -p bin
 
 ${WORKSPACE}/build/${TRIGGER_PARAM_PLATFORM}/cmake_com.sh ${WORKSPACE} ${CRYPTO_EXTENSION_NAME} ${CROSS_COMPILER_TOOLCHAIN} RelWithDebInfo
 
