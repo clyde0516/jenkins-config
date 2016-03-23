@@ -66,9 +66,8 @@ else
 	export CRYPTO_EXTENSION_NAME=e30
 fi
 
-cd ${WORKSPACE}
-rm -rf artifacts
-mkdir artifacts
+rm -rf ${WORKSPACE}/artifacts
+mkdir ${WORKSPACE}/artifacts
 rm ${WORKSPACE}/build/jenkins/bin/com*
 
 cd ${WORKSPACE}/build
