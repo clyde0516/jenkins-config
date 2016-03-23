@@ -71,8 +71,9 @@ mkdir ${WORKSPACE}/artifacts
 rm ${WORKSPACE}/build/jenkins/bin/com*
 
 cd ${WORKSPACE}/build
-rm -rf jenkins
-mkdir jenkins
+if [ ! -d &quot;jenkins&quot; ]; then
+    mkdir jenkins
+fi
 cd jenkins
 
 mkdir bin
