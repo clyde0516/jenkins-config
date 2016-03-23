@@ -65,32 +65,31 @@
       <runner class="org.jenkins_ci.plugins.run_condition.BuildStepRunner$Fail" plugin="run-condition@1.0"/>
     </org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder>
     <hudson.tasks.Shell>
-      <command>cd ${WORKSPACE}/build
+      <command>export LIBWEINTEK_PATH=${JENKINS_HOME}/jobs/libweintek_stable_cMT-SVR/workspace
+export MARIADB_CONNECTOR_C_PATH=/home/ci/work/mariadb-connector-c
+export GOOGLE_BREAKPAD_PATH=/home/ci/work/cMT-SVR/google-breakpad
+export INSTALL_PREFIX=/home/ci/work/cMT-SVR/build-stable-branch
+export BUILD_TYPE=RelWithDebInfo
+export CRYPTO_EXTENSION_NAME=cmt
+
+rm ${INSTALL_PREFIX}/bin/dserver*
+rm -rf ${WORKSPACE}/artifacts
+mkdir ${WORKSPACE}/artifacts
+
+cd ${WORKSPACE}/build
 if [ ! -d &quot;jenkins&quot; ]; then
     mkdir jenkins
 fi
 cd jenkins
 
-export LIBWEINTEK_PATH=${JENKINS_HOME}/jobs/libweintek_stable_cMT-SVR/workspace
-export MARIADB_CONNECTOR_C_PATH=/home/ci/work/mariadb-connector-c
-export GOOGLE_BREAKPAD_PATH=/home/ci/work/cMT-SVR/google-breakpad
-export INSTALL_PREFIX=/home/ci/work/cMT-SVR/build-stable-branch
-export BUILD_TYPE=RelWithDebInfo
-
 ${WORKSPACE}/build/cMT-SVR/cmake_dserver.sh ${WORKSPACE} ${LIBWEINTEK_PATH} ${MARIADB_CONNECTOR_C_PATH} ${GOOGLE_BREAKPAD_PATH} ${INSTALL_PREFIX} ${BUILD_TYPE}
 
-make install
-mv ${INSTALL_PREFIX}/bin/dserver ${INSTALL_PREFIX}/bin/dserver.RelWithDebInfo
+make install VERBOSE=1
+cp ${INSTALL_PREFIX}/bin/dserver ${WORKSPACE}/artifacts
 
-make install/strip
-
-cd ${INSTALL_PREFIX}/bin
-/home/ci/work/crypto e dserver dserver.cmt
-
-cd ${WORKSPACE}
-rm -rf artifacts
-mkdir artifacts
-cp ${INSTALL_PREFIX}/bin/dserver.cmt artifacts</command>
+make install/strip VERBOSE=1
+/home/ci/work/crypto e ${INSTALL_PREFIX}/bin/dserver ${INSTALL_PREFIX}/bin/dserver.${CRYPTO_EXTENSION_NAME}
+cp ${INSTALL_PREFIX}/bin/dserver.${CRYPTO_EXTENSION_NAME} ${WORKSPACE}/artifacts</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
