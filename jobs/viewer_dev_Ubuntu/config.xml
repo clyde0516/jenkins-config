@@ -68,15 +68,7 @@
       <runner class="org.jenkins_ci.plugins.run_condition.BuildStepRunner$Fail" plugin="run-condition@1.0"/>
     </org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder>
     <hudson.tasks.Shell>
-      <command>cd ${WORKSPACE}/build
-if [ ! -d &quot;jenkins&quot; ]; then
-    mkdir jenkins
-fi
-cd jenkins
-
-cp ${WORKSPACE}/build/Ubuntu/*features.pri .
-
-export CLOUDHMI_PATH=${WORKSPACE}/CloudHmi
+      <command>export CLOUDHMI_PATH=${WORKSPACE}/CloudHmi
 export LIBWEINTEK_PATH=/var/lib/jenkins/jobs/libweintek_dev_cMT-iv5/workspace
 export DSERVER_PATH=/var/lib/jenkins/jobs/dserver_dev_cMT-iv5/workspace
 export GUI_PATH=/var/lib/jenkins/jobs/gui_dev_cMT-iv5/workspace
@@ -84,12 +76,20 @@ export INSTALL_PREFIX=/home/ci/work/Ubuntu/build-dev-branch
 
 export PATH=/opt/Qt5.4.2/5.4/gcc_64/bin:${PATH}
 
+rm -f ${INSTALL_PREFIX}/bin/CloudHmi*
+rm -rf ${WORKSPACE}/artifacts
+mkdir ${WORKSPACE}/artifacts
+
+cd ${WORKSPACE}/build
+if [ ! -d &quot;jenkins&quot; ]; then
+    mkdir jenkins
+fi
+cd jenkins
+
+cp ${WORKSPACE}/build/Ubuntu/*features.pri .
 ${WORKSPACE}/build/Ubuntu/qmake_viewer.sh ${CLOUDHMI_PATH} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${GUI_PATH} ${INSTALL_PREFIX} increamental
 
-cd ${WORKSPACE}
-rm -rf artifacts
-mkdir artifacts
-cp ${INSTALL_PREFIX}/bin/CloudHmi.tar artifacts
+cp ${INSTALL_PREFIX}/bin/CloudHmi.tar  ${WORKSPACE}/artifacts
 </command>
     </hudson.tasks.Shell>
   </builders>
