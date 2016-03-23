@@ -59,7 +59,12 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>cd ${WORKSPACE}/build
+      <command>cd ${WORKSPACE}
+rm -rf artifacts
+mkdir artifacts
+rm ${WORKSPACE}/build/jenkins/bin/com*
+
+cd ${WORKSPACE}/build
 rm -rf jenkins
 mkdir jenkins
 cd jenkins
@@ -76,14 +81,11 @@ fi
 ${WORKSPACE}/build/${TRIGGER_PARAM_PLATFORM}/cmake_com.sh ${WORKSPACE} ${CRYPTO_EXTENSION_NAME} ${CROSS_COMPILER_TOOLCHAIN} RelWithDebInfo
 
 make install VERBOSE=1
+cp ${WORKSPACE}/build/jenkins/bin/com artifacts
 
 cd ${WORKSPACE}/build/jenkins/bin
 /home/ci/work/crypto e com com.${CRYPTO_EXTENSION_NAME}
-
-cd ${WORKSPACE}
-rm -rf artifacts
-mkdir artifacts
-cp ${WORKSPACE}/build/jenkins/bin/com.${CRYPTO_EXTENSION_NAME} artifacts</command>
+cp com.${CRYPTO_EXTENSION_NAME} artifacts</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
