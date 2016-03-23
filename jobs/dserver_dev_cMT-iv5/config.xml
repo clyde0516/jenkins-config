@@ -65,23 +65,21 @@
       <runner class="org.jenkins_ci.plugins.run_condition.BuildStepRunner$Fail" plugin="run-condition@1.0"/>
     </org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder>
     <hudson.tasks.Shell>
-      <command>cd ${WORKSPACE}/build
-if [ ! -d &quot;jenkins&quot; ]; then
-    mkdir jenkins
-fi
-cd jenkins
-
-export LIBWEINTEK_PATH=${JENKINS_HOME}/jobs/libweintek_dev_cMT-iv5/workspace
+      <command>export LIBWEINTEK_PATH=${JENKINS_HOME}/jobs/libweintek_dev_cMT-iv5/workspace
 export MARIADB_CONNECTOR_C_PATH=/home/ci/work/mariadb-connector-c
 export INSTALL_PREFIX=/home/ci/work/cMT-iv5/build-dev-branch
 export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT-iv5/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
 export BUILD_TYPE=RelWithDebInfo
 
-cd ${WORKSPACE}
-rm -rf artifacts
-mkdir artifacts
-
 rm ${INSTALL_PREFIX}/bin/dserver*
+rm -rf ${WORKSPACE}/artifacts
+mkdir ${WORKSPACE}/artifacts
+
+cd ${WORKSPACE}/build
+if [ ! -d &quot;jenkins&quot; ]; then
+    mkdir jenkins
+fi
+cd jenkins
 
 ${WORKSPACE}/build/cMT-iv5/cmake_dserver.sh ${WORKSPACE} ${LIBWEINTEK_PATH} ${MARIADB_CONNECTOR_C_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} ${BUILD_TYPE}
 
@@ -89,9 +87,8 @@ make install VERBOSE=1
 cp ${INSTALL_PREFIX}/bin/dserver artifacts
 
 make install/strip VERBOSE=1
-cd ${INSTALL_PREFIX}/bin
-/home/ci/work/crypto e dserver dserver.iv5
-cp dserver.iv5 artifacts
+/home/ci/work/crypto e ${INSTALL_PREFIX}/bin/dserver ${INSTALL_PREFIX}/bin/dserver.iv5
+cp ${INSTALL_PREFIX}/bin/dserver.iv5 artifacts
 </command>
     </hudson.tasks.Shell>
   </builders>
