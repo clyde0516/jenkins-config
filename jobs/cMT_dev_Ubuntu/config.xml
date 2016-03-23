@@ -350,7 +350,7 @@ if [ &quot;${TRIGGER_PARAM_DSERVER_BUILD_POLICY}&quot; = &quot;clean&quot; ]; th
 fi
 
 make install VERBOSE=1
-cp ${INSTALL_PREFIX}/bin/dserver ${WORKSPACE}/artifacts
+cp ${INSTALL_PREFIX}/bin/dserver ${WORKSPACE}/artifacts/dserver.RelWithDebInfo
 
 make install/strip VERBOSE=1
 if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;Ubuntu&quot; ]; then
