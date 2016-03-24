@@ -26,7 +26,7 @@
 
 mkdir include
 cp -r /opt/Qt5.4.2_enterprise/5.4/gcc_64/include/QtCharts include
-tar -cv QtCharts &gt;&gt; include.tar
+tar -cv include/QtCharts &gt;&gt; include.tar
 
 mkdir lib/
 mkdir lib/cMT3000
