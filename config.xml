@@ -395,6 +395,7 @@
         <string>gui_stable_cMT-iv5</string>
         <string>gui_stable_cMT3000</string>
         <string>jenkins-test</string>
+        <string>libQt5Charts</string>
         <string>libweintek_dev_cMT-iv5</string>
         <string>libweintek_dev_cMT-iv5-3000</string>
         <string>libweintek_dev_cMT-SVR</string>
