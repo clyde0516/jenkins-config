@@ -267,7 +267,10 @@ cd /home/ci/work/${TRIGGER_PARAM_PLATFORM}
 if [ ! -d &quot;${TRIGGER_PARAM_INSTALL_FOLDER}&quot; ]; then
     cp -r ${TRIGGER_PARAM_BASE_INSTALL_FOLDER} ${TRIGGER_PARAM_INSTALL_FOLDER}
 fi
-</command>
+
+cd /home/ci/work/${TRIGGER_PARAM_PLATFORM}/${TRIGGER_PARAM_INSTALL_FOLDER}
+rm -f ${INSTALL_PREFIX}/bin/dserver*
+rm -f ${INSTALL_PREFIX}/bin/gui*</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
       <command># Do static analysis by cppcheck
