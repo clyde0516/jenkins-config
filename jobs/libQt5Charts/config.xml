@@ -1,15 +1,55 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
+  <actions/>
+  <description></description>
   <keepDependencies>false</keepDependencies>
-  <properties/>
+  <properties>
+    <jenkins.model.BuildDiscarderProperty>
+      <strategy class="hudson.tasks.LogRotator">
+        <daysToKeep>-1</daysToKeep>
+        <numToKeep>10</numToKeep>
+        <artifactDaysToKeep>-1</artifactDaysToKeep>
+        <artifactNumToKeep>-1</artifactNumToKeep>
+      </strategy>
+    </jenkins.model.BuildDiscarderProperty>
+  </properties>
   <scm class="hudson.scm.NullSCM"/>
-  <canRoam>false</canRoam>
+  <canRoam>true</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <triggers/>
   <concurrentBuild>false</concurrentBuild>
-  <builders/>
-  <publishers/>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>rm -rf artifacts
+mkdir artifacts
+cd artifacts
+
+mkdir include
+cp -r /opt/Qt5.4.2_enterprise/5.4/gcc_64/include/QtCharts include
+
+mkdir cMT3000
+cp /home/clydeliu/projects/3rdParty/QtCharts/2.0/Src/lib/cMT3000/libQt5Charts.a cMT3000
+
+mkdir cMT-iv5
+cp /home/clydeliu/projects/3rdParty/QtCharts/2.0/Src/lib/cMT-iv5/libQt5Charts.a cMT-iv5
+
+mkdir Ubuntu
+cp /home/clydeliu/projects/3rdParty/QtCharts/2.0/Src/lib/Ubuntu/libQt5Charts.a Ubuntu
+
+</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers>
+    <hudson.tasks.ArtifactArchiver>
+      <artifacts>artifacts/*</artifacts>
+      <allowEmptyArchive>false</allowEmptyArchive>
+      <onlyIfSuccessful>false</onlyIfSuccessful>
+      <fingerprint>false</fingerprint>
+      <defaultExcludes>true</defaultExcludes>
+      <caseSensitive>true</caseSensitive>
+    </hudson.tasks.ArtifactArchiver>
+  </publishers>
   <buildWrappers/>
 </project>
