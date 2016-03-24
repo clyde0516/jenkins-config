@@ -39,7 +39,7 @@ tar -cv lib/cMT-iv5 &gt;&gt; lib_cMT-iv5.tar
 
 mkdir lib/Ubuntu
 cp /home/clydeliu/projects/3rdParty/QtCharts/2.0/Src/lib/Ubuntu/libQt5Charts.a lib/Ubuntu
-tar -cv lib/Ubuntu &gt;&gt; lib_/Ubuntu.tar
+tar -cv lib/Ubuntu &gt;&gt; lib/Ubuntu.tar
 
 </command>
     </hudson.tasks.Shell>
