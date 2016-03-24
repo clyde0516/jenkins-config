@@ -22,28 +22,29 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>rm -rf artifacts
-mkdir artifacts
-cd artifacts
+      <command>rm -rf *
 
 mkdir include
 cp -r /opt/Qt5.4.2_enterprise/5.4/gcc_64/include/QtCharts include
+tar -cv QtCharts &gt;&gt; include.tar
 
-mkdir cMT3000
-cp /home/clydeliu/projects/3rdParty/QtCharts/2.0/Src/lib/cMT3000/libQt5Charts.a cMT3000
+mkdir lib/
+mkdir lib/cMT3000
+cp /home/clydeliu/projects/3rdParty/QtCharts/2.0/Src/lib/cMT3000/libQt5Charts.a lib/cMT3000
 
-mkdir cMT-iv5
-cp /home/clydeliu/projects/3rdParty/QtCharts/2.0/Src/lib/cMT-iv5/libQt5Charts.a cMT-iv5
+mkdir lib/cMT-iv5
+cp /home/clydeliu/projects/3rdParty/QtCharts/2.0/Src/lib/cMT-iv5/libQt5Charts.a lib/cMT-iv5
 
-mkdir Ubuntu
-cp /home/clydeliu/projects/3rdParty/QtCharts/2.0/Src/lib/Ubuntu/libQt5Charts.a Ubuntu
+mkdir lib/Ubuntu
+cp /home/clydeliu/projects/3rdParty/QtCharts/2.0/Src/lib/Ubuntu/libQt5Charts.a lib/Ubuntu
 
+tar -cv lib &gt;&gt; lib.tar
 </command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
     <hudson.tasks.ArtifactArchiver>
-      <artifacts>artifacts/*</artifacts>
+      <artifacts>*.tar</artifacts>
       <allowEmptyArchive>false</allowEmptyArchive>
       <onlyIfSuccessful>false</onlyIfSuccessful>
       <fingerprint>false</fingerprint>
