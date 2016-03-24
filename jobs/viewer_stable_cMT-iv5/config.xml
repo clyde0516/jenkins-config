@@ -84,7 +84,7 @@ mkdir -p jenkins
 cd jenkins
 
 cp ${WORKSPACE}/build/cMT-iv5/*features.pri .
-${WORKSPACE}/build/cMT-iv5/qmake_viewer.sh ${CLOUDHMI_PATH} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${GUI_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} clean
+${WORKSPACE}/build/cMT-iv5/qmake_viewer.sh ${CLOUDHMI_PATH} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${GUI_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} incremental
 
 cp ${INSTALL_PREFIX}/bin/cMTViewer.iv5 ${WORKSPACE}/artifacts
 </command>
