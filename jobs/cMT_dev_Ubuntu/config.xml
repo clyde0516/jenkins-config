@@ -292,7 +292,7 @@ cppcheck --enable=all --inconclusive --suppress=syntaxError --xml --xml-version=
           <configSeverityEvaluation>
             <threshold></threshold>
             <newThreshold></newThreshold>
-            <failureThreshold>733</failureThreshold>
+            <failureThreshold>755</failureThreshold>
             <newFailureThreshold>1</newFailureThreshold>
             <healthy></healthy>
             <unHealthy></unHealthy>
