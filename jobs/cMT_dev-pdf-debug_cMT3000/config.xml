@@ -452,6 +452,9 @@ ${WORKSPACE}/gui/build/${TRIGGER_PARAM_PLATFORM}/qmake_gui.sh ${GUI_PATH} ${LIBW
 
 echo &quot;aaaaaaaaaaa&quot;
 source /home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
+arm-weintek-linux-gnueabi-strip /home/ci/work/cMT3000/build-dev-pdf-debug-branch/bin/gui
+rm /home/ci/work/cMT3000/build-dev-pdf-debug-branch/bin/gui.c30
+test_mtcrypt --encrypt /home/ci/work/cMT3000/build-dev-pdf-debug-branch/bin/gui --out /home/ci/work/cMT3000/build-dev-pdf-debug-branch/bin/gui.c30
 
 if [ &quot;${TRIGGER_PARAM_GUI_BUILD_POLICY}&quot; = &quot;clean&quot; ]; then
     make clean
