@@ -447,11 +447,6 @@ cd jenkins/${TRIGGER_PARAM_PLATFORM}
 cp ${WORKSPACE}/gui/build/${TRIGGER_PARAM_PLATFORM}/features.pri .
 ${WORKSPACE}/gui/build/${TRIGGER_PARAM_PLATFORM}/qmake_gui.sh ${GUI_PATH} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} ${TRIGGER_PARAM_GUI_BUILD_POLICY}
 
-if [ &quot;${TRIGGER_PARAM_GUI_BUILD_POLICY}&quot; = &quot;clean&quot; ]; then
-    make clean
-fi
-make
-
 if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;Ubuntu&quot; ]; then
     cp ${INSTALL_PREFIX}/bin/gui ${WORKSPACE}/artifacts
 else
