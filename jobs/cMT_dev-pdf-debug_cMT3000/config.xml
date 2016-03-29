@@ -414,7 +414,9 @@ cp ${INSTALL_PREFIX}/bin/${ENCRYPT_NAME} ${WORKSPACE}/artifacts</command>
         </condition>
       </condition>
       <buildStep class="hudson.tasks.Shell">
-        <command># Build gui
+        <command>#!/bin/bash
+
+# Build gui
 echo &quot;================================ gui ================================ gui ================================ gui ================================&quot;
 
 export GUI_PATH=${WORKSPACE}/gui
@@ -448,15 +450,8 @@ cp ${WORKSPACE}/gui/build/${TRIGGER_PARAM_PLATFORM}/features.pri .
 
 ${WORKSPACE}/gui/build/${TRIGGER_PARAM_PLATFORM}/qmake_gui.sh ${GUI_PATH} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} ${TRIGGER_PARAM_GUI_BUILD_POLICY}
 
-
-echo &apos;source /home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
-arm-weintek-linux-gnueabi-strip /home/ci/work/cMT3000/build-dev-pdf-debug-branch/bin/gui
-rm /home/ci/work/cMT3000/build-dev-pdf-debug-branch/bin/gui.c30
-test_mtcrypt --encrypt /home/ci/work/cMT3000/build-dev-pdf-debug-branch/bin/gui --out /home/ci/work/cMT3000/build-dev-pdf-debug-branch/bin/gui.c30&apos; &gt; ${WORKSPACE}/gui/build/abc.sh
-
-echo &quot;aaaaaaaaaa&quot; `cat ${WORKSPACE}/gui/build/abc.sh`
-chmod +x ${WORKSPACE}/gui/build/abc.sh
-${WORKSPACE}/gui/build/abc.sh
+echo &quot;aaaaaaaaaaa&quot;
+source /home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
 
 if [ &quot;${TRIGGER_PARAM_GUI_BUILD_POLICY}&quot; = &quot;clean&quot; ]; then
     make clean
