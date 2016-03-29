@@ -455,6 +455,8 @@ rm /home/ci/work/cMT3000/build-dev-pdf-debug-branch/bin/gui.c30
 test_mtcrypt --encrypt /home/ci/work/cMT3000/build-dev-pdf-debug-branch/bin/gui --out /home/ci/work/cMT3000/build-dev-pdf-debug-branch/bin/gui.c30&apos; &gt; ${WORKSPACE}/gui/build/abc.sh
 
 echo &quot;aaaaaaaaaa&quot; `cat ${WORKSPACE}/gui/build/abc.sh`
+chmod +x ${WORKSPACE}/gui/build/abc.sh
+${WORKSPACE}/gui/build/abc.sh
 
 if [ &quot;${TRIGGER_PARAM_GUI_BUILD_POLICY}&quot; = &quot;clean&quot; ]; then
     make clean
