@@ -414,8 +414,8 @@ cp ${INSTALL_PREFIX}/bin/${ENCRYPT_NAME} ${WORKSPACE}/artifacts</command>
         </condition>
       </condition>
       <buildStep class="hudson.tasks.Shell">
-        <command>
-echo &quot;bbbbbbbbbbbbbbbb&quot; $0
+        <command>#!/bin/bash
+
 # Build gui
 echo &quot;================================ gui ================================ gui ================================ gui ================================&quot;
 
@@ -450,7 +450,6 @@ cp ${WORKSPACE}/gui/build/${TRIGGER_PARAM_PLATFORM}/features.pri .
 
 ${WORKSPACE}/gui/build/${TRIGGER_PARAM_PLATFORM}/qmake_gui.sh ${GUI_PATH} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} ${TRIGGER_PARAM_GUI_BUILD_POLICY}
 
-echo &quot;aaaaaaaaaaa&quot;
 source /home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
 arm-weintek-linux-gnueabi-strip /home/ci/work/cMT3000/build-dev-pdf-debug-branch/bin/gui
 rm /home/ci/work/cMT3000/build-dev-pdf-debug-branch/bin/gui.c30
