@@ -77,37 +77,34 @@
           <description></description>
           <choices class="java.util.Arrays$ArrayList">
             <a class="string-array">
-              <string>cMT3000</string>
-              <string>cMT-SVR</string>
               <string>cMT-iv5</string>
-              <string>Ubuntu</string>
             </a>
           </choices>
         </hudson.model.ChoiceParameterDefinition>
         <hudson.model.TextParameterDefinition>
           <name>TRIGGER_PARAM_INSTALL_FOLDER</name>
           <description></description>
-          <defaultValue>build-dev-branch</defaultValue>
+          <defaultValue>build-stable-debug-branch</defaultValue>
         </hudson.model.TextParameterDefinition>
         <hudson.model.TextParameterDefinition>
           <name>TRIGGER_PARAM_BASE_INSTALL_FOLDER</name>
           <description></description>
-          <defaultValue>build-dev-branch</defaultValue>
+          <defaultValue>build-stable-debug-branch</defaultValue>
         </hudson.model.TextParameterDefinition>
         <hudson.model.TextParameterDefinition>
           <name>TRIGGER_PARAM_LIBWEINTEK_BRANCH</name>
           <description></description>
-          <defaultValue>dev</defaultValue>
+          <defaultValue>v1-stable</defaultValue>
         </hudson.model.TextParameterDefinition>
         <hudson.model.TextParameterDefinition>
           <name>TRIGGER_PARAM_DSERVER_BRANCH</name>
           <description></description>
-          <defaultValue>dev</defaultValue>
+          <defaultValue>v1-stable</defaultValue>
         </hudson.model.TextParameterDefinition>
         <hudson.model.TextParameterDefinition>
           <name>TRIGGER_PARAM_GUI_BRANCH</name>
           <description></description>
-          <defaultValue>dev</defaultValue>
+          <defaultValue>v1-stable</defaultValue>
         </hudson.model.TextParameterDefinition>
         <hudson.model.ChoiceParameterDefinition>
           <name>TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY</name>
@@ -115,7 +112,6 @@
           <choices class="java.util.Arrays$ArrayList">
             <a class="string-array">
               <string>incremental</string>
-              <string>clean</string>
             </a>
           </choices>
         </hudson.model.ChoiceParameterDefinition>
@@ -125,7 +121,6 @@
           <choices class="java.util.Arrays$ArrayList">
             <a class="string-array">
               <string>incremental</string>
-              <string>clean</string>
             </a>
           </choices>
         </hudson.model.ChoiceParameterDefinition>
@@ -135,7 +130,6 @@
           <choices class="java.util.Arrays$ArrayList">
             <a class="string-array">
               <string>incremental</string>
-              <string>clean</string>
             </a>
           </choices>
         </hudson.model.ChoiceParameterDefinition>
@@ -150,83 +144,12 @@
       </strategy>
     </jenkins.model.BuildDiscarderProperty>
   </properties>
-  <scm class="org.jenkinsci.plugins.multiplescms.MultiSCM" plugin="multiple-scms@0.5">
-    <scms>
-      <hudson.plugins.git.GitSCM plugin="git@2.4.2">
-        <configVersion>2</configVersion>
-        <userRemoteConfigs>
-          <hudson.plugins.git.UserRemoteConfig>
-            <url>gitolite@192.168.1.220:libweintek.git</url>
-          </hudson.plugins.git.UserRemoteConfig>
-        </userRemoteConfigs>
-        <branches>
-          <hudson.plugins.git.BranchSpec>
-            <name>*/${TRIGGER_PARAM_LIBWEINTEK_BRANCH}</name>
-          </hudson.plugins.git.BranchSpec>
-        </branches>
-        <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
-        <submoduleCfg class="list"/>
-        <extensions>
-          <hudson.plugins.git.extensions.impl.RelativeTargetDirectory>
-            <relativeTargetDir>libweintek</relativeTargetDir>
-          </hudson.plugins.git.extensions.impl.RelativeTargetDirectory>
-        </extensions>
-      </hudson.plugins.git.GitSCM>
-      <hudson.plugins.git.GitSCM plugin="git@2.4.2">
-        <configVersion>2</configVersion>
-        <userRemoteConfigs>
-          <hudson.plugins.git.UserRemoteConfig>
-            <url>gitolite@192.168.1.220:d-server.git</url>
-          </hudson.plugins.git.UserRemoteConfig>
-        </userRemoteConfigs>
-        <branches>
-          <hudson.plugins.git.BranchSpec>
-            <name>*/${TRIGGER_PARAM_DSERVER_BRANCH}</name>
-          </hudson.plugins.git.BranchSpec>
-        </branches>
-        <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
-        <submoduleCfg class="list"/>
-        <extensions>
-          <hudson.plugins.git.extensions.impl.RelativeTargetDirectory>
-            <relativeTargetDir>dserver</relativeTargetDir>
-          </hudson.plugins.git.extensions.impl.RelativeTargetDirectory>
-        </extensions>
-      </hudson.plugins.git.GitSCM>
-      <hudson.plugins.git.GitSCM plugin="git@2.4.2">
-        <configVersion>2</configVersion>
-        <userRemoteConfigs>
-          <hudson.plugins.git.UserRemoteConfig>
-            <url>gitolite@192.168.1.220:gui.qt4.graphicsview.git</url>
-          </hudson.plugins.git.UserRemoteConfig>
-        </userRemoteConfigs>
-        <branches>
-          <hudson.plugins.git.BranchSpec>
-            <name>*/${TRIGGER_PARAM_GUI_BRANCH}</name>
-          </hudson.plugins.git.BranchSpec>
-        </branches>
-        <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
-        <submoduleCfg class="list"/>
-        <extensions>
-          <hudson.plugins.git.extensions.impl.RelativeTargetDirectory>
-            <relativeTargetDir>gui</relativeTargetDir>
-          </hudson.plugins.git.extensions.impl.RelativeTargetDirectory>
-        </extensions>
-      </hudson.plugins.git.GitSCM>
-    </scms>
-  </scm>
+  <scm class="hudson.scm.NullSCM"/>
   <canRoam>true</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
-  <triggers>
-    <hudson.triggers.TimerTrigger>
-      <spec>H H(0-7) * * *</spec>
-    </hudson.triggers.TimerTrigger>
-    <hudson.triggers.SCMTrigger>
-      <spec>H/5 * * * *</spec>
-      <ignorePostCommitHooks>false</ignorePostCommitHooks>
-    </hudson.triggers.SCMTrigger>
-  </triggers>
+  <triggers/>
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder plugin="conditional-buildstep@1.3.3">
