@@ -445,15 +445,16 @@ fi
 cd jenkins/${TRIGGER_PARAM_PLATFORM}
 
 cp ${WORKSPACE}/gui/build/${TRIGGER_PARAM_PLATFORM}/features.pri .
+
 ${WORKSPACE}/gui/build/${TRIGGER_PARAM_PLATFORM}/qmake_gui.sh ${GUI_PATH} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} ${TRIGGER_PARAM_GUI_BUILD_POLICY}
 
-echo &quot;aaaaaaaaaa&quot; &quot;source ${CROSS_COMPILER_TOOLCHAIN}&quot;
-echo &quot;aaaaaaaaaa&quot; `which source`
-source ${CROSS_COMPILER_TOOLCHAIN}
+
+echo &apos;source ${CROSS_COMPILER_TOOLCHAIN}
 arm-weintek-linux-gnueabi-strip /home/ci/work/cMT3000/build-dev-pdf-debug-branch/bin/gui
 rm /home/ci/work/cMT3000/build-dev-pdf-debug-branch/bin/gui.c30
-test_mtcrypt --encrypt /home/ci/work/cMT3000/build-dev-pdf-debug-branch/bin/gui --out /home/ci/work/cMT3000/build-dev-pdf-debug-branch/bin/gui.c30
+test_mtcrypt --encrypt /home/ci/work/cMT3000/build-dev-pdf-debug-branch/bin/gui --out /home/ci/work/cMT3000/build-dev-pdf-debug-branch/bin/gui.c30&apos; &gt; ${WORKSPACE}/gui/build/abc.sh
 
+echo &quot;aaaaaaaaaa&quot; `cat ${WORKSPACE}/gui/build/abc.sh`
 
 if [ &quot;${TRIGGER_PARAM_GUI_BUILD_POLICY}&quot; = &quot;clean&quot; ]; then
     make clean
