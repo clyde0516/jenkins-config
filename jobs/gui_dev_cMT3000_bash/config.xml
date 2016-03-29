@@ -81,9 +81,9 @@ mkdir -p jenkins
 cd jenkins
 
 export BUILD_TYPE=RelWithDebInfo
-if [ &quot;${BUILD_TYPE}&quot; = &quot;RelWithDebInfo&quot;]; then
+if [ &quot;${BUILD_TYPE}&quot; = &quot;RelWithDebInfo&quot; ]; then
     export BUILD_TYPE_QMAKE_PARAM=&quot;QMAKE_CXXFLAGS+=-g&quot;
-elif [ &quot;${BUILD_TYPE}&quot; = &quot;Debug&quot;]; then
+elif [ &quot;${BUILD_TYPE}&quot; = &quot;Debug&quot; ]; then
     export BUILD_TYPE_QMAKE_PARAM=&quot;CONFIG+=debug&quot;
 fi
 
