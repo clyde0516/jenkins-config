@@ -59,7 +59,9 @@
       <runner class="org.jenkins_ci.plugins.run_condition.BuildStepRunner$Fail" plugin="run-condition@1.0"/>
     </org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder>
     <hudson.tasks.Shell>
-      <command>export LIBWEINTEK_PATH=/var/lib/jenkins/jobs/libweintek_dev_cMT3000/workspace
+      <command>#!/bin/bash
+
+export LIBWEINTEK_PATH=/var/lib/jenkins/jobs/libweintek_dev_cMT3000/workspace
 export DSERVER_PATH=/var/lib/jenkins/jobs/dserver_dev_cMT3000/workspace
 export INSTALL_PREFIX=/home/ci/work/cMT3000/build-dev-branch
 export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
@@ -73,7 +75,11 @@ mkdir -p jenkins
 cd jenkins
 
 cp ${WORKSPACE}/build/cMT3000/features.pri .
-${WORKSPACE}/build/cMT3000/qmake_gui.sh ${WORKSPACE} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} increamental
+
+#${WORKSPACE}/build/cMT3000/qmake_gui.sh ${WORKSPACE} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} increamental
+source ${CROSS_COMPILER_TOOLCHAIN}
+qmake ${WORKSPACE}/build_all.pro &quot;WEINTEKDIR=${LIBWEINTEK_PATH}&quot; &quot;DSERVERDIR=${DSERVER_PATH}&quot; &quot;INSTALL_PREFIX=${INSTALL_PREFIX}&quot;
+make
 
 cp ${INSTALL_PREFIX}/bin/gui.c30 ${WORKSPACE}/artifacts
 </command>
@@ -88,11 +94,6 @@ cp ${INSTALL_PREFIX}/bin/gui.c30 ${WORKSPACE}/artifacts
       <defaultExcludes>true</defaultExcludes>
       <caseSensitive>true</caseSensitive>
     </hudson.tasks.ArtifactArchiver>
-    <hudson.tasks.Mailer plugin="mailer@1.16">
-      <recipients>katte@weintek.com paul@weintek.com zen@weintek.com easonwu@weintek.com jeremyhong@weintek.com clydeliu@weintek.com</recipients>
-      <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
-      <sendToIndividuals>false</sendToIndividuals>
-    </hudson.tasks.Mailer>
   </publishers>
   <buildWrappers/>
 </project>
