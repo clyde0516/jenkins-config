@@ -414,7 +414,7 @@ cp ${INSTALL_PREFIX}/bin/${ENCRYPT_NAME} ${WORKSPACE}/artifacts</command>
         </condition>
       </condition>
       <buildStep class="hudson.tasks.Shell">
-        <command>#!/bin/bash
+        <command>
 echo &quot;bbbbbbbbbbbbbbbb&quot; $0
 # Build gui
 echo &quot;================================ gui ================================ gui ================================ gui ================================&quot;
