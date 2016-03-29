@@ -91,7 +91,7 @@ cp ${WORKSPACE}/build/cMT3000/features.pri .
 
 #${WORKSPACE}/build/cMT3000/qmake_gui.sh ${WORKSPACE} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} increamental
 source ${CROSS_COMPILER_TOOLCHAIN}
-qmake ${WORKSPACE}/build_all.pro &quot;WEINTEKDIR=${LIBWEINTEK_PATH}&quot; &quot;DSERVERDIR=${DSERVER_PATH}&quot; &quot;INSTALL_PREFIX=${INSTALL_PREFIX}&quot;
+qmake ${WORKSPACE}/build_all.pro ${BUILD_TYPE_QMAKE_PARAM} &quot;WEINTEKDIR=${LIBWEINTEK_PATH}&quot; &quot;DSERVERDIR=${DSERVER_PATH}&quot; &quot;INSTALL_PREFIX=${INSTALL_PREFIX}&quot;
 make
 
 cp ${INSTALL_PREFIX}/bin/gui.c30 ${WORKSPACE}/artifacts
