@@ -80,7 +80,7 @@ cd ${WORKSPACE}/build
 mkdir -p jenkins
 cd jenkins
 
-export BUILD_TYPE=RelWithDebInfo
+export BUILD_TYPE=Debug
 if [ &quot;${BUILD_TYPE}&quot; = &quot;RelWithDebInfo&quot; ]; then
     export BUILD_TYPE_QMAKE_PARAM=&quot;QMAKE_CXXFLAGS+=-g&quot;
 elif [ &quot;${BUILD_TYPE}&quot; = &quot;Debug&quot; ]; then
