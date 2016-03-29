@@ -79,7 +79,7 @@ mkdir -p jenkins
 cd jenkins
 
 cp ${WORKSPACE}/build/cMT-iv5/features.pri .
-${WORKSPACE}/build/cMT-iv5/qmake_gui.sh ${WORKSPACE} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} increamental
+${WORKSPACE}/build/cMT-iv5/qmake_gui.sh ${WORKSPACE} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} increamental RelWithDebInfo
 
 # Do not archive artifact, since only library built for cMT-iv5
 # cp ${INSTALL_PREFIX}/bin/gui.c30 ${WORKSPACE}/artifacts
