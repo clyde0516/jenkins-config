@@ -84,7 +84,7 @@ cp ${WORKSPACE}/build/cMT3000/features.pri .
 ${WORKSPACE}/build/cMT3000/qmake_gui.sh ${WORKSPACE} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} Debug
 
 source ${CROSS_COMPILER_TOOLCHAIN}
-make
+make VERBOSE=1
 cp ${INSTALL_PREFIX}/bin/gui ${WORKSPACE}/artifacts/gui.RelWithDebInfo	
 
 strip ${INSTALL_PREFIX}/bin/gui
