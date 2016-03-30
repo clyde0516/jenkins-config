@@ -71,7 +71,7 @@
     <hudson.tasks.Shell>
       <command>#!/bin/bash
 
-export LIBWEINTEK_PATH=${WORKSPACE}/libweintek
+export LIBWEINTEK_PATH=${WORKSPACE}
 export INSTALL_PREFIX=/home/ci/work/${MATRIX_AXIS_PLATFORM}/${TRIGGER_PARAM_INSTALL_FOLDER}
 
 case $MATRIX_AXIS_PLATFORM in
@@ -88,7 +88,7 @@ case $MATRIX_AXIS_PLATFORM in
 	    ;;
 esac
 
-cd ${WORKSPACE}/libweintek/build
+cd ${LIBWEINTEK_PATH}/build
 if [ &quot;${TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY}&quot; = &quot;brandnew&quot; ]; then
     rm -rf jenkins/${MATRIX_AXIS_PLATFORM}
 fi
@@ -101,7 +101,7 @@ else
     export PLATFORM_BUILD_FOLDER=${MATRIX_AXIS_PLATFORM}
 fi
 
-${WORKSPACE}/libweintek/build/${PLATFORM_BUILD_FOLDER}/cmake_libweintek.sh ${LIBWEINTEK_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} RelWithDebInfo
+${LIBWEINTEK_PATH}/build/${PLATFORM_BUILD_FOLDER}/cmake_libweintek.sh ${LIBWEINTEK_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} RelWithDebInfo
     
 if [ &quot;${TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY}&quot; = &quot;clean&quot; ]; then
     make clean
