@@ -79,6 +79,7 @@ export INSTALL_PREFIX=/home/ci/work/Ubuntu/build-dev-branch
 export PATH=/opt/Qt5.4.2/5.4/gcc_64/bin:${PATH}
 
 rm -f ${INSTALL_PREFIX}/bin/CloudHmi*
+rm -f ${INSTALL_PREFIX}/bin/cMTViewer*
 rm -rf ${WORKSPACE}/artifacts
 mkdir ${WORKSPACE}/artifacts
 
