@@ -92,11 +92,9 @@ mkdir -p bin
 ${WORKSPACE}/build/${TRIGGER_PARAM_PLATFORM}/cmake_com.sh ${WORKSPACE} ${CRYPTO_EXTENSION_NAME} ${CROSS_COMPILER_TOOLCHAIN} RelWithDebInfo
 
 make install VERBOSE=1
+cp ${WORKSPACE}/build/jenkins/bin/com ${WORKSPACE}/artifacts/com.RelWithDebInfo
 
-# Do not archive com, since it is stripped in cmake.
-# cp ${WORKSPACE}/build/jenkins/bin/com ${WORKSPACE}/artifacts
-# make install/strip VERBOSE=1
-
+make install/strip VERBOSE=1
 /home/ci/work/crypto e ${WORKSPACE}/build/jenkins/bin/com ${WORKSPACE}/build/jenkins/bin/com.${CRYPTO_EXTENSION_NAME}
 cp ${WORKSPACE}/build/jenkins/bin/com.${CRYPTO_EXTENSION_NAME} ${WORKSPACE}/artifacts</command>
     </hudson.tasks.Shell>
