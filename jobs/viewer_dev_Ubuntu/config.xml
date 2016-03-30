@@ -68,7 +68,9 @@
       <runner class="org.jenkins_ci.plugins.run_condition.BuildStepRunner$Fail" plugin="run-condition@1.0"/>
     </org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder>
     <hudson.tasks.Shell>
-      <command>export CLOUDHMI_PATH=${WORKSPACE}/CloudHmi
+      <command>#!/bin/bash
+
+export CLOUDHMI_PATH=${WORKSPACE}/CloudHmi
 export LIBWEINTEK_PATH=/var/lib/jenkins/jobs/libweintek_dev_cMT-iv5/workspace
 export DSERVER_PATH=/var/lib/jenkins/jobs/dserver_dev_cMT-iv5/workspace
 export GUI_PATH=/var/lib/jenkins/jobs/gui_dev_cMT-iv5/workspace
@@ -85,9 +87,15 @@ mkdir -p jenkins
 cd jenkins
 
 cp ${WORKSPACE}/build/Ubuntu/*features.pri .
-${WORKSPACE}/build/Ubuntu/qmake_viewer.sh ${CLOUDHMI_PATH} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${GUI_PATH} ${INSTALL_PREFIX} increamental
+${WORKSPACE}/build/Ubuntu/qmake_viewer.sh ${CLOUDHMI_PATH} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${GUI_PATH} ${INSTALL_PREFIX} RelWithDebInfo
 
-cp ${INSTALL_PREFIX}/bin/CloudHmi.tar ${WORKSPACE}/artifacts
+source ${CROSS_COMPILER_TOOLCHAIN}
+make VERBOSE=1
+cp ${INSTALL_PREFIX}/bin/CloudHmi ${WORKSPACE}/artifacts/CloudHmi.RelWithDebInfo	
+
+strip ${INSTALL_PREFIX}/bin/CloudHmi
+tar -cv ${INSTALL_PREFIX}/bin/CloudHmi &gt;&gt; ${INSTALL_PREFIX}/bin/CloudHmi.tar
+cp ${INSTALL_PREFIX}/CloudHmi.tar ${WORKSPACE}/artifacts
 </command>
     </hudson.tasks.Shell>
   </builders>
