@@ -59,7 +59,9 @@
       <runner class="org.jenkins_ci.plugins.run_condition.BuildStepRunner$Fail" plugin="run-condition@1.0"/>
     </org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder>
     <hudson.tasks.Shell>
-      <command>export LIBWEINTEK_PATH=/var/lib/jenkins/jobs/libweintek_stable_cMT3000/workspace
+      <command>#!/bin/bash
+
+export LIBWEINTEK_PATH=/var/lib/jenkins/jobs/libweintek_stable_cMT3000/workspace
 export DSERVER_PATH=/var/lib/jenkins/jobs/dserver_stable_cMT3000/workspace
 export INSTALL_PREFIX=/home/ci/work/cMT3000/build-stable-branch
 export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
@@ -73,8 +75,14 @@ mkdir -p jenkins
 cd jenkins
 
 cp ${WORKSPACE}/build/cMT3000/features.pri .
-${WORKSPACE}/build/cMT3000/qmake_gui.sh ${WORKSPACE} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} increamental
+${WORKSPACE}/build/cMT3000/qmake_gui.sh ${WORKSPACE} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} RelWithDebInfo
 
+source ${CROSS_COMPILER_TOOLCHAIN}
+make VERBOSE=1
+cp ${INSTALL_PREFIX}/bin/gui ${WORKSPACE}/artifacts/gui.RelWithDebInfo	
+
+strip ${INSTALL_PREFIX}/bin/gui
+test_mtcrypt --encrypt ${INSTALL_PREFIX}/bin/gui --out ${INSTALL_PREFIX}/bin/gui.c30
 cp ${INSTALL_PREFIX}/bin/gui.c30 ${WORKSPACE}/artifacts
 </command>
     </hudson.tasks.Shell>
