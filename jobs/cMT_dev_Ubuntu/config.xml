@@ -457,7 +457,7 @@ fi
 if [ &quot;${TRIGGER_PARAM_GUI_BUILD_POLICY}&quot; = &quot;clean&quot; ]; then
     make clean
 fi
-make
+make VERBOSE=1
 
 if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT3000&quot; ]; then
     cp ${INSTALL_PREFIX}/bin/gui ${WORKSPACE}/artifacts/gui.RelWithDebInfo	
