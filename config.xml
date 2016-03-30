@@ -392,6 +392,7 @@
         <string>gui_stable_cMT3000</string>
         <string>jenkins-test</string>
         <string>libQt5Charts</string>
+        <string>libweintek_dev</string>
         <string>libweintek_dev_cMT-iv5</string>
         <string>libweintek_dev_cMT-iv5-3000</string>
         <string>libweintek_dev_cMT-SVR</string>
@@ -399,9 +400,7 @@
         <string>libweintek_dev_Ubuntu</string>
         <string>libweintek_stable_cMT-iv5</string>
         <string>libweintek_stable_cMT-SVR</string>
-        <string>libweintek_stable_cMT-SVR_bak</string>
         <string>libweintek_stable_cMT3000</string>
-        <string>libweintek_stable_cMT3000_bak</string>
         <string>viewer_dev_cMT-iv5</string>
         <string>viewer_dev_cMT-iv5-3000</string>
         <string>viewer_dev_Ubuntu</string>
