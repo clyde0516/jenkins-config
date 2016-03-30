@@ -65,7 +65,9 @@
       <runner class="org.jenkins_ci.plugins.run_condition.BuildStepRunner$Fail" plugin="run-condition@1.0"/>
     </org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder>
     <hudson.tasks.Shell>
-      <command>export LIBWEINTEK_PATH=/var/lib/jenkins/jobs/libweintek_dev_cMT-iv5/workspace
+      <command>#!/bin/bash
+
+export LIBWEINTEK_PATH=/var/lib/jenkins/jobs/libweintek_dev_cMT-iv5/workspace
 export DSERVER_PATH=/var/lib/jenkins/jobs/dserver_dev_cMT-iv5/workspace
 export INSTALL_PREFIX=/home/ci/work/cMT-iv5/build-dev-branch
 export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT-iv5/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
