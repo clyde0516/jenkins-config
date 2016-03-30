@@ -421,6 +421,7 @@ export GUI_PATH=${WORKSPACE}/gui
 export DSERVER_PATH=${WORKSPACE}/dserver
 export LIBWEINTEK_PATH=${WORKSPACE}/libweintek
 export INSTALL_PREFIX=/home/ci/work/${TRIGGER_PARAM_PLATFORM}/${TRIGGER_PARAM_INSTALL_FOLDER}
+export BUILD_TYPE=RelWithDebInfo
 
 if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT3000&quot; ]; then
     export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
@@ -445,12 +446,24 @@ fi
 cd jenkins/${TRIGGER_PARAM_PLATFORM}
 
 cp ${WORKSPACE}/gui/build/${TRIGGER_PARAM_PLATFORM}/features.pri .
-${WORKSPACE}/gui/build/${TRIGGER_PARAM_PLATFORM}/qmake_gui.sh ${GUI_PATH} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} ${TRIGGER_PARAM_GUI_BUILD_POLICY}
+${WORKSPACE}/gui/build/${TRIGGER_PARAM_PLATFORM}/qmake_gui.sh ${GUI_PATH} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} ${BUILD_TYPE}
 
-if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;Ubuntu&quot; ]; then
+if test -n &quot;${CROSS_COMPILER_TOOLCHAIN}&quot;; then
+    source ${CROSS_COMPILER_TOOLCHAIN}
+fi
+
+if [ &quot;${TRIGGER_PARAM_GUI_BUILD_POLICY}&quot; = &quot;clean&quot; ]; then
+    make clean
+fi
+make
+
+if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT3000&quot; ]; then
     cp ${INSTALL_PREFIX}/bin/gui ${WORKSPACE}/artifacts
-else
+    strip ${INSTALL_PREFIX}/bin/gui
+    test_mtcrypt --encrypt ${INSTALL_PREFIX}/bin/gui --out ${INSTALL_PREFIX}/bin/gui.c30
     cp ${INSTALL_PREFIX}/bin/gui.c30 ${WORKSPACE}/artifacts
+elif [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;Ubuntu&quot; ]; then
+    cp ${INSTALL_PREFIX}/bin/gui ${WORKSPACE}/artifacts
 fi
 </command>
       </buildStep>
