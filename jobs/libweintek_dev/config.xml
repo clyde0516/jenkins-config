@@ -76,11 +76,13 @@ export INSTALL_PREFIX=/home/ci/work/${MATRIX_AXIS_PLATFORM}/${TRIGGER_PARAM_INST
 
 case $MATRIX_AXIS_PLATFORM in
     &quot;cMT3000&quot;)
-    &quot;cMT-iv5-3000&quot;)
         export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
 	    ;;
     &quot;cMT-iv5&quot;)
         export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT-iv5/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
+	    ;;
+    &quot;cMT-iv5-3000&quot;)
+        export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
 	    ;;
     *)
 	    ;;
