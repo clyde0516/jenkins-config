@@ -75,6 +75,7 @@ export INSTALL_PREFIX=/home/ci/work/cMT-iv5-3000/build-dev-branch
 export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
 
 rm -f ${INSTALL_PREFIX}/bin/CloudHmi*
+rm -f ${INSTALL_PREFIX}/bin/cMTViewer*
 rm -rf ${WORKSPACE}/artifacts
 mkdir ${WORKSPACE}/artifacts
 
