@@ -414,7 +414,9 @@ cp ${INSTALL_PREFIX}/bin/${ENCRYPT_NAME} ${WORKSPACE}/artifacts</command>
         </condition>
       </condition>
       <buildStep class="hudson.tasks.Shell">
-        <command># Build gui
+        <command>#!/bin/bash
+
+# Build gui
 echo &quot;================================ gui ================================ gui ================================ gui ================================&quot;
 
 export GUI_PATH=${WORKSPACE}/gui
