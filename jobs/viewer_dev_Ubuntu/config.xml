@@ -89,7 +89,6 @@ cd jenkins
 cp ${WORKSPACE}/build/Ubuntu/*features.pri .
 ${WORKSPACE}/build/Ubuntu/qmake_viewer.sh ${CLOUDHMI_PATH} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${GUI_PATH} ${INSTALL_PREFIX} RelWithDebInfo
 
-source ${CROSS_COMPILER_TOOLCHAIN}
 make VERBOSE=1
 cp ${INSTALL_PREFIX}/bin/CloudHmi ${WORKSPACE}/artifacts/CloudHmi.RelWithDebInfo	
 
