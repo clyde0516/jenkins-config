@@ -89,13 +89,13 @@ cd jenkins
 cp ${WORKSPACE}/build/cMT-iv5/*features.pri .
 ${WORKSPACE}/build/cMT-iv5/qmake_viewer.sh ${CLOUDHMI_PATH} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${GUI_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} RelWithDebInfo
 
-source ${CROSS_COMPILER_TOOLCHAIN}
-make VERBOSE=1
-cp ${INSTALL_PREFIX}/bin/CloudHmi ${WORKSPACE}/artifacts/CloudHmi.RelWithDebInfo	
+#source ${CROSS_COMPILER_TOOLCHAIN}
+#make VERBOSE=1
+#cp ${INSTALL_PREFIX}/bin/CloudHmi ${WORKSPACE}/artifacts/CloudHmi.RelWithDebInfo	
 
-strip ${INSTALL_PREFIX}/bin/CloudHmi
-tar -cv ${INSTALL_PREFIX}/bin/CloudHmi &gt;&gt; ${INSTALL_PREFIX}/bin/CloudHmi.tar
-test_mtcrypt --encrypt ${INSTALL_PREFIX}/bin/CloudHmi.tar --out ${INSTALL_PREFIX}/bin/cMTViewer.iv5
+#strip ${INSTALL_PREFIX}/bin/CloudHmi
+#tar -cv ${INSTALL_PREFIX}/bin/CloudHmi &gt;&gt; ${INSTALL_PREFIX}/bin/CloudHmi.tar
+#test_mtcrypt --encrypt ${INSTALL_PREFIX}/bin/CloudHmi.tar --out ${INSTALL_PREFIX}/bin/cMTViewer.iv5
 cp ${INSTALL_PREFIX}/bin/cMTViewer.iv5 ${WORKSPACE}/artifacts
 </command>
     </hudson.tasks.Shell>
