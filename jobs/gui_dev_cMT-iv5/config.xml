@@ -84,7 +84,7 @@ cp ${WORKSPACE}/build/cMT-iv5/features.pri .
 ${WORKSPACE}/build/cMT-iv5/qmake_gui.sh ${WORKSPACE} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} RelWithDebInfo
 
 source ${CROSS_COMPILER_TOOLCHAIN}
-make
+make VERBOSE=1
 
 # Do not archive artifact, since only library built for cMT-iv5
 # cp ${INSTALL_PREFIX}/bin/gui.c30 ${WORKSPACE}/artifacts
