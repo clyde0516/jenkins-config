@@ -92,7 +92,7 @@ cp ${INSTALL_PREFIX}/bin/CloudHmi ${WORKSPACE}/artifacts/CloudHmi.RelWithDebInfo
 strip ${INSTALL_PREFIX}/bin/CloudHmi
 tar -cv ${INSTALL_PREFIX}/bin/CloudHmi &gt;&gt; ${INSTALL_PREFIX}/bin/CloudHmi.tar
 test_mtcrypt --encrypt ${INSTALL_PREFIX}/bin/CloudHmi.tar --out ${INSTALL_PREFIX}/bin/cMTViewer.iv5
-cp ${INSTALL_PREFIX}/bincMTViewer.iv5 ${WORKSPACE}/artifacts
+cp ${INSTALL_PREFIX}/bin/cMTViewer.iv5 ${WORKSPACE}/artifacts
 </command>
     </hudson.tasks.Shell>
   </builders>
