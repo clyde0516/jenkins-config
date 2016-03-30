@@ -54,7 +54,7 @@
   <concurrentBuild>false</concurrentBuild>
   <axes>
     <hudson.matrix.TextAxis>
-      <name>TRIGGER_PARAM_COM_BRANCH</name>
+      <name>TRIGGER_PARAM_PLATFORM</name>
       <values>
         <string>cMT3000</string>
         <string>cMT-SVR</string>
