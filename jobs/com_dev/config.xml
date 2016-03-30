@@ -54,7 +54,7 @@
   <concurrentBuild>false</concurrentBuild>
   <axes>
     <hudson.matrix.TextAxis>
-      <name>TRIGGER_PARAM_PLATFORM</name>
+      <name>MATRIX_AXIS_PLATFORM</name>
       <values>
         <string>cMT3000</string>
         <string>cMT-SVR</string>
@@ -76,7 +76,7 @@
       <runner class="org.jenkins_ci.plugins.run_condition.BuildStepRunner$Fail" plugin="run-condition@1.0"/>
     </org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder>
     <hudson.tasks.Shell>
-      <command>if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT3000&quot; ]; then
+      <command>if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;cMT3000&quot; ]; then
     export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
 	export CRYPTO_EXTENSION_NAME=c30
 else
@@ -93,7 +93,7 @@ mkdir -p jenkins
 cd jenkins
 mkdir -p bin
 
-${WORKSPACE}/build/${TRIGGER_PARAM_PLATFORM}/cmake_com.sh ${WORKSPACE} ${CRYPTO_EXTENSION_NAME} ${CROSS_COMPILER_TOOLCHAIN} RelWithDebInfo
+${WORKSPACE}/build/${MATRIX_AXIS_PLATFORM}/cmake_com.sh ${WORKSPACE} ${CRYPTO_EXTENSION_NAME} ${CROSS_COMPILER_TOOLCHAIN} RelWithDebInfo
 
 make install VERBOSE=1
 cp ${WORKSPACE}/build/jenkins/bin/com ${WORKSPACE}/artifacts/com.RelWithDebInfo
