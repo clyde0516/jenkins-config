@@ -4,6 +4,26 @@
   <description></description>
   <keepDependencies>false</keepDependencies>
   <properties>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.TextParameterDefinition>
+          <name>TRIGGER_PARAM_INSTALL_FOLDER</name>
+          <description></description>
+          <defaultValue>build-dev-branch</defaultValue>
+        </hudson.model.TextParameterDefinition>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY</name>
+          <description></description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>incremental</string>
+              <string>clean</string>
+              <string>brandnew</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
     <jenkins.model.BuildDiscarderProperty>
       <strategy class="hudson.tasks.LogRotator">
         <daysToKeep>-1</daysToKeep>
@@ -71,7 +91,7 @@
     <hudson.tasks.Shell>
       <command>#!/bin/bash
 
-export LIBWEINTEK_PATH=${WORKSPACE}
+export LIBWEINTEK_PATH=${WORKSPACE}/MATRIX_AXIS_PLATFORM/${MATRIX_AXIS_PLATFORM}
 export INSTALL_PREFIX=/home/ci/work/${MATRIX_AXIS_PLATFORM}/${TRIGGER_PARAM_INSTALL_FOLDER}
 
 case $MATRIX_AXIS_PLATFORM in
