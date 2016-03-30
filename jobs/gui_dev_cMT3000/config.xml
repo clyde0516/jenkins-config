@@ -85,7 +85,7 @@ ${WORKSPACE}/build/cMT3000/qmake_gui.sh ${WORKSPACE} ${LIBWEINTEK_PATH} ${DSERVE
 
 source ${CROSS_COMPILER_TOOLCHAIN}
 make
-cp ${INSTALL_PREFIX}/bin/gui ${WORKSPACE}/artifacts
+cp ${INSTALL_PREFIX}/bin/gui ${WORKSPACE}/artifacts/gui.RelWithDebInfo	
 
 strip ${INSTALL_PREFIX}/bin/gui
 test_mtcrypt --encrypt ${INSTALL_PREFIX}/bin/gui --out ${INSTALL_PREFIX}/bin/gui.c30
