@@ -93,7 +93,13 @@ fi
 mkdir -p jenkins/${MATRIX_AXIS_PLATFORM}
 cd jenkins/${MATRIX_AXIS_PLATFORM}
 
-${WORKSPACE}/libweintek/build/${MATRIX_AXIS_PLATFORM}/cmake_libweintek.sh ${LIBWEINTEK_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} RelWithDebInfo
+if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;cMT-iv5-3000&quot; ]; then
+    export PLATFORM_BUILD_FOLDER=cMT3000
+else
+    export PLATFORM_BUILD_FOLDER=${MATRIX_AXIS_PLATFORM}
+fi
+
+${WORKSPACE}/libweintek/build/${PLATFORM_BUILD_FOLDER}/cmake_libweintek.sh ${LIBWEINTEK_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} RelWithDebInfo
     
 if [ &quot;${TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY}&quot; = &quot;clean&quot; ]; then
     make clean
