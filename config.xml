@@ -366,7 +366,6 @@
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
         <string>cMT_dev-electric-meter_cMT3000</string>
-        <string>cMT_dev-operation-log_cMT3000</string>
         <string>cMT_dev-pdf-debug_cMT3000</string>
         <string>cMT_dev_Ubuntu</string>
         <string>cMT_param</string>
@@ -380,10 +379,7 @@
         <string>dserver_dev_Ubuntu</string>
         <string>dserver_stable_cMT-iv5</string>
         <string>dserver_stable_cMT-SVR</string>
-        <string>dserver_stable_cMT-SVR_bak</string>
         <string>dserver_stable_cMT3000</string>
-        <string>dserver_stable_cMT3000_bak</string>
-        <string>dserver_stable_cMT3000_RelWithDebInfo</string>
         <string>easy-access-client_stable_cMT-SVR</string>
         <string>easy-access-client_stable_cMT3000</string>
         <string>gui-v5_fix-Calibri-font-vertical-offset</string>
@@ -391,7 +387,6 @@
         <string>gui_dev_cMT-iv5</string>
         <string>gui_dev_cMT-iv5-3000</string>
         <string>gui_dev_cMT3000</string>
-        <string>gui_dev_cMT3000_bash</string>
         <string>gui_dev_Ubuntu</string>
         <string>gui_stable_cMT-iv5</string>
         <string>gui_stable_cMT3000</string>
