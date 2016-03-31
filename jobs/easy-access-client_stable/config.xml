@@ -129,11 +129,6 @@ cp config_linux.h config.h
 mkdir -p jenkins
 cd jenkins
 
-case $MATRIX_AXIS_PLATFORM in
-    &quot;cMT3000&quot;)    ;;
-    &quot;cMT-SVR&quot;)  export TOOLCHAIN_FILE_PATH=${LIBWEINTEK_PATH}/build/cMT-SVR/Toolchain-arm-fsl-linux-gnueabi.cmake  ;;
-esac
-
 if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;cMT3000&quot; ]; then
     source /home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
     cmake -DCMAKE_BUILD_TYPE=${BUILD_TYPE} \
