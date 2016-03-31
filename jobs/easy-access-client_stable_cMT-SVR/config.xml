@@ -185,7 +185,7 @@ cp ${INSTALL_PREFIX}/bin/weintek-p2p artifacts</command>
       <caseSensitive>true</caseSensitive>
     </hudson.tasks.ArtifactArchiver>
     <hudson.tasks.Mailer plugin="mailer@1.16">
-      <recipients>zen@weintek.com</recipients>
+      <recipients></recipients>
       <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
       <sendToIndividuals>false</sendToIndividuals>
     </hudson.tasks.Mailer>
