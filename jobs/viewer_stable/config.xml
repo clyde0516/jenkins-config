@@ -9,12 +9,12 @@
         <hudson.model.StringParameterDefinition>
           <name>TRIGGER_PARAM_VIEWER_BRANCH</name>
           <description></description>
-          <defaultValue>dev</defaultValue>
+          <defaultValue>v1_stable</defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>TRIGGER_PARAM_JOB_GROUP</name>
           <description></description>
-          <defaultValue>dev</defaultValue>
+          <defaultValue>stable</defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.ChoiceParameterDefinition>
           <name>TRIGGER_PARAM_VIEWER_BUILD_POLICY</name>
@@ -61,7 +61,7 @@
   <triggers>
     <jenkins.triggers.ReverseBuildTrigger>
       <spec></spec>
-      <upstreamProjects>gui_dev, </upstreamProjects>
+      <upstreamProjects>gui_stable, </upstreamProjects>
       <threshold>
         <name>UNSTABLE</name>
         <ordinal>1</ordinal>
@@ -81,7 +81,6 @@
       <values>
         <string>cMT-iv5</string>
         <string>cMT-iv5-3000</string>
-        <string>Ubuntu</string>
       </values>
     </hudson.matrix.TextAxis>
   </axes>
@@ -157,18 +156,18 @@ ${WORKSPACE}/build/${PLATFORM_BUILD_FOLDER}/qmake_viewer.sh ${CLOUDHMI_PATH} ${L
 
 # make
 
-if test -n &quot;${CROSS_COMPILER_TOOLCHAIN}&quot;; then
-    source ${CROSS_COMPILER_TOOLCHAIN}
-fi
-make VERBOSE=1
-cp ${INSTALL_PREFIX}/bin/CloudHmi ${WORKSPACE}/artifacts/CloudHmi.RelWithDebInfo	
+#if test -n &quot;${CROSS_COMPILER_TOOLCHAIN}&quot;; then
+#    source ${CROSS_COMPILER_TOOLCHAIN}
+#fi
+#make VERBOSE=1
+#cp ${INSTALL_PREFIX}/bin/CloudHmi ${WORKSPACE}/artifacts/CloudHmi.RelWithDebInfo	
 
 # strip and encrypt
 
-strip ${INSTALL_PREFIX}/bin/CloudHmi
-tar -cv ${INSTALL_PREFIX}/bin/CloudHmi &gt;&gt; ${INSTALL_PREFIX}/bin/CloudHmi.tar
+#strip ${INSTALL_PREFIX}/bin/CloudHmi
+#tar -cv ${INSTALL_PREFIX}/bin/CloudHmi &gt;&gt; ${INSTALL_PREFIX}/bin/CloudHmi.tar
 if test -n &quot;${ENCRYPT_EXTENSION_NAME}&quot;; then
-    test_mtcrypt --encrypt ${INSTALL_PREFIX}/bin/CloudHmi.tar --out ${INSTALL_PREFIX}/bin/cMTViewer${ENCRYPT_EXTENSION_NAME}
+#    test_mtcrypt --encrypt ${INSTALL_PREFIX}/bin/CloudHmi.tar --out ${INSTALL_PREFIX}/bin/cMTViewer${ENCRYPT_EXTENSION_NAME}
     cp ${INSTALL_PREFIX}/bin/cMTViewer${ENCRYPT_EXTENSION_NAME} ${WORKSPACE}/artifacts
 else
     cp ${INSTALL_PREFIX}/bin/CloudHmi.tar ${WORKSPACE}/artifacts
