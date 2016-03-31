@@ -170,6 +170,11 @@ case $MATRIX_AXIS_PLATFORM in
     &quot;cMT-SVR&quot;)  export MODEL_NAME=E30  ;;
 esac
 
+case $MATRIX_AXIS_PLATFORM in
+    &quot;cMT3000&quot;)  export ENCRYPT_EXTENSION_NAME=c30  ;;
+    &quot;cMT-SVR&quot;)  export ENCRYPT_EXTENSION_NAME=e30  ;;
+esac
+
 cd ${WORKSPACE}/rma
 mkdir -p jenkins
 cd jenkins
@@ -217,7 +222,7 @@ cd ${INSTALL_PREFIX}/bin
 if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;cMT-SVR&quot; ]; then
     upx easy_access_client
 fi    
-/home/ci/work/crypto e easy_access_client easy_access_client.c30.${TRIGGER_PARAM_EAC_VERSION}
+/home/ci/work/crypto e easy_access_client easy_access_client.${ENCRYPT_EXTENSION_NAME}.${TRIGGER_PARAM_EAC_VERSION}
 </command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
