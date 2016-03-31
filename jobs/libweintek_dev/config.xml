@@ -99,6 +99,8 @@
     <hudson.tasks.Shell>
       <command>#!/bin/bash
 
+# export variables
+
 export LIBWEINTEK_PATH=${WORKSPACE}
 export INSTALL_PREFIX=/home/ci/work/${MATRIX_AXIS_PLATFORM}/${TRIGGER_PARAM_INSTALL_FOLDER}
 
@@ -108,6 +110,13 @@ case $MATRIX_AXIS_PLATFORM in
     &quot;cMT-iv5-3000&quot;)  export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi  ;;
 esac
 
+case $MATRIX_AXIS_PLATFORM in
+    &quot;cMT-iv5-3000&quot;)  export PLATFORM_BUILD_FOLDER=cMT3000  ;;
+    *)               export PLATFORM_BUILD_FOLDER=${MATRIX_AXIS_PLATFORM}  ;;
+esac
+
+# prepare out-of-source-build
+
 cd ${LIBWEINTEK_PATH}/build
 if [ &quot;${TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY}&quot; = &quot;brandnew&quot; ]; then
     rm -rf jenkins/${MATRIX_AXIS_PLATFORM}
@@ -115,14 +124,12 @@ fi
 mkdir -p jenkins/${MATRIX_AXIS_PLATFORM}
 cd jenkins/${MATRIX_AXIS_PLATFORM}
 
-if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;cMT-iv5-3000&quot; ]; then
-    export PLATFORM_BUILD_FOLDER=cMT3000
-else
-    export PLATFORM_BUILD_FOLDER=${MATRIX_AXIS_PLATFORM}
-fi
+# generate makefile
 
 ${LIBWEINTEK_PATH}/build/${PLATFORM_BUILD_FOLDER}/cmake_libweintek.sh ${LIBWEINTEK_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} RelWithDebInfo
-    
+
+# make
+
 if [ &quot;${TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY}&quot; = &quot;clean&quot; ]; then
     make clean
 fi
