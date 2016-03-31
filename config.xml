@@ -189,16 +189,15 @@
     </hudson.model.AllView>
     <au.com.centrumsystems.hudson.plugin.buildpipeline.BuildPipelineView plugin="build-pipeline-plugin@1.4.9">
       <owner class="hudson" reference="../../.."/>
-      <name>dev_Ubuntu</name>
+      <name>dev</name>
       <filterExecutors>false</filterExecutors>
       <filterQueue>false</filterQueue>
       <properties class="hudson.model.View$PropertyList"/>
       <gridBuilder class="au.com.centrumsystems.hudson.plugin.buildpipeline.DownstreamProjectGridBuilder">
-        <firstJob>libweintek_dev_Ubuntu</firstJob>
-        <firstJobLink>job/libweintek_dev_Ubuntu/</firstJobLink>
+        <firstJob>libweintek_dev</firstJob>
       </gridBuilder>
       <noOfDisplayedBuilds>10</noOfDisplayedBuilds>
-      <buildViewTitle>dev_Ubuntu</buildViewTitle>
+      <buildViewTitle>dev</buildViewTitle>
       <consoleOutputLinkStyle>Lightbox</consoleOutputLinkStyle>
       <cssUrl></cssUrl>
       <triggerOnlyLatestJob>false</triggerOnlyLatestJob>
