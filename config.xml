@@ -195,7 +195,7 @@
       <properties class="hudson.model.View$PropertyList"/>
       <gridBuilder class="au.com.centrumsystems.hudson.plugin.buildpipeline.DownstreamProjectGridBuilder">
         <firstJob>libweintek_dev</firstJob>
-        <firstJobLink>view/dev/job/libweintek_dev/</firstJobLink>
+        <firstJobLink>job/libweintek_dev/</firstJobLink>
       </gridBuilder>
       <noOfDisplayedBuilds>10</noOfDisplayedBuilds>
       <buildViewTitle>dev</buildViewTitle>
@@ -333,6 +333,7 @@
         <string>viewer_dev_cMT-iv5</string>
         <string>viewer_dev_cMT-iv5-3000</string>
         <string>viewer_dev_Ubuntu</string>
+        <string>viewer_stable</string>
         <string>viewer_stable_cMT-iv5</string>
       </jobNames>
       <jobFilters/>
@@ -356,6 +357,7 @@
       <properties class="hudson.model.View$PropertyList"/>
       <gridBuilder class="au.com.centrumsystems.hudson.plugin.buildpipeline.DownstreamProjectGridBuilder">
         <firstJob>libweintek_stable</firstJob>
+        <firstJobLink>job/libweintek_stable/</firstJobLink>
       </gridBuilder>
       <noOfDisplayedBuilds>10</noOfDisplayedBuilds>
       <buildViewTitle>stable</buildViewTitle>
