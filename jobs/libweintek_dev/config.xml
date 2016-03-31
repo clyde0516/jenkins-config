@@ -7,12 +7,12 @@
     <hudson.model.ParametersDefinitionProperty>
       <parameterDefinitions>
         <hudson.model.StringParameterDefinition>
-          <name>TRIGGER_PARAM_INSTALL_FOLDER</name>
+          <name>TRIGGER_PARAM_LIBWEINTEK_BRANCH</name>
           <description></description>
           <defaultValue>dev</defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
-          <name>TRIGGER_PARAM_LIBWEINTEK_BRANCH</name>
+          <name>TRIGGER_PARAM_INSTALL_FOLDER</name>
           <description></description>
           <defaultValue>build-dev-branch</defaultValue>
         </hudson.model.StringParameterDefinition>
