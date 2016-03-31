@@ -14,7 +14,7 @@
         <hudson.model.StringParameterDefinition>
           <name>TRIGGER_PARAM_JOB_GROUP</name>
           <description></description>
-          <defaultValue>dev</defaultValue>
+          <defaultValue>stable</defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.ChoiceParameterDefinition>
           <name>TRIGGER_PARAM_GUI_BUILD_POLICY</name>
