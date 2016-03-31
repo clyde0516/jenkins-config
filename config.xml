@@ -231,28 +231,6 @@
       <refreshFrequency>3</refreshFrequency>
       <showPipelineDefinitionHeader>true</showPipelineDefinitionHeader>
     </au.com.centrumsystems.hudson.plugin.buildpipeline.BuildPipelineView>
-    <au.com.centrumsystems.hudson.plugin.buildpipeline.BuildPipelineView plugin="build-pipeline-plugin@1.4.9">
-      <owner class="hudson" reference="../../.."/>
-      <name>stable_cMT-SVR</name>
-      <filterExecutors>false</filterExecutors>
-      <filterQueue>false</filterQueue>
-      <properties class="hudson.model.View$PropertyList"/>
-      <gridBuilder class="au.com.centrumsystems.hudson.plugin.buildpipeline.DownstreamProjectGridBuilder">
-        <firstJob>libweintek_stable_cMT-SVR</firstJob>
-        <firstJobLink>job/libweintek_stable_cMT-SVR/</firstJobLink>
-      </gridBuilder>
-      <noOfDisplayedBuilds>10</noOfDisplayedBuilds>
-      <buildViewTitle>stable_cMT-SVR</buildViewTitle>
-      <consoleOutputLinkStyle>Lightbox</consoleOutputLinkStyle>
-      <cssUrl></cssUrl>
-      <triggerOnlyLatestJob>false</triggerOnlyLatestJob>
-      <alwaysAllowManualTrigger>true</alwaysAllowManualTrigger>
-      <showPipelineParameters>true</showPipelineParameters>
-      <showPipelineParametersInHeaders>true</showPipelineParametersInHeaders>
-      <startsWithParameters>false</startsWithParameters>
-      <refreshFrequency>3</refreshFrequency>
-      <showPipelineDefinitionHeader>true</showPipelineDefinitionHeader>
-    </au.com.centrumsystems.hudson.plugin.buildpipeline.BuildPipelineView>
     <se.diabol.jenkins.pipeline.DeliveryPipelineView plugin="delivery-pipeline-plugin@0.9.8">
       <owner class="hudson" reference="../../.."/>
       <name>Overview</name>
