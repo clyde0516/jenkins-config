@@ -348,28 +348,6 @@
       <recurse>false</recurse>
       <statusFilter>true</statusFilter>
     </listView>
-    <au.com.centrumsystems.hudson.plugin.buildpipeline.BuildPipelineView plugin="build-pipeline-plugin@1.4.9">
-      <owner class="hudson" reference="../../.."/>
-      <name>dev_cMT-iv5</name>
-      <filterExecutors>false</filterExecutors>
-      <filterQueue>false</filterQueue>
-      <properties class="hudson.model.View$PropertyList"/>
-      <gridBuilder class="au.com.centrumsystems.hudson.plugin.buildpipeline.DownstreamProjectGridBuilder">
-        <firstJob>libweintek_dev_cMT-iv5</firstJob>
-        <firstJobLink>job/libweintek_dev_cMT-iv5/</firstJobLink>
-      </gridBuilder>
-      <noOfDisplayedBuilds>10</noOfDisplayedBuilds>
-      <buildViewTitle></buildViewTitle>
-      <consoleOutputLinkStyle>Lightbox</consoleOutputLinkStyle>
-      <cssUrl></cssUrl>
-      <triggerOnlyLatestJob>false</triggerOnlyLatestJob>
-      <alwaysAllowManualTrigger>true</alwaysAllowManualTrigger>
-      <showPipelineParameters>true</showPipelineParameters>
-      <showPipelineParametersInHeaders>false</showPipelineParametersInHeaders>
-      <startsWithParameters>false</startsWithParameters>
-      <refreshFrequency>3</refreshFrequency>
-      <showPipelineDefinitionHeader>true</showPipelineDefinitionHeader>
-    </au.com.centrumsystems.hudson.plugin.buildpipeline.BuildPipelineView>
   </views>
   <primaryView>Active</primaryView>
   <slaveAgentPort>0</slaveAgentPort>
