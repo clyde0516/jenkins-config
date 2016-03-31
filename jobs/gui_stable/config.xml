@@ -180,7 +180,7 @@ fi
 
 # strip and encrypt
 
-if [ &quot;${BUILD_LIBRARY_ONLY}&quot; = &quot;off&quot; ]; then
+if [ &quot;${BUILD_LIBRARY_ONLY}&quot; = &quot;off&quot; ] &amp;&amp; [ -e &quot;${INSTALL_PREFIX}/bin/gui&quot; ]; then
     strip ${INSTALL_PREFIX}/bin/gui
     
     if test -n &quot;${ENCRYPT_EXTENSION_NAME}&quot;; then
