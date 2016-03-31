@@ -173,7 +173,8 @@ make VERBOSE=1
 
 if [ &quot;${BUILD_LIBRARY_ONLY}&quot; = &quot;off&quot; ]; then
     cp ${INSTALL_PREFIX}/bin/gui ${WORKSPACE}/artifacts/gui.RelWithDebInfo	
-
+else
+    cp ${INSTALL_PREFIX}/bin/liblibgui20.a ${WORKSPACE}/artifacts
 fi
 
 # strip and encrypt
@@ -193,7 +194,7 @@ fi
   <publishers>
     <hudson.tasks.ArtifactArchiver>
       <artifacts>artifacts/*</artifacts>
-      <allowEmptyArchive>true</allowEmptyArchive>
+      <allowEmptyArchive>false</allowEmptyArchive>
       <onlyIfSuccessful>false</onlyIfSuccessful>
       <fingerprint>false</fingerprint>
       <defaultExcludes>true</defaultExcludes>
