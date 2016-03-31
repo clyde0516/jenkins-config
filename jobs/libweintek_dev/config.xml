@@ -115,7 +115,7 @@ case $MATRIX_AXIS_PLATFORM in
     *)               export PLATFORM_BUILD_FOLDER=${MATRIX_AXIS_PLATFORM}  ;;
 esac
 
-# prepare out-of-source-build
+# prepare out-of-source build
 
 cd ${LIBWEINTEK_PATH}/build
 if [ &quot;${TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY}&quot; = &quot;brandnew&quot; ]; then
