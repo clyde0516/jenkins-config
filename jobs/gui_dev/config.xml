@@ -138,7 +138,7 @@ mkdir ${WORKSPACE}/artifacts
 
 # prepare out-of-source build
 
-cd ${WORKSPACE}/gui/build
+cd ${GUI_PATH}/build
 if [ &quot;${TRIGGER_PARAM_GUI_BUILD_POLICY}&quot; = &quot;brandnew&quot; ]; then
     rm -rf jenkins/${MATRIX_AXIS_PLATFORM}
 fi
@@ -152,8 +152,8 @@ cd jenkins/${MATRIX_AXIS_PLATFORM}
 
 # generate makefile
 
-cp ${WORKSPACE}/gui/build/${MATRIX_AXIS_PLATFORM}/features.pri .
-${WORKSPACE}/gui/build/${MATRIX_AXIS_PLATFORM}/qmake_gui.sh ${GUI_PATH} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} RelWithDebInfo
+cp ${GUI_PATH}/build/${MATRIX_AXIS_PLATFORM}/features.pri .
+${GUI_PATH}/build/${MATRIX_AXIS_PLATFORM}/qmake_gui.sh ${GUI_PATH} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} RelWithDebInfo
 
 # make
 
