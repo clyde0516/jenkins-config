@@ -339,8 +339,13 @@ cd ${LIBWEINTEK_PATH}/build
 if [ &quot;${TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY}&quot; = &quot;brandnew&quot; ]; then
     rm -rf jenkins/${TRIGGER_PARAM_PLATFORM}
 fi
-mkdir -p jenkins/${TRIGGER_PARAM_PLATFORM}
-cd jenkins/${TRIGGER_PARAM_PLATFORM}
+if [ ! -d &quot;jenkins&quot; ]; then
+    mkdir -p jenkins
+fi
+if [ ! -d &quot;jenkins/${MATRIX_AXIS_PLATFORM}&quot; ]; then
+    mkdir -p jenkins/${MATRIX_AXIS_PLATFORM}
+fi
+cd jenkins/${MATRIX_AXIS_PLATFORM}
 
 ${LIBWEINTEK_PATH}/build/${TRIGGER_PARAM_PLATFORM}/cmake_libweintek.sh ${LIBWEINTEK_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} ${BUILD_TYPE}
     
