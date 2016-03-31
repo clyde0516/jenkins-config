@@ -81,7 +81,6 @@
       <values>
         <string>cMT-iv5</string>
         <string>cMT-iv5-3000</string>
-        <string>Ubuntu</string>
       </values>
     </hudson.matrix.TextAxis>
   </axes>
