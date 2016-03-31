@@ -187,6 +187,7 @@ elif [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;cMT-SVR&quot; ]; then
     cmake -DCMAKE_BUILD_TYPE=${BUILD_TYPE} \
           -DMODEL=${MODEL_NAME} \
           -DGOOGLE_BREAKPAD_DIR=/home/ci/work/${MATRIX_AXIS_PLATFORM}/google-breakpad \
+          -DCMAKE_INSTALL_PREFIX=${INSTALL_PREFIX} \
           -DCMAKE_TOOLCHAIN_FILE=${LIBWEINTEK_PATH}/build/cMT-SVR/Toolchain-arm-fsl-linux-gnueabi.cmake \
           ..
 fi
