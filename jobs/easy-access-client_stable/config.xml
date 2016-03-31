@@ -217,7 +217,7 @@ cd ${INSTALL_PREFIX}/bin
 if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;cMT-SVR&quot; ]; then
     upx easy_access_client
 fi    
-/home/ci/work/crypto e easy_access_client easy_access_client.c30.${PARAM_EAC_VERSION}
+/home/ci/work/crypto e easy_access_client easy_access_client.c30.${TRIGGER_PARAM_EAC_VERSION}
 </command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
