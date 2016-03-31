@@ -6,18 +6,18 @@
   <properties>
     <hudson.model.ParametersDefinitionProperty>
       <parameterDefinitions>
-        <hudson.model.TextParameterDefinition>
-          <name>TRIGGER_PARAM_LIBWEINTEK_BRANCH</name>
-          <description></description>
-          <defaultValue>dev</defaultValue>
-        </hudson.model.TextParameterDefinition>
-        <hudson.model.TextParameterDefinition>
+        <hudson.model.StringParameterDefinition>
           <name>TRIGGER_PARAM_INSTALL_FOLDER</name>
           <description></description>
+          <defaultValue>dev</defaultValue>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>TRIGGER_PARAM_LIBWEINTEK_BRANCH</name>
+          <description></description>
           <defaultValue>build-dev-branch</defaultValue>
-        </hudson.model.TextParameterDefinition>
+        </hudson.model.StringParameterDefinition>
         <hudson.model.ChoiceParameterDefinition>
-          <name>TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY</name>
+          <name>TRIGGER_PARAM_INSTALL_FOLDER</name>
           <description></description>
           <choices class="java.util.Arrays$ArrayList">
             <a class="string-array">
@@ -51,6 +51,9 @@
       </hudson.plugins.git.BranchSpec>
     </branches>
     <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+    <browser class="hudson.plugins.git.browser.AssemblaWeb">
+      <url></url>
+    </browser>
     <submoduleCfg class="list"/>
     <extensions/>
   </scm>
