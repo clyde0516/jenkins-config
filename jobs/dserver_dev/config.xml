@@ -170,7 +170,7 @@ cp ${INSTALL_PREFIX}/bin/dserver ${WORKSPACE}/artifacts/dserver.RelWithDebInfo
 make install/strip VERBOSE=1
 if test -n &quot;${ENCRYPT_EXTENSION_NAME}&quot;; then
     /home/ci/work/crypto e ${INSTALL_PREFIX}/bin/dserver ${INSTALL_PREFIX}/bin/dserver${ENCRYPT_EXTENSION_NAME}
-else
+fi
 cp ${INSTALL_PREFIX}/bin/dserver${ENCRYPT_EXTENSION_NAME} ${WORKSPACE}/artifacts
 </command>
     </hudson.tasks.Shell>
