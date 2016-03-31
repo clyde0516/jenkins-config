@@ -188,7 +188,7 @@ if [ &quot;${BUILD_LIBRARY_ONLY}&quot; = &quot;off&quot; ]; then
     fi    
         
     cp ${INSTALL_PREFIX}/bin/gui${ENCRYPT_EXTENSION_NAME} ${WORKSPACE}/artifacts
-if
+fi
 </command>
     </hudson.tasks.Shell>
   </builders>
