@@ -121,7 +121,12 @@ cd ${LIBWEINTEK_PATH}/build
 if [ &quot;${TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY}&quot; = &quot;brandnew&quot; ]; then
     rm -rf jenkins/${MATRIX_AXIS_PLATFORM}
 fi
-mkdir -p jenkins/${MATRIX_AXIS_PLATFORM}
+if [ ! -d &quot;jenkins&quot; ]; then
+    mkdir -p jenkins
+fi
+if [ ! -d &quot;jenkins/${MATRIX_AXIS_PLATFORM}&quot; ]; then
+    mkdir -p jenkins/${MATRIX_AXIS_PLATFORM}
+fi
 cd jenkins/${MATRIX_AXIS_PLATFORM}
 
 # generate makefile
