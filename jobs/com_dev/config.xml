@@ -6,11 +6,22 @@
   <properties>
     <hudson.model.ParametersDefinitionProperty>
       <parameterDefinitions>
-        <hudson.model.TextParameterDefinition>
+        <hudson.model.StringParameterDefinition>
           <name>TRIGGER_PARAM_COM_BRANCH</name>
           <description></description>
           <defaultValue>5.03.02</defaultValue>
-        </hudson.model.TextParameterDefinition>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>TRIGGER_PARAM_COM_BUILD_POLICY</name>
+          <description></description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>incremental</string>
+              <string>clean</string>
+              <string>brandnew</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
     <jenkins.model.BuildDiscarderProperty>
@@ -78,6 +89,8 @@
     <hudson.tasks.Shell>
       <command>#!/bin/bash
 
+# export variables
+
 if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;cMT3000&quot; ]; then
     export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
 	export CRYPTO_EXTENSION_NAME=c30
@@ -85,20 +98,39 @@ else
 	export CRYPTO_EXTENSION_NAME=e30
 fi
 
+# clear artifacts
+
+rm -f ${WORKSPACE}/build/jenkins/bin/com*
 rm -rf ${WORKSPACE}/artifacts
 mkdir ${WORKSPACE}/artifacts
 
-rm -f ${WORKSPACE}/build/jenkins/bin/com*
+# prepare out-of-source-build
 
 cd ${WORKSPACE}/build
-mkdir -p jenkins
-cd jenkins
+if [ &quot;${TRIGGER_PARAM_DSERVER_BUILD_POLICY}&quot; = &quot;brandnew&quot; ]; then
+    rm -rf jenkins/${MATRIX_AXIS_PLATFORM}
+fi
+if [ ! -d &quot;jenkins&quot; ]; then
+    mkdir -p jenkins
+fi
+if [ ! -d &quot;jenkins/${MATRIX_AXIS_PLATFORM}&quot; ]; then
+    mkdir -p jenkins/${MATRIX_AXIS_PLATFORM}
+fi
+cd jenkins/${MATRIX_AXIS_PLATFORM}
 mkdir -p bin
+
+# generate makefile
 
 ${WORKSPACE}/build/${MATRIX_AXIS_PLATFORM}/cmake_com.sh ${WORKSPACE} ${CRYPTO_EXTENSION_NAME} ${CROSS_COMPILER_TOOLCHAIN} RelWithDebInfo
 
+# make
+if [ &quot;${TRIGGER_PARAM_COM_BUILD_POLICY}&quot; = &quot;clean&quot; ]; then
+    make clean
+fi
 make install VERBOSE=1
 cp ${WORKSPACE}/build/jenkins/bin/com ${WORKSPACE}/artifacts/com.RelWithDebInfo
+
+# strip and encrypt
 
 make install/strip VERBOSE=1
 /home/ci/work/crypto e ${WORKSPACE}/build/jenkins/bin/com ${WORKSPACE}/build/jenkins/bin/com.${CRYPTO_EXTENSION_NAME}
