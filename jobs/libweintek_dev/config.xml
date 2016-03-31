@@ -76,7 +76,6 @@
       <name>MATRIX_AXIS_PLATFORM</name>
       <values>
         <string>cMT3000</string>
-        <string>cMT-SVR</string>
         <string>cMT-iv5</string>
         <string>cMT-iv5-3000</string>
       </values>
