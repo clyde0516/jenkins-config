@@ -17,7 +17,7 @@
           <defaultValue>dev</defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.ChoiceParameterDefinition>
-          <name>TRIGGER_PARAM_DSERVER_BUILD_POLICY</name>
+          <name>TRIGGER_PARAM_GUI_BUILD_POLICY</name>
           <description></description>
           <choices class="java.util.Arrays$ArrayList">
             <a class="string-array">
@@ -107,7 +107,7 @@
 export GUI_PATH=${WORKSPACE}
 export DSERVER_PATH=${JENKINS_HOME}/jobs/dserver_${TRIGGER_PARAM_JOB_GROUP}/workspace/MATRIX_AXIS_PLATFORM/${MATRIX_AXIS_PLATFORM}
 export LIBWEINTEK_PATH=${JENKINS_HOME}/jobs/libweintek_${TRIGGER_PARAM_JOB_GROUP}/workspace/MATRIX_AXIS_PLATFORM/${MATRIX_AXIS_PLATFORM}
-export INSTALL_PREFIX=/home/ci/work/${TRIGGER_PARAM_PLATFORM}/build-${TRIGGER_PARAM_JOB_GROUP}-branch
+export INSTALL_PREFIX=/home/ci/work/${MATRIX_AXIS_PLATFORM}/build-${TRIGGER_PARAM_JOB_GROUP}-branch
 
 case $MATRIX_AXIS_PLATFORM in
     &quot;cMT3000&quot;)       export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi  ;;
@@ -122,11 +122,11 @@ case $MATRIX_AXIS_PLATFORM in
     &quot;Ubuntu&quot;)        export BUILD_LIBRARY_ONLY=off  ;;
 esac
 
-if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT3000&quot; ]; then
+if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;cMT3000&quot; ]; then
    export ENCRYPT_EXTENSION_NAME=.c30
 fi
 
-if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;Ubuntu&quot; ]; then
+if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;Ubuntu&quot; ]; then
    export PATH=/opt/Qt5.4.2/5.4/gcc_64/bin:${PATH}
 fi
 
@@ -140,20 +140,20 @@ mkdir ${WORKSPACE}/artifacts
 
 cd ${WORKSPACE}/gui/build
 if [ &quot;${TRIGGER_PARAM_GUI_BUILD_POLICY}&quot; = &quot;brandnew&quot; ]; then
-    rm -rf jenkins/${TRIGGER_PARAM_PLATFORM}
+    rm -rf jenkins/${MATRIX_AXIS_PLATFORM}
 fi
 if [ ! -d &quot;jenkins&quot; ]; then
     mkdir -p jenkins
 fi
-if [ ! -d &quot;jenkins/${TRIGGER_PARAM_PLATFORM}&quot; ]; then
-    mkdir -p jenkins/${TRIGGER_PARAM_PLATFORM}
+if [ ! -d &quot;jenkins/${MATRIX_AXIS_PLATFORM}&quot; ]; then
+    mkdir -p jenkins/${MATRIX_AXIS_PLATFORM}
 fi
-cd jenkins/${TRIGGER_PARAM_PLATFORM}
+cd jenkins/${MATRIX_AXIS_PLATFORM}
 
 # generate makefile
 
-cp ${WORKSPACE}/gui/build/${TRIGGER_PARAM_PLATFORM}/features.pri .
-${WORKSPACE}/gui/build/${TRIGGER_PARAM_PLATFORM}/qmake_gui.sh ${GUI_PATH} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} RelWithDebInfo
+cp ${WORKSPACE}/gui/build/${MATRIX_AXIS_PLATFORM}/features.pri .
+${WORKSPACE}/gui/build/${MATRIX_AXIS_PLATFORM}/qmake_gui.sh ${GUI_PATH} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} RelWithDebInfo
 
 # make
 
