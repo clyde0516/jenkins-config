@@ -123,6 +123,11 @@ case $MATRIX_AXIS_PLATFORM in
 esac
 
 case $MATRIX_AXIS_PLATFORM in
+    &quot;cMT-iv5-3000&quot;)  export PLATFORM_FEATURE_FOLDER=cMT-iv5  ;;
+    *)               export PLATFORM_FEATURE_FOLDER=${MATRIX_AXIS_PLATFORM}  ;;
+esac
+
+case $MATRIX_AXIS_PLATFORM in
     &quot;cMT-iv5-3000&quot;)  export PLATFORM_BUILD_FOLDER=cMT3000  ;;
     *)               export PLATFORM_BUILD_FOLDER=${MATRIX_AXIS_PLATFORM}  ;;
 esac
@@ -157,7 +162,7 @@ cd jenkins/${MATRIX_AXIS_PLATFORM}
 
 # generate makefile
 
-cp ${GUI_PATH}/build/${MATRIX_AXIS_PLATFORM}/features.pri .
+cp ${GUI_PATH}/build/${PLATFORM_FEATURE_FOLDER}/features.pri .
 ${GUI_PATH}/build/${PLATFORM_BUILD_FOLDER}/qmake_gui.sh ${GUI_PATH} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} RelWithDebInfo
 
 # make
@@ -193,7 +198,7 @@ fi
   <publishers>
     <hudson.tasks.ArtifactArchiver>
       <artifacts>artifacts/*</artifacts>
-      <allowEmptyArchive>false</allowEmptyArchive>
+      <allowEmptyArchive>true</allowEmptyArchive>
       <onlyIfSuccessful>false</onlyIfSuccessful>
       <fingerprint>false</fingerprint>
       <defaultExcludes>true</defaultExcludes>
