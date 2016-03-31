@@ -544,10 +544,10 @@ fi
 
 export VIEWER_PATH=${WORKSPACE}/viewer
 export CLOUDHMI_PATH=${VIEWER_PATH}/CloudHmi
-export LIBWEINTEK_PATH=${JENKINS_HOME}/jobs/libweintek_${TRIGGER_PARAM_JOB_GROUP}/workspace
-export DSERVER_PATH=${JENKINS_HOME}/jobs/dserver_${TRIGGER_PARAM_JOB_GROUP}/workspace
-export GUI_PATH=${JENKINS_HOME}/jobs/gui_${TRIGGER_PARAM_JOB_GROUP}/workspace
-export INSTALL_PREFIX=/home/ci/work/${TRIGGER_PARAM_PLATFORM}/build-${TRIGGER_PARAM_JOB_GROUP}-branch
+export LIBWEINTEK_PATH=${WORKSPACE}/libweintek
+export DSERVER_PATH=${WORKSPACE}/dserver
+export GUI_PATH=${WORKSPACE}/gui
+export INSTALL_PREFIX=/home/ci/work/${TRIGGER_PARAM_PLATFORM}/${TRIGGER_PARAM_INSTALL_FOLDER}
 
 case $TRIGGER_PARAM_PLATFORM in
     &quot;cMT-iv5&quot;)       export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT-iv5/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi  ;;
