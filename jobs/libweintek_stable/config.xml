@@ -12,9 +12,9 @@
           <defaultValue>v1-stable</defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
-          <name>TRIGGER_PARAM_INSTALL_FOLDER</name>
+          <name>TRIGGER_PARAM_JOB_GROUP</name>
           <description></description>
-          <defaultValue>build-stable-branch</defaultValue>
+          <defaultValue>stable</defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.ChoiceParameterDefinition>
           <name>TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY</name>
@@ -102,7 +102,7 @@
 # export variables
 
 export LIBWEINTEK_PATH=${WORKSPACE}
-export INSTALL_PREFIX=/home/ci/work/${MATRIX_AXIS_PLATFORM}/${TRIGGER_PARAM_INSTALL_FOLDER}
+export INSTALL_PREFIX=/home/ci/work/${MATRIX_AXIS_PLATFORM}/build-${TRIGGER_PARAM_JOB_GROUP}-branch
 
 case $MATRIX_AXIS_PLATFORM in
     &quot;cMT3000&quot;)       export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi  ;;
