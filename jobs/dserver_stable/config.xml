@@ -61,7 +61,7 @@
   <triggers>
     <jenkins.triggers.ReverseBuildTrigger>
       <spec></spec>
-      <upstreamProjects>libweintek_dev, </upstreamProjects>
+      <upstreamProjects>libweintek_stable, </upstreamProjects>
       <threshold>
         <name>UNSTABLE</name>
         <ordinal>1</ordinal>
@@ -106,7 +106,7 @@
 # export variables
 
 export DSERVER_PATH=${WORKSPACE}
-export LIBWEINTEK_PATH=${JENKINS_HOME}/jobs/libweintek_dev/workspace/MATRIX_AXIS_PLATFORM/${MATRIX_AXIS_PLATFORM}
+export LIBWEINTEK_PATH=${JENKINS_HOME}/jobs/libweintek_stable/workspace/MATRIX_AXIS_PLATFORM/${MATRIX_AXIS_PLATFORM}
 export MARIADB_CONNECTOR_C_PATH=/home/ci/work/mariadb-connector-c
 export INSTALL_PREFIX=/home/ci/work/${MATRIX_AXIS_PLATFORM}/${TRIGGER_PARAM_INSTALL_FOLDER}
 export BUILD_TYPE=RelWithDebInfo
