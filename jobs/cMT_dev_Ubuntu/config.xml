@@ -369,7 +369,7 @@ elif [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT-iv5&quot; ]; then
     export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT-iv5/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
 fi
 
-cd ${WORKSPACE}/dserver/build
+cd ${DSERVER_PATH}/build
 if [ &quot;${TRIGGER_PARAM_DSERVER_BUILD_POLICY}&quot; = &quot;brandnew&quot; ]; then
     rm -rf jenkins/${TRIGGER_PARAM_PLATFORM}
 fi
@@ -381,7 +381,7 @@ if [ ! -d &quot;jenkins/${TRIGGER_PARAM_PLATFORM}&quot; ]; then
 fi
 cd jenkins/${TRIGGER_PARAM_PLATFORM}
 
-${WORKSPACE}/dserver/build/${TRIGGER_PARAM_PLATFORM}/cmake_dserver.sh ${DSERVER_PATH} ${LIBWEINTEK_PATH} ${MARIADB_CONNECTOR_C_PATH} ${GOOGLE_BREAKPAD_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} ${BUILD_TYPE}
+${DSERVER_PATH}/build/${TRIGGER_PARAM_PLATFORM}/cmake_dserver.sh ${DSERVER_PATH} ${LIBWEINTEK_PATH} ${MARIADB_CONNECTOR_C_PATH} ${GOOGLE_BREAKPAD_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} ${BUILD_TYPE}
 
 if [ &quot;${TRIGGER_PARAM_DSERVER_BUILD_POLICY}&quot; = &quot;clean&quot; ]; then
     make clean
