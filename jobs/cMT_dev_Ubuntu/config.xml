@@ -322,7 +322,9 @@ cppcheck --enable=all --inconclusive --suppress=syntaxError --xml --xml-version=
       <runner class="org.jenkins_ci.plugins.run_condition.BuildStepRunner$Fail" plugin="run-condition@1.0"/>
     </org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder>
     <hudson.tasks.Shell>
-      <command># Build libweintek
+      <command>#!/bin/bash
+
+# Build libweintek
 echo &quot;================================ libweintek ================================ libweintek ================================ libweintek ================================&quot;
 
 export LIBWEINTEK_PATH=${WORKSPACE}/libweintek
@@ -355,7 +357,9 @@ fi
 make install VERBOSE=1</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
-      <command># Build dserver
+      <command>#!/bin/bash
+
+# Build dserver
 echo &quot;================================ dserver ================================ dserver ================================ dserver ================================&quot;
 
 export DSERVER_PATH=${WORKSPACE}/dserver
