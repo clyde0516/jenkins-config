@@ -139,7 +139,7 @@ rm -f ${INSTALL_PREFIX}/bin/dserver*
 rm -rf ${WORKSPACE}/artifacts
 mkdir ${WORKSPACE}/artifacts
 
-# prepare out-of-source-build
+# prepare out-of-source build
 
 cd ${DSERVER_PATH}/build
 if [ &quot;${TRIGGER_PARAM_DSERVER_BUILD_POLICY}&quot; = &quot;brandnew&quot; ]; then
