@@ -130,6 +130,7 @@ mkdir -p jenkins
 cd jenkins
 
 if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;cMT3000&quot; ]; then
+    export BREAKPAD_INCLUDE_DIR=/home/ci/work/cMT3000/target/sysroots/armv7ahf-vfp-neon-weintek-linux-gnueabi/usr/include/breakpad
     source /home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
     cmake -DCMAKE_BUILD_TYPE=${BUILD_TYPE} \
           -DMODEL=${MODEL_NAME} \
