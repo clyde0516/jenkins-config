@@ -173,7 +173,7 @@ if [ -e &quot;${INSTALL_PREFIX}/bin/CloudHmi&quot; ]; then
     else
         cp ${INSTALL_PREFIX}/bin/CloudHmi.tar ${WORKSPACE}/artifacts
     fi
-if
+fi
 </command>
     </hudson.tasks.Shell>
   </builders>
