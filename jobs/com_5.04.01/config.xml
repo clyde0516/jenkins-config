@@ -13,7 +13,7 @@
         <hudson.model.StringParameterDefinition>
           <name>TRIGGER_PARAM_COM_BRANCH</name>
           <description></description>
-          <defaultValue>5.03.02</defaultValue>
+          <defaultValue>5.04.01</defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.ChoiceParameterDefinition>
           <name>TRIGGER_PARAM_COM_BUILD_POLICY</name>
