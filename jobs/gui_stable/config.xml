@@ -61,7 +61,7 @@
   <triggers>
     <jenkins.triggers.ReverseBuildTrigger>
       <spec></spec>
-      <upstreamProjects>dserver_stable, </upstreamProjects>
+      <upstreamProjects>dserver_stable</upstreamProjects>
       <threshold>
         <name>UNSTABLE</name>
         <ordinal>1</ordinal>

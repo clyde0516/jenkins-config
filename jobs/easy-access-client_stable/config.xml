@@ -73,7 +73,7 @@
   <triggers>
     <jenkins.triggers.ReverseBuildTrigger>
       <spec></spec>
-      <upstreamProjects>libweintek_stable, </upstreamProjects>
+      <upstreamProjects>libweintek_stable</upstreamProjects>
       <threshold>
         <name>UNSTABLE</name>
         <ordinal>1</ordinal>
