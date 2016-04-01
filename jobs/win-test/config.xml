@@ -16,7 +16,7 @@
     <hudson.tasks.BatchFile>
       <command>ipconfig&#xd;
 &#xd;
-xcopy /y C:\jenkins\jenkins-slave.xml ${WORKSPACE}</command>
+xcopy /y C:\jenkins\jenkins-slave.xml %WORKSPACE%</command>
     </hudson.tasks.BatchFile>
     <hudson.tasks.Shell>
       <command></command>
