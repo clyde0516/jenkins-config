@@ -169,13 +169,14 @@ cp ${INSTALL_PREFIX}/bin/CloudHmi ${WORKSPACE}/artifacts/CloudHmi.RelWithDebInfo
 # strip and encrypt
 
 if [ -e &quot;${INSTALL_PREFIX}/bin/CloudHmi&quot; ]; then
-    strip ${INSTALL_PREFIX}/bin/CloudHmi
-    tar -cv ${INSTALL_PREFIX}/bin/CloudHmi &gt;&gt; ${INSTALL_PREFIX}/bin/CloudHmi.tar
+    cd ${INSTALL_PREFIX}/bin
+    strip CloudHmi
+    tar -cv CloudHmi &gt;&gt; CloudHmi.tar
     if test -n &quot;${ENCRYPT_EXTENSION_NAME}&quot;; then
-        test_mtcrypt --encrypt ${INSTALL_PREFIX}/bin/CloudHmi.tar --out ${INSTALL_PREFIX}/bin/cMTViewer${ENCRYPT_EXTENSION_NAME}
-        cp ${INSTALL_PREFIX}/bin/cMTViewer${ENCRYPT_EXTENSION_NAME} ${WORKSPACE}/artifacts
+        test_mtcrypt --encrypt CloudHmi.tar --out cMTViewer${ENCRYPT_EXTENSION_NAME}
+        cp cMTViewer${ENCRYPT_EXTENSION_NAME} ${WORKSPACE}/artifacts
     else
-        cp ${INSTALL_PREFIX}/bin/CloudHmi.tar ${WORKSPACE}/artifacts
+        cp CloudHmi.tar ${WORKSPACE}/artifacts
     fi
 fi    
 </command>
