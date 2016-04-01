@@ -8,18 +8,23 @@
   <authorizationStrategy class="hudson.security.ProjectMatrixAuthorizationStrategy">
     <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Create:clydeliu</permission>
     <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Create:katte</permission>
+    <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Create:kevin</permission>
     <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Create:zen</permission>
     <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Delete:clydeliu</permission>
     <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Delete:katte</permission>
+    <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Delete:kevin</permission>
     <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Delete:zen</permission>
     <permission>com.cloudbees.plugins.credentials.CredentialsProvider.ManageDomains:clydeliu</permission>
     <permission>com.cloudbees.plugins.credentials.CredentialsProvider.ManageDomains:katte</permission>
+    <permission>com.cloudbees.plugins.credentials.CredentialsProvider.ManageDomains:kevin</permission>
     <permission>com.cloudbees.plugins.credentials.CredentialsProvider.ManageDomains:zen</permission>
     <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Update:clydeliu</permission>
     <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Update:katte</permission>
+    <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Update:kevin</permission>
     <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Update:zen</permission>
     <permission>com.cloudbees.plugins.credentials.CredentialsProvider.View:clydeliu</permission>
     <permission>com.cloudbees.plugins.credentials.CredentialsProvider.View:katte</permission>
+    <permission>com.cloudbees.plugins.credentials.CredentialsProvider.View:kevin</permission>
     <permission>com.cloudbees.plugins.credentials.CredentialsProvider.View:zen</permission>
     <permission>hudson.model.Computer.Build:clydeliu</permission>
     <permission>hudson.model.Computer.Build:darenyao</permission>
@@ -27,30 +32,38 @@
     <permission>hudson.model.Computer.Build:edgarlee</permission>
     <permission>hudson.model.Computer.Build:jeremyhong</permission>
     <permission>hudson.model.Computer.Build:katte</permission>
+    <permission>hudson.model.Computer.Build:kevin</permission>
     <permission>hudson.model.Computer.Build:paul</permission>
     <permission>hudson.model.Computer.Build:user</permission>
     <permission>hudson.model.Computer.Build:yichengchen</permission>
     <permission>hudson.model.Computer.Build:zen</permission>
     <permission>hudson.model.Computer.Configure:clydeliu</permission>
     <permission>hudson.model.Computer.Configure:katte</permission>
+    <permission>hudson.model.Computer.Configure:kevin</permission>
     <permission>hudson.model.Computer.Configure:zen</permission>
     <permission>hudson.model.Computer.Connect:clydeliu</permission>
     <permission>hudson.model.Computer.Connect:katte</permission>
+    <permission>hudson.model.Computer.Connect:kevin</permission>
     <permission>hudson.model.Computer.Connect:zen</permission>
     <permission>hudson.model.Computer.Create:clydeliu</permission>
     <permission>hudson.model.Computer.Create:katte</permission>
+    <permission>hudson.model.Computer.Create:kevin</permission>
     <permission>hudson.model.Computer.Create:zen</permission>
     <permission>hudson.model.Computer.Delete:clydeliu</permission>
     <permission>hudson.model.Computer.Delete:katte</permission>
+    <permission>hudson.model.Computer.Delete:kevin</permission>
     <permission>hudson.model.Computer.Delete:zen</permission>
     <permission>hudson.model.Computer.Disconnect:clydeliu</permission>
     <permission>hudson.model.Computer.Disconnect:katte</permission>
+    <permission>hudson.model.Computer.Disconnect:kevin</permission>
     <permission>hudson.model.Computer.Disconnect:zen</permission>
     <permission>hudson.model.Hudson.Administer:clydeliu</permission>
     <permission>hudson.model.Hudson.Administer:katte</permission>
+    <permission>hudson.model.Hudson.Administer:kevin</permission>
     <permission>hudson.model.Hudson.Administer:zen</permission>
     <permission>hudson.model.Hudson.ConfigureUpdateCenter:clydeliu</permission>
     <permission>hudson.model.Hudson.ConfigureUpdateCenter:katte</permission>
+    <permission>hudson.model.Hudson.ConfigureUpdateCenter:kevin</permission>
     <permission>hudson.model.Hudson.ConfigureUpdateCenter:zen</permission>
     <permission>hudson.model.Hudson.Read:clydeliu</permission>
     <permission>hudson.model.Hudson.Read:darenyao</permission>
@@ -58,15 +71,18 @@
     <permission>hudson.model.Hudson.Read:edgarlee</permission>
     <permission>hudson.model.Hudson.Read:jeremyhong</permission>
     <permission>hudson.model.Hudson.Read:katte</permission>
+    <permission>hudson.model.Hudson.Read:kevin</permission>
     <permission>hudson.model.Hudson.Read:paul</permission>
     <permission>hudson.model.Hudson.Read:user</permission>
     <permission>hudson.model.Hudson.Read:yichengchen</permission>
     <permission>hudson.model.Hudson.Read:zen</permission>
     <permission>hudson.model.Hudson.RunScripts:clydeliu</permission>
     <permission>hudson.model.Hudson.RunScripts:katte</permission>
+    <permission>hudson.model.Hudson.RunScripts:kevin</permission>
     <permission>hudson.model.Hudson.RunScripts:zen</permission>
     <permission>hudson.model.Hudson.UploadPlugins:clydeliu</permission>
     <permission>hudson.model.Hudson.UploadPlugins:katte</permission>
+    <permission>hudson.model.Hudson.UploadPlugins:kevin</permission>
     <permission>hudson.model.Hudson.UploadPlugins:zen</permission>
     <permission>hudson.model.Item.Build:clydeliu</permission>
     <permission>hudson.model.Item.Build:darenyao</permission>
@@ -74,6 +90,7 @@
     <permission>hudson.model.Item.Build:edgarlee</permission>
     <permission>hudson.model.Item.Build:jeremyhong</permission>
     <permission>hudson.model.Item.Build:katte</permission>
+    <permission>hudson.model.Item.Build:kevin</permission>
     <permission>hudson.model.Item.Build:paul</permission>
     <permission>hudson.model.Item.Build:user</permission>
     <permission>hudson.model.Item.Build:yichengchen</permission>
@@ -84,12 +101,14 @@
     <permission>hudson.model.Item.Cancel:edgarlee</permission>
     <permission>hudson.model.Item.Cancel:jeremyhong</permission>
     <permission>hudson.model.Item.Cancel:katte</permission>
+    <permission>hudson.model.Item.Cancel:kevin</permission>
     <permission>hudson.model.Item.Cancel:paul</permission>
     <permission>hudson.model.Item.Cancel:user</permission>
     <permission>hudson.model.Item.Cancel:yichengchen</permission>
     <permission>hudson.model.Item.Cancel:zen</permission>
     <permission>hudson.model.Item.Configure:clydeliu</permission>
     <permission>hudson.model.Item.Configure:katte</permission>
+    <permission>hudson.model.Item.Configure:kevin</permission>
     <permission>hudson.model.Item.Configure:zen</permission>
     <permission>hudson.model.Item.Create:clydeliu</permission>
     <permission>hudson.model.Item.Create:darenyao</permission>
@@ -97,12 +116,14 @@
     <permission>hudson.model.Item.Create:edgarlee</permission>
     <permission>hudson.model.Item.Create:jeremyhong</permission>
     <permission>hudson.model.Item.Create:katte</permission>
+    <permission>hudson.model.Item.Create:kevin</permission>
     <permission>hudson.model.Item.Create:paul</permission>
     <permission>hudson.model.Item.Create:user</permission>
     <permission>hudson.model.Item.Create:yichengchen</permission>
     <permission>hudson.model.Item.Create:zen</permission>
     <permission>hudson.model.Item.Delete:clydeliu</permission>
     <permission>hudson.model.Item.Delete:katte</permission>
+    <permission>hudson.model.Item.Delete:kevin</permission>
     <permission>hudson.model.Item.Delete:zen</permission>
     <permission>hudson.model.Item.Discover:clydeliu</permission>
     <permission>hudson.model.Item.Discover:darenyao</permission>
@@ -110,6 +131,7 @@
     <permission>hudson.model.Item.Discover:edgarlee</permission>
     <permission>hudson.model.Item.Discover:jeremyhong</permission>
     <permission>hudson.model.Item.Discover:katte</permission>
+    <permission>hudson.model.Item.Discover:kevin</permission>
     <permission>hudson.model.Item.Discover:paul</permission>
     <permission>hudson.model.Item.Discover:user</permission>
     <permission>hudson.model.Item.Discover:yichengchen</permission>
@@ -120,6 +142,7 @@
     <permission>hudson.model.Item.Read:edgarlee</permission>
     <permission>hudson.model.Item.Read:jeremyhong</permission>
     <permission>hudson.model.Item.Read:katte</permission>
+    <permission>hudson.model.Item.Read:kevin</permission>
     <permission>hudson.model.Item.Read:paul</permission>
     <permission>hudson.model.Item.Read:user</permission>
     <permission>hudson.model.Item.Read:yichengchen</permission>
@@ -130,24 +153,30 @@
     <permission>hudson.model.Item.Workspace:edgarlee</permission>
     <permission>hudson.model.Item.Workspace:jeremyhong</permission>
     <permission>hudson.model.Item.Workspace:katte</permission>
+    <permission>hudson.model.Item.Workspace:kevin</permission>
     <permission>hudson.model.Item.Workspace:paul</permission>
     <permission>hudson.model.Item.Workspace:user</permission>
     <permission>hudson.model.Item.Workspace:yichengchen</permission>
     <permission>hudson.model.Item.Workspace:zen</permission>
     <permission>hudson.model.Run.Delete:clydeliu</permission>
     <permission>hudson.model.Run.Delete:katte</permission>
+    <permission>hudson.model.Run.Delete:kevin</permission>
     <permission>hudson.model.Run.Delete:zen</permission>
     <permission>hudson.model.Run.Update:clydeliu</permission>
     <permission>hudson.model.Run.Update:katte</permission>
+    <permission>hudson.model.Run.Update:kevin</permission>
     <permission>hudson.model.Run.Update:zen</permission>
     <permission>hudson.model.View.Configure:clydeliu</permission>
     <permission>hudson.model.View.Configure:katte</permission>
+    <permission>hudson.model.View.Configure:kevin</permission>
     <permission>hudson.model.View.Configure:zen</permission>
     <permission>hudson.model.View.Create:clydeliu</permission>
     <permission>hudson.model.View.Create:katte</permission>
+    <permission>hudson.model.View.Create:kevin</permission>
     <permission>hudson.model.View.Create:zen</permission>
     <permission>hudson.model.View.Delete:clydeliu</permission>
     <permission>hudson.model.View.Delete:katte</permission>
+    <permission>hudson.model.View.Delete:kevin</permission>
     <permission>hudson.model.View.Delete:zen</permission>
     <permission>hudson.model.View.Read:clydeliu</permission>
     <permission>hudson.model.View.Read:darenyao</permission>
@@ -155,12 +184,14 @@
     <permission>hudson.model.View.Read:edgarlee</permission>
     <permission>hudson.model.View.Read:jeremyhong</permission>
     <permission>hudson.model.View.Read:katte</permission>
+    <permission>hudson.model.View.Read:kevin</permission>
     <permission>hudson.model.View.Read:paul</permission>
     <permission>hudson.model.View.Read:user</permission>
     <permission>hudson.model.View.Read:yichengchen</permission>
     <permission>hudson.model.View.Read:zen</permission>
     <permission>hudson.scm.SCM.Tag:clydeliu</permission>
     <permission>hudson.scm.SCM.Tag:katte</permission>
+    <permission>hudson.scm.SCM.Tag:kevin</permission>
     <permission>hudson.scm.SCM.Tag:zen</permission>
   </authorizationStrategy>
   <securityRealm class="hudson.security.HudsonPrivateSecurityRealm">
