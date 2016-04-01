@@ -142,6 +142,7 @@ fi
 # clear artifacts
 
 rm -f ${INSTALL_PREFIX}/bin/gui*
+rm -f ${INSTALL_PREFIX}/lib/liblibgui20.a
 rm -rf ${WORKSPACE}/artifacts
 mkdir ${WORKSPACE}/artifacts
 
