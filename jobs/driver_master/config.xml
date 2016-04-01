@@ -6,20 +6,35 @@
   <properties>
     <hudson.security.AuthorizationMatrixProperty>
       <permission>hudson.scm.SCM.Tag:jim</permission>
+      <permission>hudson.scm.SCM.Tag:carey</permission>
       <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Delete:jim</permission>
+      <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Delete:carey</permission>
       <permission>com.cloudbees.plugins.credentials.CredentialsProvider.ManageDomains:jim</permission>
+      <permission>com.cloudbees.plugins.credentials.CredentialsProvider.ManageDomains:carey</permission>
       <permission>hudson.model.Item.Read:jim</permission>
+      <permission>hudson.model.Item.Read:carey</permission>
       <permission>hudson.model.Item.Configure:jim</permission>
+      <permission>hudson.model.Item.Configure:carey</permission>
       <permission>hudson.model.Item.Workspace:jim</permission>
+      <permission>hudson.model.Item.Workspace:carey</permission>
       <permission>hudson.model.Run.Delete:jim</permission>
+      <permission>hudson.model.Run.Delete:carey</permission>
       <permission>hudson.model.Item.Discover:jim</permission>
+      <permission>hudson.model.Item.Discover:carey</permission>
       <permission>com.cloudbees.plugins.credentials.CredentialsProvider.View:jim</permission>
+      <permission>com.cloudbees.plugins.credentials.CredentialsProvider.View:carey</permission>
       <permission>hudson.model.Item.Build:jim</permission>
+      <permission>hudson.model.Item.Build:carey</permission>
       <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Create:jim</permission>
+      <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Create:carey</permission>
       <permission>hudson.model.Item.Cancel:jim</permission>
+      <permission>hudson.model.Item.Cancel:carey</permission>
       <permission>hudson.model.Item.Delete:jim</permission>
+      <permission>hudson.model.Item.Delete:carey</permission>
       <permission>hudson.model.Run.Update:jim</permission>
+      <permission>hudson.model.Run.Update:carey</permission>
       <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Update:jim</permission>
+      <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Update:carey</permission>
     </hudson.security.AuthorizationMatrixProperty>
   </properties>
   <scm class="hudson.plugins.git.GitSCM" plugin="git@2.4.2">
