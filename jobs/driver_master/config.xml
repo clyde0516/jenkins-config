@@ -41,7 +41,7 @@ mkdir cppcheck
 cd ${WORKSPACE}/cppcheck
 
 cppcheck --enable=all --inconclusive --suppress=syntaxError --xml --xml-version=2 \
-         &quot;${WORKSPACE}/[482] Beckhoff TwinCAT PLC (Ethernet)&quot; \
+         &apos;${WORKSPACE}/[482] Beckhoff TwinCAT PLC (Ethernet)&apos; \
          2&gt; cppcheck-result.xml</command>
     </hudson.tasks.Shell>
   </builders>
