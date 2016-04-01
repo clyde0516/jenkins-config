@@ -41,10 +41,10 @@ mkdir cppcheck
 cd ${WORKSPACE}/cppcheck
 
 cppcheck --enable=all --inconclusive --suppress=syntaxError --xml --xml-version=2 \
-         ${WORKSPACE}/[*]*/*Build*/*.h \
-         ${WORKSPACE}/[*]*/*Build*/*.cpp \
-         -i${WORKSPACE}/[*]*/*Build*/stdafx.h \
-         -i${WORKSPACE}/[*]*/*Build*/stdafx.cpp \
+         ${WORKSPACE}/*/*Build*/*.h \
+         ${WORKSPACE}/*/*Build*/*.cpp \
+         -i${WORKSPACE}/*/*Build*/stdafx.h \
+         -i${WORKSPACE}/*/*Build*/stdafx.cpp \
          2&gt; cppcheck-result.xml</command>
     </hudson.tasks.Shell>
   </builders>
