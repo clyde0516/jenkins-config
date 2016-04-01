@@ -378,6 +378,7 @@
         <string>viewer_dev_Ubuntu</string>
         <string>viewer_stable</string>
         <string>viewer_stable_cMT-iv5</string>
+        <string>win-test</string>
       </jobNames>
       <jobFilters/>
       <columns>
