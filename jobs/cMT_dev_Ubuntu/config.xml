@@ -5,6 +5,7 @@
   <keepDependencies>false</keepDependencies>
   <properties>
     <hudson.security.AuthorizationMatrixProperty>
+      <permission>hudson.model.Item.Read:jim</permission>
       <permission>hudson.model.Item.Read:darenyao</permission>
       <permission>hudson.model.Item.Read:jeremyhong</permission>
       <permission>hudson.model.Item.Read:edgarlee</permission>
@@ -13,6 +14,7 @@
       <permission>hudson.model.Item.Read:yichengchen</permission>
       <permission>hudson.model.Item.Read:user</permission>
       <permission>hudson.model.Item.Read:easonwu</permission>
+      <permission>hudson.model.Item.Discover:jim</permission>
       <permission>hudson.model.Item.Discover:darenyao</permission>
       <permission>hudson.model.Item.Discover:jeremyhong</permission>
       <permission>hudson.model.Item.Discover:edgarlee</permission>
@@ -21,6 +23,7 @@
       <permission>hudson.model.Item.Discover:yichengchen</permission>
       <permission>hudson.model.Item.Discover:user</permission>
       <permission>hudson.model.Item.Discover:easonwu</permission>
+      <permission>hudson.model.Item.Build:jim</permission>
       <permission>hudson.model.Item.Build:darenyao</permission>
       <permission>hudson.model.Item.Build:jeremyhong</permission>
       <permission>hudson.model.Item.Build:edgarlee</permission>
@@ -29,6 +32,7 @@
       <permission>hudson.model.Item.Build:yichengchen</permission>
       <permission>hudson.model.Item.Build:user</permission>
       <permission>hudson.model.Item.Build:easonwu</permission>
+      <permission>hudson.model.Item.Cancel:jim</permission>
       <permission>hudson.model.Item.Cancel:darenyao</permission>
       <permission>hudson.model.Item.Cancel:jeremyhong</permission>
       <permission>hudson.model.Item.Cancel:edgarlee</permission>
@@ -37,6 +41,7 @@
       <permission>hudson.model.Item.Cancel:yichengchen</permission>
       <permission>hudson.model.Item.Cancel:user</permission>
       <permission>hudson.model.Item.Cancel:easonwu</permission>
+      <permission>hudson.model.Item.Workspace:jim</permission>
       <permission>hudson.model.Item.Workspace:darenyao</permission>
       <permission>hudson.model.Item.Workspace:jeremyhong</permission>
       <permission>hudson.model.Item.Workspace:edgarlee</permission>
@@ -45,6 +50,7 @@
       <permission>hudson.model.Item.Workspace:yichengchen</permission>
       <permission>hudson.model.Item.Workspace:user</permission>
       <permission>hudson.model.Item.Workspace:easonwu</permission>
+      <permission>hudson.model.Item.Delete:jim</permission>
       <permission>hudson.model.Item.Delete:darenyao</permission>
       <permission>hudson.model.Item.Delete:jeremyhong</permission>
       <permission>hudson.model.Item.Delete:edgarlee</permission>
@@ -53,6 +59,7 @@
       <permission>hudson.model.Item.Delete:yichengchen</permission>
       <permission>hudson.model.Item.Delete:user</permission>
       <permission>hudson.model.Item.Delete:easonwu</permission>
+      <permission>hudson.model.Item.Configure:jim</permission>
       <permission>hudson.model.Item.Configure:darenyao</permission>
       <permission>hudson.model.Item.Configure:jeremyhong</permission>
       <permission>hudson.model.Item.Configure:edgarlee</permission>
@@ -61,6 +68,7 @@
       <permission>hudson.model.Item.Configure:yichengchen</permission>
       <permission>hudson.model.Item.Configure:user</permission>
       <permission>hudson.model.Item.Configure:easonwu</permission>
+      <permission>hudson.model.Run.Update:jim</permission>
       <permission>hudson.model.Run.Update:darenyao</permission>
       <permission>hudson.model.Run.Update:jeremyhong</permission>
       <permission>hudson.model.Run.Update:edgarlee</permission>
