@@ -168,8 +168,8 @@ cp ${INSTALL_PREFIX}/bin/CloudHmi ${WORKSPACE}/artifacts/CloudHmi.RelWithDebInfo
 
 # strip and encrypt
 
-if [ -e &quot;${INSTALL_PREFIX}/bin/CloudHmi&quot; ]; then
-    cd ${INSTALL_PREFIX}/bin
+cd ${INSTALL_PREFIX}/bin
+if [ -e &quot;CloudHmi&quot; ]; then
     strip CloudHmi
     tar -cv CloudHmi &gt;&gt; CloudHmi.tar
     if test -n &quot;${ENCRYPT_EXTENSION_NAME}&quot;; then
