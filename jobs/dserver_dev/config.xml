@@ -7,7 +7,7 @@
     <hudson.model.ParametersDefinitionProperty>
       <parameterDefinitions>
         <hudson.plugins.matrix__configuration__parameter.MatrixCombinationsParameterDefinition plugin="matrix-combinations-parameter@1.0.9">
-          <name>SUB_JOBS_TO_BUILD</name>
+          <name>PLATFORMS_TO_BUILD</name>
           <description></description>
         </hudson.plugins.matrix__configuration__parameter.MatrixCombinationsParameterDefinition>
         <hudson.model.StringParameterDefinition>
