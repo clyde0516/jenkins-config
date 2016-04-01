@@ -91,6 +91,8 @@
 
 # export variables
 
+export INSTALL_PREFIX=${WORKSPACE}/build/jenkins/${MATRIX_AXIS_PLATFORM}
+
 if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;cMT3000&quot; ]; then
     export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
 	export CRYPTO_EXTENSION_NAME=c30
@@ -128,13 +130,13 @@ if [ &quot;${TRIGGER_PARAM_COM_BUILD_POLICY}&quot; = &quot;clean&quot; ]; then
     make clean
 fi
 make install VERBOSE=1
-cp ${WORKSPACE}/build/jenkins/bin/com ${WORKSPACE}/artifacts/com.RelWithDebInfo
+cp ${INSTALL_PREFIX}/bin/com ${WORKSPACE}/artifacts/com.RelWithDebInfo
 
 # strip and encrypt
 
 make install/strip VERBOSE=1
-/home/ci/work/crypto e ${WORKSPACE}/build/jenkins/bin/com ${WORKSPACE}/build/jenkins/bin/com.${CRYPTO_EXTENSION_NAME}
-cp ${WORKSPACE}/build/jenkins/bin/com.${CRYPTO_EXTENSION_NAME} ${WORKSPACE}/artifacts</command>
+/home/ci/work/crypto e ${INSTALL_PREFIX}/bin/com ${INSTALL_PREFIX}/bin/com.${CRYPTO_EXTENSION_NAME}
+cp ${INSTALL_PREFIX}/bin/com.${CRYPTO_EXTENSION_NAME} ${WORKSPACE}/artifacts</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
