@@ -96,6 +96,7 @@
 # export variables
 
 export INSTALL_PREFIX=${WORKSPACE}/build/jenkins/${MATRIX_AXIS_PLATFORM}
+export STRIP_AND_ENCRYPT=OFF
 
 if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;cMT3000&quot; ]; then
     export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
@@ -127,7 +128,7 @@ mkdir -p bin
 
 # generate makefile
 
-${WORKSPACE}/build/${MATRIX_AXIS_PLATFORM}/cmake_com.sh ${WORKSPACE} OFF ${CRYPTO_EXTENSION_NAME} ${CROSS_COMPILER_TOOLCHAIN} RelWithDebInfo
+${WORKSPACE}/build/${MATRIX_AXIS_PLATFORM}/cmake_com.sh ${WORKSPACE} ${STRIP_AND_ENCRYPT} ${CRYPTO_EXTENSION_NAME} ${CROSS_COMPILER_TOOLCHAIN} RelWithDebInfo
 
 # make
 if [ &quot;${TRIGGER_PARAM_COM_BUILD_POLICY}&quot; = &quot;clean&quot; ]; then
