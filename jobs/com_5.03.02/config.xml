@@ -127,7 +127,7 @@ mkdir -p bin
 
 # generate makefile
 
-${WORKSPACE}/build/${MATRIX_AXIS_PLATFORM}/cmake_com.sh ${WORKSPACE} ${CRYPTO_EXTENSION_NAME} ${CROSS_COMPILER_TOOLCHAIN} RelWithDebInfo
+${WORKSPACE}/build/${MATRIX_AXIS_PLATFORM}/cmake_com.sh ${WORKSPACE} OFF ${CRYPTO_EXTENSION_NAME} ${CROSS_COMPILER_TOOLCHAIN} RelWithDebInfo
 
 # make
 if [ &quot;${TRIGGER_PARAM_COM_BUILD_POLICY}&quot; = &quot;clean&quot; ]; then
