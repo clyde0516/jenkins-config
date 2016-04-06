@@ -127,7 +127,17 @@ mkdir -p bin
 
 # generate makefile
 
-${WORKSPACE}/build/${MATRIX_AXIS_PLATFORM}/cmake_com.sh ${WORKSPACE} OFF ${CRYPTO_EXTENSION_NAME} ${CROSS_COMPILER_TOOLCHAIN} RelWithDebInfo
+#${WORKSPACE}/build/${MATRIX_AXIS_PLATFORM}/cmake_com.sh ${WORKSPACE} OFF ${CRYPTO_EXTENSION_NAME} ${CROSS_COMPILER_TOOLCHAIN} RelWithDebInfo
+
+
+source ${CROSS_COMPILER_TOOLCHAIN}
+
+export COM_PATH=${WORKSPACE}
+cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+      -DCMAKE_CXX_FLAGS_RELEASE=&quot;-O2 -DNDEBUG&quot; \
+      -DCMAKE_C_FLAGS_RELEASE=&quot;-O2 -DNDEBUG&quot; \
+      -DCRYPTONAME=${CRYPTO_EXTENSION_NAME} \
+      ${COM_PATH}
 
 # make
 if [ &quot;${TRIGGER_PARAM_COM_BUILD_POLICY}&quot; = &quot;clean&quot; ]; then
