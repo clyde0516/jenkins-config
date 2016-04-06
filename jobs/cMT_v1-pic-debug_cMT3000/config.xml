@@ -87,7 +87,7 @@
         <hudson.model.TextParameterDefinition>
           <name>TRIGGER_PARAM_INSTALL_FOLDER</name>
           <description></description>
-          <defaultValue>build-dev-pdf-debug-branch</defaultValue>
+          <defaultValue>build-v1-pic-debug-branch</defaultValue>
         </hudson.model.TextParameterDefinition>
         <hudson.model.TextParameterDefinition>
           <name>TRIGGER_PARAM_BASE_INSTALL_FOLDER</name>
@@ -97,17 +97,17 @@
         <hudson.model.TextParameterDefinition>
           <name>TRIGGER_PARAM_LIBWEINTEK_BRANCH</name>
           <description></description>
-          <defaultValue>dev_pdf_debug</defaultValue>
+          <defaultValue>v1-pic-debug</defaultValue>
         </hudson.model.TextParameterDefinition>
         <hudson.model.TextParameterDefinition>
           <name>TRIGGER_PARAM_DSERVER_BRANCH</name>
           <description></description>
-          <defaultValue>dev_pdf_debug</defaultValue>
+          <defaultValue>v1-pic-debug</defaultValue>
         </hudson.model.TextParameterDefinition>
         <hudson.model.TextParameterDefinition>
           <name>TRIGGER_PARAM_GUI_BRANCH</name>
           <description></description>
-          <defaultValue>dev_pdf_debug_merge</defaultValue>
+          <defaultValue>v1-pic-debug</defaultValue>
         </hudson.model.TextParameterDefinition>
         <hudson.model.ChoiceParameterDefinition>
           <name>TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY</name>
