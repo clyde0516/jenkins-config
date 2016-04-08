@@ -5,7 +5,8 @@
   <keepDependencies>false</keepDependencies>
   <properties/>
   <scm class="hudson.scm.NullSCM"/>
-  <canRoam>true</canRoam>
+  <assignedNode>windows</assignedNode>
+  <canRoam>false</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
@@ -33,6 +34,9 @@
     <hudson.tasks.Shell>
       <command>echo ${AxisX} ${AxisY}</command>
     </hudson.tasks.Shell>
+    <hudson.tasks.BatchFile>
+      <command>ipconfig</command>
+    </hudson.tasks.BatchFile>
   </builders>
   <publishers/>
   <buildWrappers/>
