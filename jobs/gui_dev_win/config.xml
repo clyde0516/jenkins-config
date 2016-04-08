@@ -62,12 +62,13 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.BatchFile>
-      <command>set BUILD_SCRIPT_FOLDER=c:\jenkins\work\build_script&#xd;
+      <command>set BUILD_SCRIPT_DIR=c:\jenkins\work\build_script&#xd;
+set QT_DIR=C:\DevEnv\Qt\Qt5.4.2\5.4\msvc2012_opengl\bin&#xd;
 &#xd;
 cd build/vs2012&#xd;
-xcopy /y %BUILD_SCRIPT_FOLDER%\build_win32.bat .&#xd;
-xcopy /y %QTDIR%\bin\Qt5Core.dll .\testsRelease&#xd;
-xcopy /y %QTDIR%\bin\icu*53.dll .\testsRelease&#xd;
+xcopy /y %BUILD_SCRIPT_DIR%\build_win32.bat .&#xd;
+xcopy /y %QT_DIR%\bin\Qt5Core.dll .\testsRelease&#xd;
+xcopy /y %QT_DIR%\bin\icu*53.dll .\testsRelease&#xd;
 build_win32.bat got release build</command>
     </hudson.tasks.BatchFile>
   </builders>
