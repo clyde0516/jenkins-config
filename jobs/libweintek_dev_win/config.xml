@@ -80,6 +80,7 @@
       <name>MATRIX_AXIS_PLATFORM</name>
       <values>
         <string>win32</string>
+        <string>win64</string>
       </values>
     </hudson.matrix.TextAxis>
   </axes>
