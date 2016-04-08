@@ -72,6 +72,7 @@
   <builders>
     <hudson.tasks.BatchFile>
       <command>cd build/vs2012&#xd;
+xcopy /y %JENKINS_HOME%/work/build_script/build_win32.bat .&#xd;
 build_win32.bat dserver release build</command>
     </hudson.tasks.BatchFile>
   </builders>
