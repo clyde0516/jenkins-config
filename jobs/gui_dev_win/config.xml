@@ -69,6 +69,15 @@ xcopy /y %BUILD_SCRIPT_FOLDER%\build_win32.bat .&#xd;
 build_win32.bat got release build</command>
     </hudson.tasks.BatchFile>
   </builders>
-  <publishers/>
+  <publishers>
+    <hudson.tasks.ArtifactArchiver>
+      <artifacts>build\vs2012\gotRelease\got.exe,build\vs2012\Win32\Release\libgui20.dll</artifacts>
+      <allowEmptyArchive>false</allowEmptyArchive>
+      <onlyIfSuccessful>false</onlyIfSuccessful>
+      <fingerprint>false</fingerprint>
+      <defaultExcludes>true</defaultExcludes>
+      <caseSensitive>true</caseSensitive>
+    </hudson.tasks.ArtifactArchiver>
+  </publishers>
   <buildWrappers/>
 </project>
