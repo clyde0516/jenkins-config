@@ -18,9 +18,6 @@
 &#xd;
 xcopy /y C:\jenkins\jenkins-slave.xml %WORKSPACE%</command>
     </hudson.tasks.BatchFile>
-    <hudson.tasks.Shell>
-      <command></command>
-    </hudson.tasks.Shell>
   </builders>
   <publishers>
     <hudson.tasks.ArtifactArchiver>
