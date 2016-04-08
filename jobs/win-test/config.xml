@@ -16,6 +16,9 @@
     <hudson.tasks.BatchFile>
       <command>ipconfig</command>
     </hudson.tasks.BatchFile>
+    <hudson.tasks.Shell>
+      <command>ifconfig</command>
+    </hudson.tasks.Shell>
   </builders>
   <publishers/>
   <buildWrappers/>
