@@ -52,7 +52,10 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.BatchFile>
-      <command>cd build/vs2012&#xd;
+      <command>set BUILD_SCRIPT_FOLDER=c:\jenkins\work\build_script&#xd;
+&#xd;
+cd build/vs2012&#xd;
+xcopy /y %BUILD_SCRIPT_FOLDER%\build_win32.bat .&#xd;
 build_win32.bat got release build</command>
     </hudson.tasks.BatchFile>
   </builders>
