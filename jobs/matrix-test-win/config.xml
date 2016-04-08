@@ -14,16 +14,27 @@
   <concurrentBuild>false</concurrentBuild>
   <axes>
     <hudson.matrix.LabelAxis>
-      <name>label</name>
+      <name>LabelAxis</name>
       <values>
         <string>linux</string>
         <string>windows</string>
+        <string>master</string>
+        <string>slave - win</string>
       </values>
     </hudson.matrix.LabelAxis>
+    <hudson.matrix.TextAxis>
+      <name>CustomAxis</name>
+      <values>
+        <string>a</string>
+        <string>b</string>
+        <string>c</string>
+      </values>
+    </hudson.matrix.TextAxis>
   </axes>
   <builders>
     <hudson.tasks.BatchFile>
-      <command>ipconfig</command>
+      <command>echo %CustomAxis% %LabelAxis%&#xd;
+ipconfig</command>
     </hudson.tasks.BatchFile>
   </builders>
   <publishers/>
