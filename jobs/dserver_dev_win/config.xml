@@ -66,9 +66,19 @@
 &#xd;
 cd build/vs2012&#xd;
 xcopy /y %BUILD_SCRIPT_FOLDER%\build_win32.bat .&#xd;
-build_win32.bat dserver release build</command>
+build_win32.bat dserver release build&#xd;
+</command>
     </hudson.tasks.BatchFile>
   </builders>
-  <publishers/>
+  <publishers>
+    <hudson.tasks.ArtifactArchiver>
+      <artifacts>build\vs2012\dserverRelease\dserver.exe</artifacts>
+      <allowEmptyArchive>false</allowEmptyArchive>
+      <onlyIfSuccessful>false</onlyIfSuccessful>
+      <fingerprint>false</fingerprint>
+      <defaultExcludes>true</defaultExcludes>
+      <caseSensitive>true</caseSensitive>
+    </hudson.tasks.ArtifactArchiver>
+  </publishers>
   <buildWrappers/>
 </project>
