@@ -66,6 +66,8 @@
 &#xd;
 cd build/vs2012&#xd;
 xcopy /y %BUILD_SCRIPT_FOLDER%\build_win32.bat .&#xd;
+xcopy /y %QTDIR%\bin\Qt5Core.dll .\testsRelease&#xd;
+xcopy /y %QTDIR%\bin\icu*53.dll .\testsRelease&#xd;
 build_win32.bat got release build</command>
     </hudson.tasks.BatchFile>
   </builders>
