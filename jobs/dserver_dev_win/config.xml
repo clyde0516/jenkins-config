@@ -11,22 +11,6 @@
           <description></description>
           <defaultValue>dev</defaultValue>
         </hudson.model.StringParameterDefinition>
-        <hudson.model.StringParameterDefinition>
-          <name>TRIGGER_PARAM_JOB_GROUP</name>
-          <description></description>
-          <defaultValue>dev</defaultValue>
-        </hudson.model.StringParameterDefinition>
-        <hudson.model.ChoiceParameterDefinition>
-          <name>TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY</name>
-          <description></description>
-          <choices class="java.util.Arrays$ArrayList">
-            <a class="string-array">
-              <string>incremental</string>
-              <string>clean</string>
-              <string>brandnew</string>
-            </a>
-          </choices>
-        </hudson.model.ChoiceParameterDefinition>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
     <jenkins.model.BuildDiscarderProperty>
