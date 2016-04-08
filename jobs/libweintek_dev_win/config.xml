@@ -71,20 +71,10 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.BatchFile>
-      <command>ipconfig&#xd;
-&#xd;
-xcopy /y C:\jenkins\jenkins-slave.xml %WORKSPACE%</command>
+      <command>cd build/vs2012&#xd;
+build_win32.bat weintek release rebuild</command>
     </hudson.tasks.BatchFile>
   </builders>
-  <publishers>
-    <hudson.tasks.ArtifactArchiver>
-      <artifacts>jenkins-slave.xml</artifacts>
-      <allowEmptyArchive>false</allowEmptyArchive>
-      <onlyIfSuccessful>false</onlyIfSuccessful>
-      <fingerprint>false</fingerprint>
-      <defaultExcludes>true</defaultExcludes>
-      <caseSensitive>true</caseSensitive>
-    </hudson.tasks.ArtifactArchiver>
-  </publishers>
+  <publishers/>
   <buildWrappers/>
 </project>
