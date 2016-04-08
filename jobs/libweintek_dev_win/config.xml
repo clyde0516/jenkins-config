@@ -72,7 +72,7 @@
   <builders>
     <hudson.tasks.BatchFile>
       <command>cd build/vs2012&#xd;
-build_win32.bat weintek release rebuild</command>
+build_win32.bat weintek release build</command>
     </hudson.tasks.BatchFile>
   </builders>
   <publishers/>
