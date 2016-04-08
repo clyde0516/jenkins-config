@@ -12,7 +12,15 @@
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <triggers/>
   <concurrentBuild>false</concurrentBuild>
-  <axes/>
+  <axes>
+    <hudson.matrix.LabelAxis>
+      <name>label</name>
+      <values>
+        <string>linux</string>
+        <string>windows</string>
+      </values>
+    </hudson.matrix.LabelAxis>
+  </axes>
   <builders>
     <hudson.tasks.BatchFile>
       <command>ipconfig</command>
