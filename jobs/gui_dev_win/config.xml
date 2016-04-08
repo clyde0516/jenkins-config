@@ -7,7 +7,7 @@
     <hudson.model.ParametersDefinitionProperty>
       <parameterDefinitions>
         <hudson.model.StringParameterDefinition>
-          <name>TRIGGER_PARAM_LIBWEINTEK_BRANCH</name>
+          <name>TRIGGER_PARAM_GUI_BRANCH</name>
           <description></description>
           <defaultValue>dev</defaultValue>
         </hudson.model.StringParameterDefinition>
@@ -26,12 +26,12 @@
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
-        <url>gitolite@192.168.1.220:libweintek.git</url>
+        <url>gitolite@192.168.1.220:gui.qt4.graphicsview.git</url>
       </hudson.plugins.git.UserRemoteConfig>
     </userRemoteConfigs>
     <branches>
       <hudson.plugins.git.BranchSpec>
-        <name>*/${TRIGGER_PARAM_LIBWEINTEK_BRANCH}</name>
+        <name>*/${TRIGGER_PARAM_GUI_BRANCH}</name>
       </hudson.plugins.git.BranchSpec>
     </branches>
     <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
@@ -44,9 +44,6 @@
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <triggers>
-    <hudson.triggers.TimerTrigger>
-      <spec>H H(0-7) * * *</spec>
-    </hudson.triggers.TimerTrigger>
     <hudson.triggers.SCMTrigger>
       <spec>H/5 * * * *</spec>
       <ignorePostCommitHooks>false</ignorePostCommitHooks>
@@ -56,7 +53,7 @@
   <builders>
     <hudson.tasks.BatchFile>
       <command>cd build/vs2012&#xd;
-build_win32.bat weintek release build</command>
+build_win32.bat got release build</command>
     </hudson.tasks.BatchFile>
   </builders>
   <publishers/>
