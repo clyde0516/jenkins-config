@@ -6,10 +6,5 @@
       <home>git</home>
       <properties/>
     </hudson.plugins.git.GitTool>
-    <hudson.plugins.git.GitTool>
-      <name>WindowsGit</name>
-      <home>C:\Program Files (x86)\Git\bin\git.exe</home>
-      <properties/>
-    </hudson.plugins.git.GitTool>
   </installations>
 </hudson.plugins.git.GitTool_-DescriptorImpl>

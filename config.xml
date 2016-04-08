@@ -266,7 +266,7 @@
       <properties class="hudson.model.View$PropertyList"/>
       <gridBuilder class="au.com.centrumsystems.hudson.plugin.buildpipeline.DownstreamProjectGridBuilder">
         <firstJob>libweintek_dev</firstJob>
-        <firstJobLink>view/All/job/libweintek_dev/</firstJobLink>
+        <firstJobLink>job/libweintek_dev/</firstJobLink>
       </gridBuilder>
       <noOfDisplayedBuilds>10</noOfDisplayedBuilds>
       <buildViewTitle>dev</buildViewTitle>
@@ -403,7 +403,7 @@
       <properties class="hudson.model.View$PropertyList"/>
       <gridBuilder class="au.com.centrumsystems.hudson.plugin.buildpipeline.DownstreamProjectGridBuilder">
         <firstJob>libweintek_stable</firstJob>
-        <firstJobLink>view/All/job/libweintek_stable/</firstJobLink>
+        <firstJobLink>job/libweintek_stable/</firstJobLink>
       </gridBuilder>
       <noOfDisplayedBuilds>10</noOfDisplayedBuilds>
       <buildViewTitle>stable</buildViewTitle>
