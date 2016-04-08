@@ -17,7 +17,7 @@
       <command>ipconfig</command>
     </hudson.tasks.BatchFile>
     <hudson.tasks.Shell>
-      <command>ifconfig</command>
+      <command>echo 111</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>
