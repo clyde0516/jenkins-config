@@ -7,7 +7,7 @@
     <hudson.model.ParametersDefinitionProperty>
       <parameterDefinitions>
         <hudson.model.StringParameterDefinition>
-          <name>TRIGGER_PARAM_DSERVER_BRANCH</name>
+          <name>TRIGGER_PARAM_VIEWER_BRANCH</name>
           <description></description>
           <defaultValue>dev</defaultValue>
         </hudson.model.StringParameterDefinition>
@@ -31,7 +31,7 @@
     </userRemoteConfigs>
     <branches>
       <hudson.plugins.git.BranchSpec>
-        <name>*/${TRIGGER_PARAM_DSERVER_BRANCH}</name>
+        <name>*/${TRIGGER_PARAM_VIEWER_BRANCH}</name>
       </hudson.plugins.git.BranchSpec>
     </branches>
     <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
@@ -46,7 +46,7 @@
   <triggers>
     <jenkins.triggers.ReverseBuildTrigger>
       <spec></spec>
-      <upstreamProjects>libweintek_dev_win, </upstreamProjects>
+      <upstreamProjects>gui_dev_win, </upstreamProjects>
       <threshold>
         <name>UNSTABLE</name>
         <ordinal>1</ordinal>
@@ -64,9 +64,8 @@
     <hudson.tasks.BatchFile>
       <command>set BUILD_SCRIPT_FOLDER=c:\jenkins\work\build_script&#xd;
 &#xd;
-cd build/vs2012&#xd;
 xcopy /y %BUILD_SCRIPT_FOLDER%\build_win32.bat .&#xd;
-build_win32.bat dserver release build</command>
+build_win32.bat CloudHmi release build</command>
     </hudson.tasks.BatchFile>
   </builders>
   <publishers/>
