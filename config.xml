@@ -344,6 +344,7 @@
         <string>dserver_dev_cMT-SVR</string>
         <string>dserver_dev_cMT3000</string>
         <string>dserver_dev_Ubuntu</string>
+        <string>dserver_dev_win</string>
         <string>dserver_stable</string>
         <string>dserver_stable_cMT-iv5</string>
         <string>dserver_stable_cMT-SVR</string>
