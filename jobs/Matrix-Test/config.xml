@@ -35,7 +35,7 @@
       <command>echo ${AxisX} ${AxisY}</command>
     </hudson.tasks.Shell>
     <hudson.tasks.BatchFile>
-      <command>ipconfig</command>
+      <command>echo %AxisX% %AxisY%</command>
     </hudson.tasks.BatchFile>
   </builders>
   <publishers/>
