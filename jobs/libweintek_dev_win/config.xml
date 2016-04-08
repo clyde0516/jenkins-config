@@ -69,14 +69,7 @@
     </hudson.triggers.SCMTrigger>
   </triggers>
   <concurrentBuild>false</concurrentBuild>
-  <axes>
-    <hudson.matrix.TextAxis>
-      <name>MATRIX_AXIS_PLATFORM</name>
-      <values>
-        <string>win32</string>
-      </values>
-    </hudson.matrix.TextAxis>
-  </axes>
+  <axes/>
   <builders>
     <hudson.tasks.BatchFile>
       <command>ipconfig&#xd;
