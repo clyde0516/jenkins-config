@@ -51,7 +51,7 @@
       </hudson.plugins.git.BranchSpec>
     </branches>
     <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
-    <gitTool>WindowsGit</gitTool>
+    <gitTool>Default</gitTool>
     <browser class="hudson.plugins.git.browser.AssemblaWeb">
       <url></url>
     </browser>
