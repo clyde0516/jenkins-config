@@ -159,10 +159,11 @@ make install VERBOSE=1</command>
       </runCondition>
       <conditionalbuilders>
         <hudson.tasks.BatchFile>
-          <command>set BUILD_SCRIPT_DIR=c:\jenkins\work\build_script&#xd;
+          <command>set WORK_UTIL_DIR=c:\jenkins\work&#xd;
 &#xd;
 cd build/vs2012&#xd;
-xcopy /y %BUILD_SCRIPT_DIR%\build_win32.bat .&#xd;
+xcopy /y %WORK_UTIL_DIR%\build_script\build_win32.bat .&#xd;
+xcopy /y %WORK_UTIL_DIR%\project_properties\weintek.props .&#xd;
 build_win32.bat weintek release %TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY%</command>
         </hudson.tasks.BatchFile>
       </conditionalbuilders>
