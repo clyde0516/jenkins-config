@@ -80,6 +80,13 @@
   </triggers>
   <concurrentBuild>false</concurrentBuild>
   <axes>
+    <hudson.matrix.LabelAxis>
+      <name>MATRIX_AXIS_NODE</name>
+      <values>
+        <string>linux</string>
+        <string>windows</string>
+      </values>
+    </hudson.matrix.LabelAxis>
     <hudson.matrix.TextAxis>
       <name>MATRIX_AXIS_PLATFORM</name>
       <values>
@@ -88,6 +95,7 @@
       </values>
     </hudson.matrix.TextAxis>
   </axes>
+  <combinationFilter>(MATRIX_AXIS_NODE == &quot;windows&quot; &amp;&amp; MATRIX_AXIS_PLATFORM == &quot;win32&quot;) || (MATRIX_AXIS_NODE != &quot;windows&quot; &amp;&amp; MATRIX_AXIS_PLATFORM != &quot;win32&quot;)</combinationFilter>
   <builders>
     <hudson.tasks.Shell>
       <command>#!/bin/bash
@@ -168,6 +176,131 @@ if [ -e &quot;CloudHmi&quot; ]; then
 fi
 </command>
     </hudson.tasks.Shell>
+    <org.jenkinsci.plugins.conditionalbuildstep.ConditionalBuilder plugin="conditional-buildstep@1.3.3">
+      <runner class="org.jenkins_ci.plugins.run_condition.BuildStepRunner$Fail" plugin="run-condition@1.0"/>
+      <runCondition class="org.jenkins_ci.plugins.run_condition.core.StringsMatchCondition" plugin="run-condition@1.0">
+        <arg1>MATRIX_AXIS_NODE</arg1>
+        <arg2>linux</arg2>
+        <ignoreCase>false</ignoreCase>
+      </runCondition>
+      <conditionalbuilders>
+        <hudson.tasks.Shell>
+          <command>#!/bin/bash
+
+# export variables
+
+export CLOUDHMI_PATH=${WORKSPACE}/CloudHmi
+export LIBWEINTEK_PATH=${JENKINS_HOME}/jobs/libweintek_${TRIGGER_PARAM_JOB_GROUP}/workspace
+export DSERVER_PATH=${JENKINS_HOME}/jobs/dserver_${TRIGGER_PARAM_JOB_GROUP}/workspace
+export GUI_PATH=${JENKINS_HOME}/jobs/gui_${TRIGGER_PARAM_JOB_GROUP}/workspace
+export INSTALL_PREFIX=/home/ci/work/${MATRIX_AXIS_PLATFORM}/build-${TRIGGER_PARAM_JOB_GROUP}-branch
+
+case $MATRIX_AXIS_PLATFORM in
+    &quot;cMT-iv5&quot;)       export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT-iv5/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi  ;;
+    &quot;cMT-iv5-3000&quot;)  export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi  ;;
+esac
+
+case $MATRIX_AXIS_PLATFORM in
+    &quot;cMT-iv5-3000&quot;)  export PLATFORM_BUILD_FOLDER=cMT-iv5  ;;
+    *)               export PLATFORM_BUILD_FOLDER=${MATRIX_AXIS_PLATFORM}  ;;
+esac
+
+case $MATRIX_AXIS_PLATFORM in
+    &quot;cMT-iv5&quot;)       export ENCRYPT_EXTENSION_NAME=.iv5  ;;
+    &quot;cMT-iv5-3000&quot;)  export ENCRYPT_EXTENSION_NAME=.iv5  ;;
+esac
+
+if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;Ubuntu&quot; ]; then
+   export PATH=/opt/Qt5.4.2/5.4/gcc_64/bin:${PATH}
+fi
+
+# clear artifacts
+
+rm -f ${INSTALL_PREFIX}/bin/CloudHmi*
+rm -f ${INSTALL_PREFIX}/bin/cMTViewer*
+rm -rf ${WORKSPACE}/artifacts
+mkdir ${WORKSPACE}/artifacts
+
+# prepare out-of-source build
+
+cd ${WORKSPACE}/build
+if [ &quot;${TRIGGER_PARAM_VIEWER_BUILD_POLICY}&quot; = &quot;brandnew&quot; ]; then
+    rm -rf jenkins/${MATRIX_AXIS_PLATFORM}
+fi
+if [ ! -d &quot;jenkins&quot; ]; then
+    mkdir -p jenkins
+fi
+if [ ! -d &quot;jenkins/${MATRIX_AXIS_PLATFORM}&quot; ]; then
+    mkdir -p jenkins/${MATRIX_AXIS_PLATFORM}
+fi
+cd jenkins/${MATRIX_AXIS_PLATFORM}
+
+# generate makefile
+
+cp ${WORKSPACE}/build/${PLATFORM_BUILD_FOLDER}/*features.pri .
+${WORKSPACE}/build/${PLATFORM_BUILD_FOLDER}/qmake_viewer.sh ${CLOUDHMI_PATH} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${GUI_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} RelWithDebInfo
+
+# make
+
+if test -n &quot;${CROSS_COMPILER_TOOLCHAIN}&quot;; then
+    source ${CROSS_COMPILER_TOOLCHAIN}
+fi
+make VERBOSE=1
+cp ${INSTALL_PREFIX}/bin/CloudHmi ${WORKSPACE}/artifacts/CloudHmi.RelWithDebInfo	
+
+# strip and encrypt
+
+cd ${INSTALL_PREFIX}/bin
+if [ -e &quot;CloudHmi&quot; ]; then
+    strip CloudHmi
+    tar -cv CloudHmi &gt;&gt; CloudHmi.tar
+    if test -n &quot;${ENCRYPT_EXTENSION_NAME}&quot;; then
+        test_mtcrypt --encrypt CloudHmi.tar --out cMTViewer${ENCRYPT_EXTENSION_NAME}
+        cp cMTViewer${ENCRYPT_EXTENSION_NAME} ${WORKSPACE}/artifacts
+    else
+        cp CloudHmi.tar ${WORKSPACE}/artifacts
+    fi
+fi
+</command>
+        </hudson.tasks.Shell>
+      </conditionalbuilders>
+    </org.jenkinsci.plugins.conditionalbuildstep.ConditionalBuilder>
+    <org.jenkinsci.plugins.conditionalbuildstep.ConditionalBuilder plugin="conditional-buildstep@1.3.3">
+      <runner class="org.jenkins_ci.plugins.run_condition.BuildStepRunner$Fail" plugin="run-condition@1.0"/>
+      <runCondition class="org.jenkins_ci.plugins.run_condition.core.StringsMatchCondition" plugin="run-condition@1.0">
+        <arg1>MATRIX_AXIS_NODE</arg1>
+        <arg2>windows</arg2>
+        <ignoreCase>false</ignoreCase>
+      </runCondition>
+      <conditionalbuilders>
+        <hudson.tasks.BatchFile>
+          <command>:: set variables&#xd;
+&#xd;
+set WORKSPACE_DIR=%cd%&#xd;
+set WORK_UTIL_DIR=c:\jenkins\work&#xd;
+&#xd;
+:: clear artifacts&#xd;
+&#xd;
+rmdir /s %WORKSPACE_DIR%\artifacts&#xd;
+mkdir %WORKSPACE_DIR%\artifacts&#xd;
+&#xd;
+:: prepare build environment&#xd;
+&#xd;
+xcopy /y %WORK_UTIL_DIR%\build_script\build_win32.bat .&#xd;
+xcopy /y %WORK_UTIL_DIR%\project_properties\cloudhmi.props .&#xd;
+&#xd;
+%WORK_UTIL_DIR%\utilities\fnr.exe --cl --dir &quot;%cd%&quot; --fileMask &quot;cloudhmi.props&quot; --find &quot;&lt;WEINTEKDIR&gt;..\..\..\libweintek&lt;/WEINTEKDIR&gt;&quot; --replace &quot;&lt;WEINTEKDIR&gt;C:\jenkins\workspace\libweintek_dev\MATRIX_AXIS_NODE\windows\MATRIX_AXIS_PLATFORM\win32&lt;/WEINTEKDIR&gt;&quot;&#xd;
+%WORK_UTIL_DIR%\utilities\fnr.exe --cl --dir &quot;%cd%&quot; --fileMask &quot;cloudhmi.props&quot; --find &quot;&lt;DSERVERDIR&gt;..\..\..\d-server&lt;/DSERVERDIR&gt;&quot; --replace &quot;&lt;WEINTEKDIR&gt;C:\jenkins\workspace\dserver_dev\MATRIX_AXIS_NODE\windows\MATRIX_AXIS_PLATFORM\win32&lt;/WEINTEKDIR&gt;&quot;&#xd;
+%WORK_UTIL_DIR%\utilities\fnr.exe --cl --dir &quot;%cd%&quot; --fileMask &quot;cloudhmi.props&quot; --find &quot;&lt;GOTDIR&gt;..\..\gui&lt;/GOTDIR&gt;&quot; --replace &quot;&lt;WEINTEKDIR&gt;C:\jenkins\workspace\gui_dev\MATRIX_AXIS_NODE\windows\MATRIX_AXIS_PLATFORM\win32&lt;/WEINTEKDIR&gt;&quot;&#xd;
+&#xd;
+:: build project &#xd;
+&#xd;
+call build_win32.bat CloudHmi release %TRIGGER_PARAM_VIEWER_BUILD_POLICY%&#xd;
+xcopy /y Win32\Release\cMTViewer.exe %WORKSPACE_DIR%\artifacts&#xd;
+</command>
+        </hudson.tasks.BatchFile>
+      </conditionalbuilders>
+    </org.jenkinsci.plugins.conditionalbuildstep.ConditionalBuilder>
   </builders>
   <publishers>
     <hudson.tasks.ArtifactArchiver>
