@@ -167,8 +167,7 @@ xcopy /y %WORK_UTIL_DIR%\libraries\smtp\lib\*.lib .&#xd;
 xcopy /y %WORK_UTIL_DIR%\libraries\sqlite3\lib\*.lib .&#xd;
 &#xd;
 cd ..\..\build\vs2012&#xd;
-xcopy /y %WORK_UTIL_DIR%\script\build_win32.bat .&#xd;
-xcopy /y %WORK_UTIL_DIR%\project_properties\weintek.props .&#xd;
+xcopy /y weintek.props.in weintek.props&#xd;
 build_win32.bat weintek release %TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY%</command>
         </hudson.tasks.BatchFile>
         <hudson.tasks.BatchFile>
