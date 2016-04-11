@@ -30,7 +30,7 @@
         <hudson.model.StringParameterDefinition>
           <name>TRIGGER_PARAM_DSERVER_BRANCH</name>
           <description></description>
-          <defaultValue>v1-stable</defaultValue>
+          <defaultValue>dev_tag</defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>TRIGGER_PARAM_JOB_GROUP</name>
@@ -191,7 +191,7 @@ cp ${INSTALL_PREFIX}/bin/dserver${ENCRYPT_EXTENSION_NAME} ${WORKSPACE}/artifacts
       <caseSensitive>true</caseSensitive>
     </hudson.tasks.ArtifactArchiver>
     <hudson.tasks.Mailer plugin="mailer@1.16">
-      <recipients>katte@weintek.com paul@weintek.com zen@weintek.com easonwu@weintek.com jeremyhong@weintek.com clydeliu@weintek.com</recipients>
+      <recipients>jeremyhong@weintek.com knightchang@weintek.com</recipients>
       <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
       <sendToIndividuals>false</sendToIndividuals>
     </hudson.tasks.Mailer>
