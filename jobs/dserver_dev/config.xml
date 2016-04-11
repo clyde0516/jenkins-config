@@ -197,16 +197,16 @@ mkdir %WORKSPACE_DIR%\artifacts&#xd;
 :: prepare build environment&#xd;
 &#xd;
 cd %WORKSPACE_DIR%\build\vs2012&#xd;
-xcopy /y %LIBWEINTEK_DIR%\build\vs2012\build_win32.bat .&#xd;
-xcopy /y dserver.props.in dserver.props&#xd;
+copy /y %LIBWEINTEK_DIR%\build\vs2012\build_win32.bat .&#xd;
+copy /y dserver.props.in dserver.props&#xd;
 &#xd;
 call %WORK_UTIL_DIR%\script\replace_string.bat &quot;dserver.props&quot; &quot;&lt;WEINTEKDIR&gt;..\..\..\libweintek&lt;/WEINTEKDIR&gt;&quot; &quot;&lt;WEINTEKDIR&gt;%LIBWEINTEK_DIR%&lt;/WEINTEKDIR&gt;&quot;&#xd;
 &#xd;
 :: build project &#xd;
 &#xd;
 call build_win32.bat dserver release %TRIGGER_PARAM_DSERVER_BUILD_POLICY%&#xd;
-xcopy /y dserverRelease\dserver.exe %WORKSPACE_DIR%\artifacts&#xd;
-xcopy /y dserverRelease\dserver.pdb %WORKSPACE_DIR%\artifacts&#xd;
+copy /y dserverRelease\dserver.exe %WORKSPACE_DIR%\artifacts&#xd;
+copy /y dserverRelease\dserver.pdb %WORKSPACE_DIR%\artifacts&#xd;
 </command>
         </hudson.tasks.BatchFile>
         <hudson.tasks.BatchFile>
