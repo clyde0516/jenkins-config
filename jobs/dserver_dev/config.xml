@@ -218,12 +218,8 @@ xcopy /y dserverRelease\dserver.exe %WORKSPACE_DIR%\artifacts&#xd;
 </command>
         </hudson.tasks.BatchFile>
         <hudson.tasks.BatchFile>
-          <command>set WORKSPACE_DIR=%cd%&#xd;
-&#xd;
-mkdir gtest&#xd;
-cd gtest&#xd;
-&#xd;
-%WORKSPACE_DIR%\build\vs2012\testsRelease\tests.exe --gtest_output=xml:%WORKSPACE_DIR%\gtest\gtest-dserver.xml</command>
+          <command>mkdir gtest&#xd;
+build\vs2012\testsRelease\tests.exe --gtest_output=xml:gtest\gtest-dserver.xml</command>
         </hudson.tasks.BatchFile>
         <hudson.tasks.junit.JUnitResultArchiver plugin="junit@1.10">
           <testResults>gtest\*.xml</testResults>
