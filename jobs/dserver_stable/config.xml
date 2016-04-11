@@ -80,6 +80,13 @@
   </triggers>
   <concurrentBuild>false</concurrentBuild>
   <axes>
+    <hudson.matrix.LabelAxis>
+      <name>label</name>
+      <values>
+        <string>linux</string>
+        <string>windows</string>
+      </values>
+    </hudson.matrix.LabelAxis>
     <hudson.matrix.TextAxis>
       <name>MATRIX_AXIS_PLATFORM</name>
       <values>
@@ -87,26 +94,22 @@
         <string>cMT-SVR</string>
         <string>cMT-iv5</string>
         <string>cMT-iv5-3000</string>
+        <string>win32</string>
       </values>
     </hudson.matrix.TextAxis>
   </axes>
   <combinationFilter>(MATRIX_AXIS_NODE == &quot;windows&quot; &amp;&amp; MATRIX_AXIS_PLATFORM == &quot;win32&quot;) || (MATRIX_AXIS_NODE != &quot;windows&quot; &amp;&amp; MATRIX_AXIS_PLATFORM != &quot;win32&quot;)</combinationFilter>
   <builders>
-    <org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder plugin="conditional-buildstep@1.3.3">
-      <condition class="org.jenkins_ci.plugins.run_condition.core.TimeCondition" plugin="run-condition@1.0">
-        <earliestHours>0</earliestHours>
-        <earliestMinutes>0</earliestMinutes>
-        <latestHours>8</latestHours>
-        <latestMinutes>0</latestMinutes>
-        <useBuildTime>true</useBuildTime>
-      </condition>
-      <buildStep class="hudson.tasks.Shell">
-        <command>rm -rf ${WORKSPACE}/build/jenkins</command>
-      </buildStep>
+    <org.jenkinsci.plugins.conditionalbuildstep.ConditionalBuilder plugin="conditional-buildstep@1.3.3">
       <runner class="org.jenkins_ci.plugins.run_condition.BuildStepRunner$Fail" plugin="run-condition@1.0"/>
-    </org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder>
-    <hudson.tasks.Shell>
-      <command>#!/bin/bash
+      <runCondition class="org.jenkins_ci.plugins.run_condition.core.StringsMatchCondition" plugin="run-condition@1.0">
+        <arg1>${MATRIX_AXIS_NODE}</arg1>
+        <arg2>linux</arg2>
+        <ignoreCase>false</ignoreCase>
+      </runCondition>
+      <conditionalbuilders>
+        <hudson.tasks.Shell>
+          <command>#!/bin/bash
 
 # export variables
 
@@ -178,7 +181,55 @@ if test -n &quot;${ENCRYPT_EXTENSION_NAME}&quot;; then
 fi
 cp ${INSTALL_PREFIX}/bin/dserver${ENCRYPT_EXTENSION_NAME} ${WORKSPACE}/artifacts
 </command>
-    </hudson.tasks.Shell>
+        </hudson.tasks.Shell>
+      </conditionalbuilders>
+    </org.jenkinsci.plugins.conditionalbuildstep.ConditionalBuilder>
+    <org.jenkinsci.plugins.conditionalbuildstep.ConditionalBuilder plugin="conditional-buildstep@1.3.3">
+      <runner class="org.jenkins_ci.plugins.run_condition.BuildStepRunner$Fail" plugin="run-condition@1.0"/>
+      <runCondition class="org.jenkins_ci.plugins.run_condition.core.StringsMatchCondition" plugin="run-condition@1.0">
+        <arg1>${MATRIX_AXIS_NODE}</arg1>
+        <arg2>windows</arg2>
+        <ignoreCase>false</ignoreCase>
+      </runCondition>
+      <conditionalbuilders>
+        <hudson.tasks.BatchFile>
+          <command>:: set variables&#xd;
+&#xd;
+set WORKSPACE_DIR=%cd%&#xd;
+set WORK_UTIL_DIR=c:\jenkins\work&#xd;
+set LIBWEINTEK_DIR=C:\jenkins\workspace\libweintek_%TRIGGER_PARAM_JOB_GROUP%\MATRIX_AXIS_NODE\windows\MATRIX_AXIS_PLATFORM\win32&#xd;
+&#xd;
+:: clear artifacts&#xd;
+&#xd;
+rmdir /s %WORKSPACE_DIR%\artifacts&#xd;
+mkdir %WORKSPACE_DIR%\artifacts&#xd;
+&#xd;
+:: prepare build environment&#xd;
+&#xd;
+cd %WORKSPACE_DIR%\build\vs2012&#xd;
+xcopy /y %LIBWEINTEK_DIR%\build\vs2012\build_win32.bat .&#xd;
+xcopy /y dserver.props.in dserver.props&#xd;
+&#xd;
+call %WORK_UTIL_DIR%\script\replace_string.bat &quot;dserver.props&quot; &quot;&lt;WEINTEKDIR&gt;..\..\..\libweintek&lt;/WEINTEKDIR&gt;&quot; &quot;&lt;WEINTEKDIR&gt;%LIBWEINTEK_DIR%&lt;/WEINTEKDIR&gt;&quot;&#xd;
+&#xd;
+:: build project &#xd;
+&#xd;
+call build_win32.bat dserver release %TRIGGER_PARAM_DSERVER_BUILD_POLICY%&#xd;
+xcopy /y dserverRelease\dserver.exe %WORKSPACE_DIR%\artifacts&#xd;
+xcopy /y dserverRelease\dserver.pdb %WORKSPACE_DIR%\artifacts</command>
+        </hudson.tasks.BatchFile>
+        <hudson.tasks.BatchFile>
+          <command>mkdir gtest&#xd;
+build\vs2012\testsRelease\tests.exe --gtest_output=xml:gtest\gtest-dserver.xml</command>
+        </hudson.tasks.BatchFile>
+        <hudson.tasks.junit.JUnitResultArchiver plugin="junit@1.10">
+          <testResults>gtest\*.xml</testResults>
+          <keepLongStdio>false</keepLongStdio>
+          <healthScaleFactor>1.0</healthScaleFactor>
+          <allowEmptyResults>false</allowEmptyResults>
+        </hudson.tasks.junit.JUnitResultArchiver>
+      </conditionalbuilders>
+    </org.jenkinsci.plugins.conditionalbuildstep.ConditionalBuilder>
   </builders>
   <publishers>
     <hudson.tasks.ArtifactArchiver>
