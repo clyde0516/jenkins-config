@@ -161,7 +161,10 @@ make install VERBOSE=1</command>
         <hudson.tasks.BatchFile>
           <command>set WORK_UTIL_DIR=c:\jenkins\work&#xd;
 &#xd;
-cd build/vs2012&#xd;
+cd third-party\lib&#xd;
+xcopy /y %WORK_UTIL_DIR%\libraries\*.lib .&#xd;
+&#xd;
+cd ..\..\build\vs2012&#xd;
 xcopy /y %WORK_UTIL_DIR%\build_script\build_win32.bat .&#xd;
 xcopy /y %WORK_UTIL_DIR%\project_properties\weintek.props .&#xd;
 build_win32.bat weintek release %TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY%</command>
