@@ -172,7 +172,8 @@ mkdir %WORKSPACE_DIR%\artifacts&#xd;
 &#xd;
 xcopy /y %WORK_UTIL_DIR%\script\build_win32_VS2008.bat .&#xd;
 call build_win32_VS2008.bat COMKernel_2008 release %TRIGGER_PARAM_COM_BUILD_POLICY%&#xd;
-xcopy /y Release\com_e30.exe %WORKSPACE_DIR%\artifacts</command>
+xcopy /y Release\com_e30.exe %WORKSPACE_DIR%\artifacts&#xd;
+xcopy /y Release\com_e30.pdb %WORKSPACE_DIR%\artifacts</command>
         </hudson.tasks.BatchFile>
       </conditionalbuilders>
     </org.jenkinsci.plugins.conditionalbuildstep.ConditionalBuilder>
