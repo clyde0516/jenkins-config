@@ -163,7 +163,8 @@ make install VERBOSE=1</command>
 &#xd;
 md third-party\lib&#xd;
 cd third-party\lib&#xd;
-xcopy /y %WORK_UTIL_DIR%\libraries\*.lib .&#xd;
+xcopy /y %WORK_UTIL_DIR%\libraries\smtp\lib\*.lib .&#xd;
+xcopy /y %WORK_UTIL_DIR%\libraries\sqlite3\lib\*.lib .&#xd;
 &#xd;
 cd ..\..\build\vs2012&#xd;
 xcopy /y %WORK_UTIL_DIR%\script\build_win32.bat .&#xd;
