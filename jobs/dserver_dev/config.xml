@@ -197,7 +197,7 @@ cp ${INSTALL_PREFIX}/bin/dserver${ENCRYPT_EXTENSION_NAME} ${WORKSPACE}/artifacts
 &#xd;
 set WORKSPACE_DIR=%cd%&#xd;
 set WORK_UTIL_DIR=c:\jenkins\work&#xd;
-set LIBWEINTEK_DIR=C:\jenkins\workspace\libweintek_%TRIGGER_PARAM_JOB_GROUP%\MATRIX_AXIS_NODE\windows\MATRIX_AXIS_PLATFORM\win32\build\vs2012&#xd;
+set LIBWEINTEK_DIR=C:\jenkins\workspace\libweintek_%TRIGGER_PARAM_JOB_GROUP%\MATRIX_AXIS_NODE\windows\MATRIX_AXIS_PLATFORM\win32&#xd;
 &#xd;
 :: clear artifacts&#xd;
 &#xd;
