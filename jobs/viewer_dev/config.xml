@@ -201,8 +201,8 @@ mkdir %WORKSPACE_DIR%\artifacts&#xd;
 &#xd;
 :: prepare build environment&#xd;
 &#xd;
-xcopy /y %LIBWEINTEK_DIR%\build\vs2012\build_win32.bat .&#xd;
-xcopy /y cloudhmi.props.in cloudhmi.props&#xd;
+copy /y %LIBWEINTEK_DIR%\build\vs2012\build_win32.bat .&#xd;
+copy /y cloudhmi.props.in cloudhmi.props&#xd;
 &#xd;
 call %WORK_UTIL_DIR%\script\replace_string.bat &quot;cloudhmi.props&quot; &quot;&lt;WEINTEKDIR&gt;..\..\libweintek&lt;/WEINTEKDIR&gt;&quot; &quot;&lt;WEINTEKDIR&gt;%LIBWEINTEK_DIR%&lt;/WEINTEKDIR&gt;&quot;&#xd;
 call %WORK_UTIL_DIR%\script\replace_string.bat &quot;cloudhmi.props&quot; &quot;&lt;DSERVERDIR&gt;..\..\d-server&lt;/DSERVERDIR&gt;&quot; &quot;&lt;DSERVERDIR&gt;%DSERVER_DIR%&lt;/DSERVERDIR&gt;&quot;&#xd;
@@ -211,8 +211,8 @@ call %WORK_UTIL_DIR%\script\replace_string.bat &quot;cloudhmi.props&quot; &quot;
 :: build project &#xd;
 &#xd;
 call build_win32.bat CloudHmi release %TRIGGER_PARAM_VIEWER_BUILD_POLICY%&#xd;
-xcopy /y Win32\Release\cMTViewer.exe %WORKSPACE_DIR%\artifacts&#xd;
-xcopy /y Win32\Release\cMTViewer.pdb %WORKSPACE_DIR%\artifacts&#xd;
+copy /y Win32\Release\cMTViewer.exe %WORKSPACE_DIR%\artifacts&#xd;
+copy /y Win32\Release\cMTViewer.pdb %WORKSPACE_DIR%\artifacts&#xd;
 </command>
         </hudson.tasks.BatchFile>
       </conditionalbuilders>
