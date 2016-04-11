@@ -217,6 +217,20 @@ call build_win32.bat dserver release %TRIGGER_PARAM_DSERVER_BUILD_POLICY%&#xd;
 xcopy /y dserverRelease\dserver.exe %WORKSPACE_DIR%\artifacts&#xd;
 </command>
         </hudson.tasks.BatchFile>
+        <hudson.tasks.BatchFile>
+          <command>set WORKSPACE_DIR=%cd%&#xd;
+&#xd;
+mkdir gtest&#xd;
+cd gtest&#xd;
+&#xd;
+%WORKSPACE_DIR%\win32\build\vs2012\testsRelease\tests.exe --gtest_output=xml:%WORKSPACE_DIR%\gtest\gtest-dserver.xml</command>
+        </hudson.tasks.BatchFile>
+        <hudson.tasks.junit.JUnitResultArchiver plugin="junit@1.10">
+          <testResults>gtest\*.xml</testResults>
+          <keepLongStdio>false</keepLongStdio>
+          <healthScaleFactor>1.0</healthScaleFactor>
+          <allowEmptyResults>false</allowEmptyResults>
+        </hudson.tasks.junit.JUnitResultArchiver>
       </conditionalbuilders>
     </org.jenkinsci.plugins.conditionalbuildstep.ConditionalBuilder>
   </builders>
