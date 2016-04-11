@@ -4,6 +4,24 @@
   <description></description>
   <keepDependencies>false</keepDependencies>
   <properties>
+    <hudson.security.AuthorizationMatrixProperty>
+      <permission>hudson.scm.SCM.Tag:jeremyhong</permission>
+      <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Delete:jeremyhong</permission>
+      <permission>com.cloudbees.plugins.credentials.CredentialsProvider.ManageDomains:jeremyhong</permission>
+      <permission>hudson.model.Item.Read:jeremyhong</permission>
+      <permission>hudson.model.Item.ExtendedRead:jeremyhong</permission>
+      <permission>hudson.model.Item.Workspace:jeremyhong</permission>
+      <permission>hudson.model.Item.Configure:jeremyhong</permission>
+      <permission>hudson.model.Run.Delete:jeremyhong</permission>
+      <permission>hudson.model.Item.Discover:jeremyhong</permission>
+      <permission>com.cloudbees.plugins.credentials.CredentialsProvider.View:jeremyhong</permission>
+      <permission>hudson.model.Item.Build:jeremyhong</permission>
+      <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Create:jeremyhong</permission>
+      <permission>hudson.model.Item.Cancel:jeremyhong</permission>
+      <permission>hudson.model.Item.Delete:jeremyhong</permission>
+      <permission>hudson.model.Run.Update:jeremyhong</permission>
+      <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Update:jeremyhong</permission>
+    </hudson.security.AuthorizationMatrixProperty>
     <hudson.model.ParametersDefinitionProperty>
       <parameterDefinitions>
         <hudson.plugins.matrix__configuration__parameter.MatrixCombinationsParameterDefinition plugin="matrix-combinations-parameter@1.0.9">
