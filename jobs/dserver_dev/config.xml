@@ -215,6 +215,7 @@ call %WORK_UTIL_DIR%\script\replace_string.bat &quot;dserver.props&quot; &quot;&
 &#xd;
 call build_win32.bat dserver release %TRIGGER_PARAM_DSERVER_BUILD_POLICY%&#xd;
 xcopy /y dserverRelease\dserver.exe %WORKSPACE_DIR%\artifacts&#xd;
+xcopy /y dserverRelease\dserver.pdb %WORKSPACE_DIR%\artifacts&#xd;
 </command>
         </hudson.tasks.BatchFile>
         <hudson.tasks.BatchFile>
