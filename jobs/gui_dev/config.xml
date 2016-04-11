@@ -218,8 +218,8 @@ xcopy /y %QT_DIR%\bin\icu*53.dll .\testsRelease&#xd;
 &#xd;
 :: build project &#xd;
 &#xd;
-call build_win32.bat got release %TRIGGER_PARAM_DSERVER_BUILD_POLICY%&#xd;
-xcopy /y dserverRelease\dserver.exe %WORKSPACE_DIR%\artifacts&#xd;
+call build_win32.bat got release %TRIGGER_PARAM_GUI_BUILD_POLICY%&#xd;
+xcopy /y gotRelease\got.exe %WORKSPACE_DIR%\artifacts&#xd;
 xcopy /y Win32\Release\libgui20.dll %WORKSPACE_DIR%\artifacts&#xd;
 </command>
         </hudson.tasks.BatchFile>
