@@ -164,6 +164,19 @@
     <permission>hudson.model.Item.Discover:user</permission>
     <permission>hudson.model.Item.Discover:yichengchen</permission>
     <permission>hudson.model.Item.Discover:zen</permission>
+    <permission>hudson.model.Item.ExtendedRead:carey</permission>
+    <permission>hudson.model.Item.ExtendedRead:clydeliu</permission>
+    <permission>hudson.model.Item.ExtendedRead:darenyao</permission>
+    <permission>hudson.model.Item.ExtendedRead:easonwu</permission>
+    <permission>hudson.model.Item.ExtendedRead:edgarlee</permission>
+    <permission>hudson.model.Item.ExtendedRead:jeremyhong</permission>
+    <permission>hudson.model.Item.ExtendedRead:jim</permission>
+    <permission>hudson.model.Item.ExtendedRead:katte</permission>
+    <permission>hudson.model.Item.ExtendedRead:kevin</permission>
+    <permission>hudson.model.Item.ExtendedRead:paul</permission>
+    <permission>hudson.model.Item.ExtendedRead:user</permission>
+    <permission>hudson.model.Item.ExtendedRead:yichengchen</permission>
+    <permission>hudson.model.Item.ExtendedRead:zen</permission>
     <permission>hudson.model.Item.Read:carey</permission>
     <permission>hudson.model.Item.Read:clydeliu</permission>
     <permission>hudson.model.Item.Read:darenyao</permission>
