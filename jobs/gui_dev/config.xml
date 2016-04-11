@@ -241,6 +241,16 @@ xcopy /y gotRelease\got.exe %WORKSPACE_DIR%\artifacts&#xd;
 xcopy /y Win32\Release\libgui20.dll %WORKSPACE_DIR%\artifacts&#xd;
 </command>
         </hudson.tasks.BatchFile>
+        <hudson.tasks.BatchFile>
+          <command>mkdir gtest&#xd;
+build\vs2012\testsRelease\tests.exe --gtest_output=xml:gtest\gtest-gui.xml</command>
+        </hudson.tasks.BatchFile>
+        <hudson.tasks.junit.JUnitResultArchiver plugin="junit@1.10">
+          <testResults>gtest\*.xml</testResults>
+          <keepLongStdio>false</keepLongStdio>
+          <healthScaleFactor>1.0</healthScaleFactor>
+          <allowEmptyResults>false</allowEmptyResults>
+        </hudson.tasks.junit.JUnitResultArchiver>
       </conditionalbuilders>
     </org.jenkinsci.plugins.conditionalbuildstep.ConditionalBuilder>
   </builders>
