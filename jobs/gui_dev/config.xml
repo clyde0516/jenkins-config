@@ -214,6 +214,7 @@ fi
 &#xd;
 set WORKSPACE_DIR=%cd%&#xd;
 set WORK_UTIL_DIR=c:\jenkins\work&#xd;
+set LIBWEINTEK_BUILD_DIR=C:\jenkins\workspace\libweintek_%TRIGGER_PARAM_JOB_GROUP%\MATRIX_AXIS_NODE\windows\MATRIX_AXIS_PLATFORM\win32\build\vs2012&#xd;
 set QT_DIR=C:\DevEnv\Qt\Qt5.4.2\5.4\msvc2012_opengl&#xd;
 &#xd;
 :: clear artifacts&#xd;
@@ -226,8 +227,8 @@ mkdir %WORKSPACE_DIR%\artifacts&#xd;
 cd %WORKSPACE_DIR%\build\vs2012&#xd;
 mkdir testsRelease&#xd;
 &#xd;
-xcopy /y %WORK_UTIL_DIR%\script\build_win32.bat .&#xd;
-xcopy /y %WORK_UTIL_DIR%\project_properties\got.props .&#xd;
+xcopy /y %LIBWEINTEK_BUILD_DIR%\build_win32.bat .&#xd;
+xcopy /y got.props.in got.props&#xd;
 xcopy /y %QT_DIR%\bin\Qt5Core.dll .\testsRelease&#xd;
 xcopy /y %QT_DIR%\bin\icu*53.dll .\testsRelease&#xd;
 &#xd;
