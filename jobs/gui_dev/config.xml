@@ -238,7 +238,10 @@ call %WORK_UTIL_DIR%\script\replace_string.bat &quot;got.props&quot; &quot;&lt;D
 &#xd;
 call build_win32.bat got release %TRIGGER_PARAM_GUI_BUILD_POLICY%&#xd;
 xcopy /y gotRelease\got.exe %WORKSPACE_DIR%\artifacts&#xd;
+xcopy /y Win32\Release\gui.exe %WORKSPACE_DIR%\artifacts&#xd;
+xcopy /y Win32\Release\gui.pdb %WORKSPACE_DIR%\artifacts&#xd;
 xcopy /y Win32\Release\libgui20.dll %WORKSPACE_DIR%\artifacts&#xd;
+xcopy /y Win32\Release\libgui20.pdb %WORKSPACE_DIR%\artifacts&#xd;
 </command>
         </hudson.tasks.BatchFile>
         <hudson.tasks.BatchFile>
