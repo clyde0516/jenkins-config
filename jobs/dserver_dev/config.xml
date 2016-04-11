@@ -63,16 +63,6 @@
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <triggers>
-    <jenkins.triggers.ReverseBuildTrigger>
-      <spec></spec>
-      <upstreamProjects>libweintek_dev</upstreamProjects>
-      <threshold>
-        <name>UNSTABLE</name>
-        <ordinal>1</ordinal>
-        <color>YELLOW</color>
-        <completeBuild>true</completeBuild>
-      </threshold>
-    </jenkins.triggers.ReverseBuildTrigger>
     <hudson.triggers.SCMTrigger>
       <spec>H/5 * * * *</spec>
       <ignorePostCommitHooks>false</ignorePostCommitHooks>
@@ -241,6 +231,16 @@ build\vs2012\testsRelease\tests.exe --gtest_output=xml:gtest\gtest-dserver.xml</
       <defaultExcludes>true</defaultExcludes>
       <caseSensitive>true</caseSensitive>
     </hudson.tasks.ArtifactArchiver>
+    <hudson.plugins.parameterizedtrigger.BuildTrigger plugin="parameterized-trigger@2.30">
+      <configs>
+        <hudson.plugins.parameterizedtrigger.BuildTriggerConfig>
+          <configs class="empty-list"/>
+          <projects>gui_dev</projects>
+          <condition>UNSTABLE_OR_BETTER</condition>
+          <triggerWithNoParameters>false</triggerWithNoParameters>
+        </hudson.plugins.parameterizedtrigger.BuildTriggerConfig>
+      </configs>
+    </hudson.plugins.parameterizedtrigger.BuildTrigger>
     <hudson.tasks.Mailer plugin="mailer@1.16">
       <recipients>katte@weintek.com paul@weintek.com zen@weintek.com easonwu@weintek.com jeremyhong@weintek.com clydeliu@weintek.com</recipients>
       <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
