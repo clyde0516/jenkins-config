@@ -350,6 +350,7 @@
         <string>dserver_stable_cMT-iv5</string>
         <string>dserver_stable_cMT-SVR</string>
         <string>dserver_stable_cMT3000</string>
+        <string>dserver_stable_opcua-sdk-svr</string>
         <string>easy-access-client_stable</string>
         <string>easy-access-client_stable_cMT-SVR</string>
         <string>easy-access-client_stable_cMT3000</string>
@@ -377,7 +378,6 @@
         <string>libweintek_stable_cMT-iv5</string>
         <string>libweintek_stable_cMT-SVR</string>
         <string>libweintek_stable_cMT3000</string>
-        <string>matrix-test-win</string>
         <string>viewer_dev</string>
         <string>viewer_dev_cMT-iv5</string>
         <string>viewer_dev_cMT-iv5-3000</string>
@@ -385,7 +385,6 @@
         <string>viewer_dev_win</string>
         <string>viewer_stable</string>
         <string>viewer_stable_cMT-iv5</string>
-        <string>win-test</string>
       </jobNames>
       <jobFilters/>
       <columns>
