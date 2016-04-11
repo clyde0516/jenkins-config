@@ -233,7 +233,7 @@ xcopy /y got.props.in got.props&#xd;
 xcopy /y %QT_DIR%\bin\Qt5Core.dll .\testsRelease&#xd;
 xcopy /y %QT_DIR%\bin\icu*53.dll .\testsRelease&#xd;
 &#xd;
-call %WORK_UTIL_DIR%\script\replace_string.bat &quot;got.props&quot; &quot;&lt;WEINTEKDIR&gt;..\..\..\libweintek&lt;/WEINTEKDIR&gt;&quot; &quot;&lt;WEINTEKDIR&gt;%LIBWEINTEK_BUILD_DIR%&lt;/WEINTEKDIR&gt;&quot;&#xd;
+call %WORK_UTIL_DIR%\script\replace_string.bat &quot;got.props&quot; &quot;&lt;WEINTEKDIR&gt;..\..\..\libweintek&lt;/WEINTEKDIR&gt;&quot; &quot;&lt;WEINTEKDIR&gt;%LIBWEINTEK_DIR%&lt;/WEINTEKDIR&gt;&quot;&#xd;
 call %WORK_UTIL_DIR%\script\replace_string.bat &quot;got.props&quot; &quot;&lt;DSERVERDIR&gt;..\..\..\d-server&lt;/DSERVERDIR&gt;&quot; &quot;&lt;DSERVERDIR&gt;%DSERVER_DIR%&lt;/DSERVERDIR&gt;&quot;&#xd;
 &#xd;
 :: build project &#xd;
