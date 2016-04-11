@@ -158,7 +158,21 @@ cp ${INSTALL_PREFIX}/bin/com.${CRYPTO_EXTENSION_NAME} ${WORKSPACE}/artifacts</co
       </runCondition>
       <conditionalbuilders>
         <hudson.tasks.BatchFile>
-          <command></command>
+          <command>:: set variables&#xd;
+&#xd;
+set WORKSPACE_DIR=%cd%&#xd;
+set WORK_UTIL_DIR=c:\jenkins\work&#xd;
+&#xd;
+:: clear artifacts&#xd;
+&#xd;
+rmdir /s %WORKSPACE_DIR%\artifacts&#xd;
+mkdir %WORKSPACE_DIR%\artifacts&#xd;
+&#xd;
+:: build project &#xd;
+&#xd;
+xcopy /y %WORK_UTIL_DIR%\script\build_win32_VS2008.bat .&#xd;
+call build_win32_VS2008.bat COMKernel_2008 release %TRIGGER_PARAM_COM_BUILD_POLICY%&#xd;
+xcopy /y Release\com_e30.exe %WORKSPACE_DIR%\artifacts</command>
         </hudson.tasks.BatchFile>
       </conditionalbuilders>
     </org.jenkinsci.plugins.conditionalbuildstep.ConditionalBuilder>
