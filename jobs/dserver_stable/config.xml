@@ -211,7 +211,7 @@ mkdir %WORKSPACE_DIR%\artifacts&#xd;
 &#xd;
 cd %WORKSPACE_DIR%\build\vs2012&#xd;
 xcopy /y %LIBWEINTEK_DIR%\build\vs2012\build_win32.bat .&#xd;
-xcopy /y dserver.props.in dserver.props&#xd;
+xcopy /y/i dserver.props.in dserver.props&#xd;
 &#xd;
 call %WORK_UTIL_DIR%\script\replace_string.bat &quot;dserver.props&quot; &quot;&lt;WEINTEKDIR&gt;..\..\..\libweintek&lt;/WEINTEKDIR&gt;&quot; &quot;&lt;WEINTEKDIR&gt;%LIBWEINTEK_DIR%&lt;/WEINTEKDIR&gt;&quot;&#xd;
 &#xd;
