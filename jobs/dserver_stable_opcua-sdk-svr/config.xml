@@ -113,12 +113,12 @@ echo &quot;aaaaaaaaaaaaaaaaaaaaaa&quot;
 #export LIBWEINTEK_PATH=${2}
 #export DSERVER_PATH=${1}
 
-export MY_OPCUA_ROOT_PATH=&quot;?&quot;
+
 
 # /home/ci/work/cMT-SVR/build-stable-branch
 export MY_INSTALL_PREFIX=/home/ci/work/${MATRIX_AXIS_PLATFORM}/build-${TRIGGER_PARAM_JOB_GROUP}-branch
 export MY_BUILD_TYPE=RelWithDebInfo
-
+export MY_OPCUA_ROOT_DIR=${WORKSPACE}/third-party/UaSdkCppBundleSource
 
 
 # clear artifacts
@@ -144,8 +144,10 @@ cd jenkins/${MATRIX_AXIS_PLATFORM}
 ls -alh ${WORKSPACE}/build/jenkins/${MATRIX_AXIS_PLATFORM}
 echo &quot;MATRIX_AXIS_PLATFORM&quot; ${MATRIX_AXIS_PLATFORM}
 
-# generate makefile
+export MY_BUILD_DIR=${WORKSPACE}/build/jenkins/${MATRIX_AXIS_PLATFORM}
 
+# generate makefile
+cmake ${MY_OPCUA_ROOT_DIR}
 
 
 echo &quot;aaaaaaaaaaaaaaaaaaaaaa&quot;
