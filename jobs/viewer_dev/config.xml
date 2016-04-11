@@ -219,6 +219,7 @@ call %WORK_UTIL_DIR%\script\replace_string.bat &quot;cloudhmi.props&quot; &quot;
 &#xd;
 call build_win32.bat CloudHmi release %TRIGGER_PARAM_VIEWER_BUILD_POLICY%&#xd;
 xcopy /y Win32\Release\cMTViewer.exe %WORKSPACE_DIR%\artifacts&#xd;
+xcopy /y Win32\Release\cMTViewer.pdb %WORKSPACE_DIR%\artifacts&#xd;
 </command>
         </hudson.tasks.BatchFile>
       </conditionalbuilders>
