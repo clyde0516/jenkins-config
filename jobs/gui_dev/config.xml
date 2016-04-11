@@ -219,7 +219,7 @@ cd %WORKSPACE_DIR%\build\vs2012&#xd;
 mkdir testsRelease&#xd;
 &#xd;
 xcopy /y %LIBWEINTEK_DIR%\build\vs2012\build_win32.bat .&#xd;
-xcopy /y/u got.props.in got.props&#xd;
+xcopy /y got.props.in got.props&#xd;
 xcopy /y %QT_DIR%\bin\Qt5Core.dll .\testsRelease&#xd;
 xcopy /y %QT_DIR%\bin\icu*53.dll .\testsRelease&#xd;
 &#xd;
