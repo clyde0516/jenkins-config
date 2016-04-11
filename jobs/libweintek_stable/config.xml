@@ -173,7 +173,7 @@ xcopy /y %WORK_UTIL_DIR%\libraries\sqlite3\lib\*.lib .&#xd;
 :: build project&#xd;
 &#xd;
 cd ..\..\build\vs2012&#xd;
-xcopy /y/m weintek.props.in weintek.props&#xd;
+xcopy /y/u weintek.props.in weintek.props&#xd;
 build_win32.bat weintek release %TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY%</command>
         </hudson.tasks.BatchFile>
         <hudson.tasks.BatchFile>
