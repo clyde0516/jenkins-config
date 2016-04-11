@@ -201,7 +201,6 @@ set WORK_UTIL_DIR=c:\jenkins\work&#xd;
 :: clear artifacts&#xd;
 &#xd;
 md %WORKSPACE_DIR%\artifacts&#xd;
-cd &#xd;
 &#xd;
 :: build project &#xd;
 cd %WORKSPACE_DIR%\build\vs2012&#xd;
