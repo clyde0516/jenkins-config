@@ -106,8 +106,22 @@
     <hudson.tasks.Shell>
       <command>#!/bin/bash
 
-echo &quot;aaaaaaaaaaaaaaaaaaaaaa&quot;
 echo ${WORKSPACE}
+echo ${PWD}
+echo &quot;aaaaaaaaaaaaaaaaaaaaaa&quot;
+
+#export LIBWEINTEK_PATH=${2}
+#export DSERVER_PATH=${1}
+
+export MY_OPCUA_ROOT_PATH=&quot;?&quot;
+export MY_INSTALL_PREFIX=&quot;?&quot;
+export MY_BUILD_TYPE=RelWithDebInfo
+
+
+
+echo &quot;aaaaaaaaaaaaaaaaaaaaaa&quot;
+
+
 
 return 0
 
