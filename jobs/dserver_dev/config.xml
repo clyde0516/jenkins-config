@@ -201,7 +201,7 @@ set WORK_UTIL_DIR=c:\jenkins\work&#xd;
 :: clear artifacts&#xd;
 &#xd;
 rmdir /s %WORKSPACE_DIR%\artifacts&#xd;
-md %WORKSPACE_DIR%\artifacts&#xd;
+mkdir %WORKSPACE_DIR%\artifacts&#xd;
 &#xd;
 :: prepare build environment&#xd;
 &#xd;
