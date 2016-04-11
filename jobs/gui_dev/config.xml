@@ -218,10 +218,10 @@ mkdir %WORKSPACE_DIR%\artifacts&#xd;
 cd %WORKSPACE_DIR%\build\vs2012&#xd;
 mkdir testsRelease&#xd;
 &#xd;
-xcopy /y %LIBWEINTEK_DIR%\build\vs2012\build_win32.bat .&#xd;
-xcopy /y got.props.in got.props&#xd;
-xcopy /y %QT_DIR%\bin\Qt5Core.dll .\testsRelease&#xd;
-xcopy /y %QT_DIR%\bin\icu*53.dll .\testsRelease&#xd;
+copy /y %LIBWEINTEK_DIR%\build\vs2012\build_win32.bat .&#xd;
+copy /y got.props.in got.props&#xd;
+copy /y %QT_DIR%\bin\Qt5Core.dll .\testsRelease&#xd;
+copy /y %QT_DIR%\bin\icu*53.dll .\testsRelease&#xd;
 &#xd;
 call %WORK_UTIL_DIR%\script\replace_string.bat &quot;got.props&quot; &quot;&lt;WEINTEKDIR&gt;..\..\..\libweintek&lt;/WEINTEKDIR&gt;&quot; &quot;&lt;WEINTEKDIR&gt;%LIBWEINTEK_DIR%&lt;/WEINTEKDIR&gt;&quot;&#xd;
 call %WORK_UTIL_DIR%\script\replace_string.bat &quot;got.props&quot; &quot;&lt;DSERVERDIR&gt;..\..\..\d-server&lt;/DSERVERDIR&gt;&quot; &quot;&lt;DSERVERDIR&gt;%DSERVER_DIR%&lt;/DSERVERDIR&gt;&quot;&#xd;
@@ -229,11 +229,11 @@ call %WORK_UTIL_DIR%\script\replace_string.bat &quot;got.props&quot; &quot;&lt;D
 :: build project &#xd;
 &#xd;
 call build_win32.bat got release %TRIGGER_PARAM_GUI_BUILD_POLICY%&#xd;
-xcopy /y gotRelease\got.exe %WORKSPACE_DIR%\artifacts&#xd;
-xcopy /y Win32\Release\gui.exe %WORKSPACE_DIR%\artifacts&#xd;
-xcopy /y Win32\Release\gui.pdb %WORKSPACE_DIR%\artifacts&#xd;
-xcopy /y Win32\Release\libgui20.dll %WORKSPACE_DIR%\artifacts&#xd;
-xcopy /y Win32\Release\libgui20.pdb %WORKSPACE_DIR%\artifacts&#xd;
+copy /y gotRelease\got.exe %WORKSPACE_DIR%\artifacts&#xd;
+copy /y Win32\Release\gui.exe %WORKSPACE_DIR%\artifacts&#xd;
+copy /y Win32\Release\gui.pdb %WORKSPACE_DIR%\artifacts&#xd;
+copy /y Win32\Release\libgui20.dll %WORKSPACE_DIR%\artifacts&#xd;
+copy /y Win32\Release\libgui20.pdb %WORKSPACE_DIR%\artifacts&#xd;
 </command>
         </hudson.tasks.BatchFile>
         <hudson.tasks.BatchFile>
