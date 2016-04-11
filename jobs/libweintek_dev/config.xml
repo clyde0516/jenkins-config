@@ -107,6 +107,10 @@
         <hudson.tasks.Shell>
           <command>#!/bin/bash
 
+if [[ &quot;$time&quot; -ge 0000 ]] &amp;&amp; [[ &quot;$time&quot; -le 0800 ]];then
+	export TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY=brandnew
+fi
+
 # export variables
 
 export LIBWEINTEK_PATH=${WORKSPACE}
@@ -190,6 +194,16 @@ build\vs2012\testsRelease\tests.exe --gtest_output=xml:gtest\gtest-libweintek.xm
     </org.jenkinsci.plugins.conditionalbuildstep.ConditionalBuilder>
   </builders>
   <publishers>
+    <hudson.plugins.parameterizedtrigger.BuildTrigger plugin="parameterized-trigger@2.30">
+      <configs>
+        <hudson.plugins.parameterizedtrigger.BuildTriggerConfig>
+          <configs class="empty-list"/>
+          <projects>dserver_dev</projects>
+          <condition>UNSTABLE_OR_BETTER</condition>
+          <triggerWithNoParameters>false</triggerWithNoParameters>
+        </hudson.plugins.parameterizedtrigger.BuildTriggerConfig>
+      </configs>
+    </hudson.plugins.parameterizedtrigger.BuildTrigger>
     <hudson.tasks.Mailer plugin="mailer@1.16">
       <recipients>katte@weintek.com paul@weintek.com zen@weintek.com easonwu@weintek.com jeremyhong@weintek.com clydeliu@weintek.com</recipients>
       <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
