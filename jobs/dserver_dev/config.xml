@@ -209,7 +209,7 @@ cd %WORKSPACE_DIR%\build\vs2012&#xd;
 xcopy /y %WORK_UTIL_DIR%\script\build_win32.bat .&#xd;
 xcopy /y %WORK_UTIL_DIR%\project_properties\dserver.props .&#xd;
 &#xd;
-%WORK_UTIL_DIR%\utilities\fnr.exe --cl --dir &quot;%cd%&quot; --fileMask &quot;dserver.props&quot; --find &quot;&lt;WEINTEKDIR&gt;..\..\..\libweintek&lt;/WEINTEKDIR&gt;&quot; --replace &quot;&lt;WEINTEKDIR&gt;C:\jenkins\workspace\libweintek_dev\MATRIX_AXIS_NODE\windows\MATRIX_AXIS_PLATFORM\win32&lt;/WEINTEKDIR&gt;&quot;&#xd;
+call %WORK_UTIL_DIR%\script\replace_string.bat &quot;dserver.props&quot; &quot;&lt;WEINTEKDIR&gt;..\..\..\libweintek&lt;/WEINTEKDIR&gt;&quot; &quot;&lt;WEINTEKDIR&gt;C:\jenkins\workspace\libweintek_dev\MATRIX_AXIS_NODE\windows\MATRIX_AXIS_PLATFORM\win32&lt;/WEINTEKDIR&gt;&quot;&#xd;
 &#xd;
 :: build project &#xd;
 &#xd;
