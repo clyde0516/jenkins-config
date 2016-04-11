@@ -94,17 +94,17 @@
           <description></description>
           <choices class="java.util.Arrays$ArrayList">
             <a class="string-array">
-              <string>Ubuntu</string>
               <string>cMT3000</string>
               <string>cMT-SVR</string>
               <string>cMT-iv5</string>
+              <string>Ubuntu</string>
             </a>
           </choices>
         </hudson.model.ChoiceParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>TRIGGER_PARAM_INSTALL_FOLDER</name>
           <description></description>
-          <defaultValue>build-dev-branch</defaultValue>
+          <defaultValue>build-v1-barcode-debug-branch</defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>TRIGGER_PARAM_BASE_INSTALL_FOLDER</name>
@@ -114,22 +114,17 @@
         <hudson.model.StringParameterDefinition>
           <name>TRIGGER_PARAM_LIBWEINTEK_BRANCH</name>
           <description></description>
-          <defaultValue>dev</defaultValue>
+          <defaultValue>v1-stable</defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>TRIGGER_PARAM_DSERVER_BRANCH</name>
           <description></description>
-          <defaultValue>dev</defaultValue>
+          <defaultValue>v1-stable</defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>TRIGGER_PARAM_GUI_BRANCH</name>
           <description></description>
-          <defaultValue>dev</defaultValue>
-        </hudson.model.StringParameterDefinition>
-        <hudson.model.StringParameterDefinition>
-          <name>TRIGGER_PARAM_VIEWER_BRANCH</name>
-          <description></description>
-          <defaultValue>dev</defaultValue>
+          <defaultValue>v1-stable</defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.ChoiceParameterDefinition>
           <name>TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY</name>
@@ -155,17 +150,6 @@
         </hudson.model.ChoiceParameterDefinition>
         <hudson.model.ChoiceParameterDefinition>
           <name>TRIGGER_PARAM_GUI_BUILD_POLICY</name>
-          <description></description>
-          <choices class="java.util.Arrays$ArrayList">
-            <a class="string-array">
-              <string>incremental</string>
-              <string>clean</string>
-              <string>brandnew</string>
-            </a>
-          </choices>
-        </hudson.model.ChoiceParameterDefinition>
-        <hudson.model.ChoiceParameterDefinition>
-          <name>TRIGGER_PARAM_VIEWER_BUILD_POLICY</name>
           <description></description>
           <choices class="java.util.Arrays$ArrayList">
             <a class="string-array">
@@ -274,15 +258,7 @@
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
-  <triggers>
-    <hudson.triggers.TimerTrigger>
-      <spec>H H(0-7) * * *</spec>
-    </hudson.triggers.TimerTrigger>
-    <hudson.triggers.SCMTrigger>
-      <spec>H/5 * * * *</spec>
-      <ignorePostCommitHooks>false</ignorePostCommitHooks>
-    </hudson.triggers.SCMTrigger>
-  </triggers>
+  <triggers/>
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder plugin="conditional-buildstep@1.3.3">
@@ -541,96 +517,6 @@ fi
       <runner class="org.jenkins_ci.plugins.run_condition.BuildStepRunner$Fail" plugin="run-condition@1.0"/>
     </org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder>
     <org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder plugin="conditional-buildstep@1.3.3">
-      <condition class="org.jenkins_ci.plugins.run_condition.logic.Or" plugin="run-condition@1.0">
-        <conditions>
-          <org.jenkins__ci.plugins.run__condition.logic.ConditionContainer>
-            <condition class="org.jenkins_ci.plugins.run_condition.core.StringsMatchCondition">
-              <arg1>${TRIGGER_PARAM_PLATFORM}</arg1>
-              <arg2>cMT-iv5</arg2>
-              <ignoreCase>false</ignoreCase>
-            </condition>
-          </org.jenkins__ci.plugins.run__condition.logic.ConditionContainer>
-          <org.jenkins__ci.plugins.run__condition.logic.ConditionContainer>
-            <condition class="org.jenkins_ci.plugins.run_condition.core.StringsMatchCondition">
-              <arg1>${TRIGGER_PARAM_PLATFORM}</arg1>
-              <arg2>Ubuntu</arg2>
-              <ignoreCase>false</ignoreCase>
-            </condition>
-          </org.jenkins__ci.plugins.run__condition.logic.ConditionContainer>
-        </conditions>
-      </condition>
-      <buildStep class="hudson.tasks.Shell">
-        <command>#!/bin/bash
-
-# export variables
-
-export VIEWER_PATH=${WORKSPACE}/viewer
-export CLOUDHMI_PATH=${VIEWER_PATH}/CloudHmi
-export LIBWEINTEK_PATH=${WORKSPACE}/libweintek
-export DSERVER_PATH=${WORKSPACE}/dserver
-export GUI_PATH=${WORKSPACE}/gui
-export INSTALL_PREFIX=/home/ci/work/${TRIGGER_PARAM_PLATFORM}/${TRIGGER_PARAM_INSTALL_FOLDER}
-
-case $TRIGGER_PARAM_PLATFORM in
-    &quot;cMT-iv5&quot;)       export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT-iv5/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi  ;;
-    &quot;cMT-iv5-3000&quot;)  export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi  ;;
-esac
-
-case $TRIGGER_PARAM_PLATFORM in
-    &quot;cMT-iv5-3000&quot;)  export PLATFORM_BUILD_FOLDER=cMT-iv5  ;;
-    *)               export PLATFORM_BUILD_FOLDER=${TRIGGER_PARAM_PLATFORM}  ;;
-esac
-
-case $TRIGGER_PARAM_PLATFORM in
-    &quot;cMT-iv5&quot;)       export ENCRYPT_EXTENSION_NAME=.iv5  ;;
-    &quot;cMT-iv5-3000&quot;)  export ENCRYPT_EXTENSION_NAME=.iv5  ;;
-esac
-
-if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;Ubuntu&quot; ]; then
-   export PATH=/opt/Qt5.4.2/5.4/gcc_64/bin:${PATH}
-fi
-
-# prepare out-of-source build
-
-cd ${VIEWER_PATH}/build
-if [ &quot;${TRIGGER_PARAM_VIEWER_BUILD_POLICY}&quot; = &quot;brandnew&quot; ]; then
-    rm -rf jenkins/${TRIGGER_PARAM_PLATFORM}
-fi
-if [ ! -d &quot;jenkins&quot; ]; then
-    mkdir -p jenkins
-fi
-if [ ! -d &quot;jenkins/${TRIGGER_PARAM_PLATFORM}&quot; ]; then
-    mkdir -p jenkins/${TRIGGER_PARAM_PLATFORM}
-fi
-cd jenkins/${TRIGGER_PARAM_PLATFORM}
-
-# generate makefile
-
-cp ${VIEWER_PATH}/build/${PLATFORM_BUILD_FOLDER}/*features.pri .
-${VIEWER_PATH}/build/${PLATFORM_BUILD_FOLDER}/qmake_viewer.sh ${CLOUDHMI_PATH} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${GUI_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} RelWithDebInfo
-
-# make
-
-if test -n &quot;${CROSS_COMPILER_TOOLCHAIN}&quot;; then
-    source ${CROSS_COMPILER_TOOLCHAIN}
-fi
-make VERBOSE=1
-cp ${INSTALL_PREFIX}/bin/CloudHmi ${WORKSPACE}/artifacts/CloudHmi.RelWithDebInfo	
-
-# strip and encrypt
-
-strip ${INSTALL_PREFIX}/bin/CloudHmi
-tar -cv ${INSTALL_PREFIX}/bin/CloudHmi &gt;&gt; ${INSTALL_PREFIX}/bin/CloudHmi.tar
-if test -n &quot;${ENCRYPT_EXTENSION_NAME}&quot;; then
-    test_mtcrypt --encrypt ${INSTALL_PREFIX}/bin/CloudHmi.tar --out ${INSTALL_PREFIX}/bin/cMTViewer${ENCRYPT_EXTENSION_NAME}
-    cp ${INSTALL_PREFIX}/bin/cMTViewer${ENCRYPT_EXTENSION_NAME} ${WORKSPACE}/artifacts
-else
-    cp ${INSTALL_PREFIX}/bin/CloudHmi.tar ${WORKSPACE}/artifacts
-fi  </command>
-      </buildStep>
-      <runner class="org.jenkins_ci.plugins.run_condition.BuildStepRunner$Fail" plugin="run-condition@1.0"/>
-    </org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder>
-    <org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder plugin="conditional-buildstep@1.3.3">
       <condition class="org.jenkins_ci.plugins.run_condition.core.StringsMatchCondition" plugin="run-condition@1.0">
         <arg1>${TRIGGER_PARAM_PLATFORM}</arg1>
         <arg2>Ubuntu</arg2>
@@ -674,8 +560,8 @@ ${INSTALL_PREFIX}/bin/test-got --gtest_output=xml:${WORKSPACE}/gtest/gtest-got.x
       <allowEmptyResults>true</allowEmptyResults>
     </hudson.tasks.junit.JUnitResultArchiver>
     <hudson.tasks.Mailer plugin="mailer@1.16">
-      <recipients>katte@weintek.com paul@weintek.com zen@weintek.com easonwu@weintek.com jeremyhong@weintek.com clydeliu@weintek.com</recipients>
-      <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
+      <recipients></recipients>
+      <dontNotifyEveryUnstableBuild>true</dontNotifyEveryUnstableBuild>
       <sendToIndividuals>false</sendToIndividuals>
     </hudson.tasks.Mailer>
   </publishers>
