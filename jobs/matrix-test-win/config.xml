@@ -14,22 +14,24 @@
   <concurrentBuild>false</concurrentBuild>
   <axes>
     <hudson.matrix.LabelAxis>
-      <name>LabelAxis</name>
+      <name>MATRIX_AXIS_NODE</name>
       <values>
         <string>linux</string>
         <string>windows</string>
       </values>
     </hudson.matrix.LabelAxis>
     <hudson.matrix.TextAxis>
-      <name>CustomAxis</name>
+      <name>MATRIX_AXIS_PLATFORM</name>
       <values>
-        <string>a</string>
-        <string>b</string>
-        <string>c</string>
+        <string>cMT3000</string>
+        <string>cMT-SVR</string>
+        <string>cMT-iv5</string>
+        <string>cMT-iv5-3000</string>
+        <string>win32</string>
       </values>
     </hudson.matrix.TextAxis>
   </axes>
-  <combinationFilter>(LabelAxis==&quot;linux&quot; &amp;&amp; (CustomAxis==&quot;a&quot; || CustomAxis==&quot;b&quot;)) || (LabelAxis==&quot;windows&quot; &amp;&amp; CustomAxis==&quot;c&quot;)</combinationFilter>
+  <combinationFilter>(MATRIX_AXIS_NODE == &quot;window&quot; &amp;&amp; MATRIX_AXIS_PLATFORM == &quot;win32&quot;) || (MATRIX_AXIS_NODE != &quot;window&quot; &amp;&amp; MATRIX_AXIS_PLATFORM != &quot;win32&quot;)</combinationFilter>
   <builders>
     <hudson.tasks.BatchFile>
       <command>echo %CustomAxis% %LabelAxis%&#xd;
