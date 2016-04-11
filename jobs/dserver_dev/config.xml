@@ -183,6 +183,27 @@ cp ${INSTALL_PREFIX}/bin/dserver${ENCRYPT_EXTENSION_NAME} ${WORKSPACE}/artifacts
         </hudson.tasks.Shell>
       </conditionalbuilders>
     </org.jenkinsci.plugins.conditionalbuildstep.ConditionalBuilder>
+    <org.jenkinsci.plugins.conditionalbuildstep.ConditionalBuilder plugin="conditional-buildstep@1.3.3">
+      <runner class="org.jenkins_ci.plugins.run_condition.BuildStepRunner$Fail" plugin="run-condition@1.0"/>
+      <runCondition class="org.jenkins_ci.plugins.run_condition.core.StringsMatchCondition" plugin="run-condition@1.0">
+        <arg1>${MATRIX_AXIS_NODE}</arg1>
+        <arg2>windows</arg2>
+        <ignoreCase>false</ignoreCase>
+      </runCondition>
+      <conditionalbuilders>
+        <hudson.tasks.BatchFile>
+          <command>set WORK_UTIL_DIR=c:\jenkins\work&#xd;
+&#xd;
+cd build\vs2012&#xd;
+xcopy /y %WORK_UTIL_DIR%\build_script\build_win32.bat .&#xd;
+xcopy /y %WORK_UTIL_DIR%\project_properties\dserver.props .&#xd;
+&#xd;
+%WORK_UTIL_DIR%\utilities\fnr.exe --cl --dir &quot;%cd%&quot; --fileMask &quot;dserver.props&quot; --find &quot;&lt;WEINTEKDIR&gt;..\..\..\libweintek&lt;/WEINTEKDIR&gt;&quot; --replace &quot;&lt;WEINTEKDIR&gt;C:\jenkins\workspace\libweintek_dev\MATRIX_AXIS_NODE\windows\MATRIX_AXIS_PLATFORM\win32&lt;/WEINTEKDIR&gt;&quot;&#xd;
+&#xd;
+build_win32.bat dserver release %TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY%</command>
+        </hudson.tasks.BatchFile>
+      </conditionalbuilders>
+    </org.jenkinsci.plugins.conditionalbuildstep.ConditionalBuilder>
   </builders>
   <publishers>
     <hudson.tasks.ArtifactArchiver>
