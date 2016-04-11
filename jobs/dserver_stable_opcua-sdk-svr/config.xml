@@ -114,13 +114,37 @@ echo &quot;aaaaaaaaaaaaaaaaaaaaaa&quot;
 #export DSERVER_PATH=${1}
 
 export MY_OPCUA_ROOT_PATH=&quot;?&quot;
+
+# /home/ci/work/cMT-SVR/build-stable-branch
 export MY_INSTALL_PREFIX=/home/ci/work/${MATRIX_AXIS_PLATFORM}/build-${TRIGGER_PARAM_JOB_GROUP}-branch
-echo &quot;MY_INSTALL_PREFIX&quot; ${MY_INSTALL_PREFIX}
 export MY_BUILD_TYPE=RelWithDebInfo
 
 
 
 # clear artifacts
+
+rm -f ${INSTALL_PREFIX}/bin/dserver*
+rm -rf ${WORKSPACE}/artifacts
+mkdir ${WORKSPACE}/artifacts
+
+# prepare out-of-source build
+
+cd ${WORKSPACE}/build
+if [ &quot;${TRIGGER_PARAM_DSERVER_BUILD_POLICY}&quot; = &quot;brandnew&quot; ]; then
+    rm -rf jenkins/${MATRIX_AXIS_PLATFORM}
+fi
+if [ ! -d &quot;jenkins&quot; ]; then
+    mkdir -p jenkins
+fi
+if [ ! -d &quot;jenkins/${MATRIX_AXIS_PLATFORM}&quot; ]; then
+    mkdir -p jenkins/${MATRIX_AXIS_PLATFORM}
+fi
+cd jenkins/${MATRIX_AXIS_PLATFORM}
+
+
+echo &quot;MATRIX_AXIS_PLATFORM&quot; ${MATRIX_AXIS_PLATFORM}
+
+# generate makefile
 
 
 
