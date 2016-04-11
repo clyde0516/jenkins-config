@@ -163,7 +163,7 @@ make install VERBOSE=1</command>
 &#xd;
 cd build/vs2012&#xd;
 xcopy /y %BUILD_SCRIPT_DIR%\build_win32.bat .&#xd;
-build_win32.bat weintek release build</command>
+build_win32.bat weintek release %TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY%</command>
         </hudson.tasks.BatchFile>
       </conditionalbuilders>
     </org.jenkinsci.plugins.conditionalbuildstep.ConditionalBuilder>
