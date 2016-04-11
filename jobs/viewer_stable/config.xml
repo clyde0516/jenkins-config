@@ -212,7 +212,7 @@ mkdir %WORKSPACE_DIR%\artifacts&#xd;
 :: prepare build environment&#xd;
 &#xd;
 xcopy /y %LIBWEINTEK_DIR%\build\vs2012\build_win32.bat .&#xd;
-xcopy /y cloudhmi.props.in cloudhmi.props&#xd;
+xcopy /y/i cloudhmi.props.in cloudhmi.props&#xd;
 &#xd;
 call %WORK_UTIL_DIR%\script\replace_string.bat &quot;cloudhmi.props&quot; &quot;&lt;WEINTEKDIR&gt;..\..\libweintek&lt;/WEINTEKDIR&gt;&quot; &quot;&lt;WEINTEKDIR&gt;%LIBWEINTEK_DIR%&lt;/WEINTEKDIR&gt;&quot;&#xd;
 call %WORK_UTIL_DIR%\script\replace_string.bat &quot;cloudhmi.props&quot; &quot;&lt;DSERVERDIR&gt;..\..\d-server&lt;/DSERVERDIR&gt;&quot; &quot;&lt;DSERVERDIR&gt;%DSERVER_DIR%&lt;/DSERVERDIR&gt;&quot;&#xd;
