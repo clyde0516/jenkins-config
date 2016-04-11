@@ -14,6 +14,15 @@
       <permission>hudson.model.Item.Read:yichengchen</permission>
       <permission>hudson.model.Item.Read:user</permission>
       <permission>hudson.model.Item.Read:easonwu</permission>
+      <permission>hudson.model.Item.ExtendedRead:jim</permission>
+      <permission>hudson.model.Item.ExtendedRead:darenyao</permission>
+      <permission>hudson.model.Item.ExtendedRead:jeremyhong</permission>
+      <permission>hudson.model.Item.ExtendedRead:edgarlee</permission>
+      <permission>hudson.model.Item.ExtendedRead:paul</permission>
+      <permission>hudson.model.Item.ExtendedRead:zen</permission>
+      <permission>hudson.model.Item.ExtendedRead:yichengchen</permission>
+      <permission>hudson.model.Item.ExtendedRead:user</permission>
+      <permission>hudson.model.Item.ExtendedRead:easonwu</permission>
       <permission>hudson.model.Item.Discover:jim</permission>
       <permission>hudson.model.Item.Discover:darenyao</permission>
       <permission>hudson.model.Item.Discover:jeremyhong</permission>
