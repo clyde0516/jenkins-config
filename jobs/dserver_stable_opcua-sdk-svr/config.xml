@@ -114,8 +114,13 @@ echo &quot;aaaaaaaaaaaaaaaaaaaaaa&quot;
 #export DSERVER_PATH=${1}
 
 export MY_OPCUA_ROOT_PATH=&quot;?&quot;
-export MY_INSTALL_PREFIX=&quot;?&quot;
+export MY_INSTALL_PREFIX=/home/ci/work/${MATRIX_AXIS_PLATFORM}/build-${TRIGGER_PARAM_JOB_GROUP}-branch
+echo &quot;MY_INSTALL_PREFIX&quot; ${MY_INSTALL_PREFIX}
 export MY_BUILD_TYPE=RelWithDebInfo
+
+
+
+# clear artifacts
 
 
 
