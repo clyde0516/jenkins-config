@@ -18,8 +18,6 @@
       <values>
         <string>linux</string>
         <string>windows</string>
-        <string>master</string>
-        <string>slave - win</string>
       </values>
     </hudson.matrix.LabelAxis>
     <hudson.matrix.TextAxis>
@@ -31,6 +29,7 @@
       </values>
     </hudson.matrix.TextAxis>
   </axes>
+  <combinationFilter>(label==&quot;linux&quot; &amp;&amp; (CustomAxis==&quot;a&quot; || CustomAxis==&quot;b&quot;)) || (label==&quot;windows&quot; &amp;&amp; CustomAxis==&quot;c&quot;)</combinationFilter>
   <builders>
     <hudson.tasks.BatchFile>
       <command>echo %CustomAxis% %LabelAxis%&#xd;
