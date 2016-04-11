@@ -226,7 +226,7 @@ mkdir %WORKSPACE_DIR%\artifacts&#xd;
 cd %WORKSPACE_DIR%\build\vs2012&#xd;
 mkdir testsRelease&#xd;
 &#xd;
-xcopy /y %WORK_UTIL_DIR%\build_script\build_win32.bat .&#xd;
+xcopy /y %WORK_UTIL_DIR%\script\build_win32.bat .&#xd;
 xcopy /y %WORK_UTIL_DIR%\project_properties\got.props .&#xd;
 xcopy /y %QT_DIR%\bin\Qt5Core.dll .\testsRelease&#xd;
 xcopy /y %QT_DIR%\bin\icu*53.dll .\testsRelease&#xd;
