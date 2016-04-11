@@ -29,6 +29,7 @@
       </values>
     </hudson.matrix.TextAxis>
   </axes>
+  <combinationFilter>(LabelAxis==&quot;linux&quot; &amp;&amp; CustomAxis==&quot;a&quot;)</combinationFilter>
   <builders>
     <hudson.tasks.BatchFile>
       <command>echo %CustomAxis% %LabelAxis%&#xd;
