@@ -171,13 +171,13 @@ set WORK_UTIL_DIR=c:\jenkins\work&#xd;
 &#xd;
 md third-party\lib&#xd;
 cd third-party\lib&#xd;
-xcopy /y %WORK_UTIL_DIR%\libraries\smtp\lib\*.lib .&#xd;
-xcopy /y %WORK_UTIL_DIR%\libraries\sqlite3\lib\*.lib .&#xd;
+copy /y %WORK_UTIL_DIR%\libraries\smtp\lib\*.lib .&#xd;
+copy /y %WORK_UTIL_DIR%\libraries\sqlite3\lib\*.lib .&#xd;
 &#xd;
 :: build project&#xd;
 &#xd;
 cd ..\..\build\vs2012&#xd;
-xcopy /y weintek.props.in weintek.props&#xd;
+copy /y weintek.props.in weintek.props&#xd;
 build_win32.bat weintek release %TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY%</command>
         </hudson.tasks.BatchFile>
         <hudson.tasks.BatchFile>
