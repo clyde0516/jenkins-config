@@ -4,7 +4,22 @@
   <description></description>
   <keepDependencies>false</keepDependencies>
   <properties/>
-  <scm class="hudson.scm.NullSCM"/>
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@2.4.2">
+    <configVersion>2</configVersion>
+    <userRemoteConfigs>
+      <hudson.plugins.git.UserRemoteConfig>
+        <url>gitolite@192.168.1.220:libweintek.git</url>
+      </hudson.plugins.git.UserRemoteConfig>
+    </userRemoteConfigs>
+    <branches>
+      <hudson.plugins.git.BranchSpec>
+        <name>*/dev</name>
+      </hudson.plugins.git.BranchSpec>
+    </branches>
+    <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+    <submoduleCfg class="list"/>
+    <extensions/>
+  </scm>
   <canRoam>true</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
@@ -22,10 +37,6 @@
     <hudson.matrix.TextAxis>
       <name>MATRIX_AXIS_PLATFORM</name>
       <values>
-        <string>cMT3000</string>
-        <string>cMT-SVR</string>
-        <string>cMT-iv5</string>
-        <string>cMT-iv5-3000</string>
         <string>win32</string>
       </values>
     </hudson.matrix.TextAxis>
