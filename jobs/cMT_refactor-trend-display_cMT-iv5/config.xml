@@ -365,6 +365,8 @@ elif [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT-iv5&quot; ]; then
     export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT-iv5/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
 fi
 
+rm -f ${INSTALL_PREFIX}/bin/dserver*
+
 cd ${DSERVER_PATH}/build
 if [ &quot;${TRIGGER_PARAM_DSERVER_BUILD_POLICY}&quot; = &quot;brandnew&quot; ]; then
     rm -rf jenkins/${TRIGGER_PARAM_PLATFORM}
@@ -520,6 +522,11 @@ esac
 if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;Ubuntu&quot; ]; then
    export PATH=/opt/Qt5.4.2/5.4/gcc_64/bin:${PATH}
 fi
+
+# clear artifacts
+
+rm -f ${INSTALL_PREFIX}/bin/CloudHmi*
+rm -f ${INSTALL_PREFIX}/bin/cMTViewer*
 
 # prepare out-of-source build
 
