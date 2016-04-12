@@ -173,6 +173,10 @@ copy /y %WORK_UTIL_DIR%\libraries\sqlite3\lib\*.lib .&#xd;
 &#xd;
 cd ..\..\build\vs2012&#xd;
 copy /y weintek.props.in weintek.props&#xd;
+&#xd;
+if &quot;%now%&quot; geq &quot;00:00:00,00&quot; ( if &quot;%now%&quot; lss &quot;11:00:00,00&quot; (&#xd;
+    set TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY=clean&#xd;
+))&#xd;
 build_win32.bat weintek release %TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY%</command>
         </hudson.tasks.BatchFile>
         <hudson.tasks.BatchFile>
