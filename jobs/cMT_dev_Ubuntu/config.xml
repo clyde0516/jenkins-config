@@ -234,11 +234,6 @@ rm -rf ${WORKSPACE}/viewer/build/jenkins</command>
     <hudson.tasks.Shell>
       <command># Setup environment for builds
 
-cd ${WORKSPACE}
-
-rm -rf artifacts
-mkdir artifacts
-
 cd /home/ci/work/${TRIGGER_PARAM_PLATFORM}
 if [ ! -d &quot;${TRIGGER_PARAM_INSTALL_FOLDER}&quot; ]; then
     cp -r ${TRIGGER_PARAM_BASE_INSTALL_FOLDER} ${TRIGGER_PARAM_INSTALL_FOLDER}
@@ -357,6 +352,8 @@ elif [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT-iv5&quot; ]; then
 fi
 
 rm -f ${INSTALL_PREFIX}/bin/dserver*
+rm -rf ${DSERVER_PATH}/artifacts
+mkdir ${DSERVER_PATH}/artifacts
 
 cd ${DSERVER_PATH}/build
 if [ &quot;${TRIGGER_PARAM_DSERVER_BUILD_POLICY}&quot; = &quot;brandnew&quot; ]; then
@@ -377,7 +374,7 @@ if [ &quot;${TRIGGER_PARAM_DSERVER_BUILD_POLICY}&quot; = &quot;clean&quot; ]; th
 fi
 
 make install VERBOSE=1
-cp ${INSTALL_PREFIX}/bin/dserver ${WORKSPACE}/artifacts/dserver.RelWithDebInfo
+cp ${INSTALL_PREFIX}/bin/dserver ${DSERVER_PATH}/artifacts/dserver.RelWithDebInfo
 
 make install/strip VERBOSE=1
 if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;Ubuntu&quot; ]; then
@@ -392,7 +389,7 @@ else
     fi
     /home/ci/work/crypto e ${INSTALL_PREFIX}/bin/dserver ${INSTALL_PREFIX}/bin/${ENCRYPT_NAME}
 fi
-cp ${INSTALL_PREFIX}/bin/${ENCRYPT_NAME} ${WORKSPACE}/artifacts</command>
+cp ${INSTALL_PREFIX}/bin/${ENCRYPT_NAME} ${DSERVER_PATH}/artifacts</command>
     </hudson.tasks.Shell>
     <org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder plugin="conditional-buildstep@1.3.3">
       <condition class="org.jenkins_ci.plugins.run_condition.logic.Not" plugin="run-condition@1.0">
@@ -425,6 +422,8 @@ fi
 
 rm -f ${INSTALL_PREFIX}/bin/gui*
 rm -f ${INSTALL_PREFIX}/lib/liblibgui20.a
+rm -rf ${GUI_PATH}/artifacts
+mkdir ${GUI_PATH}/artifacts
 
 cd ${GUI_PATH}/build
 if [ &quot;${TRIGGER_PARAM_GUI_BUILD_POLICY}&quot; = &quot;brandnew&quot; ]; then
@@ -451,14 +450,14 @@ fi
 make VERBOSE=1
 
 if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT3000&quot; ]; then
-    cp ${INSTALL_PREFIX}/bin/gui ${WORKSPACE}/artifacts/gui.RelWithDebInfo	
+    cp ${INSTALL_PREFIX}/bin/gui ${GUI_PATH}/artifacts/gui.RelWithDebInfo	
     strip ${INSTALL_PREFIX}/bin/gui
     test_mtcrypt --encrypt ${INSTALL_PREFIX}/bin/gui --out ${INSTALL_PREFIX}/bin/gui.c30
-    cp ${INSTALL_PREFIX}/bin/gui.c30 ${WORKSPACE}/artifacts
+    cp ${INSTALL_PREFIX}/bin/gui.c30 ${GUI_PATH}/artifacts
 elif [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;Ubuntu&quot; ]; then
-    cp ${INSTALL_PREFIX}/bin/gui ${WORKSPACE}/artifacts/gui.RelWithDebInfo	
+    cp ${INSTALL_PREFIX}/bin/gui ${GUI_PATH}/artifacts/gui.RelWithDebInfo	
     strip ${INSTALL_PREFIX}/bin/gui
-    cp ${INSTALL_PREFIX}/bin/gui ${WORKSPACE}/artifacts
+    cp ${INSTALL_PREFIX}/bin/gui ${GUI_PATH}/artifacts
 fi
 </command>
       </buildStep>
@@ -518,6 +517,8 @@ fi
 
 rm -f ${INSTALL_PREFIX}/bin/CloudHmi*
 rm -f ${INSTALL_PREFIX}/bin/cMTViewer*
+rm -rf ${VIEWER_PATH}/artifacts
+mkdir ${VIEWER_PATH}/artifacts
 
 # prepare out-of-source build
 
@@ -544,7 +545,7 @@ if test -n &quot;${CROSS_COMPILER_TOOLCHAIN}&quot;; then
     source ${CROSS_COMPILER_TOOLCHAIN}
 fi
 make VERBOSE=1
-cp ${INSTALL_PREFIX}/bin/CloudHmi ${WORKSPACE}/artifacts/CloudHmi.RelWithDebInfo	
+cp ${INSTALL_PREFIX}/bin/CloudHmi ${VIEWER_PATH}/artifacts/CloudHmi.RelWithDebInfo	
 
 # strip and encrypt
 
@@ -552,9 +553,9 @@ strip ${INSTALL_PREFIX}/bin/CloudHmi
 tar -cv ${INSTALL_PREFIX}/bin/CloudHmi &gt;&gt; ${INSTALL_PREFIX}/bin/CloudHmi.tar
 if test -n &quot;${ENCRYPT_EXTENSION_NAME}&quot;; then
     test_mtcrypt --encrypt ${INSTALL_PREFIX}/bin/CloudHmi.tar --out ${INSTALL_PREFIX}/bin/cMTViewer${ENCRYPT_EXTENSION_NAME}
-    cp ${INSTALL_PREFIX}/bin/cMTViewer${ENCRYPT_EXTENSION_NAME} ${WORKSPACE}/artifacts
+    cp ${INSTALL_PREFIX}/bin/cMTViewer${ENCRYPT_EXTENSION_NAME} ${VIEWER_PATH}/artifacts
 else
-    cp ${INSTALL_PREFIX}/bin/CloudHmi.tar ${WORKSPACE}/artifacts
+    cp ${INSTALL_PREFIX}/bin/CloudHmi.tar ${VIEWER_PATH}/artifacts
 fi  </command>
       </buildStep>
       <runner class="org.jenkins_ci.plugins.run_condition.BuildStepRunner$Fail" plugin="run-condition@1.0"/>
