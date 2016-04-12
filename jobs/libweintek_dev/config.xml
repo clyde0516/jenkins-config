@@ -107,7 +107,7 @@
         <hudson.tasks.Shell>
           <command>#!/bin/bash
 
-BUILD_TIME=`date +&quot;%H%M&quot;`
+BUILD_TIME=`date +&quot;%k%M&quot;`
 
 # export variables
 
@@ -127,7 +127,7 @@ esac
 
 # prepare out-of-source build
 cd ${LIBWEINTEK_PATH}/build
-if [ &quot;${TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY}&quot; = &quot;brandnew&quot; ] || [[ `expr $BUILD_TIME` -ge &quot;0000&quot; &amp;&amp;  `expr $BUILD_TIME` -le &quot;1000&quot; ]]; then
+if [ &quot;${TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY}&quot; = &quot;brandnew&quot; ] || [[ $BUILD_TIME -ge &quot;0000&quot; &amp;&amp;  $BUILD_TIME -le &quot;1000&quot; ]]; then
     rm -rf jenkins/${MATRIX_AXIS_PLATFORM}
 fi
 if [ ! -d &quot;jenkins&quot; ]; then
