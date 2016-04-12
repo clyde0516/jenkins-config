@@ -126,7 +126,7 @@ esac
 # prepare out-of-source build
 
 cd ${LIBWEINTEK_PATH}/build
-if [ &quot;${TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY}&quot; = &quot;brandnew&quot; ] || [[ &quot;0000&quot; &lt; &quot;$( `date +&quot;%H%M&quot;` )&quot; &amp;&amp; ! &quot;$( `date +&quot;%H%M&quot;` )&quot; &lt; &quot;1000&quot; ]]; then
+if [ &quot;${TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY}&quot; = &quot;brandnew&quot; ] || [[ &quot;0000&quot; &lt; &quot;$( &apos;date +&quot;%H%M&quot;&apos; )&quot; &amp;&amp; ! &quot;$( &apos;date +&quot;%H%M&quot;&apos; )&quot; &lt; &quot;1000&quot; ]]; then
     rm -rf jenkins/${MATRIX_AXIS_PLATFORM}
 fi
 if [ ! -d &quot;jenkins&quot; ]; then
