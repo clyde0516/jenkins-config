@@ -107,7 +107,7 @@
         <hudson.tasks.Shell>
           <command>#!/bin/bash
 
-BUILD_TIME=`date +&quot;%H%M&quot;`
+BUILD_TIME=`date +&quot;-%H%M&quot;`
 
 # export variables
 
