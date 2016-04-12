@@ -241,9 +241,6 @@ call %WORK_UTIL_DIR%\script\replace_string.bat &quot;got.props&quot; &quot;&lt;D
 :: build project &#xd;
 &#xd;
 call build_win32.bat got release %TRIGGER_PARAM_GUI_BUILD_POLICY%&#xd;
-copy /y gotRelease\got.exe %WORKSPACE_DIR%\artifacts&#xd;
-copy /y Win32\Release\gui.exe %WORKSPACE_DIR%\artifacts&#xd;
-copy /y Win32\Release\gui.pdb %WORKSPACE_DIR%\artifacts&#xd;
 copy /y Win32\Release\libgui20.dll %WORKSPACE_DIR%\artifacts&#xd;
 copy /y Win32\Release\libgui20.pdb %WORKSPACE_DIR%\artifacts&#xd;
 </command>
