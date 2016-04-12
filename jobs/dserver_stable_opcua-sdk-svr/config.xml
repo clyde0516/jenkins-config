@@ -9,8 +9,9 @@
       <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Delete:jeremyhong</permission>
       <permission>com.cloudbees.plugins.credentials.CredentialsProvider.ManageDomains:jeremyhong</permission>
       <permission>hudson.model.Item.Read:jeremyhong</permission>
-      <permission>hudson.model.Item.Configure:jeremyhong</permission>
+      <permission>hudson.model.Item.ExtendedRead:jeremyhong</permission>
       <permission>hudson.model.Item.Workspace:jeremyhong</permission>
+      <permission>hudson.model.Item.Configure:jeremyhong</permission>
       <permission>hudson.model.Run.Delete:jeremyhong</permission>
       <permission>hudson.model.Item.Discover:jeremyhong</permission>
       <permission>com.cloudbees.plugins.credentials.CredentialsProvider.View:jeremyhong</permission>
