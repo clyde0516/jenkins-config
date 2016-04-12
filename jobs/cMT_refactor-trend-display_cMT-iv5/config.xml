@@ -430,6 +430,9 @@ if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;Ubuntu&quot; ]; then
    export PATH=/opt/Qt5.4.2/5.4/gcc_64/bin:${PATH}
 fi
 
+rm -f ${INSTALL_PREFIX}/bin/gui*
+rm -f ${INSTALL_PREFIX}/lib/liblibgui20.a
+
 cd ${GUI_PATH}/build
 if [ &quot;${TRIGGER_PARAM_GUI_BUILD_POLICY}&quot; = &quot;brandnew&quot; ]; then
     rm -rf jenkins/${TRIGGER_PARAM_PLATFORM}
