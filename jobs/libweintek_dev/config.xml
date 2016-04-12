@@ -97,9 +97,7 @@
   <combinationFilter>(MATRIX_AXIS_NODE == &quot;windows&quot; &amp;&amp; MATRIX_AXIS_PLATFORM == &quot;win32&quot;) || (MATRIX_AXIS_NODE != &quot;windows&quot; &amp;&amp; MATRIX_AXIS_PLATFORM != &quot;win32&quot;)</combinationFilter>
   <builders>
     <hudson.tasks.Shell>
-      <command>#!/bin/bash
-
-if [[ &quot;0000&quot; &lt; $(( `date +&quot;%H%M&quot;` )) &amp;&amp;  $(( `date +&quot;%H%M&quot;` )) &lt; &quot;0800&quot; ]]; then
+      <command>if [[ &quot;0000&quot; &lt; $(( `date +&quot;%H%M&quot;` )) &amp;&amp;  $(( `date +&quot;%H%M&quot;` )) &lt; &quot;0800&quot; ]]; then
     export TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY=brandnew
 fi</command>
     </hudson.tasks.Shell>
