@@ -180,10 +180,13 @@ set WORK_UTIL_DIR=c:\jenkins\work&#xd;
 rmdir /s %WORKSPACE_DIR%\artifacts&#xd;
 mkdir %WORKSPACE_DIR%\artifacts&#xd;
 &#xd;
+:: prepare build environment&#xd;
+&#xd;
+copy /y build\vs2008\build_win32.bat .&#xd;
+&#xd;
 :: build project &#xd;
 &#xd;
-copy /y %WORK_UTIL_DIR%\script\build_win32_VS2008.bat .&#xd;
-call build_win32_VS2008.bat COMKernel_2008 release %TRIGGER_PARAM_COM_BUILD_POLICY%&#xd;
+call build_win32.bat COMKernel_2008 release %TRIGGER_PARAM_COM_BUILD_POLICY%&#xd;
 copy /y Release\com_e30.exe %WORKSPACE_DIR%\artifacts&#xd;
 copy /y Release\com_e30.pdb %WORKSPACE_DIR%\artifacts</command>
         </hudson.tasks.BatchFile>
