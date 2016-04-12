@@ -260,15 +260,11 @@ echo &quot;================================ cppcheck ===========================
 
 cd ${WORKSPACE}/cppcheck
 
-cppcheck --enable=all --inconclusive \
-         --suppress=syntaxError \
-         --suppress=toomanyconfigs \
-         --suppress=unusedFunction \
+cppcheck --enable=all --inconclusive --suppress=syntaxError --suppress=unusedFunction --xml --xml-version=2 \
          ${WORKSPACE}/libweintek/weintek \
          ${WORKSPACE}/dserver/dserver \
          ${WORKSPACE}/gui/got \
          ${WORKSPACE}/viewer/CloudHmi \
-         --xml --xml-version=2 \
          2&gt; cppcheck-result.xml
 </command>
     </hudson.tasks.Shell>
