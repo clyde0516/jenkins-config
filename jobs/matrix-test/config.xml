@@ -37,6 +37,7 @@
     <hudson.matrix.TextAxis>
       <name>MATRIX_AXIS_PLATFORM</name>
       <values>
+        <string>cMT3000</string>
         <string>win32</string>
       </values>
     </hudson.matrix.TextAxis>
