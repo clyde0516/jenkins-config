@@ -6,6 +6,7 @@
   <properties>
     <hudson.security.AuthorizationMatrixProperty>
       <permission>hudson.model.Item.Read:authenticated</permission>
+      <permission>hudson.model.Item.ExtendedRead:authenticated</permission>
       <permission>hudson.model.Item.Discover:authenticated</permission>
       <permission>hudson.model.Item.Build:authenticated</permission>
       <permission>hudson.model.Item.Cancel:authenticated</permission>
