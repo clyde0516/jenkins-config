@@ -101,6 +101,12 @@
         <hudson.tasks.Shell>
           <command>#!/bin/bash
 
+# alter trigger parameter
+
+if [[ &quot;0000&quot; &lt; $(( `date +&quot;%H%M&quot;` )) &amp;&amp;  $(( `date +&quot;%H%M&quot;` )) &lt; &quot;0800&quot; ]]; then
+	export TRIGGER_PARAM_DSERVER_BUILD_POLICY=brandnew
+fi
+
 # export variables
 
 export DSERVER_PATH=${WORKSPACE}
@@ -183,7 +189,13 @@ cp ${INSTALL_PREFIX}/bin/dserver${ENCRYPT_EXTENSION_NAME} ${WORKSPACE}/artifacts
       </runCondition>
       <conditionalbuilders>
         <hudson.tasks.BatchFile>
-          <command>:: set variables&#xd;
+          <command>:: alter trigger parameter&#xd;
+&#xd;
+if &quot;%time%&quot; geq &quot;00:00:00.00&quot; ( if &quot;%time%&quot; lss &quot;08:00:00.00&quot; (&#xd;
+    set TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY=clean&#xd;
+))&#xd;
+&#xd;
+:: set variables&#xd;
 &#xd;
 set WORKSPACE_DIR=%cd%&#xd;
 set WORK_UTIL_DIR=c:\jenkins\work&#xd;
