@@ -130,7 +130,7 @@ esac
 # prepare out-of-source build
 
 cd ${LIBWEINTEK_PATH}/build
-if [ &quot;${TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY}&quot; = &quot;brandnew&quot; ]; then
+if [ &quot;${TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY}&quot; = &quot;brandnew&quot; ] || [[ &quot;0000&quot; &lt; $(( `date +&quot;%H%M&quot;` )) &amp;&amp; ! $(( `date +&quot;%H%M&quot;` )) &lt; &quot;0800&quot; ]]; then
     rm -rf jenkins/${MATRIX_AXIS_PLATFORM}
 fi
 if [ ! -d &quot;jenkins&quot; ]; then
@@ -197,10 +197,12 @@ build\vs2012\testsRelease\tests.exe --gtest_output=xml:gtest\gtest-libweintek.xm
     <hudson.plugins.parameterizedtrigger.BuildTrigger plugin="parameterized-trigger@2.30">
       <configs>
         <hudson.plugins.parameterizedtrigger.BuildTriggerConfig>
-          <configs class="empty-list"/>
+          <configs>
+            <hudson.plugins.parameterizedtrigger.CurrentBuildParameters/>
+          </configs>
           <projects>dserver_dev</projects>
           <condition>UNSTABLE_OR_BETTER</condition>
-          <triggerWithNoParameters>false</triggerWithNoParameters>
+          <triggerWithNoParameters>true</triggerWithNoParameters>
         </hudson.plugins.parameterizedtrigger.BuildTriggerConfig>
       </configs>
     </hudson.plugins.parameterizedtrigger.BuildTrigger>
