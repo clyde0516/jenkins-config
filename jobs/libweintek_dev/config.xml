@@ -67,7 +67,7 @@
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <triggers>
     <hudson.triggers.TimerTrigger>
-      <spec>H H(0-7) * * *</spec>
+      <spec>H H(0-5) * * *</spec>
     </hudson.triggers.TimerTrigger>
     <hudson.triggers.SCMTrigger>
       <spec>H/5 * * * *</spec>
@@ -109,7 +109,7 @@
 
 # alter trigger parameter
 
-if [[ &quot;0000&quot; &lt; $(( `date +&quot;%H%M&quot;` )) &amp;&amp;  $(( `date +&quot;%H%M&quot;` )) &lt; &quot;1100&quot; ]]; then
+if [[ &quot;0000&quot; &lt; $(( `date +&quot;%H%M&quot;` )) &amp;&amp;  $(( `date +&quot;%H%M&quot;` )) &lt; &quot;0800&quot; ]]; then
 	export TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY=brandnew
 fi
 
@@ -166,7 +166,7 @@ make install VERBOSE=1</command>
         <hudson.tasks.BatchFile>
           <command>:: alter trigger parameter&#xd;
 &#xd;
-if &quot;%time%&quot; geq &quot;00:00:00.00&quot; ( if &quot;%time%&quot; lss &quot;11:00:00.00&quot; (&#xd;
+if &quot;%time%&quot; geq &quot;00:00:00.00&quot; ( if &quot;%time%&quot; lss &quot;08:00:00.00&quot; (&#xd;
     set TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY=clean&#xd;
 ))&#xd;
 &#xd;
