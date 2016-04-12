@@ -263,7 +263,10 @@ echo &quot;================================ cppcheck ===========================
 
 cd ${WORKSPACE}/cppcheck
 
-cppcheck --enable=all --inconclusive --suppress=syntaxError --suppress=unusedFunction --xml --xml-version=2 \
+cppcheck --enable=all --inconclusive --check-config --xml --xml-version=2 \
+         --suppress=syntaxError \
+         --suppress=toomanyconfigs \
+         --suppress=unusedFunction \
          ${WORKSPACE}/libweintek/weintek \
          ${WORKSPACE}/dserver/dserver \
          ${WORKSPACE}/gui/got \
