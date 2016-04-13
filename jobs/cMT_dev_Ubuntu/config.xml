@@ -249,7 +249,10 @@ rm -rf cppcheck
 mkdir cppcheck
 cd cppcheck
 
-cppcheck --enable=all --inconclusive --suppress=syntaxError --suppress=unusedFunction --xml --xml-version=2 \
+cppcheck --enable=all --inconclusive --xml --xml-version=2 \
+         --suppress=syntaxError \
+         --suppress=unusedFunction \
+         --suppress=unusedPrivateFunction \
          ${WORKSPACE}/libweintek/weintek \
          ${WORKSPACE}/dserver/dserver \
          ${WORKSPACE}/gui/got \
