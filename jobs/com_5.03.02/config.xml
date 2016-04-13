@@ -102,7 +102,7 @@
 export NOW=`date +&quot;%H%M&quot;`
 export START_TIME=&quot;0000&quot;
 export END_TIME=&quot;1059&quot;
-if [[ ! &quot;$NOW&quot; &lt; &quot;$START_TIME&quot; &amp;&amp; ! &quot;$NOW&quot; &gt; &quot;$END_TIME&quot; ]]; then
+if [[ ! &quot;$NOW&quot; &lt; &quot;0000&quot; &amp;&amp; ! &quot;$NOW&quot; &gt; &quot;1059&quot; ]]; then
 	export TRIGGER_PARAM_COM_BUILD_POLICY=brandnew
     export BRANDNEW_FLAG=brandnew
 fi
