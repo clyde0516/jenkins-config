@@ -101,11 +101,7 @@
 
 if [[ ! &quot;`date +&quot;%H%M&quot;`&quot; &lt; &quot;0000&quot; &amp;&amp; ! &quot;`date +&quot;%H%M&quot;`&quot; &gt; &quot;0800&quot; ]]; then
 	export TRIGGER_PARAM_COM_BUILD_POLICY=brandnew
-    export BRANDNEW_FLAG=brandnew
 fi
-
-echo &quot;POLICY: &quot; ${TRIGGER_PARAM_COM_BUILD_POLICY}
-echo &quot;BRANDNEW_FLAG: &quot; ${BRANDNEW_FLAG}
 
 # export variables
 
