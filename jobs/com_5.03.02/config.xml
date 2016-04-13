@@ -100,8 +100,7 @@
 # alter trigger parameter
 
 # export NOW=`date +&quot;%H%M&quot;`
-export NOW=&quot;0930&quot;
-if [[ ! &quot;$NOW&quot; &lt; &quot;0000&quot; &amp;&amp; ! &quot;$NOW&quot; &gt; &quot;0959&quot; ]]; then
+if [[ ! &quot;`date +&quot;%H%M&quot;`&quot; &lt; &quot;0000&quot; &amp;&amp; ! &quot;`date +&quot;%H%M&quot;`&quot; &gt; &quot;0959&quot; ]]; then
 	export TRIGGER_PARAM_COM_BUILD_POLICY=brandnew
     export BRANDNEW_FLAG=brandnew
 fi
