@@ -117,6 +117,7 @@ export MY_INSTALL_PREFIX=/home/ci/work/${MATRIX_AXIS_PLATFORM}/build-${TRIGGER_P
 export MY_OPCUA_ROOT_DIR=${WORKSPACE}/third-party/opcua-linux
 export MY_TOOLCHAIN_FILE=${WORKSPACE}/Toolchain-arm-fsl-linux-gnueabi.cmake
 export MY_BUILD_DIR=${WORKSPACE}/build/jenkins/${MATRIX_AXIS_PLATFORM}
+export MY_CAMKE_FLAGS=-DBUILD_SHARED_STACK=OFF
 export BUILD_TYPE=Debug
 
 # clear artifacts
@@ -152,6 +153,7 @@ cmake -DCMAKE_BUILD_TYPE=${BUILD_TYPE} \
       -DCMAKE_C_FLAGS_RELEASE=&quot;-O2 -DNDEBUG&quot; \
       -DLINK_ICONV_EXPLICITLY=ON \
       -DUNIT_TEST=OFF \
+      ${MY_CAMKE_FLAGS} \
       ${MY_OPCUA_ROOT_DIR}
       
 # make
