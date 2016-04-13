@@ -261,7 +261,65 @@ make install VERBOSE=1</command>
       <runner class="org.jenkins_ci.plugins.run_condition.BuildStepRunner$Fail" plugin="run-condition@1.0"/>
     </org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder>
     <hudson.tasks.Shell>
-      <command># build server</command>
+      <command>#!/bin/bash
+
+# Build dserver
+echo &quot;================================ dserver ================================ dserver ================================ dserver ================================&quot;
+
+export DSERVER_PATH=${WORKSPACE}/dserver
+export LIBWEINTEK_PATH=${WORKSPACE}/libweintek
+export MARIADB_CONNECTOR_C_PATH=/home/ci/work/mariadb-connector-c
+export INSTALL_PREFIX=/home/ci/work/${TRIGGER_PARAM_PLATFORM}/${TRIGGER_PARAM_INSTALL_FOLDER}
+
+if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT-SVR&quot; ]; then
+    export GOOGLE_BREAKPAD_PATH=/home/ci/work/cMT-SVR/google-breakpad
+fi
+
+if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT3000&quot; ]; then
+    export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
+elif [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT-iv5&quot; ]; then
+    export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT-iv5/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
+fi
+
+rm -f ${INSTALL_PREFIX}/bin/dserver*
+rm -rf ${DSERVER_PATH}/artifacts
+mkdir ${DSERVER_PATH}/artifacts
+
+cd ${DSERVER_PATH}/build
+if [ &quot;${TRIGGER_PARAM_DSERVER_BUILD_POLICY}&quot; = &quot;brandnew&quot; ]; then
+    rm -rf jenkins/${TRIGGER_PARAM_PLATFORM}
+fi
+if [ ! -d &quot;jenkins&quot; ]; then
+    mkdir -p jenkins
+fi
+if [ ! -d &quot;jenkins/${TRIGGER_PARAM_PLATFORM}&quot; ]; then
+    mkdir -p jenkins/${TRIGGER_PARAM_PLATFORM}
+fi
+cd jenkins/${TRIGGER_PARAM_PLATFORM}
+
+${DSERVER_PATH}/build/${TRIGGER_PARAM_PLATFORM}/cmake_dserver.sh ${DSERVER_PATH} ${LIBWEINTEK_PATH} ${MARIADB_CONNECTOR_C_PATH} ${GOOGLE_BREAKPAD_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} RelWithDebInfo
+
+if [ &quot;${TRIGGER_PARAM_DSERVER_BUILD_POLICY}&quot; = &quot;clean&quot; ]; then
+    make clean
+fi
+
+make install VERBOSE=1
+cp ${INSTALL_PREFIX}/bin/dserver ${DSERVER_PATH}/artifacts/dserver.RelWithDebInfo
+
+make install/strip VERBOSE=1
+if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;Ubuntu&quot; ]; then
+    export ENCRYPT_NAME=dserver
+else
+    if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT-SVR&quot; ]; then
+	    export ENCRYPT_NAME=dserver.cmt
+    elif [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT-iv5&quot; ]; then
+	    export ENCRYPT_NAME=dserver.iv5
+    else
+	    export ENCRYPT_NAME=dserver.c30
+    fi
+    /home/ci/work/crypto e ${INSTALL_PREFIX}/bin/dserver ${INSTALL_PREFIX}/bin/${ENCRYPT_NAME}
+fi
+cp ${INSTALL_PREFIX}/bin/${ENCRYPT_NAME} ${DSERVER_PATH}/artifacts</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
