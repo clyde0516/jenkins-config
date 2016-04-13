@@ -116,8 +116,8 @@ echo &quot;aaaaaaaaaaaaaaaaaaaaaa&quot;
 export MY_INSTALL_PREFIX=/home/ci/work/${MATRIX_AXIS_PLATFORM}/build-${TRIGGER_PARAM_JOB_GROUP}-branch
 export MY_OPCUA_ROOT_DIR=${WORKSPACE}/third-party/opcua-linux
 export MY_TOOLCHAIN_FILE=${WORKSPACE}/Toolchain-arm-fsl-linux-gnueabi.cmake
+export MY_BUILD_DIR=${WORKSPACE}/build/jenkins/${MATRIX_AXIS_PLATFORM}
 export BUILD_TYPE=Debug
-
 
 # clear artifacts
 
@@ -142,7 +142,6 @@ cd jenkins/${MATRIX_AXIS_PLATFORM}
 ls -alh ${WORKSPACE}/build/jenkins/${MATRIX_AXIS_PLATFORM}
 echo &quot;MATRIX_AXIS_PLATFORM&quot; ${MATRIX_AXIS_PLATFORM}
 
-export MY_BUILD_DIR=${WORKSPACE}/build/jenkins/${MATRIX_AXIS_PLATFORM}
 
 # generate makefile
 cmake -DCMAKE_BUILD_TYPE=${BUILD_TYPE} \
