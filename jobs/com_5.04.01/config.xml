@@ -124,7 +124,7 @@ mkdir ${WORKSPACE}/artifacts
 # prepare out-of-source-build
 
 cd ${WORKSPACE}/build
-if [ &quot;${TRIGGER_PARAM_DSERVER_BUILD_POLICY}&quot; = &quot;brandnew&quot; ]; then
+if [ &quot;${TRIGGER_PARAM_COM_BUILD_POLICY}&quot; = &quot;brandnew&quot; ]; then
     rm -rf jenkins/${MATRIX_AXIS_PLATFORM}
 fi
 if [ ! -d &quot;jenkins&quot; ]; then
