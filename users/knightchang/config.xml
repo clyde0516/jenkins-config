@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <user>
-  <fullName>knightchang</fullName>
+  <fullName>Knight Chang</fullName>
   <properties>
     <jenkins.security.ApiTokenProperty>
       <apiToken>pZp/OV2bsd9hsA3diS787hvBMQwItDSunxdTOsX+Xv6paFao1eK4WwXGzbl2Xo8F</apiToken>
@@ -25,6 +25,9 @@
     <hudson.search.UserSearchProperty>
       <insensitiveSearch>false</insensitiveSearch>
     </hudson.search.UserSearchProperty>
+    <hudson.security.HudsonPrivateSecurityRealm_-Details>
+      <passwordHash>#jbcrypt:$2a$10$feMiFzjGtWJvp3LL1o1ac.Jhvt8bIS9abIl2jqBvSRbxv5Vf2TAL6</passwordHash>
+    </hudson.security.HudsonPrivateSecurityRealm_-Details>
     <hudson.tasks.Mailer_-UserProperty plugin="mailer@1.16">
       <emailAddress>knightchang@weintek.com</emailAddress>
     </hudson.tasks.Mailer_-UserProperty>
