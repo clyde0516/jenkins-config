@@ -155,6 +155,7 @@
         <command># Make clean builds for daily builds by removing build folder
 
 rm -rf ${WORKSPACE}/libweintek/build/jenkins
+rm -rf ${WORKSPACE}/opcserver/third-party/opcua-linux/build/jenkins
 rm -rf ${WORKSPACE}/opcserver/build/jenkins
 </command>
       </buildStep>
@@ -216,17 +217,16 @@ make install VERBOSE=1</command>
         <command>#!/bin/bash
 
 
-# build sdk
+# build Opcua SDK
+echo &quot;================================ sdk ================================ sdk ================================ sdk ================================&quot;
 
-
-
-# Build gui
-echo &quot;================================ gui ================================ gui ================================ gui ================================&quot;
-
-export GUI_PATH=${WORKSPACE}/gui
-export DSERVER_PATH=${WORKSPACE}/dserver
+export OPCUA_SDK_PATH=${WORKSPACE}/third-party/opcua-linux
 export LIBWEINTEK_PATH=${WORKSPACE}/libweintek
 export INSTALL_PREFIX=/home/ci/work/${TRIGGER_PARAM_PLATFORM}/${TRIGGER_PARAM_INSTALL_FOLDER}
+
+if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT-SVR&quot; ]; then
+    export GOOGLE_BREAKPAD_PATH=/home/ci/work/cMT-SVR/google-breakpad
+fi
 
 if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT3000&quot; ]; then
     export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
@@ -234,17 +234,12 @@ elif [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT-iv5&quot; ]; then
     export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT-iv5/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
 fi
 
-if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;Ubuntu&quot; ]; then
-   export PATH=/opt/Qt5.4.2/5.4/gcc_64/bin:${PATH}
-fi
+rm -f ${INSTALL_PREFIX}/lib/*
+#rm -rf ${OPCUA_SDK_PATH}/artifacts
+#mkdir ${OPCUA_SDK_PATH}/artifacts
 
-rm -f ${INSTALL_PREFIX}/bin/gui*
-rm -f ${INSTALL_PREFIX}/lib/liblibgui20.a
-rm -rf ${GUI_PATH}/artifacts
-mkdir ${GUI_PATH}/artifacts
-
-cd ${GUI_PATH}/build
-if [ &quot;${TRIGGER_PARAM_GUI_BUILD_POLICY}&quot; = &quot;brandnew&quot; ]; then
+cd ${OPCUA_SDK_PATH}/build
+if [ &quot;${TRIGGER_PARAM_OPCUA_SDK_BUILD_POLICY}&quot; = &quot;brandnew&quot; ]; then
     rm -rf jenkins/${TRIGGER_PARAM_PLATFORM}
 fi
 if [ ! -d &quot;jenkins&quot; ]; then
@@ -255,29 +250,13 @@ if [ ! -d &quot;jenkins/${TRIGGER_PARAM_PLATFORM}&quot; ]; then
 fi
 cd jenkins/${TRIGGER_PARAM_PLATFORM}
 
-cp ${GUI_PATH}/build/${TRIGGER_PARAM_PLATFORM}/features.pri .
-${GUI_PATH}/build/${TRIGGER_PARAM_PLATFORM}/qmake_gui.sh ${GUI_PATH} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} RelWithDebInfo
+${OPCUA_SDK_PATH}/build/${TRIGGER_PARAM_PLATFORM}/cmake_opcua_sdk.sh ${OPCUA_SDK_PATH} ${LIBWEINTEK_PATH} 0 0 ${INSTALL_PREFIX} RelWithDebInfo
 
-if test -n &quot;${CROSS_COMPILER_TOOLCHAIN}&quot;; then
-    source ${CROSS_COMPILER_TOOLCHAIN}
-fi
-
-if [ &quot;${TRIGGER_PARAM_GUI_BUILD_POLICY}&quot; = &quot;clean&quot; ]; then
+if [ &quot;${TRIGGER_PARAM_OPCUA_SDK_BUILD_POLICY}&quot; = &quot;clean&quot; ]; then
     make clean
 fi
-make VERBOSE=1
 
-if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT3000&quot; ]; then
-    cp ${INSTALL_PREFIX}/bin/gui ${GUI_PATH}/artifacts/gui.RelWithDebInfo	
-    strip ${INSTALL_PREFIX}/bin/gui
-    test_mtcrypt --encrypt ${INSTALL_PREFIX}/bin/gui --out ${INSTALL_PREFIX}/bin/gui.c30
-    cp ${INSTALL_PREFIX}/bin/gui.c30 ${GUI_PATH}/artifacts
-elif [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;Ubuntu&quot; ]; then
-    cp ${INSTALL_PREFIX}/bin/gui ${GUI_PATH}/artifacts/gui.RelWithDebInfo	
-    strip ${INSTALL_PREFIX}/bin/gui
-    cp ${INSTALL_PREFIX}/bin/gui ${GUI_PATH}/artifacts
-fi
-</command>
+make install VERBOSE=1</command>
       </buildStep>
       <runner class="org.jenkins_ci.plugins.run_condition.BuildStepRunner$Fail" plugin="run-condition@1.0"/>
     </org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder>
