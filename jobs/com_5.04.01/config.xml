@@ -166,7 +166,7 @@ cp ${INSTALL_PREFIX}/bin/com.${CRYPTO_EXTENSION_NAME} ${WORKSPACE}/artifacts</co
         <hudson.tasks.BatchFile>
           <command>:: alter trigger parameter&#xd;
 &#xd;
-if &quot;%time%&quot; geq &quot; 0:00:00.00&quot; ( if &quot;%time%&quot; lss &quot; 8:00:00.00&quot; (&#xd;
+if &quot;%time%&quot; geq &quot;00:00:00.00&quot; ( if &quot;%time%&quot; lss &quot;08:00:00.00&quot; (&#xd;
     set TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY=clean&#xd;
 ))&#xd;
 &#xd;
