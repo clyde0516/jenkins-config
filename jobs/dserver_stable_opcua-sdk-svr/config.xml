@@ -16,11 +16,11 @@
       <permission>hudson.model.Item.Discover:jeremyhong</permission>
       <permission>com.cloudbees.plugins.credentials.CredentialsProvider.View:jeremyhong</permission>
       <permission>hudson.model.Item.Build:jeremyhong</permission>
-      <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Create:jeremyhong</permission>
       <permission>hudson.model.Item.Cancel:jeremyhong</permission>
+      <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Create:jeremyhong</permission>
       <permission>hudson.model.Item.Delete:jeremyhong</permission>
-      <permission>hudson.model.Run.Update:jeremyhong</permission>
       <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Update:jeremyhong</permission>
+      <permission>hudson.model.Run.Update:jeremyhong</permission>
     </hudson.security.AuthorizationMatrixProperty>
     <hudson.model.ParametersDefinitionProperty>
       <parameterDefinitions>
@@ -77,7 +77,7 @@
     <extensions/>
   </scm>
   <canRoam>true</canRoam>
-  <disabled>false</disabled>
+  <disabled>true</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <triggers/>
