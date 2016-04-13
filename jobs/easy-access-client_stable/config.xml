@@ -134,9 +134,9 @@ cd jenkins
 
 if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;cMT3000&quot; ]; then
     export ENV_SOURCE=/home/ci/work/${PLATFORM_BUILD_FOLDER}/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
-    ${WEINTEK_P2P_PATH}/build/${PLATFORM_BUILD_FOLDER}/cmake_weintek_p2p.sh ${WEINTEK_P2P_PATH} ${LIBWEINTEK_PATH} ${INSTALL_PREFIX} ${ENV_SOURCE} RelWithDebInfo
+    ${WEINTEK_P2P_PATH}/build/${PLATFORM_BUILD_FOLDER}/cmake_weintek_p2p.sh ${WEINTEK_P2P_PATH} ${LIBWEINTEK_PATH} ${INSTALL_PREFIX} ${BUILD_TYPE} ${ENV_SOURCE} 
 elif [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;cMT-SVR&quot; ]; then
-    ${WEINTEK_P2P_PATH}/build/${PLATFORM_BUILD_FOLDER}/cmake_weintek_p2p.sh ${WEINTEK_P2P_PATH} ${LIBWEINTEK_PATH} ${INSTALL_PREFIX} RelWithDebInfo
+    ${WEINTEK_P2P_PATH}/build/${PLATFORM_BUILD_FOLDER}/cmake_weintek_p2p.sh ${WEINTEK_P2P_PATH} ${LIBWEINTEK_PATH} ${INSTALL_PREFIX} ${BUILD_TYPE}
 fi
 
 make VERBOSE=0 install/strip
@@ -152,13 +152,8 @@ fi</command>
 
 export BUILD_TYPE=Release
 export LIBWEINTEK_PATH=${JENKINS_HOME}/jobs/libweintek_stable/workspace
-export LIBWEINTEK_ROOT=${LIBWEINTEK_PATH}
+export RMA_PATH=${WORKSPACE}/rma
 export INSTALL_PREFIX=/home/ci/work/${MATRIX_AXIS_PLATFORM}/build-stable-branch
-
-case $MATRIX_AXIS_PLATFORM in
-    &quot;cMT3000&quot;)  export MODEL_NAME=E60  ;;
-    &quot;cMT-SVR&quot;)  export MODEL_NAME=E30  ;;
-esac
 
 case $MATRIX_AXIS_PLATFORM in
     &quot;cMT3000&quot;)  export ENCRYPT_EXTENSION_NAME=c30  ;;
@@ -172,47 +167,13 @@ cd jenkins
 touch ${WORKSPACE}/rma/AuthClient/easy_access_client_manager.bin.cpp
 
 if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;cMT3000&quot; ]; then
-    export BREAKPAD_INCLUDE_DIR=/home/ci/work/cMT3000/target/sysroots/armv7ahf-vfp-neon-weintek-linux-gnueabi/usr/include/breakpad
-    source /home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
-    cmake -DCMAKE_BUILD_TYPE=${BUILD_TYPE} \
-          -DMODEL=${MODEL_NAME} \
-          -DGOOGLE_BREAKPAD_DIR=/home/ci/work/${MATRIX_AXIS_PLATFORM}/google-breakpad \
-          -DCMAKE_INSTALL_PREFIX=${INSTALL_PREFIX} \
-          ..
+    export ENV_SOURCE=/home/ci/work/${PLATFORM_BUILD_FOLDER}/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
+    ${RMA_PATH}/build/${PLATFORM_BUILD_FOLDER}/cmake_rma.sh ${RMA_PATH} ${LIBWEINTEK_PATH} ${INSTALL_PREFIX} ${BUILD_TYPE} ${ENV_SOURCE} 
+    ${RMA_PATH}/build/${PLATFORM_BUILD_FOLDER}/make_eac.sh ${RMA_PATH} ${INSTALL_PREFIX} ${TRIGGER_PARAM_EAC_VERSION} ${ENV_SOURCE} 
 elif [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;cMT-SVR&quot; ]; then
-    cmake -DCMAKE_BUILD_TYPE=${BUILD_TYPE} \
-          -DMODEL=${MODEL_NAME} \
-          -DGOOGLE_BREAKPAD_DIR=/home/ci/work/${MATRIX_AXIS_PLATFORM}/google-breakpad \
-          -DCMAKE_INSTALL_PREFIX=${INSTALL_PREFIX} \
-          -DCMAKE_TOOLCHAIN_FILE=${LIBWEINTEK_PATH}/build/cMT-SVR/Toolchain-arm-fsl-linux-gnueabi.cmake \
-          ..
+    ${RMA_PATH}/build/${PLATFORM_BUILD_FOLDER}/cmake_rma.sh ${RMA_PATH} ${LIBWEINTEK_PATH} ${INSTALL_PREFIX} ${BUILD_TYPE}
+    ${RMA_PATH}/build/${PLATFORM_BUILD_FOLDER}/make_eac.sh ${RMA_PATH} ${INSTALL_PREFIX} ${TRIGGER_PARAM_EAC_VERSION}
 fi
-
-cd AuthClient
-rm -f easy_access_client_manager
-make VERBOSE=1 easy_access_client_manager
-strip easy_access_client_manager
-if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;cMT-SVR&quot; ]; then
-   upx easy_access_client_manager
-fi   
-bin2cpp easy_access_client_manager
-cp easy_access_client_manager.bin.cpp  ${WORKSPACE}/rma/AuthClient
-make VERBOSE=1 install/strip
-# make easy_access_client
-# strip easy_access_client
-# upx easy_access_client
-# cp easy_access_client ${INSTALL_PREFIX}/bin
-cd ../RemoteAccessActivator
-make VERBOSE=1 easy_access_activator
-strip easy_access_activator
-cp easy_access_activator ${INSTALL_PREFIX}/bin
-
-
-cd ${INSTALL_PREFIX}/bin
-if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;cMT-SVR&quot; ]; then
-    upx easy_access_client
-fi    
-/home/ci/work/crypto e easy_access_client easy_access_client.${ENCRYPT_EXTENSION_NAME}.${TRIGGER_PARAM_EAC_VERSION}
 </command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
