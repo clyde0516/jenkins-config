@@ -1,0 +1,621 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <hudson.security.AuthorizationMatrixProperty>
+      <permission>hudson.model.Item.Read:authenticated</permission>
+      <permission>hudson.model.Item.ExtendedRead:authenticated</permission>
+      <permission>hudson.model.Item.Discover:authenticated</permission>
+      <permission>hudson.model.Item.Build:authenticated</permission>
+      <permission>hudson.model.Item.Cancel:authenticated</permission>
+      <permission>hudson.model.Item.Configure:authenticated</permission>
+      <permission>hudson.model.Item.Delete:authenticated</permission>
+      <permission>hudson.model.Item.Workspace:authenticated</permission>
+      <permission>hudson.model.Run.Update:authenticated</permission>
+    </hudson.security.AuthorizationMatrixProperty>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>TRIGGER_PARAM_PLATFORM</name>
+          <description></description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>Ubuntu</string>
+              <string>cMT3000</string>
+              <string>cMT-SVR</string>
+              <string>cMT-iv5</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>TRIGGER_PARAM_INSTALL_FOLDER</name>
+          <description></description>
+          <defaultValue>build-dev-branch</defaultValue>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>TRIGGER_PARAM_BASE_INSTALL_FOLDER</name>
+          <description></description>
+          <defaultValue>build-dev-branch</defaultValue>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>TRIGGER_PARAM_LIBWEINTEK_BRANCH</name>
+          <description></description>
+          <defaultValue>dev</defaultValue>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>TRIGGER_PARAM_DSERVER_BRANCH</name>
+          <description></description>
+          <defaultValue>dev</defaultValue>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>TRIGGER_PARAM_GUI_BRANCH</name>
+          <description></description>
+          <defaultValue>dev</defaultValue>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>TRIGGER_PARAM_VIEWER_BRANCH</name>
+          <description></description>
+          <defaultValue>dev</defaultValue>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY</name>
+          <description></description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>incremental</string>
+              <string>clean</string>
+              <string>brandnew</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>TRIGGER_PARAM_DSERVER_BUILD_POLICY</name>
+          <description></description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>incremental</string>
+              <string>clean</string>
+              <string>brandnew</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>TRIGGER_PARAM_GUI_BUILD_POLICY</name>
+          <description></description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>incremental</string>
+              <string>clean</string>
+              <string>brandnew</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>TRIGGER_PARAM_VIEWER_BUILD_POLICY</name>
+          <description></description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>incremental</string>
+              <string>clean</string>
+              <string>brandnew</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+    <jenkins.model.BuildDiscarderProperty>
+      <strategy class="hudson.tasks.LogRotator">
+        <daysToKeep>90</daysToKeep>
+        <numToKeep>300</numToKeep>
+        <artifactDaysToKeep>-1</artifactDaysToKeep>
+        <artifactNumToKeep>-1</artifactNumToKeep>
+      </strategy>
+    </jenkins.model.BuildDiscarderProperty>
+  </properties>
+  <scm class="org.jenkinsci.plugins.multiplescms.MultiSCM" plugin="multiple-scms@0.5">
+    <scms>
+      <hudson.plugins.git.GitSCM plugin="git@2.4.2">
+        <configVersion>2</configVersion>
+        <userRemoteConfigs>
+          <hudson.plugins.git.UserRemoteConfig>
+            <url>gitolite@192.168.1.220:libweintek.git</url>
+          </hudson.plugins.git.UserRemoteConfig>
+        </userRemoteConfigs>
+        <branches>
+          <hudson.plugins.git.BranchSpec>
+            <name>*/${TRIGGER_PARAM_LIBWEINTEK_BRANCH}</name>
+          </hudson.plugins.git.BranchSpec>
+        </branches>
+        <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+        <submoduleCfg class="list"/>
+        <extensions>
+          <hudson.plugins.git.extensions.impl.RelativeTargetDirectory>
+            <relativeTargetDir>libweintek</relativeTargetDir>
+          </hudson.plugins.git.extensions.impl.RelativeTargetDirectory>
+        </extensions>
+      </hudson.plugins.git.GitSCM>
+      <hudson.plugins.git.GitSCM plugin="git@2.4.2">
+        <configVersion>2</configVersion>
+        <userRemoteConfigs>
+          <hudson.plugins.git.UserRemoteConfig>
+            <url>gitolite@192.168.1.220:d-server.git</url>
+          </hudson.plugins.git.UserRemoteConfig>
+        </userRemoteConfigs>
+        <branches>
+          <hudson.plugins.git.BranchSpec>
+            <name>*/${TRIGGER_PARAM_DSERVER_BRANCH}</name>
+          </hudson.plugins.git.BranchSpec>
+        </branches>
+        <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+        <submoduleCfg class="list"/>
+        <extensions>
+          <hudson.plugins.git.extensions.impl.RelativeTargetDirectory>
+            <relativeTargetDir>dserver</relativeTargetDir>
+          </hudson.plugins.git.extensions.impl.RelativeTargetDirectory>
+        </extensions>
+      </hudson.plugins.git.GitSCM>
+      <hudson.plugins.git.GitSCM plugin="git@2.4.2">
+        <configVersion>2</configVersion>
+        <userRemoteConfigs>
+          <hudson.plugins.git.UserRemoteConfig>
+            <url>gitolite@192.168.1.220:gui.qt4.graphicsview.git</url>
+          </hudson.plugins.git.UserRemoteConfig>
+        </userRemoteConfigs>
+        <branches>
+          <hudson.plugins.git.BranchSpec>
+            <name>*/${TRIGGER_PARAM_GUI_BRANCH}</name>
+          </hudson.plugins.git.BranchSpec>
+        </branches>
+        <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+        <submoduleCfg class="list"/>
+        <extensions>
+          <hudson.plugins.git.extensions.impl.RelativeTargetDirectory>
+            <relativeTargetDir>gui</relativeTargetDir>
+          </hudson.plugins.git.extensions.impl.RelativeTargetDirectory>
+        </extensions>
+      </hudson.plugins.git.GitSCM>
+      <hudson.plugins.git.GitSCM plugin="git@2.4.2">
+        <configVersion>2</configVersion>
+        <userRemoteConfigs>
+          <hudson.plugins.git.UserRemoteConfig>
+            <url>gitolite@192.168.1.220:QmlCloudHmi.git</url>
+          </hudson.plugins.git.UserRemoteConfig>
+        </userRemoteConfigs>
+        <branches>
+          <hudson.plugins.git.BranchSpec>
+            <name>*/${TRIGGER_PARAM_VIEWER_BRANCH}</name>
+          </hudson.plugins.git.BranchSpec>
+        </branches>
+        <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+        <submoduleCfg class="list"/>
+        <extensions>
+          <hudson.plugins.git.extensions.impl.RelativeTargetDirectory>
+            <relativeTargetDir>viewer</relativeTargetDir>
+          </hudson.plugins.git.extensions.impl.RelativeTargetDirectory>
+        </extensions>
+      </hudson.plugins.git.GitSCM>
+    </scms>
+  </scm>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers>
+    <hudson.triggers.TimerTrigger>
+      <spec>H H(0-7) * * *</spec>
+    </hudson.triggers.TimerTrigger>
+    <hudson.triggers.SCMTrigger>
+      <spec>H/5 * * * *</spec>
+      <ignorePostCommitHooks>false</ignorePostCommitHooks>
+    </hudson.triggers.SCMTrigger>
+  </triggers>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder plugin="conditional-buildstep@1.3.3">
+      <condition class="org.jenkins_ci.plugins.run_condition.core.TimeCondition" plugin="run-condition@1.0">
+        <earliestHours>0</earliestHours>
+        <earliestMinutes>0</earliestMinutes>
+        <latestHours>8</latestHours>
+        <latestMinutes>0</latestMinutes>
+        <useBuildTime>true</useBuildTime>
+      </condition>
+      <buildStep class="hudson.tasks.Shell">
+        <command># Make clean builds for daily builds by removing build folder
+
+rm -rf ${WORKSPACE}/libweintek/build/jenkins
+rm -rf ${WORKSPACE}/dserver/build/jenkins
+rm -rf ${WORKSPACE}/gui/build/jenkins
+rm -rf ${WORKSPACE}/viewer/build/jenkins</command>
+      </buildStep>
+      <runner class="org.jenkins_ci.plugins.run_condition.BuildStepRunner$Run" plugin="run-condition@1.0"/>
+    </org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder>
+    <hudson.tasks.Shell>
+      <command># Setup environment for builds
+
+cd /home/ci/work/${TRIGGER_PARAM_PLATFORM}
+if [ ! -d &quot;${TRIGGER_PARAM_INSTALL_FOLDER}&quot; ]; then
+    cp -r ${TRIGGER_PARAM_BASE_INSTALL_FOLDER} ${TRIGGER_PARAM_INSTALL_FOLDER}
+fi
+
+</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command># Do static analysis by cppcheck
+echo &quot;================================ cppcheck ================================ cppcheck ================================ cppcheck ================================&quot;
+
+rm -rf cppcheck
+mkdir cppcheck
+cd cppcheck
+
+cppcheck --enable=all --inconclusive --xml --xml-version=2 \
+         --suppress=syntaxError \
+         --suppress=unusedFunction \
+         --suppress=unusedPrivateFunction \
+         ${WORKSPACE}/libweintek/weintek \
+         ${WORKSPACE}/dserver/dserver \
+         ${WORKSPACE}/gui/got \
+         ${WORKSPACE}/viewer/CloudHmi \
+         2&gt; cppcheck-result.xml
+</command>
+    </hudson.tasks.Shell>
+    <org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder plugin="conditional-buildstep@1.3.3">
+      <condition class="org.jenkins_ci.plugins.run_condition.core.AlwaysRun" plugin="run-condition@1.0"/>
+      <buildStep class="org.jenkinsci.plugins.cppcheck.CppcheckPublisher" plugin="cppcheck@1.21">
+        <cppcheckConfig>
+          <pattern>cppcheck/cppcheck-result.xml</pattern>
+          <ignoreBlankFiles>false</ignoreBlankFiles>
+          <allowNoReport>false</allowNoReport>
+          <configSeverityEvaluation>
+            <threshold></threshold>
+            <newThreshold></newThreshold>
+            <failureThreshold>302</failureThreshold>
+            <newFailureThreshold>1</newFailureThreshold>
+            <healthy></healthy>
+            <unHealthy></unHealthy>
+            <severityError>true</severityError>
+            <severityWarning>true</severityWarning>
+            <severityStyle>true</severityStyle>
+            <severityPerformance>true</severityPerformance>
+            <severityInformation>true</severityInformation>
+            <severityNoCategory>true</severityNoCategory>
+            <severityPortability>true</severityPortability>
+          </configSeverityEvaluation>
+          <configGraph>
+            <xSize>500</xSize>
+            <ySize>200</ySize>
+            <numBuildsInGraph>0</numBuildsInGraph>
+            <displayAllErrors>true</displayAllErrors>
+            <displayErrorSeverity>true</displayErrorSeverity>
+            <displayWarningSeverity>true</displayWarningSeverity>
+            <displayStyleSeverity>true</displayStyleSeverity>
+            <displayPerformanceSeverity>true</displayPerformanceSeverity>
+            <displayInformationSeverity>true</displayInformationSeverity>
+            <displayNoCategorySeverity>true</displayNoCategorySeverity>
+            <displayPortabilitySeverity>true</displayPortabilitySeverity>
+          </configGraph>
+        </cppcheckConfig>
+      </buildStep>
+      <runner class="org.jenkins_ci.plugins.run_condition.BuildStepRunner$Fail" plugin="run-condition@1.0"/>
+    </org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+
+# Build libweintek
+echo &quot;================================ libweintek ================================ libweintek ================================ libweintek ================================&quot;
+
+export LIBWEINTEK_PATH=${WORKSPACE}/libweintek
+export INSTALL_PREFIX=/home/ci/work/${TRIGGER_PARAM_PLATFORM}/${TRIGGER_PARAM_INSTALL_FOLDER}
+
+if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT3000&quot; ]; then
+    export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
+elif [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT-iv5&quot; ]; then
+    export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT-iv5/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
+fi
+
+cd ${LIBWEINTEK_PATH}/build
+if [ &quot;${TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY}&quot; = &quot;brandnew&quot; ]; then
+    rm -rf jenkins/${TRIGGER_PARAM_PLATFORM}
+fi
+if [ ! -d &quot;jenkins&quot; ]; then
+    mkdir -p jenkins
+fi
+if [ ! -d &quot;jenkins/${TRIGGER_PARAM_PLATFORM}&quot; ]; then
+    mkdir -p jenkins/${TRIGGER_PARAM_PLATFORM}
+fi
+cd jenkins/${TRIGGER_PARAM_PLATFORM}
+
+${LIBWEINTEK_PATH}/build/${TRIGGER_PARAM_PLATFORM}/cmake_libweintek.sh ${LIBWEINTEK_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} RelWithDebInfo
+    
+if [ &quot;${TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY}&quot; = &quot;clean&quot; ]; then
+    make clean
+fi
+make install VERBOSE=1</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+
+# Build dserver
+echo &quot;================================ dserver ================================ dserver ================================ dserver ================================&quot;
+
+export DSERVER_PATH=${WORKSPACE}/dserver
+export LIBWEINTEK_PATH=${WORKSPACE}/libweintek
+export MARIADB_CONNECTOR_C_PATH=/home/ci/work/mariadb-connector-c
+export INSTALL_PREFIX=/home/ci/work/${TRIGGER_PARAM_PLATFORM}/${TRIGGER_PARAM_INSTALL_FOLDER}
+
+if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT-SVR&quot; ]; then
+    export GOOGLE_BREAKPAD_PATH=/home/ci/work/cMT-SVR/google-breakpad
+fi
+
+if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT3000&quot; ]; then
+    export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
+elif [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT-iv5&quot; ]; then
+    export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT-iv5/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
+fi
+
+rm -f ${INSTALL_PREFIX}/bin/dserver*
+rm -rf ${DSERVER_PATH}/artifacts
+mkdir ${DSERVER_PATH}/artifacts
+
+cd ${DSERVER_PATH}/build
+if [ &quot;${TRIGGER_PARAM_DSERVER_BUILD_POLICY}&quot; = &quot;brandnew&quot; ]; then
+    rm -rf jenkins/${TRIGGER_PARAM_PLATFORM}
+fi
+if [ ! -d &quot;jenkins&quot; ]; then
+    mkdir -p jenkins
+fi
+if [ ! -d &quot;jenkins/${TRIGGER_PARAM_PLATFORM}&quot; ]; then
+    mkdir -p jenkins/${TRIGGER_PARAM_PLATFORM}
+fi
+cd jenkins/${TRIGGER_PARAM_PLATFORM}
+
+${DSERVER_PATH}/build/${TRIGGER_PARAM_PLATFORM}/cmake_dserver.sh ${DSERVER_PATH} ${LIBWEINTEK_PATH} ${MARIADB_CONNECTOR_C_PATH} ${GOOGLE_BREAKPAD_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} RelWithDebInfo
+
+if [ &quot;${TRIGGER_PARAM_DSERVER_BUILD_POLICY}&quot; = &quot;clean&quot; ]; then
+    make clean
+fi
+
+make install VERBOSE=1
+cp ${INSTALL_PREFIX}/bin/dserver ${DSERVER_PATH}/artifacts/dserver.RelWithDebInfo
+
+make install/strip VERBOSE=1
+if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;Ubuntu&quot; ]; then
+    export ENCRYPT_NAME=dserver
+else
+    if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT-SVR&quot; ]; then
+	    export ENCRYPT_NAME=dserver.cmt
+    elif [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT-iv5&quot; ]; then
+	    export ENCRYPT_NAME=dserver.iv5
+    else
+	    export ENCRYPT_NAME=dserver.c30
+    fi
+    /home/ci/work/crypto e ${INSTALL_PREFIX}/bin/dserver ${INSTALL_PREFIX}/bin/${ENCRYPT_NAME}
+fi
+cp ${INSTALL_PREFIX}/bin/${ENCRYPT_NAME} ${DSERVER_PATH}/artifacts</command>
+    </hudson.tasks.Shell>
+    <org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder plugin="conditional-buildstep@1.3.3">
+      <condition class="org.jenkins_ci.plugins.run_condition.logic.Not" plugin="run-condition@1.0">
+        <condition class="org.jenkins_ci.plugins.run_condition.core.StringsMatchCondition">
+          <arg1>${TRIGGER_PARAM_PLATFORM}</arg1>
+          <arg2>cMT-SVR</arg2>
+          <ignoreCase>false</ignoreCase>
+        </condition>
+      </condition>
+      <buildStep class="hudson.tasks.Shell">
+        <command>#!/bin/bash
+
+# Build gui
+echo &quot;================================ gui ================================ gui ================================ gui ================================&quot;
+
+export GUI_PATH=${WORKSPACE}/gui
+export DSERVER_PATH=${WORKSPACE}/dserver
+export LIBWEINTEK_PATH=${WORKSPACE}/libweintek
+export INSTALL_PREFIX=/home/ci/work/${TRIGGER_PARAM_PLATFORM}/${TRIGGER_PARAM_INSTALL_FOLDER}
+
+if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT3000&quot; ]; then
+    export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
+elif [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT-iv5&quot; ]; then
+    export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT-iv5/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
+fi
+
+if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;Ubuntu&quot; ]; then
+   export PATH=/opt/Qt5.4.2/5.4/gcc_64/bin:${PATH}
+fi
+
+rm -f ${INSTALL_PREFIX}/bin/gui*
+rm -f ${INSTALL_PREFIX}/lib/liblibgui20.a
+rm -rf ${GUI_PATH}/artifacts
+mkdir ${GUI_PATH}/artifacts
+
+cd ${GUI_PATH}/build
+if [ &quot;${TRIGGER_PARAM_GUI_BUILD_POLICY}&quot; = &quot;brandnew&quot; ]; then
+    rm -rf jenkins/${TRIGGER_PARAM_PLATFORM}
+fi
+if [ ! -d &quot;jenkins&quot; ]; then
+    mkdir -p jenkins
+fi
+if [ ! -d &quot;jenkins/${TRIGGER_PARAM_PLATFORM}&quot; ]; then
+    mkdir -p jenkins/${TRIGGER_PARAM_PLATFORM}
+fi
+cd jenkins/${TRIGGER_PARAM_PLATFORM}
+
+cp ${GUI_PATH}/build/${TRIGGER_PARAM_PLATFORM}/features.pri .
+${GUI_PATH}/build/${TRIGGER_PARAM_PLATFORM}/qmake_gui.sh ${GUI_PATH} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} RelWithDebInfo
+
+if test -n &quot;${CROSS_COMPILER_TOOLCHAIN}&quot;; then
+    source ${CROSS_COMPILER_TOOLCHAIN}
+fi
+
+if [ &quot;${TRIGGER_PARAM_GUI_BUILD_POLICY}&quot; = &quot;clean&quot; ]; then
+    make clean
+fi
+make VERBOSE=1
+
+if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT3000&quot; ]; then
+    cp ${INSTALL_PREFIX}/bin/gui ${GUI_PATH}/artifacts/gui.RelWithDebInfo	
+    strip ${INSTALL_PREFIX}/bin/gui
+    test_mtcrypt --encrypt ${INSTALL_PREFIX}/bin/gui --out ${INSTALL_PREFIX}/bin/gui.c30
+    cp ${INSTALL_PREFIX}/bin/gui.c30 ${GUI_PATH}/artifacts
+elif [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;Ubuntu&quot; ]; then
+    cp ${INSTALL_PREFIX}/bin/gui ${GUI_PATH}/artifacts/gui.RelWithDebInfo	
+    strip ${INSTALL_PREFIX}/bin/gui
+    cp ${INSTALL_PREFIX}/bin/gui ${GUI_PATH}/artifacts
+fi
+</command>
+      </buildStep>
+      <runner class="org.jenkins_ci.plugins.run_condition.BuildStepRunner$Fail" plugin="run-condition@1.0"/>
+    </org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder>
+    <org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder plugin="conditional-buildstep@1.3.3">
+      <condition class="org.jenkins_ci.plugins.run_condition.logic.Or" plugin="run-condition@1.0">
+        <conditions>
+          <org.jenkins__ci.plugins.run__condition.logic.ConditionContainer>
+            <condition class="org.jenkins_ci.plugins.run_condition.core.StringsMatchCondition">
+              <arg1>${TRIGGER_PARAM_PLATFORM}</arg1>
+              <arg2>cMT-iv5</arg2>
+              <ignoreCase>false</ignoreCase>
+            </condition>
+          </org.jenkins__ci.plugins.run__condition.logic.ConditionContainer>
+          <org.jenkins__ci.plugins.run__condition.logic.ConditionContainer>
+            <condition class="org.jenkins_ci.plugins.run_condition.core.StringsMatchCondition">
+              <arg1>${TRIGGER_PARAM_PLATFORM}</arg1>
+              <arg2>Ubuntu</arg2>
+              <ignoreCase>false</ignoreCase>
+            </condition>
+          </org.jenkins__ci.plugins.run__condition.logic.ConditionContainer>
+        </conditions>
+      </condition>
+      <buildStep class="hudson.tasks.Shell">
+        <command>#!/bin/bash
+
+# export variables
+
+export VIEWER_PATH=${WORKSPACE}/viewer
+export CLOUDHMI_PATH=${VIEWER_PATH}/CloudHmi
+export LIBWEINTEK_PATH=${WORKSPACE}/libweintek
+export DSERVER_PATH=${WORKSPACE}/dserver
+export GUI_PATH=${WORKSPACE}/gui
+export INSTALL_PREFIX=/home/ci/work/${TRIGGER_PARAM_PLATFORM}/${TRIGGER_PARAM_INSTALL_FOLDER}
+
+case $TRIGGER_PARAM_PLATFORM in
+    &quot;cMT-iv5&quot;)       export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT-iv5/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi  ;;
+    &quot;cMT-iv5-3000&quot;)  export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi  ;;
+esac
+
+case $TRIGGER_PARAM_PLATFORM in
+    &quot;cMT-iv5-3000&quot;)  export PLATFORM_BUILD_FOLDER=cMT-iv5  ;;
+    *)               export PLATFORM_BUILD_FOLDER=${TRIGGER_PARAM_PLATFORM}  ;;
+esac
+
+case $TRIGGER_PARAM_PLATFORM in
+    &quot;cMT-iv5&quot;)       export ENCRYPT_EXTENSION_NAME=.iv5  ;;
+    &quot;cMT-iv5-3000&quot;)  export ENCRYPT_EXTENSION_NAME=.iv5  ;;
+esac
+
+if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;Ubuntu&quot; ]; then
+   export PATH=/opt/Qt5.4.2/5.4/gcc_64/bin:${PATH}
+fi
+
+# clear artifacts
+
+rm -f ${INSTALL_PREFIX}/bin/CloudHmi*
+rm -f ${INSTALL_PREFIX}/bin/cMTViewer*
+rm -rf ${VIEWER_PATH}/artifacts
+mkdir ${VIEWER_PATH}/artifacts
+
+# prepare out-of-source build
+
+cd ${VIEWER_PATH}/build
+if [ &quot;${TRIGGER_PARAM_VIEWER_BUILD_POLICY}&quot; = &quot;brandnew&quot; ]; then
+    rm -rf jenkins/${TRIGGER_PARAM_PLATFORM}
+fi
+if [ ! -d &quot;jenkins&quot; ]; then
+    mkdir -p jenkins
+fi
+if [ ! -d &quot;jenkins/${TRIGGER_PARAM_PLATFORM}&quot; ]; then
+    mkdir -p jenkins/${TRIGGER_PARAM_PLATFORM}
+fi
+cd jenkins/${TRIGGER_PARAM_PLATFORM}
+
+# generate makefile
+
+cp ${VIEWER_PATH}/build/${PLATFORM_BUILD_FOLDER}/*features.pri .
+${VIEWER_PATH}/build/${PLATFORM_BUILD_FOLDER}/qmake_viewer.sh ${CLOUDHMI_PATH} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${GUI_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} RelWithDebInfo
+
+# make
+
+if test -n &quot;${CROSS_COMPILER_TOOLCHAIN}&quot;; then
+    source ${CROSS_COMPILER_TOOLCHAIN}
+fi
+make VERBOSE=1
+cp ${INSTALL_PREFIX}/bin/CloudHmi ${VIEWER_PATH}/artifacts/CloudHmi.RelWithDebInfo	
+
+# strip and encrypt
+
+strip ${INSTALL_PREFIX}/bin/CloudHmi
+tar -cv ${INSTALL_PREFIX}/bin/CloudHmi &gt;&gt; ${INSTALL_PREFIX}/bin/CloudHmi.tar
+if test -n &quot;${ENCRYPT_EXTENSION_NAME}&quot;; then
+    test_mtcrypt --encrypt ${INSTALL_PREFIX}/bin/CloudHmi.tar --out ${INSTALL_PREFIX}/bin/cMTViewer${ENCRYPT_EXTENSION_NAME}
+    cp ${INSTALL_PREFIX}/bin/cMTViewer${ENCRYPT_EXTENSION_NAME} ${VIEWER_PATH}/artifacts
+else
+    cp ${INSTALL_PREFIX}/bin/CloudHmi.tar ${VIEWER_PATH}/artifacts
+fi  </command>
+      </buildStep>
+      <runner class="org.jenkins_ci.plugins.run_condition.BuildStepRunner$Fail" plugin="run-condition@1.0"/>
+    </org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder>
+    <org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder plugin="conditional-buildstep@1.3.3">
+      <condition class="org.jenkins_ci.plugins.run_condition.core.StringsMatchCondition" plugin="run-condition@1.0">
+        <arg1>${TRIGGER_PARAM_PLATFORM}</arg1>
+        <arg2>Ubuntu</arg2>
+        <ignoreCase>false</ignoreCase>
+      </condition>
+      <buildStep class="hudson.tasks.Shell">
+        <command># Unit tests
+echo &quot;================================ unit-test ================================ unit-test ================================ unit-test ================================&quot;
+
+export INSTALL_PREFIX=/home/ci/work/${TRIGGER_PARAM_PLATFORM}/${TRIGGER_PARAM_INSTALL_FOLDER}
+
+
+rm -rf gtest
+mkdir gtest
+cd gtest
+
+mkdir test-libweintek
+mkdir test-dserver
+mkdir test-got
+
+cd ${WORKSPACE}/gtest/test-libweintek
+${INSTALL_PREFIX}/bin/test-libweintek --gtest_output=xml:${WORKSPACE}/gtest/gtest-libweintek.xml
+
+cd ${WORKSPACE}/gtest/test-dserver
+${INSTALL_PREFIX}/bin/test-dserver --gtest_output=xml:${WORKSPACE}/gtest/gtest-dserver.xml
+
+cd ${WORKSPACE}/gtest/test-got
+${INSTALL_PREFIX}/bin/test-got --gtest_output=xml:${WORKSPACE}/gtest/gtest-got.xml</command>
+      </buildStep>
+      <runner class="org.jenkins_ci.plugins.run_condition.BuildStepRunner$Fail" plugin="run-condition@1.0"/>
+    </org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder>
+  </builders>
+  <publishers>
+    <hudson.tasks.ArtifactArchiver>
+      <artifacts>dserver/artifacts/*,gui/artifacts/*,viewer/artifacts/*</artifacts>
+      <allowEmptyArchive>false</allowEmptyArchive>
+      <onlyIfSuccessful>false</onlyIfSuccessful>
+      <fingerprint>false</fingerprint>
+      <defaultExcludes>true</defaultExcludes>
+      <caseSensitive>true</caseSensitive>
+    </hudson.tasks.ArtifactArchiver>
+    <hudson.tasks.junit.JUnitResultArchiver plugin="junit@1.10">
+      <testResults>gtest/*.xml</testResults>
+      <keepLongStdio>false</keepLongStdio>
+      <healthScaleFactor>1.0</healthScaleFactor>
+      <allowEmptyResults>false</allowEmptyResults>
+    </hudson.tasks.junit.JUnitResultArchiver>
+    <hudson.tasks.Mailer plugin="mailer@1.16">
+      <recipients>katte@weintek.com paul@weintek.com zen@weintek.com easonwu@weintek.com jeremyhong@weintek.com clydeliu@weintek.com</recipients>
+      <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
+      <sendToIndividuals>false</sendToIndividuals>
+    </hudson.tasks.Mailer>
+  </publishers>
+  <buildWrappers/>
+</project>

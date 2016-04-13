@@ -242,6 +242,7 @@
         <string>cMT_dev-electric-meter_cMT3000</string>
         <string>cMT_dev-pdf-debug_cMT3000</string>
         <string>cMT_dev_Ubuntu</string>
+        <string>cMT_opcua-server_SVR</string>
         <string>cMT_param</string>
         <string>cMT_refactor-trend-display_cMT-iv5</string>
         <string>cMT_v1-barcode-debug_cMT3000</string>
