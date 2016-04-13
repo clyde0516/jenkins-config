@@ -102,7 +102,7 @@
 export NOW=`date +&quot;%H%M&quot;`
 export START_TIME=&quot;0000&quot;
 export END_TIME=&quot;0959&quot;
-if [[ $NOW -ge ${START_TIME} &amp;&amp; $NOW -le ${END_TIME} ]]; then
+if [[ $((10#$NOW)) -ge $((10#$START_TIME)) &amp;&amp; $((10#$NOW)) -le $((10#$END_TIME)) ]]; then
 	export TRIGGER_PARAM_COM_BUILD_POLICY=brandnew
     export BRANDNEW_FLAG=brandnew
 fi
