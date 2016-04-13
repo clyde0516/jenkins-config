@@ -111,10 +111,6 @@ echo ${WORKSPACE}
 echo ${PWD}
 echo &quot;aaaaaaaaaaaaaaaaaaaaaa&quot;
 
-#export LIBWEINTEK_PATH=${2}
-#export DSERVER_PATH=${1}
-
-
 
 # /home/ci/work/cMT-SVR/build-stable-branch
 export MY_INSTALL_PREFIX=/home/ci/work/${MATRIX_AXIS_PLATFORM}/build-${TRIGGER_PARAM_JOB_GROUP}-branch
