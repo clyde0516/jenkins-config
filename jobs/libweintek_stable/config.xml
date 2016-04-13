@@ -109,7 +109,7 @@
 
 # alter trigger parameter
 
-if [[ &quot;0000&quot; &lt; $(( `date +&quot;%H%M&quot;` )) &amp;&amp;  $(( `date +&quot;%H%M&quot;` )) &lt; &quot;0800&quot; ]]; then
+if [[ ! &quot;`date +&quot;%H%M&quot;`&quot; &lt; &quot;0000&quot; &amp;&amp; ! &quot;`date +&quot;%H%M&quot;`&quot; &gt; &quot;0800&quot; ]]; then
 	export TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY=brandnew
 fi
 
@@ -167,7 +167,7 @@ make install VERBOSE=1</command>
         <hudson.tasks.BatchFile>
           <command>:: alter trigger parameter&#xd;
 &#xd;
-if &quot;%time%&quot; geq &quot;00:00:00.00&quot; ( if &quot;%time%&quot; lss &quot;08:00:00.00&quot; (&#xd;
+if &quot;%time%&quot; geq &quot; 0:00:00.00&quot; ( if &quot;%time%&quot; lss &quot; 8:00:00.00&quot; (&#xd;
     set TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY=clean&#xd;
 ))&#xd;
 &#xd;
