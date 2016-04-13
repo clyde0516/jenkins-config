@@ -133,10 +133,10 @@ cd jenkins
 
 
 if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;cMT3000&quot; ]; then
-    export ENV_SOURCE=/home/ci/work/${PLATFORM_BUILD_FOLDER}/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
-    ${WEINTEK_P2P_PATH}/build/${PLATFORM_BUILD_FOLDER}/cmake_weintek_p2p.sh ${WEINTEK_P2P_PATH} ${LIBWEINTEK_PATH} ${INSTALL_PREFIX} ${BUILD_TYPE} ${ENV_SOURCE} 
+    export ENV_SOURCE=/home/ci/work/${MATRIX_AXIS_PLATFORM}/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
+    ${WEINTEK_P2P_PATH}/build/${MATRIX_AXIS_PLATFORM}/cmake_weintek_p2p.sh ${WEINTEK_P2P_PATH} ${LIBWEINTEK_PATH} ${INSTALL_PREFIX} ${BUILD_TYPE} ${ENV_SOURCE} 
 elif [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;cMT-SVR&quot; ]; then
-    ${WEINTEK_P2P_PATH}/build/${PLATFORM_BUILD_FOLDER}/cmake_weintek_p2p.sh ${WEINTEK_P2P_PATH} ${LIBWEINTEK_PATH} ${INSTALL_PREFIX} ${BUILD_TYPE}
+    ${WEINTEK_P2P_PATH}/build/${MATRIX_AXIS_PLATFORM}/cmake_weintek_p2p.sh ${WEINTEK_P2P_PATH} ${LIBWEINTEK_PATH} ${INSTALL_PREFIX} ${BUILD_TYPE}
 fi
 
 make VERBOSE=0 install/strip
@@ -167,12 +167,12 @@ cd jenkins
 touch ${WORKSPACE}/rma/AuthClient/easy_access_client_manager.bin.cpp
 
 if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;cMT3000&quot; ]; then
-    export ENV_SOURCE=/home/ci/work/${PLATFORM_BUILD_FOLDER}/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
-    ${RMA_PATH}/build/${PLATFORM_BUILD_FOLDER}/cmake_rma.sh ${RMA_PATH} ${LIBWEINTEK_PATH} ${INSTALL_PREFIX} ${BUILD_TYPE} ${ENV_SOURCE} 
-    ${RMA_PATH}/build/${PLATFORM_BUILD_FOLDER}/make_eac.sh ${RMA_PATH} ${INSTALL_PREFIX} ${TRIGGER_PARAM_EAC_VERSION} ${ENV_SOURCE} 
+    export ENV_SOURCE=/home/ci/work/${MATRIX_AXIS_PLATFORM}/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
+    ${RMA_PATH}/build/${MATRIX_AXIS_PLATFORM}/cmake_rma.sh ${RMA_PATH} ${LIBWEINTEK_PATH} ${INSTALL_PREFIX} ${BUILD_TYPE} ${ENV_SOURCE} 
+    ${RMA_PATH}/build/${MATRIX_AXIS_PLATFORM}/make_eac.sh ${RMA_PATH} ${INSTALL_PREFIX} ${TRIGGER_PARAM_EAC_VERSION} ${ENV_SOURCE} 
 elif [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;cMT-SVR&quot; ]; then
-    ${RMA_PATH}/build/${PLATFORM_BUILD_FOLDER}/cmake_rma.sh ${RMA_PATH} ${LIBWEINTEK_PATH} ${INSTALL_PREFIX} ${BUILD_TYPE}
-    ${RMA_PATH}/build/${PLATFORM_BUILD_FOLDER}/make_eac.sh ${RMA_PATH} ${INSTALL_PREFIX} ${TRIGGER_PARAM_EAC_VERSION}
+    ${RMA_PATH}/build/${MATRIX_AXIS_PLATFORM}/cmake_rma.sh ${RMA_PATH} ${LIBWEINTEK_PATH} ${INSTALL_PREFIX} ${BUILD_TYPE}
+    ${RMA_PATH}/build/${MATRIX_AXIS_PLATFORM}/make_eac.sh ${RMA_PATH} ${INSTALL_PREFIX} ${TRIGGER_PARAM_EAC_VERSION}
 fi
 </command>
     </hudson.tasks.Shell>
