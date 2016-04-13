@@ -99,11 +99,16 @@
 
 # alter trigger parameter
 
-if [[ &quot;0000&quot; &lt; $(( `date +&quot;%H%M&quot;` )) &amp;&amp;  $(( `date +&quot;%H%M&quot;` )) &lt; &quot;0959&quot; ]]; then
+export NOW=`date +&quot;%H%M&quot;`
+export START_TIME=&quot;0000&quot;
+export END_TIME=&quot;0959&quot;
+if [[ $NOW -ge ${START_TIME} &amp;&amp; $NOW -le ${END_TIME} ]]; then
 	export TRIGGER_PARAM_COM_BUILD_POLICY=brandnew
+    export BRANDNEW_FLAG=brandnew
 fi
 
 echo &quot;POLICY: &quot; ${TRIGGER_PARAM_COM_BUILD_POLICY}
+echo &quot;BRANDNEW_FLAG: &quot; ${BRANDNEW_FLAG}
 
 # export variables
 
