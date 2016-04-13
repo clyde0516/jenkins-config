@@ -140,10 +140,6 @@ if [ ! -d &quot;jenkins/${MATRIX_AXIS_PLATFORM}&quot; ]; then
 fi
 cd jenkins/${MATRIX_AXIS_PLATFORM}
 
-ls -alh ${WORKSPACE}/build/jenkins/${MATRIX_AXIS_PLATFORM}
-echo &quot;MATRIX_AXIS_PLATFORM&quot; ${MATRIX_AXIS_PLATFORM}
-
-
 # generate makefile
 cmake -DCMAKE_BUILD_TYPE=${BUILD_TYPE} \
       -DCMAKE_INSTALL_PREFIX=${MY_INSTALL_PREFIX} \
