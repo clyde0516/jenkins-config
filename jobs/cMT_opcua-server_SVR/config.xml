@@ -220,7 +220,7 @@ make install VERBOSE=1</command>
 # build Opcua SDK
 echo &quot;================================ sdk ================================ sdk ================================ sdk ================================&quot;
 
-export OPCUA_SDK_PATH=${WORKSPACE}/third-party/opcua-linux
+export OPCUA_SDK_PATH=${WORKSPACE}/opcserver/third-party/opcua-linux
 export LIBWEINTEK_PATH=${WORKSPACE}/libweintek
 export INSTALL_PREFIX=/home/ci/work/${TRIGGER_PARAM_PLATFORM}/${TRIGGER_PARAM_INSTALL_FOLDER}
 
@@ -263,8 +263,8 @@ make install VERBOSE=1</command>
     <hudson.tasks.Shell>
       <command>#!/bin/bash
 
-# Build dserver
-echo &quot;================================ dserver ================================ dserver ================================ dserver ================================&quot;
+# Build Opcua Server
+echo &quot;================================ Opcua Server ================================ Opcua Server ================================ Opcua Server ================================&quot;
 
 export DSERVER_PATH=${WORKSPACE}/dserver
 export LIBWEINTEK_PATH=${WORKSPACE}/libweintek
