@@ -113,6 +113,8 @@ if [[ &quot;0000&quot; &lt; $(( `date +&quot;%H%M&quot;` )) &amp;&amp;  $(( `dat
 	export TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY=brandnew
 fi
 
+echo &quot;POLICY: &quot; ${TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY}
+
 # export variables
 
 export LIBWEINTEK_PATH=${WORKSPACE}
