@@ -4,6 +4,14 @@
   <description>build easy_access_client, easy_access_activator, weintek-p2p</description>
   <keepDependencies>false</keepDependencies>
   <properties>
+    <jenkins.model.BuildDiscarderProperty>
+      <strategy class="hudson.tasks.LogRotator">
+        <daysToKeep>90</daysToKeep>
+        <numToKeep>300</numToKeep>
+        <artifactDaysToKeep>-1</artifactDaysToKeep>
+        <artifactNumToKeep>-1</artifactNumToKeep>
+      </strategy>
+    </jenkins.model.BuildDiscarderProperty>
     <hudson.model.ParametersDefinitionProperty>
       <parameterDefinitions>
         <hudson.plugins.matrix__configuration__parameter.MatrixCombinationsParameterDefinition plugin="matrix-combinations-parameter@1.0.9">
@@ -17,14 +25,6 @@
         </hudson.model.StringParameterDefinition>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
-    <jenkins.model.BuildDiscarderProperty>
-      <strategy class="hudson.tasks.LogRotator">
-        <daysToKeep>90</daysToKeep>
-        <numToKeep>300</numToKeep>
-        <artifactDaysToKeep>-1</artifactDaysToKeep>
-        <artifactNumToKeep>-1</artifactNumToKeep>
-      </strategy>
-    </jenkins.model.BuildDiscarderProperty>
   </properties>
   <scm class="org.jenkinsci.plugins.multiplescms.MultiSCM" plugin="multiple-scms@0.5">
     <scms>
@@ -118,42 +118,28 @@ rm -rf ${WORKSPACE}/weintek-p2p/jenkins</command>
     <hudson.tasks.Shell>
       <command>#!/bin/bash
 
+
+
 export BUILD_TYPE=Release
 export LIBWEINTEK_PATH=${JENKINS_HOME}/jobs/libweintek_stable/workspace
-export LIBWEINTEK_ROOT=${LIBWEINTEK_PATH}
 export INSTALL_PREFIX=/home/ci/work/${MATRIX_AXIS_PLATFORM}/build-stable-branch
+export WEINTEK_P2P_PATH=${WORKSPACE}/weintek-p2p
 
-case $MATRIX_AXIS_PLATFORM in
-    &quot;cMT3000&quot;)  export MODEL_NAME=E60  ;;
-    &quot;cMT-SVR&quot;)  export MODEL_NAME=E30  ;;
-esac
 
-cd ${WORKSPACE}/weintek-p2p
+cd ${WEINTEK_P2P_PATH}
 cp config_linux.h config.h
 mkdir -p jenkins
 cd jenkins
 
+
 if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;cMT3000&quot; ]; then
-    source /home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
-    cmake -DCMAKE_BUILD_TYPE=${BUILD_TYPE} \
-          -DMODEL=${MODEL_NAME} \
-          -DGOOGLE_BREAKPAD_DIR=/home/ci/work/${MATRIX_AXIS_PLATFORM}/google-breakpad \
-          -DCMAKE_INSTALL_PREFIX=${INSTALL_PREFIX} \
-          ..
+    export ENV_SOURCE=/home/ci/work/${PLATFORM_BUILD_FOLDER}/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
+    ${WEINTEK_P2P_PATH}/build/${PLATFORM_BUILD_FOLDER}/cmake_weintek_p2p.sh ${WEINTEK_P2P_PATH} ${LIBWEINTEK_PATH} ${INSTALL_PREFIX} ${ENV_SOURCE} RelWithDebInfo
 elif [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;cMT-SVR&quot; ]; then
-    cmake -DCMAKE_BUILD_TYPE=${BUILD_TYPE} \
-          -DMODEL=${MODEL_NAME} \
-          -DGOOGLE_BREAKPAD_DIR=/home/ci/work/${MATRIX_AXIS_PLATFORM}/google-breakpad \
-          -DCMAKE_INSTALL_PREFIX=${INSTALL_PREFIX} \
-          -DCMAKE_TOOLCHAIN_FILE=${LIBWEINTEK_PATH}/build/cMT-SVR/Toolchain-arm-fsl-linux-gnueabi.cmake \
-          ..
+    ${WEINTEK_P2P_PATH}/build/${PLATFORM_BUILD_FOLDER}/cmake_weintek_p2p.sh ${WEINTEK_P2P_PATH} ${LIBWEINTEK_PATH} ${INSTALL_PREFIX} RelWithDebInfo
 fi
 
-if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;cMT3000&quot; ]; then
-    cd client
-fi
-
-make VERBOSE=1 install/strip
+make VERBOSE=0 install/strip
 
 cd ${INSTALL_PREFIX}/bin
 
