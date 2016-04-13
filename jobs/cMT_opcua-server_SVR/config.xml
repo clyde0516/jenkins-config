@@ -266,7 +266,9 @@ make install VERBOSE=1</command>
 # Build Opcua Server
 echo &quot;================================ Opcua Server ================================ Opcua Server ================================ Opcua Server ================================&quot;
 
-export DSERVER_PATH=${WORKSPACE}/opcserver
+export OPCUA_SERVER_PATH=${WORKSPACE}/opcserver
+export OPCUA_SDK_PATH=${WORKSPACE}/opcserver/third-party/opcua-linux
+export DSERVER_PATH=${OPCUA_SERVER_PATH}
 export LIBWEINTEK_PATH=${WORKSPACE}/libweintek
 export MARIADB_CONNECTOR_C_PATH=0
 export INSTALL_PREFIX=/home/ci/work/${TRIGGER_PARAM_PLATFORM}/${TRIGGER_PARAM_INSTALL_FOLDER}
@@ -297,7 +299,7 @@ if [ ! -d &quot;jenkins/${TRIGGER_PARAM_PLATFORM}&quot; ]; then
 fi
 cd jenkins/${TRIGGER_PARAM_PLATFORM}
 
-${DSERVER_PATH}/build/${TRIGGER_PARAM_PLATFORM}/cmake_opcua_server.sh ${DSERVER_PATH} ${LIBWEINTEK_PATH} ${MARIADB_CONNECTOR_C_PATH} ${GOOGLE_BREAKPAD_PATH} ${INSTALL_PREFIX} RelWithDebInfo
+${DSERVER_PATH}/build/${TRIGGER_PARAM_PLATFORM}/cmake_opcua_server.sh ${DSERVER_PATH} ${LIBWEINTEK_PATH} ${OPCUA_SDK_PATH} ${GOOGLE_BREAKPAD_PATH} ${INSTALL_PREFIX} RelWithDebInfo
 
 if [ &quot;${TRIGGER_PARAM_OPCUA_SERVER_BUILD_POLICY}&quot; = &quot;clean&quot; ]; then
     make clean
