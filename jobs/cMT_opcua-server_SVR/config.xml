@@ -80,6 +80,17 @@
             </a>
           </choices>
         </hudson.model.ChoiceParameterDefinition>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>OPCUA_BUILD_TYPE</name>
+          <description></description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>RelWithDebInfo</string>
+              <string>Debug</string>
+              <string>Release</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
     <jenkins.model.BuildDiscarderProperty>
@@ -200,7 +211,7 @@ if [ ! -d &quot;jenkins/${TRIGGER_PARAM_PLATFORM}&quot; ]; then
 fi
 cd jenkins/${TRIGGER_PARAM_PLATFORM}
 
-${LIBWEINTEK_PATH}/build/${TRIGGER_PARAM_PLATFORM}/cmake_libweintek.sh ${LIBWEINTEK_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} RelWithDebInfo
+${LIBWEINTEK_PATH}/build/${TRIGGER_PARAM_PLATFORM}/cmake_libweintek.sh ${LIBWEINTEK_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} ${OPCUA_BUILD_TYPE}
     
 if [ &quot;${TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY}&quot; = &quot;clean&quot; ]; then
     make clean
@@ -252,7 +263,7 @@ if [ ! -d &quot;jenkins/${TRIGGER_PARAM_PLATFORM}&quot; ]; then
 fi
 cd jenkins/${TRIGGER_PARAM_PLATFORM}
 
-${OPCUA_SDK_PATH}/build/${TRIGGER_PARAM_PLATFORM}/cmake_opcua_sdk.sh ${OPCUA_SDK_PATH} ${LIBWEINTEK_PATH} 0 0 ${INSTALL_PREFIX} RelWithDebInfo
+${OPCUA_SDK_PATH}/build/${TRIGGER_PARAM_PLATFORM}/cmake_opcua_sdk.sh ${OPCUA_SDK_PATH} ${LIBWEINTEK_PATH} 0 0 ${INSTALL_PREFIX} ${OPCUA_BUILD_TYPE}
 
 if [ &quot;${TRIGGER_PARAM_OPCUA_SDK_BUILD_POLICY}&quot; = &quot;clean&quot; ]; then
     make clean
@@ -300,17 +311,17 @@ if [ ! -d &quot;jenkins/${TRIGGER_PARAM_PLATFORM}&quot; ]; then
 fi
 cd jenkins/${TRIGGER_PARAM_PLATFORM}
 
-${OPCUA_SERVER_PATH}/build/${TRIGGER_PARAM_PLATFORM}/cmake_opcua_server.sh ${OPCUA_SERVER_PATH} ${LIBWEINTEK_PATH} ${OPCUA_SDK_PATH} ${GOOGLE_BREAKPAD_PATH} ${INSTALL_PREFIX} RelWithDebInfo
+${OPCUA_SERVER_PATH}/build/${TRIGGER_PARAM_PLATFORM}/cmake_opcua_server.sh ${OPCUA_SERVER_PATH} ${LIBWEINTEK_PATH} ${OPCUA_SDK_PATH} ${GOOGLE_BREAKPAD_PATH} ${INSTALL_PREFIX} ${OPCUA_BUILD_TYPE}
 
 if [ &quot;${TRIGGER_PARAM_OPCUA_SERVER_BUILD_POLICY}&quot; = &quot;clean&quot; ]; then
     make clean
 fi
 
 make install VERBOSE=1
-#cp ${INSTALL_PREFIX}/bin/opcua-server ${OPCUA_SERVER_PATH}/artifacts/opcua-server.RelWithDebInfo
+#cp ${INSTALL_PREFIX}/bin/opcua-server ${OPCUA_SERVER_PATH}/artifacts/opcua-server.${OPCUA_BUILD_TYPE}
 
 make install/strip VERBOSE=1
-cp ${INSTALL_PREFIX}/bin/opcua-server ${OPCUA_SERVER_PATH}/artifacts/opcua-server.RelWithDebInfo
+cp ${INSTALL_PREFIX}/bin/opcua-server ${OPCUA_SERVER_PATH}/artifacts/opcua-server.${OPCUA_BUILD_TYPE}
 
 if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;Ubuntu&quot; ]; then
     export ENCRYPT_NAME=opcua-server
