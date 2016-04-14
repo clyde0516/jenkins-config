@@ -4,6 +4,14 @@
   <description></description>
   <keepDependencies>false</keepDependencies>
   <properties>
+    <jenkins.model.BuildDiscarderProperty>
+      <strategy class="hudson.tasks.LogRotator">
+        <daysToKeep>90</daysToKeep>
+        <numToKeep>300</numToKeep>
+        <artifactDaysToKeep>-1</artifactDaysToKeep>
+        <artifactNumToKeep>-1</artifactNumToKeep>
+      </strategy>
+    </jenkins.model.BuildDiscarderProperty>
     <hudson.model.ParametersDefinitionProperty>
       <parameterDefinitions>
         <hudson.plugins.matrix__configuration__parameter.MatrixCombinationsParameterDefinition plugin="matrix-combinations-parameter@1.0.9">
@@ -33,14 +41,6 @@
         </hudson.model.ChoiceParameterDefinition>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
-    <jenkins.model.BuildDiscarderProperty>
-      <strategy class="hudson.tasks.LogRotator">
-        <daysToKeep>90</daysToKeep>
-        <numToKeep>300</numToKeep>
-        <artifactDaysToKeep>-1</artifactDaysToKeep>
-        <artifactNumToKeep>-1</artifactNumToKeep>
-      </strategy>
-    </jenkins.model.BuildDiscarderProperty>
   </properties>
   <scm class="hudson.plugins.git.GitSCM" plugin="git@2.4.2">
     <configVersion>2</configVersion>
@@ -232,7 +232,7 @@ set QT_DIR=C:\DevEnv\Qt\Qt5.4.2\5.4\msvc2012_opengl&#xd;
 &#xd;
 :: clear artifacts&#xd;
 &#xd;
-rmdir /s %WORKSPACE_DIR%\artifacts&#xd;
+rmdir /s/q %WORKSPACE_DIR%\artifacts&#xd;
 mkdir %WORKSPACE_DIR%\artifacts&#xd;
 &#xd;
 :: prepare build environment&#xd;
@@ -251,8 +251,9 @@ call %WORK_UTIL_DIR%\script\replace_string.bat &quot;got.props&quot; &quot;&lt;D
 :: build project &#xd;
 &#xd;
 call build_win32.bat got release %TRIGGER_PARAM_GUI_BUILD_POLICY%&#xd;
+copy /y Win32\Release\libgui20.lib %WORKSPACE_DIR%\artifacts&#xd;
 copy /y Win32\Release\libgui20.dll %WORKSPACE_DIR%\artifacts&#xd;
-copy /y Win32\Release\libgui20.pdb %WORKSPACE_DIR%\artifacts&#xd;
+::copy /y Win32\Release\libgui20.pdb %WORKSPACE_DIR%\artifacts&#xd;
 </command>
         </hudson.tasks.BatchFile>
         <hudson.tasks.BatchFile>
