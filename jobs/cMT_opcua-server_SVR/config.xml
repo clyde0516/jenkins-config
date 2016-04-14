@@ -15,14 +15,6 @@
       <permission>hudson.model.Item.Configure:authenticated</permission>
       <permission>hudson.model.Run.Update:authenticated</permission>
     </hudson.security.AuthorizationMatrixProperty>
-    <jenkins.model.BuildDiscarderProperty>
-      <strategy class="hudson.tasks.LogRotator">
-        <daysToKeep>90</daysToKeep>
-        <numToKeep>300</numToKeep>
-        <artifactDaysToKeep>-1</artifactDaysToKeep>
-        <artifactNumToKeep>-1</artifactNumToKeep>
-      </strategy>
-    </jenkins.model.BuildDiscarderProperty>
     <hudson.model.ParametersDefinitionProperty>
       <parameterDefinitions>
         <hudson.model.ChoiceParameterDefinition>
@@ -90,6 +82,14 @@
         </hudson.model.ChoiceParameterDefinition>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
+    <jenkins.model.BuildDiscarderProperty>
+      <strategy class="hudson.tasks.LogRotator">
+        <daysToKeep>90</daysToKeep>
+        <numToKeep>300</numToKeep>
+        <artifactDaysToKeep>-1</artifactDaysToKeep>
+        <artifactNumToKeep>-1</artifactNumToKeep>
+      </strategy>
+    </jenkins.model.BuildDiscarderProperty>
   </properties>
   <scm class="org.jenkinsci.plugins.multiplescms.MultiSCM" plugin="multiple-scms@0.5">
     <scms>
@@ -309,7 +309,21 @@ fi
 
 make install VERBOSE=1
 cp ${INSTALL_PREFIX}/bin/opcua-server ${DSERVER_PATH}/artifacts/opcua-server.RelWithDebInfo
-</command>
+
+make install/strip VERBOSE=1
+if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;Ubuntu&quot; ]; then
+    export ENCRYPT_NAME=opcua-server
+else
+    if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT-SVR&quot; ]; then
+	    export ENCRYPT_NAME=opcua-server.svr
+    elif [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT-iv5&quot; ]; then
+	    export ENCRYPT_NAME=opcua-server.iv5
+    else
+	    export ENCRYPT_NAME=opcua-server.c30
+    fi
+    #/home/ci/work/crypto e ${INSTALL_PREFIX}/bin/opcua-server ${INSTALL_PREFIX}/bin/${ENCRYPT_NAME}
+fi
+cp ${INSTALL_PREFIX}/bin/${ENCRYPT_NAME} ${DSERVER_PATH}/artifacts</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
