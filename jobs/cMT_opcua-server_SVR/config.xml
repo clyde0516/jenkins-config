@@ -321,7 +321,7 @@ else
     else
 	    export ENCRYPT_NAME=opcua-server.c30
     fi
-    #/home/ci/work/crypto e ${INSTALL_PREFIX}/bin/opcua-server ${INSTALL_PREFIX}/bin/${ENCRYPT_NAME}
+    /home/ci/work/crypto e ${INSTALL_PREFIX}/bin/opcua-server ${INSTALL_PREFIX}/bin/${ENCRYPT_NAME}
 fi
 cp ${INSTALL_PREFIX}/bin/${ENCRYPT_NAME} ${DSERVER_PATH}/artifacts</command>
     </hudson.tasks.Shell>
