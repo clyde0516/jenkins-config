@@ -270,7 +270,6 @@ echo &quot;================================ Opcua Server =======================
 
 export OPCUA_SERVER_PATH=${WORKSPACE}/opcserver
 export OPCUA_SDK_PATH=${WORKSPACE}/opcserver/third-party/opcua-linux
-export DSERVER_PATH=${OPCUA_SERVER_PATH}
 export LIBWEINTEK_PATH=${WORKSPACE}/libweintek
 export MARIADB_CONNECTOR_C_PATH=0
 export INSTALL_PREFIX=/home/ci/work/${TRIGGER_PARAM_PLATFORM}/${TRIGGER_PARAM_INSTALL_FOLDER}
@@ -286,10 +285,10 @@ elif [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT-iv5&quot; ]; then
 fi
 
 rm -f ${INSTALL_PREFIX}/bin/opcua*
-rm -rf ${DSERVER_PATH}/artifacts
-mkdir ${DSERVER_PATH}/artifacts
+rm -rf ${OPCUA_SERVER_PATH}/artifacts
+mkdir ${OPCUA_SERVER_PATH}/artifacts
 
-cd ${DSERVER_PATH}/build
+cd ${OPCUA_SERVER_PATH}/build
 if [ &quot;${TRIGGER_PARAM_OPCUA_SERVER_BUILD_POLICY}&quot; = &quot;brandnew&quot; ]; then
     rm -rf jenkins/${TRIGGER_PARAM_PLATFORM}
 fi
@@ -301,17 +300,17 @@ if [ ! -d &quot;jenkins/${TRIGGER_PARAM_PLATFORM}&quot; ]; then
 fi
 cd jenkins/${TRIGGER_PARAM_PLATFORM}
 
-${DSERVER_PATH}/build/${TRIGGER_PARAM_PLATFORM}/cmake_opcua_server.sh ${DSERVER_PATH} ${LIBWEINTEK_PATH} ${OPCUA_SDK_PATH} ${GOOGLE_BREAKPAD_PATH} ${INSTALL_PREFIX} RelWithDebInfo
+${OPCUA_SERVER_PATH}/build/${TRIGGER_PARAM_PLATFORM}/cmake_opcua_server.sh ${OPCUA_SERVER_PATH} ${LIBWEINTEK_PATH} ${OPCUA_SDK_PATH} ${GOOGLE_BREAKPAD_PATH} ${INSTALL_PREFIX} RelWithDebInfo
 
 if [ &quot;${TRIGGER_PARAM_OPCUA_SERVER_BUILD_POLICY}&quot; = &quot;clean&quot; ]; then
     make clean
 fi
 
 make install VERBOSE=1
-#cp ${INSTALL_PREFIX}/bin/opcua-server ${DSERVER_PATH}/artifacts/opcua-server.RelWithDebInfo
+#cp ${INSTALL_PREFIX}/bin/opcua-server ${OPCUA_SERVER_PATH}/artifacts/opcua-server.RelWithDebInfo
 
 make install/strip VERBOSE=1
-cp ${INSTALL_PREFIX}/bin/opcua-server ${DSERVER_PATH}/artifacts/opcua-server.RelWithDebInfo
+cp ${INSTALL_PREFIX}/bin/opcua-server ${OPCUA_SERVER_PATH}/artifacts/opcua-server.RelWithDebInfo
 
 if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;Ubuntu&quot; ]; then
     export ENCRYPT_NAME=opcua-server
@@ -325,7 +324,7 @@ else
     fi
     /home/ci/work/crypto e ${INSTALL_PREFIX}/bin/opcua-server ${INSTALL_PREFIX}/bin/${ENCRYPT_NAME}
 fi
-cp ${INSTALL_PREFIX}/bin/${ENCRYPT_NAME} ${DSERVER_PATH}/artifacts</command>
+cp ${INSTALL_PREFIX}/bin/${ENCRYPT_NAME} ${OPCUA_SERVER_PATH}/artifacts</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
