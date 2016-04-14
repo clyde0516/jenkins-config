@@ -1,18 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description>build easy_access_client, easy_access_activator, weintek-p2p for cMT3000</description>
+  <description>build auth_server, admin_client, campagnol_rdv, info_client, update_portal, hmi_dns, session_hwkey_queryer  for 64-bit Linux.</description>
   <keepDependencies>false</keepDependencies>
   <properties>
-    <hudson.model.ParametersDefinitionProperty>
-      <parameterDefinitions>
-        <hudson.model.TextParameterDefinition>
-          <name>PARAM_EAC_VERSION</name>
-          <description></description>
-          <defaultValue>2.3.0</defaultValue>
-        </hudson.model.TextParameterDefinition>
-      </parameterDefinitions>
-    </hudson.model.ParametersDefinitionProperty>
     <jenkins.model.BuildDiscarderProperty>
       <strategy class="hudson.tasks.LogRotator">
         <daysToKeep>-1</daysToKeep>
@@ -73,7 +64,7 @@
   <triggers>
     <jenkins.triggers.ReverseBuildTrigger>
       <spec></spec>
-      <upstreamProjects>libweintek_stable_cMT3000</upstreamProjects>
+      <upstreamProjects>libweintek_stable</upstreamProjects>
       <threshold>
         <name>UNSTABLE</name>
         <ordinal>1</ordinal>
@@ -105,83 +96,52 @@ rm -rf ${WORKSPACE}/weintek-p2p/jenkins</command>
     <hudson.tasks.Shell>
       <command>#!/bin/bash
 
-cd ${WORKSPACE}/weintek-p2p
+export BUILD_TYPE=Release
+export LIBWEINTEK_PATH=${JENKINS_HOME}/jobs/libweintek_stable/workspace
+export INSTALL_PREFIX=/home/ci/work/Ubuntu/build-stable-branch
+export WEINTEK_P2P_PATH=${WORKSPACE}/weintek-p2p
+
+
+cd ${WEINTEK_P2P_PATH}
 cp config_linux.h config.h
 mkdir -p jenkins
 cd jenkins
 
-source /home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
+${WEINTEK_P2P_PATH}/build/Ubuntu/cmake_weintek_p2p.sh ${WEINTEK_P2P_PATH} ${LIBWEINTEK_PATH} ${INSTALL_PREFIX} ${BUILD_TYPE}
 
-export BUILD_TYPE=Release
-export LIBWEINTEK_PATH=${JENKINS_HOME}/jobs/libweintek_stable_cMT3000/workspace
-export LIBWEINTEK_ROOT=${LIBWEINTEK_PATH}
-export INSTALL_PREFIX=/home/ci/work/cMT3000/build-stable-branch
-cmake -DCMAKE_BUILD_TYPE=${BUILD_TYPE} \
-      -DMODEL=E60 \
-      -DGOOGLE_BREAKPAD_DIR=/home/ci/work/cMT3000/google-breakpad \
-      -DCMAKE_INSTALL_PREFIX=${INSTALL_PREFIX} \
-       ..
-      
-cd client
-make VERBOSE=1 install/strip
-
-cd ${INSTALL_PREFIX}/bin
-#upx weintek-p2p</command>
+make VERBOSE=0 install/strip
+</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
       <command>#!/bin/bash
+
+
+export BUILD_TYPE=Release
+export LIBWEINTEK_PATH=${JENKINS_HOME}/jobs/libweintek_stable/workspace
+export RMA_PATH=${WORKSPACE}/rma
+export INSTALL_PREFIX=/home/ci/work/Ubuntu/build-stable-branch
 
 cd ${WORKSPACE}/rma
 mkdir -p jenkins
 cd jenkins
 
-touch ${WORKSPACE}/rma/AuthClient/easy_access_client_manager.bin.cpp
+${RMA_PATH}/build/Ubuntu/cmake_rma.sh ${RMA_PATH} ${LIBWEINTEK_PATH} ${INSTALL_PREFIX} ${BUILD_TYPE}
 
-source /home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
-
-export BUILD_TYPE=Release
-export LIBWEINTEK_PATH=${JENKINS_HOME}/jobs/libweintek_stable_cMT3000/workspace
-export LIBWEINTEK_ROOT=${LIBWEINTEK_PATH}
-export INSTALL_PREFIX=/home/ci/work/cMT3000/build-stable-branch
-export BREAKPAD_INCLUDE_DIR=/home/ci/work/cMT3000/target/sysroots/armv7ahf-vfp-neon-weintek-linux-gnueabi/usr/include/breakpad
-cmake -DCMAKE_BUILD_TYPE=${BUILD_TYPE} \
-      -DMODEL=E60 \
-      -DGOOGLE_BREAKPAD_DIR=/home/ci/work/cMT3000/google-breakpad \
-      -DCMAKE_INSTALL_PREFIX=${INSTALL_PREFIX} \
-      ..
-
-cd AuthClient
-rm -f easy_access_client_manager
-make VERBOSE=1 easy_access_client_manager
-strip easy_access_client_manager
-# upx easy_access_client_manager
-bin2cpp easy_access_client_manager
-cp easy_access_client_manager.bin.cpp  ${WORKSPACE}/rma/AuthClient
-make VERBOSE=1 install/strip
-# make easy_access_client
-# strip easy_access_client
-# upx easy_access_client
-# cp easy_access_client ${INSTALL_PREFIX}/bin
-cd ../RemoteAccessActivator
-make VERBOSE=1 easy_access_activator
-strip easy_access_activator
-cp easy_access_activator ${INSTALL_PREFIX}/bin
-
-
-cd ${INSTALL_PREFIX}/bin
-#upx easy_access_client
-/home/ci/work/crypto e easy_access_client easy_access_client.c30.${PARAM_EAC_VERSION}
-
-</command>
+make install/strip</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
       <command>cd ${WORKSPACE}
-export INSTALL_PREFIX=/home/ci/work/cMT3000/build-stable-branch
+export INSTALL_PREFIX=/home/ci/work/Ubuntu/build-stable-branch
 rm -rf artifacts
 mkdir artifacts
-cp ${INSTALL_PREFIX}/bin/easy_access_client* artifacts
-cp ${INSTALL_PREFIX}/bin/easy_access_activator artifacts
-cp ${INSTALL_PREFIX}/bin/weintek-p2p artifacts</command>
+cp ${INSTALL_PREFIX}/bin/auth_server artifacts
+cp ${INSTALL_PREFIX}/bin/admin_client artifacts
+cp ${INSTALL_PREFIX}/bin/campagnol_rdv artifacts
+cp ${INSTALL_PREFIX}/bin/info_client artifacts
+cp ${INSTALL_PREFIX}/bin/update_portal artifacts
+cp ${INSTALL_PREFIX}/bin/hmi_dns artifacts
+cp ${INSTALL_PREFIX}/bin/session_hwkey_queryer artifacts
+</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
