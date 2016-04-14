@@ -308,9 +308,11 @@ if [ &quot;${TRIGGER_PARAM_OPCUA_SERVER_BUILD_POLICY}&quot; = &quot;clean&quot; 
 fi
 
 make install VERBOSE=1
-cp ${INSTALL_PREFIX}/bin/opcua-server ${DSERVER_PATH}/artifacts/opcua-server.RelWithDebInfo
+#cp ${INSTALL_PREFIX}/bin/opcua-server ${DSERVER_PATH}/artifacts/opcua-server.RelWithDebInfo
 
 make install/strip VERBOSE=1
+cp ${INSTALL_PREFIX}/bin/opcua-server ${DSERVER_PATH}/artifacts/opcua-server.RelWithDebInfo
+
 if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;Ubuntu&quot; ]; then
     export ENCRYPT_NAME=opcua-server
 else
