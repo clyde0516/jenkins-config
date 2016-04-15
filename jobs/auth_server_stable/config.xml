@@ -109,7 +109,7 @@ cd jenkins
 
 ${WEINTEK_P2P_PATH}/build/Ubuntu/cmake_weintek_p2p.sh ${WEINTEK_P2P_PATH} ${LIBWEINTEK_PATH} ${INSTALL_PREFIX} ${BUILD_TYPE}
 
-make VERBOSE=0 install/strip
+make VERBOSE=1 install/strip
 </command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
