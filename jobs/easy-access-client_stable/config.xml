@@ -143,9 +143,8 @@ make VERBOSE=0 install/strip
 
 cd ${INSTALL_PREFIX}/bin
 
-if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;cMT-SVR&quot; ]; then
-    upx weintek-p2p
-fi</command>
+upx weintek-p2p
+</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
       <command>#!/bin/bash
