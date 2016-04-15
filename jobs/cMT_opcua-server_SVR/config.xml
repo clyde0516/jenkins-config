@@ -322,6 +322,7 @@ make install VERBOSE=1
 
 make install/strip VERBOSE=1
 cp ${INSTALL_PREFIX}/bin/opcua-server ${OPCUA_SERVER_PATH}/artifacts/opcua-server.${OPCUA_BUILD_TYPE}
+cp ${INSTALL_PREFIX}/bin/opcua-simple ${OPCUA_SERVER_PATH}/artifacts/opcua-simple.${OPCUA_BUILD_TYPE}
 
 if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;Ubuntu&quot; ]; then
     export ENCRYPT_NAME=opcua-server
