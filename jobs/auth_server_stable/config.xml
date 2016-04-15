@@ -123,6 +123,7 @@ export RMA_PATH=${WORKSPACE}/rma
 export INSTALL_PREFIX=/home/ci/work/Ubuntu/build-stable-branch
 
 cd ${WORKSPACE}/rma
+touch AuthClient/easy_access_client_manager.bin.cpp
 mkdir -p jenkins
 cd jenkins
 
