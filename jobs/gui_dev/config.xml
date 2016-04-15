@@ -113,7 +113,7 @@
 # alter trigger parameter
 
 if [[ ! &quot;`date +&quot;%H%M&quot;`&quot; &lt; &quot;0000&quot; &amp;&amp; ! &quot;`date +&quot;%H%M&quot;`&quot; &gt; &quot;0800&quot; ]]; then
-	export TRIGGER_PARAM_DSERVER_BUILD_POLICY=brandnew
+	export TRIGGER_PARAM_GUI_BUILD_POLICY=brandnew
 fi
 
 # export variables
