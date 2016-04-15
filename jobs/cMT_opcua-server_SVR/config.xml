@@ -85,8 +85,8 @@
           <description></description>
           <choices class="java.util.Arrays$ArrayList">
             <a class="string-array">
-              <string>RelWithDebInfo</string>
               <string>Debug</string>
+              <string>RelWithDebInfo</string>
               <string>Release</string>
             </a>
           </choices>
