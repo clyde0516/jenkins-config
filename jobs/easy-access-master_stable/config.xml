@@ -124,8 +124,9 @@ ${QT_ROOT}/bin/qmake ${EA_PATH}/RemoteAccess.pro -r -spec android-g++ \
         WORK_SPACE_PATH=${WORKSPACE} TOOLCHAIN_ROOT=/home/ci/work/Android/target/sysroots \
         BOOST_ROOT=/opt/boost_1_55_0
 make install INSTALL_ROOT=${INSTALL_PREFIX}/apk
-${QT_ROOT}/bin/androiddeployqt --input android-libEasyAccess.so-deployment-settings.json --release \
-                               --output ${INSTALL_PREFIX}/apk
+${QT_ROOT}/bin/androiddeployqt --input ${EA_PATH}/jenkins/RemoteAccess/android-libEasyAccess.so-deployment-settings.json \
+                               --output ${INSTALL_PREFIX}/apk \
+                               --release
 
 </command>
     </hudson.tasks.Shell>
