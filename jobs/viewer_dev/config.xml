@@ -232,7 +232,7 @@ call %WORK_UTIL_DIR%\script\replace_string.bat &quot;cloudhmi.props&quot; &quot;
 &#xd;
 :: build project &#xd;
 &#xd;
-call build_win32.bat CloudHmi release %TRIGGER_PARAM_VIEWER_BUILD_POLICY%&#xd;
+call build_win32.bat CloudHmi Release %TRIGGER_PARAM_VIEWER_BUILD_POLICY%&#xd;
 copy /y Win32\Release\cMTViewer.exe %WORKSPACE_DIR%\artifacts&#xd;
 copy /y Win32\Release\cMTViewer.pdb %WORKSPACE_DIR%\artifacts&#xd;
 </command>
