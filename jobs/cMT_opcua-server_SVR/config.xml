@@ -236,6 +236,7 @@ echo &quot;================================ sdk ================================
 export OPCUA_SDK_PATH=${WORKSPACE}/opcserver/third-party/opcua-linux
 export LIBWEINTEK_PATH=${WORKSPACE}/libweintek
 export INSTALL_PREFIX=/home/ci/work/${TRIGGER_PARAM_PLATFORM}/${TRIGGER_PARAM_INSTALL_FOLDER}
+export BUILD_EX=&quot;ON&quot;
 
 if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT-SVR&quot; ]; then
     export GOOGLE_BREAKPAD_PATH=/home/ci/work/cMT-SVR/google-breakpad
@@ -263,7 +264,7 @@ if [ ! -d &quot;jenkins/${TRIGGER_PARAM_PLATFORM}&quot; ]; then
 fi
 cd jenkins/${TRIGGER_PARAM_PLATFORM}
 
-${OPCUA_SDK_PATH}/build/${TRIGGER_PARAM_PLATFORM}/cmake_opcua_sdk.sh ${OPCUA_SDK_PATH} ${LIBWEINTEK_PATH} 0 0 ${INSTALL_PREFIX} ${OPCUA_BUILD_TYPE}
+${OPCUA_SDK_PATH}/build/${TRIGGER_PARAM_PLATFORM}/cmake_opcua_sdk.sh ${OPCUA_SDK_PATH} ${LIBWEINTEK_PATH} 0 0 ${INSTALL_PREFIX} ${OPCUA_BUILD_TYPE} ${BUILD_EX}
 
 if [ &quot;${TRIGGER_PARAM_OPCUA_SDK_BUILD_POLICY}&quot; = &quot;clean&quot; ]; then
     make clean
