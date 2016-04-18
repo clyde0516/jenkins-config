@@ -112,13 +112,14 @@ export EA_PATH=${WORKSPACE}/RemoteAccess
 #fi
 
 cd ${EA_PATH}
+mkdir ${INSTALL_PREFIX}/apk
 ln -sf ../rma/AuthClient AuthClient
 mkdir -p jenkins
 cd jenkins
 
 cp -rH ${QT_ROOT}/src/android/java/* ${INSTALL_PREFIX}/apk
 ${QT_ROOT}/bin/qmake ${EA_PATH}/RemoteAccess.pro -r -spec android-g++
-make -j2 install INSTALL_ROOT=${INSTALL_PREFIX}/apk
+make install INSTALL_ROOT=${INSTALL_PREFIX}/apk
 ${QT_ROOT}/bin/androiddeployqt --input RemoteAccess/android-libEasyAccess.so-deployment-settings.json --release
 
 </command>
