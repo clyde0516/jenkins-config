@@ -91,8 +91,8 @@
         <string>cMT-iv5</string>
         <string>cMT-iv5-3000</string>
         <string>Ubuntu</string>
-        <string>win32</string>
         <string>Android</string>
+        <string>win32</string>
       </values>
     </hudson.matrix.TextAxis>
   </axes>
@@ -198,7 +198,7 @@ xcopy /y %WORK_UTIL_DIR%\libraries\sqlite3\lib\*.lib .&#xd;
 &#xd;
 cd ..\..\build\vs2012&#xd;
 copy /y weintek.props.in weintek.props&#xd;
-build_win32.bat weintek release %TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY%</command>
+build_win32.bat weintek Release %TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY%</command>
         </hudson.tasks.BatchFile>
         <hudson.tasks.BatchFile>
           <command>mkdir gtest&#xd;
