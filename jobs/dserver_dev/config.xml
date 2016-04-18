@@ -226,7 +226,7 @@ call %WORK_UTIL_DIR%\script\replace_string.bat &quot;dserver.props&quot; &quot;&
 &#xd;
 :: build project &#xd;
 &#xd;
-call build_win32.bat dserver release %TRIGGER_PARAM_DSERVER_BUILD_POLICY%&#xd;
+call build_win32.bat dserver Release %TRIGGER_PARAM_DSERVER_BUILD_POLICY%&#xd;
 copy /y dserverRelease\dserver.exe %WORKSPACE_DIR%\artifacts&#xd;
 copy /y dserverRelease\dserver.pdb %WORKSPACE_DIR%\artifacts&#xd;
 </command>
