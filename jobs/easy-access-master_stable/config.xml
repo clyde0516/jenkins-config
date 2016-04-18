@@ -88,8 +88,7 @@
         <useBuildTime>true</useBuildTime>
       </condition>
       <buildStep class="hudson.tasks.Shell">
-        <command>rm -rf ${WORKSPACE}/rma/jenkins
-rm -rf ${WORKSPACE}/RemoteAccess/jenkins</command>
+        <command>rm -rf ${WORKSPACE}/RemoteAccess/jenkins</command>
       </buildStep>
       <runner class="org.jenkins_ci.plugins.run_condition.BuildStepRunner$Fail" plugin="run-condition@1.0"/>
     </org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder>
@@ -110,6 +109,9 @@ export EA_PATH=${WORKSPACE}/RemoteAccess
     export CXX=${TOOLCHAIN}/bin/arm-linux-androideabi-g++
     export QT_ROOT=/opt/Qt5.5.1/5.5/android_armv7
 #fi
+
+cd ${WORKSPACE}
+ln -sf /home/ci/work/libweintek-stable libweintek
 
 cd ${EA_PATH}
 mkdir ${INSTALL_PREFIX}/apk
