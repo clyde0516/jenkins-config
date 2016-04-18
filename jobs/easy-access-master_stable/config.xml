@@ -112,6 +112,7 @@ export EA_PATH=${WORKSPACE}/RemoteAccess
 #fi
 
 cd ${EA_PATH}
+ln -sf ../rma/AuthClient AuthClient
 mkdir -p jenkins
 cd jenkins
 
