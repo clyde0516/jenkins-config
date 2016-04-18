@@ -92,6 +92,7 @@
         <string>cMT-iv5-3000</string>
         <string>Ubuntu</string>
         <string>win32</string>
+        <string>Android</string>
       </values>
     </hudson.matrix.TextAxis>
   </axes>
@@ -145,6 +146,15 @@ fi
 cd jenkins/${MATRIX_AXIS_PLATFORM}
 
 # generate makefile
+
+if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;Android&quot; ]; then
+	export ANDROID_CMAKE_FILE=/home/ci/android-cmake/android.toolchain.cmake
+	export ANDROID_SDK_ROOT=/home/ci/Android/Sdk
+	export ANDROID_NDK_ROOT=/home/ci/Android/android-ndk
+    export TOOLCHAIN=/home/ci/work/Android/target/sysroots/android-toolchain-armv7
+    export CC=${TOOLCHAIN}/bin/arm-linux-androideabi-gcc
+    export CXX=${TOOLCHAIN}/bin/arm-linux-androideabi-g++
+fi
 
 ${LIBWEINTEK_PATH}/build/${PLATFORM_BUILD_FOLDER}/cmake_libweintek.sh ${LIBWEINTEK_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} RelWithDebInfo
 
