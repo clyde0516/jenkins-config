@@ -127,7 +127,9 @@ ${QT_ROOT}/bin/qmake ${EA_PATH}/RemoteAccess.pro -r -spec android-g++ \
 make install INSTALL_ROOT=${INSTALL_PREFIX}/apk
 ${QT_ROOT}/bin/androiddeployqt --input ${EA_PATH}/jenkins/RemoteAccess/android-libEasyAccess.so-deployment-settings.json \
                                --output ${INSTALL_PREFIX}/apk \
-                               --release
+                               --sign ${EA_PATH}/android/android_release_key.keystore weintek \
+                               --storepass 1151511515 \
+                               --keypass asdzxc123
 
 </command>
     </hudson.tasks.Shell>
@@ -136,7 +138,7 @@ ${QT_ROOT}/bin/androiddeployqt --input ${EA_PATH}/jenkins/RemoteAccess/android-l
 export INSTALL_PREFIX=/home/ci/work/Android/build-stable-branch
 rm -rf artifacts
 mkdir artifacts
-cp ${INSTALL_PREFIX}/apk/*.apk artifacts
+cp ${INSTALL_PREFIX}/apk/bin/*.apk artifacts
 </command>
     </hudson.tasks.Shell>
   </builders>
