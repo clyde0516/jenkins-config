@@ -46,7 +46,7 @@
   <triggers>
     <jenkins.triggers.ReverseBuildTrigger>
       <spec></spec>
-      <upstreamProjects>gui_dev_win, </upstreamProjects>
+      <upstreamProjects>gui_dev_win,</upstreamProjects>
       <threshold>
         <name>UNSTABLE</name>
         <ordinal>1</ordinal>
