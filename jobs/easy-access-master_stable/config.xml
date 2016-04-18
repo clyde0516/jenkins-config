@@ -105,7 +105,7 @@ export EA_PATH=${WORKSPACE}/RemoteAccess
 	export ANDROID_CMAKE_FILE=/home/ci/android-cmake/android.toolchain.cmake
 	export ANDROID_SDK_ROOT=/home/ci/Android/Sdk
 	export ANDROID_NDK_ROOT=/home/ci/Android/android-ndk
-    export TOOLCHAIN=/home/ci/work/Android/target/sysroots/android-toolchain-armv7
+    export TOOLCHAIN=/home/ci/work/Android/target/sysroots/android-toolchain-arm
     export CC=${TOOLCHAIN}/bin/arm-linux-androideabi-gcc
     export CXX=${TOOLCHAIN}/bin/arm-linux-androideabi-g++
     export QT_ROOT=/opt/Qt5.5.1/5.5/android_armv7
@@ -118,7 +118,9 @@ mkdir -p jenkins
 cd jenkins
 
 cp -rH ${QT_ROOT}/src/android/java/* ${INSTALL_PREFIX}/apk
-${QT_ROOT}/bin/qmake ${EA_PATH}/RemoteAccess.pro -r -spec android-g++
+${QT_ROOT}/bin/qmake ${EA_PATH}/RemoteAccess.pro -r -spec android-g++ \
+        WORK_SPACE_PATH=${WORKSPACE} TOOLCHAIN_ROOT=/home/ci/work/Android/target/sysroots \
+        BOOST_ROOT=/opt/boost_1_55_0
 make install INSTALL_ROOT=${INSTALL_PREFIX}/apk
 ${QT_ROOT}/bin/androiddeployqt --input RemoteAccess/android-libEasyAccess.so-deployment-settings.json --release
 
