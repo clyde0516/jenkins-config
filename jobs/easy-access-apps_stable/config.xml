@@ -141,7 +141,7 @@
         <string>master</string>
         <string>windows</string>
       </values>
-      <label>linux, windows</label>
+      <label>linux,windows</label>
       <ignoreOffline>false</ignoreOffline>
     </org.jenkinsci.plugins.elasticaxisplugin.ElasticAxis>
   </axes>
