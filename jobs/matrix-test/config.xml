@@ -27,6 +27,12 @@
   <triggers/>
   <concurrentBuild>false</concurrentBuild>
   <axes>
+    <org.jenkinsci.plugins.elasticaxisplugin.ElasticAxis plugin="elastic-axis@1.2">
+      <name>MATRIX_ELASTIC_AXIS_NODE</name>
+      <values/>
+      <label>windows linux </label>
+      <ignoreOffline>true</ignoreOffline>
+    </org.jenkinsci.plugins.elasticaxisplugin.ElasticAxis>
     <hudson.matrix.LabelAxis>
       <name>MATRIX_AXIS_NODE</name>
       <values>
