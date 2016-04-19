@@ -1,5 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
+  <actions/>
+  <description></description>
   <keepDependencies>false</keepDependencies>
   <properties/>
   <scm class="hudson.scm.NullSCM"/>
@@ -9,7 +11,34 @@
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <triggers/>
   <concurrentBuild>false</concurrentBuild>
-  <builders/>
+  <builders>
+    <hudson.plugins.groovy.SystemGroovy plugin="groovy@1.29">
+      <scriptSource class="hudson.plugins.groovy.StringScriptSource">
+        <command>int exitcode = 0
+
+for (slave in hudson.model.Hudson.instance.slaves)
+{
+    if (slave.getComputer().isOffline().toString() == &quot;true&quot;)
+    {
+        println(&apos;Slave &apos; + slave.name + &quot; is offline!&quot;); 
+        exitcode++;
+    }
+}
+
+if (exitcode &gt; 0)
+{
+    println(&quot;We have some slaves down!&quot;);
+    return 1;
+}
+else
+{
+    println(&quot;All slaves are online, cheers!&quot;);
+}</command>
+      </scriptSource>
+      <bindings></bindings>
+      <classpath></classpath>
+    </hudson.plugins.groovy.SystemGroovy>
+  </builders>
   <publishers/>
   <buildWrappers/>
 </project>
