@@ -211,6 +211,9 @@ ${QT_ROOT}/bin/androiddeployqt --input ${EA_PATH}/jenkins/RemoteAccess/android-l
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
       <command>cd ${WORKSPACE}
+
+cp ${WORKSPACE}/weintek-p2p/android/WeintekP2P/app/build/outputs/apk/app-release.apk artifacts/weintek-p2p.apk
+
 export INSTALL_PREFIX=/home/ci/work/Android/build-stable-branch
 rm -rf artifacts
 mkdir artifacts
