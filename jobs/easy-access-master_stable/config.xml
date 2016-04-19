@@ -139,6 +139,9 @@ cd ${WORKSPACE}/weintek-p2p
 cp config_linux.h config.h
 mkdir -p jenkins
 mkdir -p android/WeintekP2P/app/src/main/jniLibs/armeabi-v7a
+
+cp android/AndroidManifest.xml android/WeintekP2P/app/src/main/AndroidManifest.xml
+
 cd jenkins
 cmake -DCMAKE_TOOLCHAIN_FILE=${ANDROID_CMAKE_FILE} \
       -DANDROID_NDK=${ANDROID_NDK_ROOT}             \
