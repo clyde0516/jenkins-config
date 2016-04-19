@@ -155,6 +155,7 @@ ${QT_ROOT}/bin/androiddeployqt --input ${EA_PATH}/jenkins/RemoteAccess/android-l
 
 
 cd ${WORKSPACE}/weintek-p2p
+cp config_linux.h config.h
 mkdir -p jenkins
 cd jenkins
 cmake -DCMAKE_TOOLCHAIN_FILE=${ANDROID_CMAKE_FILE} \
