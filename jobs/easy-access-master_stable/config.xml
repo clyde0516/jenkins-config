@@ -137,6 +137,7 @@ export JAVA_HOME=/home/ci/jdk1.7.0_71
 cd ${WORKSPACE}/weintek-p2p
 cp config_linux.h config.h
 mkdir -p jenkins
+mkdir -p android/WeintekP2P/app/src/main/jniLibs/armeabi-v7a
 cd jenkins
 cmake -DCMAKE_TOOLCHAIN_FILE=${ANDROID_CMAKE_FILE} \
       -DANDROID_NDK=${ANDROID_NDK_ROOT}             \
