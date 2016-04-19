@@ -76,13 +76,15 @@
         <string>win32</string>
       </values>
     </hudson.matrix.TextAxis>
-    <hudson.matrix.LabelAxis>
+    <org.jenkinsci.plugins.elasticaxisplugin.ElasticAxis plugin="elastic-axis@1.2">
       <name>MATRIX_AXIS_NODE</name>
       <values>
-        <string>linux</string>
+        <string>master</string>
         <string>windows</string>
       </values>
-    </hudson.matrix.LabelAxis>
+      <label>linux,windows</label>
+      <ignoreOffline>false</ignoreOffline>
+    </org.jenkinsci.plugins.elasticaxisplugin.ElasticAxis>
   </axes>
   <combinationFilter>(MATRIX_AXIS_NODE == &quot;windows&quot; &amp;&amp; MATRIX_AXIS_PLATFORM == &quot;win32&quot;) || (MATRIX_AXIS_NODE != &quot;windows&quot; &amp;&amp; MATRIX_AXIS_PLATFORM != &quot;win32&quot;)</combinationFilter>
   <builders>
@@ -90,7 +92,7 @@
       <runner class="org.jenkins_ci.plugins.run_condition.BuildStepRunner$Fail" plugin="run-condition@1.0"/>
       <runCondition class="org.jenkins_ci.plugins.run_condition.core.StringsMatchCondition" plugin="run-condition@1.0">
         <arg1>${MATRIX_AXIS_NODE}</arg1>
-        <arg2>linux</arg2>
+        <arg2>master</arg2>
         <ignoreCase>false</ignoreCase>
       </runCondition>
       <conditionalbuilders>
