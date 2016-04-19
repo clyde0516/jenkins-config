@@ -80,13 +80,6 @@
   </triggers>
   <concurrentBuild>false</concurrentBuild>
   <axes>
-    <hudson.matrix.LabelAxis>
-      <name>MATRIX_AXIS_NODE</name>
-      <values>
-        <string>linux</string>
-        <string>windows</string>
-      </values>
-    </hudson.matrix.LabelAxis>
     <hudson.matrix.TextAxis>
       <name>MATRIX_AXIS_PLATFORM</name>
       <values>
@@ -96,6 +89,15 @@
         <string>win32</string>
       </values>
     </hudson.matrix.TextAxis>
+    <org.jenkinsci.plugins.elasticaxisplugin.ElasticAxis plugin="elastic-axis@1.2">
+      <name>MATRIX_AXIS_NODE</name>
+      <values>
+        <string>master</string>
+        <string>windows</string>
+      </values>
+      <label>linux,windows</label>
+      <ignoreOffline>true</ignoreOffline>
+    </org.jenkinsci.plugins.elasticaxisplugin.ElasticAxis>
   </axes>
   <combinationFilter>(MATRIX_AXIS_NODE == &quot;windows&quot; &amp;&amp; MATRIX_AXIS_PLATFORM == &quot;win32&quot;) || (MATRIX_AXIS_NODE != &quot;windows&quot; &amp;&amp; MATRIX_AXIS_PLATFORM != &quot;win32&quot;)</combinationFilter>
   <builders>
