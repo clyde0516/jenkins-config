@@ -256,7 +256,7 @@ call build_win32.bat got ProductionRelease %TRIGGER_PARAM_GUI_BUILD_POLICY%&#xd;
 copy /y Win32\ProductionRelease\libgui20.lib %WORKSPACE_DIR%\artifacts&#xd;
 copy /y Win32\ProductionRelease\libgui20.dll %WORKSPACE_DIR%\artifacts&#xd;
 copy /y Win32\ProductionRelease\libgui20.pdb %WORKSPACE_DIR%\artifacts&#xd;
-copy /y gotRelease\got.exe&#xd;
+copy /y gotRelease\got.exe %WORKSPACE_DIR%\artifacts&#xd;
 </command>
         </hudson.tasks.BatchFile>
         <hudson.tasks.BatchFile>
