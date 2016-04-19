@@ -33,6 +33,13 @@
       <label>windows linux </label>
       <ignoreOffline>true</ignoreOffline>
     </org.jenkinsci.plugins.elasticaxisplugin.ElasticAxis>
+    <hudson.matrix.LabelAxis>
+      <name>MATRIX_AXIS_NODE</name>
+      <values>
+        <string>linux</string>
+        <string>windows</string>
+      </values>
+    </hudson.matrix.LabelAxis>
     <hudson.matrix.TextAxis>
       <name>MATRIX_AXIS_PLATFORM</name>
       <values>
