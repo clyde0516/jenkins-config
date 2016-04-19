@@ -138,7 +138,7 @@ ${QT_ROOT}/bin/androiddeployqt --input ${EA_PATH}/jenkins/RemoteAccess/android-l
 export INSTALL_PREFIX=/home/ci/work/Android/build-stable-branch
 rm -rf artifacts
 mkdir artifacts
-cp ${INSTALL_PREFIX}/apk/bin/*.apk artifacts
+cp ${INSTALL_PREFIX}/apk/bin/QtApp*.apk artifacts/EasyAccess2.apk
 </command>
     </hudson.tasks.Shell>
   </builders>
