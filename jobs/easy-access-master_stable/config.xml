@@ -55,6 +55,26 @@
           </hudson.plugins.git.extensions.impl.RelativeTargetDirectory>
         </extensions>
       </hudson.plugins.git.GitSCM>
+      <hudson.plugins.git.GitSCM plugin="git@2.4.2">
+        <configVersion>2</configVersion>
+        <userRemoteConfigs>
+          <hudson.plugins.git.UserRemoteConfig>
+            <url>gitolite@192.168.1.220:campagnol.git</url>
+          </hudson.plugins.git.UserRemoteConfig>
+        </userRemoteConfigs>
+        <branches>
+          <hudson.plugins.git.BranchSpec>
+            <name>*/stable</name>
+          </hudson.plugins.git.BranchSpec>
+        </branches>
+        <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+        <submoduleCfg class="list"/>
+        <extensions>
+          <hudson.plugins.git.extensions.impl.RelativeTargetDirectory>
+            <relativeTargetDir>weintek-p2p</relativeTargetDir>
+          </hudson.plugins.git.extensions.impl.RelativeTargetDirectory>
+        </extensions>
+      </hudson.plugins.git.GitSCM>
     </scms>
   </scm>
   <canRoam>true</canRoam>
@@ -88,7 +108,8 @@
         <useBuildTime>true</useBuildTime>
       </condition>
       <buildStep class="hudson.tasks.Shell">
-        <command>rm -rf ${WORKSPACE}/RemoteAccess/jenkins</command>
+        <command>rm -rf ${WORKSPACE}/RemoteAccess/jenkins
+rm -rf ${WORKSPACE}/weintek-p2p/jenkins</command>
       </buildStep>
       <runner class="org.jenkins_ci.plugins.run_condition.BuildStepRunner$Fail" plugin="run-condition@1.0"/>
     </org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder>
@@ -131,6 +152,18 @@ ${QT_ROOT}/bin/androiddeployqt --input ${EA_PATH}/jenkins/RemoteAccess/android-l
                                --storepass 1151511515 \
                                --keypass asdzxc123
 
+
+cd ${WORKSPACE}/weintek-p2p
+mkdir -p jenkins
+cd jenkins
+cmake -DCMAKE_TOOLCHAIN_FILE=${ANDROID_CMAKE_FILE} \
+      -DANDROID_NDK=${ANDROID_NDK_ROOT}             \
+      -DCMAKE_BUILD_TYPE=Release                     \
+      -DCMAKE_INSTALL_PREFIX=${TOOLCHAIN}/sysroot/usr \
+      -DANDROID_ABI=&quot;armeabi-v7a&quot;                      \
+      ..
+
+make install
 </command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
