@@ -132,6 +132,23 @@ export LIBWEINTEK_ROOT=${LIBWEINTEK_PATH}
     export QT_ROOT=/opt/Qt5.5.1/5.5/android_armv7
 #fi
 
+# build weintek-p2p.so
+cd ${WORKSPACE}/weintek-p2p
+cp config_linux.h config.h
+mkdir -p jenkins
+cd jenkins
+cmake -DCMAKE_TOOLCHAIN_FILE=${ANDROID_CMAKE_FILE} \
+      -DANDROID_NDK=${ANDROID_NDK_ROOT}             \
+      -DCMAKE_BUILD_TYPE=Release                     \
+      -DCMAKE_INSTALL_PREFIX=${TOOLCHAIN}/sysroot/usr \
+      -DANDROID_ABI=&quot;armeabi-v7a&quot;                      \
+      ..
+
+cd client
+make install
+
+
+# build master app apk
 cd ${WORKSPACE}
 ln -sf /home/ci/work/libweintek-stable libweintek
 
@@ -154,19 +171,6 @@ ${QT_ROOT}/bin/androiddeployqt --input ${EA_PATH}/jenkins/RemoteAccess/android-l
                                --keypass asdzxc123
 
 
-cd ${WORKSPACE}/weintek-p2p
-cp config_linux.h config.h
-mkdir -p jenkins
-cd jenkins
-cmake -DCMAKE_TOOLCHAIN_FILE=${ANDROID_CMAKE_FILE} \
-      -DANDROID_NDK=${ANDROID_NDK_ROOT}             \
-      -DCMAKE_BUILD_TYPE=Release                     \
-      -DCMAKE_INSTALL_PREFIX=${TOOLCHAIN}/sysroot/usr \
-      -DANDROID_ABI=&quot;armeabi-v7a&quot;                      \
-      ..
-
-cd client
-make install
 </command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
