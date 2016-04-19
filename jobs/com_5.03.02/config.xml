@@ -83,7 +83,7 @@
         <string>windows</string>
       </values>
       <label>linux,windows</label>
-      <ignoreOffline>false</ignoreOffline>
+      <ignoreOffline>true</ignoreOffline>
     </org.jenkinsci.plugins.elasticaxisplugin.ElasticAxis>
   </axes>
   <combinationFilter>(MATRIX_AXIS_NODE == &quot;windows&quot; &amp;&amp; MATRIX_AXIS_PLATFORM == &quot;win32&quot;) || (MATRIX_AXIS_NODE != &quot;windows&quot; &amp;&amp; MATRIX_AXIS_PLATFORM != &quot;win32&quot;)</combinationFilter>
