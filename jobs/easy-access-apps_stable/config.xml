@@ -137,8 +137,11 @@
     </hudson.matrix.TextAxis>
     <org.jenkinsci.plugins.elasticaxisplugin.ElasticAxis plugin="elastic-axis@1.2">
       <name>MATRIX_AXIS_NODE</name>
-      <values/>
-      <label>linux windows</label>
+      <values>
+        <string>master</string>
+        <string>windows</string>
+      </values>
+      <label>linux, windows</label>
       <ignoreOffline>false</ignoreOffline>
     </org.jenkinsci.plugins.elasticaxisplugin.ElasticAxis>
   </axes>
