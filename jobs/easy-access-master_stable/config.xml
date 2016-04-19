@@ -120,6 +120,7 @@ export BUILD_TYPE=Release
 export LIBWEINTEK_PATH=${JENKINS_HOME}/jobs/libweintek_stable/workspace
 export INSTALL_PREFIX=/home/ci/work/Android/build-stable-branch
 export EA_PATH=${WORKSPACE}/RemoteAccess
+export LIBWEINTEK_ROOT=${LIBWEINTEK_PATH}
 
 #if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;Android&quot; ]; then
 	export ANDROID_CMAKE_FILE=/home/ci/android-cmake/android.toolchain.cmake
@@ -163,6 +164,7 @@ cmake -DCMAKE_TOOLCHAIN_FILE=${ANDROID_CMAKE_FILE} \
       -DANDROID_ABI=&quot;armeabi-v7a&quot;                      \
       ..
 
+cd client
 make install
 </command>
     </hudson.tasks.Shell>
