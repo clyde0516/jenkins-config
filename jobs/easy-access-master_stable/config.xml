@@ -179,6 +179,71 @@ ${QT_ROOT}/bin/androiddeployqt --input ${EA_PATH}/jenkins/RemoteAccess/android-l
 </command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
+      <command>#!/bin/bash
+
+export BUILD_TYPE=Release
+export LIBWEINTEK_PATH=${JENKINS_HOME}/jobs/libweintek_stable/workspace
+export INSTALL_PREFIX=/home/ci/work/Android/build-stable-branch
+export EA_PATH=${WORKSPACE}/RemoteAccess
+export LIBWEINTEK_ROOT=${LIBWEINTEK_PATH}
+export JAVA_HOME=/home/ci/jdk1.7.0_71
+
+#if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;Android&quot; ]; then
+	export ANDROID_CMAKE_FILE=/home/ci/android-cmake/android.toolchain.cmake
+	export ANDROID_SDK_ROOT=/home/ci/Android/Sdk
+	export ANDROID_NDK_ROOT=/home/ci/Android/android-ndk
+    export TOOLCHAIN=/home/ci/work/Android/target/sysroots/android-toolchain-arm
+    export CC=${TOOLCHAIN}/bin/arm-linux-androideabi-gcc
+    export CXX=${TOOLCHAIN}/bin/arm-linux-androideabi-g++
+    export QT_ROOT=/opt/Qt5.5.1/5.5/android_armv7
+#fi
+
+# build weintek-p2p.so
+cd ${WORKSPACE}/weintek-p2p
+cp config_linux.h config.h
+mkdir -p jenkins
+cd jenkins
+cmake -DCMAKE_TOOLCHAIN_FILE=${ANDROID_CMAKE_FILE} \
+      -DANDROID_NDK=${ANDROID_NDK_ROOT}             \
+      -DCMAKE_BUILD_TYPE=Release                     \
+      -DCMAKE_INSTALL_PREFIX=${TOOLCHAIN}/sysroot/usr \
+      -DANDROID_ABI=&quot;armeabi-v7a&quot;                      \
+      ..
+
+cd client
+make install
+
+cp ${TOOLCHAIN}/sysroot/usr/lib/libweintek_p2p.so ${WORKSPACE}/weintek-p2p/android/WeintekP2P/app/src/main/jniLibs/armeabi-v7a
+cd ${WORKSPACE}/weintek-p2p/android/WeintekP2P
+./gradlew assembleRelease
+
+
+# build master app apk
+cd ${WORKSPACE}
+ln -sf /home/ci/work/libweintek-stable libweintek
+
+cd ${EA_PATH}
+mkdir ${INSTALL_PREFIX}/apk
+ln -sf ../rma/AuthClient AuthClient
+mkdir -p jenkins
+cd jenkins
+
+cp -rH ${QT_ROOT}/src/android/java/* ${INSTALL_PREFIX}/apk
+${QT_ROOT}/bin/qmake ${EA_PATH}/RemoteAccess.pro -r -spec android-g++ \
+        WORK_SPACE_PATH=${WORKSPACE} \
+        TOOLCHAIN_ROOT=/home/ci/work/Android/target/sysroots \
+        BOOST_ROOT=/opt/boost_1_55_0
+make install INSTALL_ROOT=${INSTALL_PREFIX}/apk
+${QT_ROOT}/bin/androiddeployqt --input ${EA_PATH}/jenkins/RemoteAccess/android-libEasyAccess.so-deployment-settings.json \
+                               --output ${INSTALL_PREFIX}/apk \
+                               --sign ${EA_PATH}/android/android_release_key.keystore weintek \
+                               --storepass 1151511515 \
+                               --keypass asdzxc123
+
+
+</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
       <command>cd ${WORKSPACE}
 export INSTALL_PREFIX=/home/ci/work/Android/build-stable-branch
 rm -rf artifacts
