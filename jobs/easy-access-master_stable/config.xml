@@ -133,7 +133,7 @@ export JAVA_HOME=/home/ci/jdk1.7.0_71
     export QT_ROOT=/opt/Qt5.5.1/5.5/android_armv7
 #fi
 
-# build weintek-p2p.so
+# build weintek-p2p
 cd ${WORKSPACE}/weintek-p2p
 cp config_linux.h config.h
 mkdir -p jenkins
@@ -151,30 +151,6 @@ make install
 cp ${TOOLCHAIN}/sysroot/usr/lib/libweintek_p2p.so ${WORKSPACE}/weintek-p2p/android/WeintekP2P/app/src/main/jniLibs/armeabi-v7a
 cd ${WORKSPACE}/weintek-p2p/android/WeintekP2P
 ./gradlew assembleRelease
-
-
-# build master app apk
-cd ${WORKSPACE}
-ln -sf /home/ci/work/libweintek-stable libweintek
-
-cd ${EA_PATH}
-mkdir ${INSTALL_PREFIX}/apk
-ln -sf ../rma/AuthClient AuthClient
-mkdir -p jenkins
-cd jenkins
-
-cp -rH ${QT_ROOT}/src/android/java/* ${INSTALL_PREFIX}/apk
-${QT_ROOT}/bin/qmake ${EA_PATH}/RemoteAccess.pro -r -spec android-g++ \
-        WORK_SPACE_PATH=${WORKSPACE} \
-        TOOLCHAIN_ROOT=/home/ci/work/Android/target/sysroots \
-        BOOST_ROOT=/opt/boost_1_55_0
-make install INSTALL_ROOT=${INSTALL_PREFIX}/apk
-${QT_ROOT}/bin/androiddeployqt --input ${EA_PATH}/jenkins/RemoteAccess/android-libEasyAccess.so-deployment-settings.json \
-                               --output ${INSTALL_PREFIX}/apk \
-                               --sign ${EA_PATH}/android/android_release_key.keystore weintek \
-                               --storepass 1151511515 \
-                               --keypass asdzxc123
-
 
 </command>
     </hudson.tasks.Shell>
@@ -197,25 +173,6 @@ export JAVA_HOME=/home/ci/jdk1.7.0_71
     export CXX=${TOOLCHAIN}/bin/arm-linux-androideabi-g++
     export QT_ROOT=/opt/Qt5.5.1/5.5/android_armv7
 #fi
-
-# build weintek-p2p.so
-cd ${WORKSPACE}/weintek-p2p
-cp config_linux.h config.h
-mkdir -p jenkins
-cd jenkins
-cmake -DCMAKE_TOOLCHAIN_FILE=${ANDROID_CMAKE_FILE} \
-      -DANDROID_NDK=${ANDROID_NDK_ROOT}             \
-      -DCMAKE_BUILD_TYPE=Release                     \
-      -DCMAKE_INSTALL_PREFIX=${TOOLCHAIN}/sysroot/usr \
-      -DANDROID_ABI=&quot;armeabi-v7a&quot;                      \
-      ..
-
-cd client
-make install
-
-cp ${TOOLCHAIN}/sysroot/usr/lib/libweintek_p2p.so ${WORKSPACE}/weintek-p2p/android/WeintekP2P/app/src/main/jniLibs/armeabi-v7a
-cd ${WORKSPACE}/weintek-p2p/android/WeintekP2P
-./gradlew assembleRelease
 
 
 # build master app apk
