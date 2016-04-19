@@ -151,7 +151,7 @@
       <runner class="org.jenkins_ci.plugins.run_condition.BuildStepRunner$Fail" plugin="run-condition@1.0"/>
       <runCondition class="org.jenkins_ci.plugins.run_condition.core.StringsMatchCondition" plugin="run-condition@1.0">
         <arg1>${MATRIX_AXIS_NODE}-${MATRIX_AXIS_PLATFORM}</arg1>
-        <arg2>linux-Android</arg2>
+        <arg2>master-Android</arg2>
         <ignoreCase>false</ignoreCase>
       </runCondition>
       <conditionalbuilders>
