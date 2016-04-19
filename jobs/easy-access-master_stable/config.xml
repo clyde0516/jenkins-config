@@ -122,6 +122,7 @@ export INSTALL_PREFIX=/home/ci/work/Android/build-stable-branch
 export EA_PATH=${WORKSPACE}/RemoteAccess
 export LIBWEINTEK_ROOT=${LIBWEINTEK_PATH}
 export JAVA_HOME=/home/ci/jdk1.7.0_71
+export ANDROID_HOME=/home/ci/Android/Sdk
 
 #if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;Android&quot; ]; then
 	export ANDROID_CMAKE_FILE=/home/ci/android-cmake/android.toolchain.cmake
