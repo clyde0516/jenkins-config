@@ -147,6 +147,10 @@ cmake -DCMAKE_TOOLCHAIN_FILE=${ANDROID_CMAKE_FILE} \
 cd client
 make install
 
+cp ${TOOLCHAIN}/sysroot/usr/lib/libweintek_p2p.so ${WORKSPACE}/weintek-p2p/android/WeintekP2P/app/src/main/jniLibs/armeabi-v7a
+cd ${WORKSPACE}/weintek-p2p/android/WeintekP2P
+./gradlew assembleRelease
+
 
 # build master app apk
 cd ${WORKSPACE}
