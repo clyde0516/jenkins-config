@@ -301,6 +301,10 @@ copy /y client\Release\weintek-p2p.exe %WORKSPACE_DIR%\artifacts</command>
 set WORKSPACE_DIR=%cd%&#xd;
 mkdir %WORKSPACE_DIR%\artifacts&#xd;
 cd %WORKSPACE_DIR%\RemoteAccess&#xd;
+&#xd;
+msbuild.exe weintek-p2p.sln /nologo /t:Build /p:Configuration=&quot;Release&quot; /property:Platform=&quot;Win32&quot;&#xd;
+&#xd;
+copy /y &quot;Win32\Release\EasyAccess 2.0.exe&quot; %WORKSPACE_DIR%\artifacts&#xd;
 </command>
         </hudson.tasks.BatchFile>
       </conditionalbuilders>
