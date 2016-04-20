@@ -279,6 +279,7 @@ set WORKSPACE_DIR=%cd%&#xd;
 mkdir %WORKSPACE_DIR%\artifacts&#xd;
 cd %WORKSPACE_DIR%\weintek-p2p&#xd;
 copy /y config_cygwin.h config.h&#xd;
+mkdir %WORKSPACE_DIR%\weintek-p2p\build\vs2012&#xd;
 cd %WORKSPACE_DIR%\weintek-p2p\build\vs2012&#xd;
 &#xd;
 set LIBWEINTEK_ROOT=C:\jenkins\workspace\libweintek_stable\MATRIX_AXIS_NODE\windows\MATRIX_AXIS_PLATFORM\win32&#xd;
