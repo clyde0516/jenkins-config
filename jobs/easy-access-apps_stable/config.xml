@@ -278,6 +278,7 @@ cp ${INSTALL_PREFIX}/apk/bin/QtApp*.apk artifacts/EasyAccess2.apk
 set WORKSPACE_DIR=%cd%&#xd;
 cd %WORKSPACE_DIR%\weintek-p2p\build\vs2012&#xd;
 &#xd;
+&quot;C:\Program Files (x86)\CMake\bin\cmake.exe&quot; -G &quot;Visual Studio 11 2012&quot; -DBoost_INCLUDE_DIR=&quot;C:\DevEnv\boost_1_60_0&quot; ..\..&#xd;
 msbuild.exe weintek-p2p.sln /nologo /t:Build /p:Configuration=&quot;Release&quot; /property:Platform=&quot;Win32&quot;&#xd;
 &#xd;
 copy /y client\Release\weintek-p2p.exe %WORKSPACE_DIR%\artifacts</command>
