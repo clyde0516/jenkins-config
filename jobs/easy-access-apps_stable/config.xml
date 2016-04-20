@@ -276,6 +276,28 @@ cp ${INSTALL_PREFIX}/apk/bin/QtApp*.apk artifacts/EasyAccess2.apk
           <command>call &quot;C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\vcvarsall.bat&quot; x86&#xd;
 &#xd;
 set WORKSPACE_DIR=%cd%&#xd;
+mkdir %WORKSPACE_DIR%\artifacts&#xd;
+cd %WORKSPACE_DIR%\rma&#xd;
+mkdir %WORKSPACE_DIR%\rma\build\vs2012&#xd;
+cd %WORKSPACE_DIR%\rma\build\vs2012&#xd;
+&#xd;
+set LIBWEINTEK_ROOT=C:\jenkins\workspace\libweintek_stable\MATRIX_AXIS_NODE\windows\MATRIX_AXIS_PLATFORM\win32&#xd;
+set PTHREAD_INCLUDE_DIR=C:\jenkins\workspace\libweintek_stable\MATRIX_AXIS_NODE\windows\MATRIX_AXIS_PLATFORM\win32\third-party\pthreads-w32-2-9-1\include&#xd;
+set PTHREAD_LIB_DIR=C:\jenkins\workspace\libweintek_stable\MATRIX_AXIS_NODE\windows\MATRIX_AXIS_PLATFORM\win32\third-party\pthreads-w32-2-9-1\lib\x86&#xd;
+set EXPAT_DIR=C:\jenkins\workspace\libweintek_stable\MATRIX_AXIS_NODE\windows\MATRIX_AXIS_PLATFORM\win32\third-party\expat-2.1.0&#xd;
+set WINSOCK2_INCLUDE_DIR=C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\Include&#xd;
+set OPENSSL_INCLUDE_DIR=C:\DevEnv\OpenSSL-Win32\include&#xd;
+set OPENSSL_LIB_DIR=C:\DevEnv\OpenSSL-Win32\lib\VC&#xd;
+&#xd;
+&quot;C:\Program Files (x86)\CMake\bin\cmake.exe&quot; -G &quot;Visual Studio 11 2012&quot; -DBoost_INCLUDE_DIR=&quot;C:\DevEnv\boost_1_60_0&quot; ..\..&#xd;
+msbuild.exe rma.sln /nologo /t:auth_client /p:Configuration=&quot;Release&quot; /property:Platform=&quot;Win32&quot;&#xd;
+&#xd;
+copy /y AuthClient\Release\auth_client.lib %LIBWEINTEK_ROOT%\lib</command>
+        </hudson.tasks.BatchFile>
+        <hudson.tasks.BatchFile>
+          <command>call &quot;C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\vcvarsall.bat&quot; x86&#xd;
+&#xd;
+set WORKSPACE_DIR=%cd%&#xd;
 set WORK_UTIL_DIR=c:\jenkins\work&#xd;
 set LIBWEINTEK_DIR=C:\jenkins\workspace\libweintek_%TRIGGER_PARAM_JOB_GROUP%\MATRIX_AXIS_NODE\windows\MATRIX_AXIS_PLATFORM\win32&#xd;
 set OPENSSL_DIR=C:\DevEnv\OpenSSL-Win32&#xd;
