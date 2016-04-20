@@ -281,6 +281,8 @@ cd %WORKSPACE_DIR%\weintek-p2p&#xd;
 copy /y config_cygwin.h config.h&#xd;
 cd %WORKSPACE_DIR%\weintek-p2p\build\vs2012&#xd;
 &#xd;
+set LIBWEINTEK_ROOT=C:\jenkins\workspace\libweintek_stable\MATRIX_AXIS_NODE\windows\MATRIX_AXIS_PLATFORM\win32&#xd;
+&#xd;
 &quot;C:\Program Files (x86)\CMake\bin\cmake.exe&quot; -G &quot;Visual Studio 11 2012&quot; -DBoost_INCLUDE_DIR=&quot;C:\DevEnv\boost_1_60_0&quot; ..\..&#xd;
 msbuild.exe weintek-p2p.sln /nologo /t:Build /p:Configuration=&quot;Release&quot; /property:Platform=&quot;Win32&quot;&#xd;
 &#xd;
