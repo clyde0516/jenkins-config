@@ -295,6 +295,14 @@ msbuild.exe weintek-p2p.sln /nologo /t:Build /p:Configuration=&quot;Release&quot
 &#xd;
 copy /y client\Release\weintek-p2p.exe %WORKSPACE_DIR%\artifacts</command>
         </hudson.tasks.BatchFile>
+        <hudson.tasks.BatchFile>
+          <command>call &quot;C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\vcvarsall.bat&quot; x86&#xd;
+&#xd;
+set WORKSPACE_DIR=%cd%&#xd;
+mkdir %WORKSPACE_DIR%\artifacts&#xd;
+cd %WORKSPACE_DIR%\RemoteAccess&#xd;
+</command>
+        </hudson.tasks.BatchFile>
       </conditionalbuilders>
     </org.jenkinsci.plugins.conditionalbuildstep.ConditionalBuilder>
   </builders>
