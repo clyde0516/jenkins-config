@@ -288,7 +288,8 @@ set EXPAT_DIR=C:\jenkins\workspace\libweintek_stable\MATRIX_AXIS_NODE\windows\MA
 set WINSOCK2_INCLUDE_DIR=C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\Include&#xd;
 set OPENSSL_INCLUDE_DIR=C:\DevEnv\OpenSSL-Win32\include&#xd;
 set OPENSSL_LIB_DIR=C:\DevEnv\OpenSSL-Win32\lib\VC&#xd;
-set CURL_DIR=C:\DevEnv\curl-7.41.0&#xd;
+set CURL_INCLUDE_DIR=C:\DevEnv\curl-7.41.0\include&#xd;
+set CURL_LIB_DIR=C:\DevEnv\curl-7.41.0\lib&#xd;
 &#xd;
 &quot;C:\Program Files (x86)\CMake\bin\cmake.exe&quot; -G &quot;Visual Studio 11 2012&quot; -DBUILD_SERVER=OFF -DBoost_INCLUDE_DIR=&quot;C:\DevEnv\boost_1_60_0&quot; ..\..&#xd;
 msbuild.exe rma.sln /nologo /t:auth_client /p:Configuration=&quot;Release&quot; /property:Platform=&quot;Win32&quot;&#xd;
