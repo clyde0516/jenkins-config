@@ -273,7 +273,7 @@ cp ${INSTALL_PREFIX}/apk/bin/QtApp*.apk artifacts/EasyAccess2.apk
       </runCondition>
       <conditionalbuilders>
         <hudson.tasks.BatchFile>
-          <command>&quot;C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\vcvarsall.bat&quot; x86&#xd;
+          <command>cmd.exe /k &quot;&quot;C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\vcvarsall.bat&quot;&quot; x86&#xd;
 &#xd;
 set WORKSPACE_DIR=%cd%&#xd;
 cd %WORKSPACE_DIR%\weintek-p2p\build\vs2012&#xd;
