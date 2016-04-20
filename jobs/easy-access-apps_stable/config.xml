@@ -284,6 +284,7 @@ cd %WORKSPACE_DIR%\weintek-p2p\build\vs2012&#xd;
 &#xd;
 set LIBWEINTEK_ROOT=C:\jenkins\workspace\libweintek_stable\MATRIX_AXIS_NODE\windows\MATRIX_AXIS_PLATFORM\win32&#xd;
 set PTHREAD_INCLUDE_DIR=C:\jenkins\workspace\libweintek_stable\MATRIX_AXIS_NODE\windows\MATRIX_AXIS_PLATFORM\win32\third-party\pthreads-w32-2-9-1\include&#xd;
+set PTHREAD_LIB_DIR=C:\jenkins\workspace\libweintek_stable\MATRIX_AXIS_NODE\windows\MATRIX_AXIS_PLATFORM\win32\third-party\pthreads-w32-2-9-1\lib\x86&#xd;
 set EXPAT_DIR=C:\jenkins\workspace\libweintek_stable\MATRIX_AXIS_NODE\windows\MATRIX_AXIS_PLATFORM\win32\third-party\expat-2.1.0&#xd;
 set WINSOCK2_INCLUDE_DIR=C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\Include&#xd;
 set OPENSSL_INCLUDE_DIR=C:\DevEnv\OpenSSL-Win32\include&#xd;
