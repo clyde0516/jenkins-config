@@ -278,7 +278,7 @@ cp ${INSTALL_PREFIX}/apk/bin/QtApp*.apk artifacts/EasyAccess2.apk
 set WORKSPACE_DIR=%cd%&#xd;
 mkdir %WORKSPACE_DIR%\artifacts&#xd;
 cd %WORKSPACE_DIR%\weintek-p2p&#xd;
-cp config_cygwin.h config.h&#xd;
+copy /y config_cygwin.h config.h&#xd;
 cd %WORKSPACE_DIR%\weintek-p2p\build\vs2012&#xd;
 &#xd;
 &quot;C:\Program Files (x86)\CMake\bin\cmake.exe&quot; -G &quot;Visual Studio 11 2012&quot; -DBoost_INCLUDE_DIR=&quot;C:\DevEnv\boost_1_60_0&quot; ..\..&#xd;
