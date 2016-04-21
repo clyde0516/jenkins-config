@@ -74,8 +74,7 @@ mkdir cppcheck
 cd ${WORKSPACE}/cppcheck
 
 cppcheck --enable=all --inconclusive --suppress=syntaxError --xml --xml-version=2 \
-         &quot;${WORKSPACE}/Siemens_S7-200/cppcheck/*.h&quot; \
-         &quot;${WORKSPACE}/Siemens_S7-200/cppcheck/*.cpp&quot; \
+         &quot;${WORKSPACE}/Siemens_S7-200/cppcheck&quot; \
          2&gt; cppcheck-result.xml</command>
     </hudson.tasks.Shell>
   </builders>
