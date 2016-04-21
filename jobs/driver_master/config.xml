@@ -74,6 +74,7 @@ mkdir cppcheck
 cd ${WORKSPACE}/cppcheck
 
 cppcheck --enable=all --inconclusive --suppress=syntaxError --xml --xml-version=2 \
+         &quot;${WORKSPACE}/*/cppcheck/*.h&quot; \
          &quot;${WORKSPACE}/*/cppcheck/*.cpp&quot; \
          2&gt; cppcheck-result.xml</command>
     </hudson.tasks.Shell>
