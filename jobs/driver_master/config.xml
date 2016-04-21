@@ -74,7 +74,10 @@ mkdir cppcheck
 cd ${WORKSPACE}/cppcheck
 
 cppcheck --enable=all --inconclusive --suppress=syntaxError --xml --xml-version=2 \
-         ${WORKSPACE}/[019]_Siemens_S7-200/cppcheck/WeinDriver.cpp \
+         ${WORKSPACE}/*/*/*.h \
+         ${WORKSPACE}/*/*/*.cpp \
+         -i${WORKSPACE}/*/*/stdafx.h \
+         -i${WORKSPACE}/*/*/stdafx.cpp \
          2&gt; cppcheck-result.xml</command>
     </hudson.tasks.Shell>
   </builders>
