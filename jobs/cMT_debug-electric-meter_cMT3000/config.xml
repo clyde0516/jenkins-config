@@ -47,7 +47,7 @@
         <hudson.model.StringParameterDefinition>
           <name>TRIGGER_PARAM_DSERVER_BRANCH</name>
           <description></description>
-          <defaultValue>v1-stable</defaultValue>
+          <defaultValue>debug_electric_meter</defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>TRIGGER_PARAM_GUI_BRANCH</name>
