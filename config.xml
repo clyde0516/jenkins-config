@@ -240,6 +240,7 @@
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
         <string>auth-server_stable</string>
+        <string>cMT_debug-electric-meter_cMT3000</string>
         <string>cMT_dev-electric-meter_cMT3000</string>
         <string>cMT_dev-pdf-debug_cMT3000</string>
         <string>cMT_dev_Ubuntu</string>
