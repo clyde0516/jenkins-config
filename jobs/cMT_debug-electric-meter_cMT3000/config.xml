@@ -455,6 +455,7 @@ make VERBOSE=1
 if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT3000&quot; ]; then
     cp ${INSTALL_PREFIX}/bin/gui ${GUI_PATH}/artifacts/gui.RelWithDebInfo	
     strip ${INSTALL_PREFIX}/bin/gui
+    cp ${INSTALL_PREFIX}/bin/gui ${GUI_PATH}/artifacts
     test_mtcrypt --encrypt ${INSTALL_PREFIX}/bin/gui --out ${INSTALL_PREFIX}/bin/gui.c30
     cp ${INSTALL_PREFIX}/bin/gui.c30 ${GUI_PATH}/artifacts
 elif [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;Ubuntu&quot; ]; then
