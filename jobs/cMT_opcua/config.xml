@@ -71,6 +71,17 @@
             </a>
           </choices>
         </hudson.model.ChoiceParameterDefinition>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>JOB_BUILD_TYPE</name>
+          <description></description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>Debug</string>
+              <string>RelWithDebInfo</string>
+              <string>Release</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
     <jenkins.model.BuildDiscarderProperty>
@@ -188,7 +199,7 @@ if [ ! -d &quot;jenkins/${TRIGGER_PARAM_PLATFORM}&quot; ]; then
 fi
 cd jenkins/${TRIGGER_PARAM_PLATFORM}
 
-${LIBWEINTEK_PATH}/build/${TRIGGER_PARAM_PLATFORM}/cmake_libweintek.sh ${LIBWEINTEK_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} RelWithDebInfo
+${LIBWEINTEK_PATH}/build/${TRIGGER_PARAM_PLATFORM}/cmake_libweintek.sh ${LIBWEINTEK_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} ${JOB_BUILD_TYPE}
     
 if [ &quot;${TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY}&quot; = &quot;clean&quot; ]; then
     make clean
@@ -232,14 +243,14 @@ if [ ! -d &quot;jenkins/${TRIGGER_PARAM_PLATFORM}&quot; ]; then
 fi
 cd jenkins/${TRIGGER_PARAM_PLATFORM}
 
-${DSERVER_PATH}/build/${TRIGGER_PARAM_PLATFORM}/cmake_dserver.sh ${DSERVER_PATH} ${LIBWEINTEK_PATH} ${MARIADB_CONNECTOR_C_PATH} ${GOOGLE_BREAKPAD_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} RelWithDebInfo
+${DSERVER_PATH}/build/${TRIGGER_PARAM_PLATFORM}/cmake_dserver.sh ${DSERVER_PATH} ${LIBWEINTEK_PATH} ${MARIADB_CONNECTOR_C_PATH} ${GOOGLE_BREAKPAD_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} ${JOB_BUILD_TYPE}
 
 if [ &quot;${TRIGGER_PARAM_DSERVER_BUILD_POLICY}&quot; = &quot;clean&quot; ]; then
     make clean
 fi
 
 make install VERBOSE=1
-cp ${INSTALL_PREFIX}/bin/dserver ${DSERVER_PATH}/artifacts/dserver.RelWithDebInfo
+cp ${INSTALL_PREFIX}/bin/dserver ${DSERVER_PATH}/artifacts/dserver.${JOB_BUILD_TYPE}
 
 make install/strip VERBOSE=1
 if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;Ubuntu&quot; ]; then
