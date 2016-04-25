@@ -10,9 +10,9 @@
       <permission>hudson.model.Item.Discover:authenticated</permission>
       <permission>hudson.model.Item.Build:authenticated</permission>
       <permission>hudson.model.Item.Cancel:authenticated</permission>
-      <permission>hudson.model.Item.Configure:authenticated</permission>
-      <permission>hudson.model.Item.Delete:authenticated</permission>
       <permission>hudson.model.Item.Workspace:authenticated</permission>
+      <permission>hudson.model.Item.Delete:authenticated</permission>
+      <permission>hudson.model.Item.Configure:authenticated</permission>
       <permission>hudson.model.Run.Update:authenticated</permission>
     </hudson.security.AuthorizationMatrixProperty>
     <hudson.model.ParametersDefinitionProperty>
@@ -22,9 +22,9 @@
           <description></description>
           <choices class="java.util.Arrays$ArrayList">
             <a class="string-array">
+              <string>cMT-SVR</string>
               <string>Ubuntu</string>
               <string>cMT3000</string>
-              <string>cMT-SVR</string>
               <string>cMT-iv5</string>
             </a>
           </choices>
