@@ -307,7 +307,7 @@ set RMA_DIR=%WORKSPACE_DIR%\rma&#xd;
 &#xd;
 mkdir %WORKSPACE_DIR%\artifacts&#xd;
 cd %WORKSPACE_DIR%\RemoteAccess&#xd;
-rmdir /Q Win32\Release&#xd;
+rmdir /Q Win32&#xd;
 &#xd;
 copy /y weintek.props.in weintek.props&#xd;
 &#xd;
