@@ -277,6 +277,11 @@ make install VERBOSE=1</command>
     <hudson.tasks.Shell>
       <command>#!/bin/bash
 
+
+
+return 0
+
+
 # Build Opcua Server
 echo &quot;================================ Opcua Server ================================ Opcua Server ================================ Opcua Server ================================&quot;
 
