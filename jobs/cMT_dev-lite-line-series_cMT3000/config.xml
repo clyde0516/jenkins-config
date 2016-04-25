@@ -10,9 +10,9 @@
       <permission>hudson.model.Item.Discover:authenticated</permission>
       <permission>hudson.model.Item.Build:authenticated</permission>
       <permission>hudson.model.Item.Cancel:authenticated</permission>
-      <permission>hudson.model.Item.Configure:authenticated</permission>
-      <permission>hudson.model.Item.Delete:authenticated</permission>
       <permission>hudson.model.Item.Workspace:authenticated</permission>
+      <permission>hudson.model.Item.Delete:authenticated</permission>
+      <permission>hudson.model.Item.Configure:authenticated</permission>
       <permission>hudson.model.Run.Update:authenticated</permission>
     </hudson.security.AuthorizationMatrixProperty>
     <hudson.model.ParametersDefinitionProperty>
@@ -32,7 +32,7 @@
         <hudson.model.StringParameterDefinition>
           <name>TRIGGER_PARAM_INSTALL_FOLDER</name>
           <description></description>
-          <defaultValue>build-debug-electric-meter-branch</defaultValue>
+          <defaultValue>build-dev-lite-line-series-branch</defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>TRIGGER_PARAM_BASE_INSTALL_FOLDER</name>
@@ -47,12 +47,12 @@
         <hudson.model.StringParameterDefinition>
           <name>TRIGGER_PARAM_DSERVER_BRANCH</name>
           <description></description>
-          <defaultValue>debug_electric_meter</defaultValue>
+          <defaultValue>v1-stable</defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>TRIGGER_PARAM_GUI_BRANCH</name>
           <description></description>
-          <defaultValue>debug_electric_meter</defaultValue>
+          <defaultValue>dev_lite_line_series</defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>TRIGGER_PARAM_VIEWER_BRANCH</name>
