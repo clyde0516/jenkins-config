@@ -279,7 +279,7 @@ make install VERBOSE=1</command>
 
 
 
-return 0
+exit
 
 
 # Build Opcua Server
