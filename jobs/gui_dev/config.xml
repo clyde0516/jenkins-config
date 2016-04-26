@@ -235,7 +235,6 @@ set QT_DIR=C:\DevEnv\Qt\Qt5.4.2\5.4\msvc2012_opengl&#xd;
 :: clear artifacts&#xd;
 &#xd;
 del %WORKSPACE_DIR%\build\vs2012\Win32\ProductionRelease\libgui20.*&#xd;
-del %WORKSPACE_DIR%\build\vs2012\gotRelease\got.exe&#xd;
 rmdir /s/q %WORKSPACE_DIR%\artifacts&#xd;
 mkdir %WORKSPACE_DIR%\artifacts&#xd;
 &#xd;
@@ -258,7 +257,6 @@ call build_win32.bat got ProductionRelease %TRIGGER_PARAM_GUI_BUILD_POLICY%&#xd;
 copy /y Win32\ProductionRelease\libgui20.lib %WORKSPACE_DIR%\artifacts&#xd;
 copy /y Win32\ProductionRelease\libgui20.dll %WORKSPACE_DIR%\artifacts&#xd;
 copy /y Win32\ProductionRelease\libgui20.pdb %WORKSPACE_DIR%\artifacts&#xd;
-copy /y gotRelease\got.exe %WORKSPACE_DIR%\artifacts&#xd;
 </command>
         </hudson.tasks.BatchFile>
         <hudson.tasks.BatchFile>
