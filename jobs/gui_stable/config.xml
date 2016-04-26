@@ -198,12 +198,12 @@ fi
 
 if [ &quot;${BUILD_LIBRARY_ONLY}&quot; = &quot;off&quot; ] &amp;&amp; [ -e &quot;${INSTALL_PREFIX}/bin/gui&quot; ]; then
     strip ${INSTALL_PREFIX}/bin/gui
+    cp ${INSTALL_PREFIX}/bin/gui ${WORKSPACE}/artifacts/gui.decrypted
     
     if test -n &quot;${ENCRYPT_EXTENSION_NAME}&quot;; then
         test_mtcrypt --encrypt ${INSTALL_PREFIX}/bin/gui --out ${INSTALL_PREFIX}/bin/gui${ENCRYPT_EXTENSION_NAME}
+        cp ${INSTALL_PREFIX}/bin/gui${ENCRYPT_EXTENSION_NAME} ${WORKSPACE}/artifacts
     fi    
-        
-    cp ${INSTALL_PREFIX}/bin/gui${ENCRYPT_EXTENSION_NAME} ${WORKSPACE}/artifacts
 fi
 </command>
         </hudson.tasks.Shell>
