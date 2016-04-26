@@ -235,7 +235,7 @@ set QT_DIR=C:\DevEnv\Qt\Qt5.4.2\5.4\msvc2012_opengl&#xd;
 :: clear artifacts&#xd;
 &#xd;
 del %WORKSPACE_DIR%\build\vs2012\Win32\ProductionRelease\libgui20.*&#xd;
-del %WORKSPACE_DIR%\build\vs2012\Win32\gotRelease\got.exe&#xd;
+del %WORKSPACE_DIR%\build\vs2012\gotRelease\got.exe&#xd;
 rmdir /s/q %WORKSPACE_DIR%\artifacts&#xd;
 mkdir %WORKSPACE_DIR%\artifacts&#xd;
 &#xd;
