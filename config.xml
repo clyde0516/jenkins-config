@@ -274,7 +274,6 @@
         <string>viewer_dev</string>
         <string>viewer_dev_win</string>
         <string>viewer_stable</string>
-        <string>viewer_stable_cMT-iv5</string>
       </jobNames>
       <jobFilters/>
       <columns>
