@@ -267,7 +267,6 @@
         <string>jenkins-test</string>
         <string>libQt5Charts</string>
         <string>libweintek_dev</string>
-        <string>libweintek_dev_win</string>
         <string>libweintek_stable</string>
         <string>matrix-test</string>
         <string>slave-healthy-monitoring</string>
