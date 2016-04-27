@@ -143,15 +143,20 @@ mkdir -p bin
 ${WORKSPACE}/build/${MATRIX_AXIS_PLATFORM}/cmake_com.sh ${WORKSPACE} ${STRIP_AND_ENCRYPT} ${CRYPTO_EXTENSION_NAME} ${CROSS_COMPILER_TOOLCHAIN} RelWithDebInfo
 
 # make
+
 if [ &quot;${TRIGGER_PARAM_COM_BUILD_POLICY}&quot; = &quot;clean&quot; ]; then
     make clean
 fi
 make install VERBOSE=1
 cp ${INSTALL_PREFIX}/bin/com ${WORKSPACE}/artifacts/com.RelWithDebInfo
 
-# strip and encrypt
+# strip 
 
 make install/strip VERBOSE=1
+cp ${INSTALL_PREFIX}/bin/com ${WORKSPACE}/artifacts/com.decrypted
+
+# encrypt
+
 /home/ci/work/crypto e ${INSTALL_PREFIX}/bin/com ${INSTALL_PREFIX}/bin/com.${CRYPTO_EXTENSION_NAME}
 cp ${INSTALL_PREFIX}/bin/com.${CRYPTO_EXTENSION_NAME} ${WORKSPACE}/artifacts</command>
         </hudson.tasks.Shell>
