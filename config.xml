@@ -252,7 +252,6 @@
         <string>com_5.04.01</string>
         <string>driver_master</string>
         <string>dserver_dev</string>
-        <string>dserver_dev_Ubuntu</string>
         <string>dserver_stable</string>
         <string>dserver_stable_opcua-sdk-svr</string>
         <string>easy-access-apps_stable</string>
