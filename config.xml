@@ -267,7 +267,6 @@
         <string>gui_dev_cMT3000</string>
         <string>gui_dev_win</string>
         <string>gui_stable</string>
-        <string>gui_stable_cMT-iv5</string>
         <string>gui_stable_cMT3000</string>
         <string>gui_stable_for_barcode</string>
         <string>jenkins-test</string>
