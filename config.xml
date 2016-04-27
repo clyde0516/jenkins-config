@@ -282,7 +282,6 @@
         <string>libweintek_dev_win</string>
         <string>libweintek_stable</string>
         <string>libweintek_stable_cMT-iv5</string>
-        <string>libweintek_stable_cMT-SVR</string>
         <string>libweintek_stable_cMT3000</string>
         <string>matrix-test</string>
         <string>slave-healthy-monitoring</string>
