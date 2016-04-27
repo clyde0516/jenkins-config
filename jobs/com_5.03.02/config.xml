@@ -143,6 +143,7 @@ mkdir -p bin
 ${WORKSPACE}/build/${MATRIX_AXIS_PLATFORM}/cmake_com.sh ${WORKSPACE} ${STRIP_AND_ENCRYPT} ${CRYPTO_EXTENSION_NAME} ${CROSS_COMPILER_TOOLCHAIN} RelWithDebInfo
 
 # make
+
 if [ &quot;${TRIGGER_PARAM_COM_BUILD_POLICY}&quot; = &quot;clean&quot; ]; then
     make clean
 fi
