@@ -184,13 +184,17 @@ fi
 make install VERBOSE=1
 cp ${INSTALL_PREFIX}/bin/dserver ${WORKSPACE}/artifacts/dserver.RelWithDebInfo
 
-# strip and encrypt
+# strip
 
 make install/strip VERBOSE=1
+cp ${INSTALL_PREFIX}/bin/dserver ${WORKSPACE}/artifacts/dserver.decrypted
+
+# encrypt
+ 
 if test -n &quot;${ENCRYPT_EXTENSION_NAME}&quot;; then
     /home/ci/work/crypto e ${INSTALL_PREFIX}/bin/dserver ${INSTALL_PREFIX}/bin/dserver${ENCRYPT_EXTENSION_NAME}
+    cp ${INSTALL_PREFIX}/bin/dserver${ENCRYPT_EXTENSION_NAME} ${WORKSPACE}/artifacts
 fi
-cp ${INSTALL_PREFIX}/bin/dserver${ENCRYPT_EXTENSION_NAME} ${WORKSPACE}/artifacts
 </command>
         </hudson.tasks.Shell>
       </conditionalbuilders>
