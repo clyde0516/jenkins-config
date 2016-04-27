@@ -149,9 +149,13 @@ fi
 make install VERBOSE=1
 cp ${INSTALL_PREFIX}/bin/com ${WORKSPACE}/artifacts/com.RelWithDebInfo
 
-# strip and encrypt
+# strip
 
 make install/strip VERBOSE=1
+cp ${INSTALL_PREFIX}/bin/com ${WORKSPACE}/artifacts/com.decrypted
+
+# encrypt
+ 
 /home/ci/work/crypto e ${INSTALL_PREFIX}/bin/com ${INSTALL_PREFIX}/bin/com.${CRYPTO_EXTENSION_NAME}
 cp ${INSTALL_PREFIX}/bin/com.${CRYPTO_EXTENSION_NAME} ${WORKSPACE}/artifacts</command>
         </hudson.tasks.Shell>
