@@ -166,7 +166,7 @@ export LIBWEINTEK_ROOT=${LIBWEINTEK_PATH}
 export JAVA_HOME=/home/ci/jdk1.7.0_71
 export ANDROID_HOME=/home/ci/Android/Sdk
 
-#if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;Android&quot; ]; then
+#if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;android-arm&quot; ]; then
 	export ANDROID_CMAKE_FILE=/home/ci/android-cmake/android.toolchain.cmake
 	export ANDROID_SDK_ROOT=/home/ci/Android/Sdk
 	export ANDROID_NDK_ROOT=/home/ci/Android/android-ndk
