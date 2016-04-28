@@ -131,7 +131,7 @@
     <hudson.matrix.TextAxis>
       <name>MATRIX_AXIS_PLATFORM</name>
       <values>
-        <string>Android</string>
+        <string>android-arm</string>
         <string>win32</string>
       </values>
     </hudson.matrix.TextAxis>
@@ -150,8 +150,8 @@
     <org.jenkinsci.plugins.conditionalbuildstep.ConditionalBuilder plugin="conditional-buildstep@1.3.3">
       <runner class="org.jenkins_ci.plugins.run_condition.BuildStepRunner$Fail" plugin="run-condition@1.0"/>
       <runCondition class="org.jenkins_ci.plugins.run_condition.core.StringsMatchCondition" plugin="run-condition@1.0">
-        <arg1>${MATRIX_AXIS_NODE}-${MATRIX_AXIS_PLATFORM}</arg1>
-        <arg2>master-Android</arg2>
+        <arg1>${MATRIX_AXIS_PLATFORM}</arg1>
+        <arg2>android-arm</arg2>
         <ignoreCase>false</ignoreCase>
       </runCondition>
       <conditionalbuilders>
@@ -160,7 +160,7 @@
 
 export BUILD_TYPE=Release
 export LIBWEINTEK_PATH=${JENKINS_HOME}/jobs/libweintek_stable/workspace
-export INSTALL_PREFIX=/home/ci/work/Android/build-stable-branch
+export INSTALL_PREFIX=/home/ci/work/android-arm/build-stable-branch
 export EA_PATH=${WORKSPACE}/RemoteAccess
 export LIBWEINTEK_ROOT=${LIBWEINTEK_PATH}
 export JAVA_HOME=/home/ci/jdk1.7.0_71
@@ -170,7 +170,7 @@ export ANDROID_HOME=/home/ci/Android/Sdk
 	export ANDROID_CMAKE_FILE=/home/ci/android-cmake/android.toolchain.cmake
 	export ANDROID_SDK_ROOT=/home/ci/Android/Sdk
 	export ANDROID_NDK_ROOT=/home/ci/Android/android-ndk
-    export TOOLCHAIN=/home/ci/work/Android/target/sysroots/android-toolchain-arm
+    export TOOLCHAIN=/home/ci/work/android-arm/target/sysroots/android-toolchain-arm
     export CC=${TOOLCHAIN}/bin/arm-linux-androideabi-gcc
     export CXX=${TOOLCHAIN}/bin/arm-linux-androideabi-g++
     export QT_ROOT=/opt/Qt5.5.1/5.5/android_armv7
