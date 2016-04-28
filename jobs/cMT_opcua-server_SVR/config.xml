@@ -278,10 +278,6 @@ make install VERBOSE=1</command>
       <command>#!/bin/bash
 
 
-
-exit
-
-
 # Build Opcua Server
 echo &quot;================================ Opcua Server ================================ Opcua Server ================================ Opcua Server ================================&quot;
 
