@@ -248,9 +248,9 @@ elif [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT-iv5&quot; ]; then
     export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT-iv5/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
 fi
 
-rm -f ${INSTALL_PREFIX}/lib/lib*
-rm -rf ${OPCUA_SDK_PATH}/artifacts
-mkdir ${OPCUA_SDK_PATH}/artifacts
+#rm -f ${INSTALL_PREFIX}/lib/lib*
+#rm -rf ${OPCUA_SDK_PATH}/artifacts
+#mkdir ${OPCUA_SDK_PATH}/artifacts
 
 cd ${OPCUA_SDK_PATH}/build
 if [ &quot;${TRIGGER_PARAM_OPCUA_SDK_BUILD_POLICY}&quot; = &quot;brandnew&quot; ]; then
