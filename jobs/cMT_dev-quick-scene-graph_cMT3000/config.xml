@@ -442,6 +442,17 @@ elif [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT-iv5&quot; ]; then
     export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT-iv5/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
 fi
 
+case ${TRIGGER_PARAM_PLATFORM} in
+    &quot;cMT3000&quot;)       export BUILD_LIBRARY_ONLY=off  ;;
+    &quot;cMT-iv5&quot;)       export BUILD_LIBRARY_ONLY=on   ;;
+    &quot;cMT-iv5-3000&quot;)  export BUILD_LIBRARY_ONLY=on   ;;
+    &quot;Ubuntu&quot;)        export BUILD_LIBRARY_ONLY=off  ;;
+esac
+
+if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT3000&quot; ]; then
+   export ENCRYPT_EXTENSION_NAME=.c30
+fi
+
 if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;Ubuntu&quot; ]; then
    export PATH=/opt/Qt5.4.2/5.4/gcc_64/bin:${PATH}
 fi
@@ -475,17 +486,23 @@ if [ &quot;${TRIGGER_PARAM_GUI_BUILD_POLICY}&quot; = &quot;clean&quot; ]; then
 fi
 make VERBOSE=1
 
-if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT3000&quot; ]; then
-    cp ${INSTALL_PREFIX}/bin/gui ${GUI_PATH}/artifacts/gui.RelWithDebInfo	
-    strip ${INSTALL_PREFIX}/bin/gui
-    test_mtcrypt --encrypt ${INSTALL_PREFIX}/bin/gui --out ${INSTALL_PREFIX}/bin/gui.c30
-    cp ${INSTALL_PREFIX}/bin/gui.c30 ${GUI_PATH}/artifacts
-elif [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;Ubuntu&quot; ]; then
-    cp ${INSTALL_PREFIX}/bin/gui ${GUI_PATH}/artifacts/gui.RelWithDebInfo	
-    strip ${INSTALL_PREFIX}/bin/gui
-    cp ${INSTALL_PREFIX}/bin/gui ${GUI_PATH}/artifacts
+if [ &quot;${BUILD_LIBRARY_ONLY}&quot; = &quot;off&quot; ]; then
+    cp ${INSTALL_PREFIX}/bin/gui ${GUI_PATH}/artifacts/gui.RelWithDebInfo
+else
+    cp ${INSTALL_PREFIX}/lib/liblibgui20.a ${GUI_PATH}/artifacts
 fi
-</command>
+
+# strip and encrypt
+
+if [ &quot;${BUILD_LIBRARY_ONLY}&quot; = &quot;off&quot; ] &amp;&amp; [ -e &quot;${INSTALL_PREFIX}/bin/gui&quot; ]; then
+    strip ${INSTALL_PREFIX}/bin/gui
+    cp ${INSTALL_PREFIX}/bin/gui ${GUI_PATH}/artifacts/gui.decrypted
+    
+    if test -n &quot;${ENCRYPT_EXTENSION_NAME}&quot;; then
+        test_mtcrypt --encrypt ${INSTALL_PREFIX}/bin/gui --out ${INSTALL_PREFIX}/bin/gui${ENCRYPT_EXTENSION_NAME}
+        cp ${INSTALL_PREFIX}/bin/gui${ENCRYPT_EXTENSION_NAME} ${GUI_PATH}/artifacts
+    fi    
+fi</command>
         </hudson.tasks.Shell>
         <hudson.tasks.ArtifactArchiver>
           <artifacts>gui/artifacts/*</artifacts>
