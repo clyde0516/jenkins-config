@@ -22,8 +22,8 @@
           <description></description>
           <choices class="java.util.Arrays$ArrayList">
             <a class="string-array">
-              <string>Ubuntu</string>
               <string>cMT3000</string>
+              <string>Ubuntu</string>
               <string>cMT-SVR</string>
               <string>cMT-iv5</string>
             </a>
