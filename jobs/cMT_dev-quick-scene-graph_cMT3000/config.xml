@@ -10,9 +10,9 @@
       <permission>hudson.model.Item.Discover:authenticated</permission>
       <permission>hudson.model.Item.Build:authenticated</permission>
       <permission>hudson.model.Item.Cancel:authenticated</permission>
-      <permission>hudson.model.Item.Configure:authenticated</permission>
-      <permission>hudson.model.Item.Delete:authenticated</permission>
       <permission>hudson.model.Item.Workspace:authenticated</permission>
+      <permission>hudson.model.Item.Delete:authenticated</permission>
+      <permission>hudson.model.Item.Configure:authenticated</permission>
       <permission>hudson.model.Run.Update:authenticated</permission>
     </hudson.security.AuthorizationMatrixProperty>
     <hudson.model.ParametersDefinitionProperty>
@@ -32,7 +32,7 @@
         <hudson.model.StringParameterDefinition>
           <name>TRIGGER_PARAM_INSTALL_FOLDER</name>
           <description></description>
-          <defaultValue>build-dev-branch</defaultValue>
+          <defaultValue>build-dev-quick-scene-graph-branch</defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>TRIGGER_PARAM_BASE_INSTALL_FOLDER</name>
@@ -52,7 +52,7 @@
         <hudson.model.StringParameterDefinition>
           <name>TRIGGER_PARAM_GUI_BRANCH</name>
           <description></description>
-          <defaultValue>dev</defaultValue>
+          <defaultValue>dev_quick_scene_graph</defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>TRIGGER_PARAM_VIEWER_BRANCH</name>
