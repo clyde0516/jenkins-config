@@ -44,7 +44,7 @@
         <hudson.model.StringParameterDefinition>
           <name>TRIGGER_PARAM_OPCUA_SERVER_BRANCH</name>
           <description></description>
-          <defaultValue>dev</defaultValue>
+          <defaultValue>dev_tz_dst</defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.ChoiceParameterDefinition>
           <name>TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY</name>
