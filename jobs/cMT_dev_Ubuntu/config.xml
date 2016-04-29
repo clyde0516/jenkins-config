@@ -475,15 +475,20 @@ if [ &quot;${TRIGGER_PARAM_GUI_BUILD_POLICY}&quot; = &quot;clean&quot; ]; then
 fi
 make VERBOSE=1
 
-if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT3000&quot; ]; then
-    cp ${INSTALL_PREFIX}/bin/gui ${GUI_PATH}/artifacts/gui.RelWithDebInfo	
+if [ &quot;${BUILD_LIBRARY_ONLY}&quot; = &quot;off&quot; ]; then
+    cp ${INSTALL_PREFIX}/bin/gui ${GUI_PATH}/artifacts/gui.RelWithDebInfo
+else
+    cp ${INSTALL_PREFIX}/lib/liblibgui20.a ${GUI_PATH}/artifacts
+fi
+
+if [ &quot;${BUILD_LIBRARY_ONLY}&quot; = &quot;off&quot; ] &amp;&amp; [ -e &quot;${INSTALL_PREFIX}/bin/gui&quot; ]; then
     strip ${INSTALL_PREFIX}/bin/gui
-    test_mtcrypt --encrypt ${INSTALL_PREFIX}/bin/gui --out ${INSTALL_PREFIX}/bin/gui.c30
-    cp ${INSTALL_PREFIX}/bin/gui.c30 ${GUI_PATH}/artifacts
-elif [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;Ubuntu&quot; ]; then
-    cp ${INSTALL_PREFIX}/bin/gui ${GUI_PATH}/artifacts/gui.RelWithDebInfo	
-    strip ${INSTALL_PREFIX}/bin/gui
-    cp ${INSTALL_PREFIX}/bin/gui ${GUI_PATH}/artifacts
+    cp ${INSTALL_PREFIX}/bin/gui ${GUI_PATH}/artifacts/gui.decrypted
+    
+    if test -n &quot;${ENCRYPT_EXTENSION_NAME}&quot;; then
+        test_mtcrypt --encrypt ${INSTALL_PREFIX}/bin/gui --out ${INSTALL_PREFIX}/bin/gui${ENCRYPT_EXTENSION_NAME}
+        cp ${INSTALL_PREFIX}/bin/gui${ENCRYPT_EXTENSION_NAME} ${GUI_PATH}/artifacts
+    fi    
 fi
 </command>
         </hudson.tasks.Shell>
