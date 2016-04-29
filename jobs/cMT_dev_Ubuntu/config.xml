@@ -442,6 +442,17 @@ elif [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT-iv5&quot; ]; then
     export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT-iv5/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi
 fi
 
+case ${TRIGGER_PARAM_PLATFORM} in
+    &quot;cMT3000&quot;)       export BUILD_LIBRARY_ONLY=off  ;;
+    &quot;cMT-iv5&quot;)       export BUILD_LIBRARY_ONLY=on   ;;
+    &quot;cMT-iv5-3000&quot;)  export BUILD_LIBRARY_ONLY=on   ;;
+    &quot;Ubuntu&quot;)        export BUILD_LIBRARY_ONLY=off  ;;
+esac
+
+if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;cMT3000&quot; ]; then
+   export ENCRYPT_EXTENSION_NAME=.c30
+fi
+
 if [ &quot;${TRIGGER_PARAM_PLATFORM}&quot; = &quot;Ubuntu&quot; ]; then
    export PATH=/opt/Qt5.4.2/5.4/gcc_64/bin:${PATH}
 fi
