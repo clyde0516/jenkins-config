@@ -492,8 +492,6 @@ else
     cp ${INSTALL_PREFIX}/lib/liblibgui20.a ${GUI_PATH}/artifacts
 fi
 
-# strip and encrypt
-
 if [ &quot;${BUILD_LIBRARY_ONLY}&quot; = &quot;off&quot; ] &amp;&amp; [ -e &quot;${INSTALL_PREFIX}/bin/gui&quot; ]; then
     strip ${INSTALL_PREFIX}/bin/gui
     cp ${INSTALL_PREFIX}/bin/gui ${GUI_PATH}/artifacts/gui.decrypted
