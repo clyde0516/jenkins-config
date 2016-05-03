@@ -116,6 +116,9 @@
         <hudson.tasks.Shell>
           <command>#!/bin/bash
 
+# Build dserver
+echo &quot;================================ dserver ================================ dserver ================================ dserver ================================&quot;
+
 # alter trigger parameter
 
 if [[ ! &quot;`date +&quot;%H%M&quot;`&quot; &lt; &quot;0000&quot; &amp;&amp; ! &quot;`date +&quot;%H%M&quot;`&quot; &gt; &quot;0800&quot; ]]; then
