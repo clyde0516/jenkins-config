@@ -146,6 +146,12 @@ case $MATRIX_AXIS_PLATFORM in
 esac
 
 case $MATRIX_AXIS_PLATFORM in
+    &quot;android-arm&quot;)   export BUILD_LIBRARY_ONLY=on   ;;
+    &quot;android-x86&quot;)   export BUILD_LIBRARY_ONLY=on   ;;
+    *)               export BUILD_LIBRARY_ONLY=off  ;;
+esac
+
+case $MATRIX_AXIS_PLATFORM in
     &quot;cMT-iv5-3000&quot;)  export PLATFORM_BUILD_FOLDER=cMT3000  ;;
     *)               export PLATFORM_BUILD_FOLDER=${MATRIX_AXIS_PLATFORM}  ;;
 esac
@@ -203,19 +209,25 @@ if [ &quot;${TRIGGER_PARAM_DSERVER_BUILD_POLICY}&quot; = &quot;clean&quot; ]; th
     make clean
 fi
 make install VERBOSE=1
-cp ${INSTALL_PREFIX}/bin/dserver ${DSERVER_PATH}/artifacts/dserver.RelWithDebInfo
 
-# strip
-
-make install/strip VERBOSE=1
-cp ${INSTALL_PREFIX}/bin/dserver ${DSERVER_PATH}/artifacts/dserver.decrypted
-
-# encrypt
- 
-if test -n &quot;${ENCRYPT_EXTENSION_NAME}&quot;; then
-    /home/ci/work/crypto e ${INSTALL_PREFIX}/bin/dserver ${INSTALL_PREFIX}/bin/dserver${ENCRYPT_EXTENSION_NAME}
-    cp ${INSTALL_PREFIX}/bin/dserver${ENCRYPT_EXTENSION_NAME} ${DSERVER_PATH}/artifacts
+if [ &quot;${BUILD_LIBRARY_ONLY}&quot; = &quot;off&quot; ]; then
+    cp ${INSTALL_PREFIX}/bin/dserver ${DSERVER_PATH}/artifacts/dserver.RelWithDebInfo
+else
+    cp ${INSTALL_PREFIX}/lib/libdserver_core.a ${DSERVER_PATH}/artifacts
+    cp ${INSTALL_PREFIX}/lib/libdserver_client.a ${DSERVER_PATH}/artifacts
 fi
+
+# strip and encrypt
+
+if [ &quot;${BUILD_LIBRARY_ONLY}&quot; = &quot;off&quot; ]; then
+    make install/strip VERBOSE=1
+    cp ${INSTALL_PREFIX}/bin/dserver ${DSERVER_PATH}/artifacts/dserver.decrypted
+ 
+    if test -n &quot;${ENCRYPT_EXTENSION_NAME}&quot;; then
+        /home/ci/work/crypto e ${INSTALL_PREFIX}/bin/dserver ${INSTALL_PREFIX}/bin/dserver${ENCRYPT_EXTENSION_NAME}
+        cp ${INSTALL_PREFIX}/bin/dserver${ENCRYPT_EXTENSION_NAME} ${DSERVER_PATH}/artifacts
+    fi
+fi    
 </command>
         </hudson.tasks.Shell>
       </conditionalbuilders>
@@ -273,39 +285,16 @@ build\vs2012\testsRelease\tests.exe --gtest_output=xml:gtest\gtest-dserver.xml</
         </hudson.tasks.junit.JUnitResultArchiver>
       </conditionalbuilders>
     </org.jenkinsci.plugins.conditionalbuildstep.ConditionalBuilder>
-    <org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder plugin="conditional-buildstep@1.3.3">
-      <condition class="org.jenkins_ci.plugins.run_condition.logic.And" plugin="run-condition@1.0">
-        <conditions>
-          <org.jenkins__ci.plugins.run__condition.logic.ConditionContainer>
-            <condition class="org.jenkins_ci.plugins.run_condition.logic.Not">
-              <condition class="org.jenkins_ci.plugins.run_condition.core.StringsMatchCondition">
-                <arg1>MATRIX_AXIS_PLATFORM</arg1>
-                <arg2>android-arm</arg2>
-                <ignoreCase>false</ignoreCase>
-              </condition>
-            </condition>
-          </org.jenkins__ci.plugins.run__condition.logic.ConditionContainer>
-          <org.jenkins__ci.plugins.run__condition.logic.ConditionContainer>
-            <condition class="org.jenkins_ci.plugins.run_condition.core.StringsMatchCondition">
-              <arg1>MATRIX_AXIS_PLATFORM</arg1>
-              <arg2>android-x86</arg2>
-              <ignoreCase>false</ignoreCase>
-            </condition>
-          </org.jenkins__ci.plugins.run__condition.logic.ConditionContainer>
-        </conditions>
-      </condition>
-      <buildStep class="hudson.tasks.ArtifactArchiver">
-        <artifacts>artifacts/*</artifacts>
-        <allowEmptyArchive>false</allowEmptyArchive>
-        <onlyIfSuccessful>false</onlyIfSuccessful>
-        <fingerprint>false</fingerprint>
-        <defaultExcludes>true</defaultExcludes>
-        <caseSensitive>true</caseSensitive>
-      </buildStep>
-      <runner class="org.jenkins_ci.plugins.run_condition.BuildStepRunner$Fail" plugin="run-condition@1.0"/>
-    </org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder>
   </builders>
   <publishers>
+    <hudson.tasks.ArtifactArchiver>
+      <artifacts>artifacts/*</artifacts>
+      <allowEmptyArchive>false</allowEmptyArchive>
+      <onlyIfSuccessful>false</onlyIfSuccessful>
+      <fingerprint>false</fingerprint>
+      <defaultExcludes>true</defaultExcludes>
+      <caseSensitive>true</caseSensitive>
+    </hudson.tasks.ArtifactArchiver>
     <hudson.tasks.Mailer plugin="mailer@1.16">
       <recipients>_katte@weintek.com _paul@weintek.com _zen@weintek.com _easonwu@weintek.com _jeremyhong@weintek.com _clydeliu@weintek.com</recipients>
       <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
