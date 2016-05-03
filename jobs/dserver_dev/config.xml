@@ -113,6 +113,9 @@
         <hudson.tasks.Shell>
           <command>#!/bin/bash
 
+# Build dserver
+echo &quot;================================ dserver ================================ dserver ================================ dserver ================================&quot;
+
 # alter trigger parameter
 
 if [[ ! &quot;`date +&quot;%H%M&quot;`&quot; &lt; &quot;0000&quot; &amp;&amp; ! &quot;`date +&quot;%H%M&quot;`&quot; &gt; &quot;0800&quot; ]]; then
@@ -152,8 +155,8 @@ esac
 # clear artifacts
 
 rm -f ${INSTALL_PREFIX}/bin/dserver*
-rm -rf ${WORKSPACE}/artifacts
-mkdir ${WORKSPACE}/artifacts
+rm -rf ${DSERVER_PATH}/artifacts
+mkdir ${DSERVER_PATH}/artifacts
 
 # prepare out-of-source build
 
@@ -179,18 +182,18 @@ if [ &quot;${TRIGGER_PARAM_DSERVER_BUILD_POLICY}&quot; = &quot;clean&quot; ]; th
     make clean
 fi
 make install VERBOSE=1
-cp ${INSTALL_PREFIX}/bin/dserver ${WORKSPACE}/artifacts/dserver.RelWithDebInfo
+cp ${INSTALL_PREFIX}/bin/dserver ${DSERVER_PATH}/artifacts/dserver.RelWithDebInfo
 
 # strip and encrypt
 
 make install/strip VERBOSE=1
-cp ${INSTALL_PREFIX}/bin/dserver ${WORKSPACE}/artifacts/dserver.decrypted
+cp ${INSTALL_PREFIX}/bin/dserver ${DSERVER_PATH}/artifacts/dserver.decrypted
 
 # encrypt
 
 if test -n &quot;${ENCRYPT_EXTENSION_NAME}&quot;; then
     /home/ci/work/crypto e ${INSTALL_PREFIX}/bin/dserver ${INSTALL_PREFIX}/bin/dserver${ENCRYPT_EXTENSION_NAME}
-    cp ${INSTALL_PREFIX}/bin/dserver${ENCRYPT_EXTENSION_NAME} ${WORKSPACE}/artifacts
+    cp ${INSTALL_PREFIX}/bin/dserver${ENCRYPT_EXTENSION_NAME} ${DSERVER_PATH}/artifacts
 fi
 </command>
         </hudson.tasks.Shell>
