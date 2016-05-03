@@ -18,7 +18,7 @@
     <hudson.model.ParametersDefinitionProperty>
       <parameterDefinitions>
         <hudson.model.ChoiceParameterDefinition>
-          <name>TRIGGER_PARAM_PLATFORM</name>
+          <name>MATRIX_AXIS_PLATFORM</name>
           <description></description>
           <choices class="java.util.Arrays$ArrayList">
             <a class="string-array">
@@ -218,24 +218,6 @@
   </triggers>
   <concurrentBuild>false</concurrentBuild>
   <builders>
-    <org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder plugin="conditional-buildstep@1.3.3">
-      <condition class="org.jenkins_ci.plugins.run_condition.core.TimeCondition" plugin="run-condition@1.0">
-        <earliestHours>0</earliestHours>
-        <earliestMinutes>0</earliestMinutes>
-        <latestHours>8</latestHours>
-        <latestMinutes>0</latestMinutes>
-        <useBuildTime>true</useBuildTime>
-      </condition>
-      <buildStep class="hudson.tasks.Shell">
-        <command># Make clean builds for daily builds by removing build folder
-
-rm -rf ${WORKSPACE}/libweintek/build/jenkins
-rm -rf ${WORKSPACE}/dserver/build/jenkins
-rm -rf ${WORKSPACE}/gui/build/jenkins
-rm -rf ${WORKSPACE}/viewer/build/jenkins</command>
-      </buildStep>
-      <runner class="org.jenkins_ci.plugins.run_condition.BuildStepRunner$Run" plugin="run-condition@1.0"/>
-    </org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder>
     <hudson.tasks.Shell>
       <command># Setup environment for builds
 
@@ -667,7 +649,7 @@ ${INSTALL_PREFIX}/bin/test-got --gtest_output=xml:${WORKSPACE}/gtest/gtest-got.x
   </builders>
   <publishers>
     <hudson.tasks.Mailer plugin="mailer@1.16">
-      <recipients>katte@weintek.com paul@weintek.com zen@weintek.com easonwu@weintek.com jeremyhong@weintek.com clydeliu@weintek.com</recipients>
+      <recipients>_katte@weintek.com _paul@weintek.com _zen@weintek.com _easonwu@weintek.com _jeremyhong@weintek.com _clydeliu@weintek.com</recipients>
       <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
       <sendToIndividuals>false</sendToIndividuals>
     </hudson.tasks.Mailer>
