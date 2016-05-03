@@ -722,7 +722,7 @@ ${INSTALL_PREFIX}/bin/test-got --gtest_output=xml:${WORKSPACE}/gtest/gtest-got.x
   </builders>
   <publishers>
     <hudson.tasks.Mailer plugin="mailer@1.16">
-      <recipients>_katte@weintek.com _paul@weintek.com _zen@weintek.com _easonwu@weintek.com _jeremyhong@weintek.com _clydeliu@weintek.com</recipients>
+      <recipients>katte@weintek.com paul@weintek.com zen@weintek.com easonwu@weintek.com jeremyhong@weintek.com clydeliu@weintek.com</recipients>
       <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
       <sendToIndividuals>false</sendToIndividuals>
     </hudson.tasks.Mailer>
