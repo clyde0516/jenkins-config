@@ -111,6 +111,9 @@
         <hudson.tasks.Shell>
           <command>#!/bin/bash
 
+# Build libweintek
+echo &quot;================================ libweintek ================================ libweintek ================================ libweintek ================================&quot;
+
 # alter trigger parameter
 
 if [[ ! &quot;`date +&quot;%H%M&quot;`&quot; &lt; &quot;0000&quot; &amp;&amp; ! &quot;`date +&quot;%H%M&quot;`&quot; &gt; &quot;0800&quot; ]]; then
