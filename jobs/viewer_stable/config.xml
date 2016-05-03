@@ -111,6 +111,9 @@
         <hudson.tasks.Shell>
           <command>#!/bin/bash
 
+# Build viewer
+echo &quot;================================ viewer ================================ viewer ================================ viewer ================================&quot;
+
 # alter trigger parameter
 
 if [[ ! &quot;`date +&quot;%H%M&quot;`&quot; &lt; &quot;0000&quot; &amp;&amp; ! &quot;`date +&quot;%H%M&quot;`&quot; &gt; &quot;0800&quot; ]]; then
@@ -119,7 +122,8 @@ fi
 
 # export variables
 
-export CLOUDHMI_PATH=${WORKSPACE}/CloudHmi
+export VIEWER_PATH=${WORKSPACE}
+export CLOUDHMI_PATH=${VIEWER_PATH}/CloudHmi
 export LIBWEINTEK_PATH=${JENKINS_HOME}/jobs/libweintek_${TRIGGER_PARAM_JOB_GROUP}/workspace
 export DSERVER_PATH=${JENKINS_HOME}/jobs/dserver_${TRIGGER_PARAM_JOB_GROUP}/workspace
 export GUI_PATH=${JENKINS_HOME}/jobs/gui_${TRIGGER_PARAM_JOB_GROUP}/workspace
@@ -148,12 +152,12 @@ fi
 
 rm -f ${INSTALL_PREFIX}/bin/CloudHmi*
 rm -f ${INSTALL_PREFIX}/bin/cMTViewer*
-rm -rf ${WORKSPACE}/artifacts
-mkdir ${WORKSPACE}/artifacts
+rm -rf ${VIEWER_PATH}/artifacts
+mkdir ${VIEWER_PATH}/artifacts
 
 # prepare out-of-source build
 
-cd ${WORKSPACE}/build
+cd ${VIEWER_PATH}/build
 if [ &quot;${TRIGGER_PARAM_VIEWER_BUILD_POLICY}&quot; = &quot;brandnew&quot; ]; then
     rm -rf jenkins/${MATRIX_AXIS_PLATFORM}
 fi
@@ -167,8 +171,8 @@ cd jenkins/${MATRIX_AXIS_PLATFORM}
 
 # generate makefile
 
-cp ${WORKSPACE}/build/${PLATFORM_BUILD_FOLDER}/*features.pri .
-${WORKSPACE}/build/${PLATFORM_BUILD_FOLDER}/qmake_viewer.sh ${CLOUDHMI_PATH} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${GUI_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} RelWithDebInfo
+cp ${VIEWER_PATH}/build/${PLATFORM_BUILD_FOLDER}/*features.pri .
+${VIEWER_PATH}/build/${PLATFORM_BUILD_FOLDER}/qmake_viewer.sh ${CLOUDHMI_PATH} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${GUI_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} RelWithDebInfo
 
 # make
 
@@ -176,7 +180,7 @@ if test -n &quot;${CROSS_COMPILER_TOOLCHAIN}&quot;; then
     source ${CROSS_COMPILER_TOOLCHAIN}
 fi
 make VERBOSE=1
-cp ${INSTALL_PREFIX}/bin/CloudHmi ${WORKSPACE}/artifacts/CloudHmi.RelWithDebInfo	
+cp ${INSTALL_PREFIX}/bin/CloudHmi ${VIEWER_PATH}/artifacts/CloudHmi.RelWithDebInfo	
 
 # strip and encrypt
 
@@ -186,9 +190,9 @@ if [ -e &quot;CloudHmi&quot; ]; then
     tar -cv CloudHmi &gt;&gt; CloudHmi.tar
     if test -n &quot;${ENCRYPT_EXTENSION_NAME}&quot;; then
         test_mtcrypt --encrypt CloudHmi.tar --out cMTViewer${ENCRYPT_EXTENSION_NAME}
-        cp cMTViewer${ENCRYPT_EXTENSION_NAME} ${WORKSPACE}/artifacts
+        cp cMTViewer${ENCRYPT_EXTENSION_NAME} ${VIEWER_PATH}/artifacts
     else
-        cp CloudHmi.tar ${WORKSPACE}/artifacts
+        cp CloudHmi.tar ${VIEWER_PATH}/artifacts
     fi
 fi
 </command>
