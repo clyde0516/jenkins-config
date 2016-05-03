@@ -85,6 +85,7 @@
         <string>cMT-iv5-3000</string>
         <string>Ubuntu</string>
         <string>android-arm</string>
+        <string>android-x86</string>
         <string>win32</string>
       </values>
     </hudson.matrix.TextAxis>
