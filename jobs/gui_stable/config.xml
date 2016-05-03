@@ -86,6 +86,8 @@
         <string>cMT3000</string>
         <string>cMT-iv5</string>
         <string>cMT-iv5-3000</string>
+        <string>android-arm</string>
+        <string>android-x86</string>
         <string>win32</string>
       </values>
     </hudson.matrix.TextAxis>
@@ -135,10 +137,9 @@ case $MATRIX_AXIS_PLATFORM in
 esac
 
 case $MATRIX_AXIS_PLATFORM in
-    &quot;cMT3000&quot;)       export BUILD_LIBRARY_ONLY=off  ;;
     &quot;cMT-iv5&quot;)       export BUILD_LIBRARY_ONLY=on   ;;
     &quot;cMT-iv5-3000&quot;)  export BUILD_LIBRARY_ONLY=on   ;;
-    &quot;Ubuntu&quot;)        export BUILD_LIBRARY_ONLY=off  ;;
+    *)               export BUILD_LIBRARY_ONLY=off  ;;
 esac
 
 case $MATRIX_AXIS_PLATFORM in
@@ -150,9 +151,11 @@ if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;cMT3000&quot; ]; then
    export ENCRYPT_EXTENSION_NAME=.c30
 fi
 
-if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;Ubuntu&quot; ]; then
-   export PATH=/opt/Qt5.4.2/5.4/gcc_64/bin:${PATH}
-fi
+case $MATRIX_AXIS_PLATFORM in
+    &quot;android-arm&quot;)   export PATH=/opt/Qt5.5.1/5.5/android_armv7/bin:${PATH}  ;;
+    &quot;android-x86&quot;)   export PATH=/opt/Qt5.5.1/5.5/android_x86/bin:${PATH}    ;;
+    &quot;Ubuntu&quot;)        export PATH=/opt/Qt5.4.2/5.4/gcc_64/bin:${PATH}         ;;
+esac
 
 # clear artifacts
 
