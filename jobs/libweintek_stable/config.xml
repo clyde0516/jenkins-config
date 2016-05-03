@@ -145,6 +145,15 @@ if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;android-arm&quot; ]; then
     export CXX=${TOOLCHAIN}/bin/arm-linux-androideabi-g++
     export INSTALL_PREFIX=${TOOLCHAIN}/sysroot/usr
 fi
+if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;android-x86&quot; ]; then
+	export ANDROID_CMAKE_FILE=/home/ci/android-cmake/android.toolchain.cmake
+	export ANDROID_SDK_ROOT=/home/ci/Android/Sdk
+	export ANDROID_NDK_ROOT=/home/ci/Android/android-ndk
+    export TOOLCHAIN=/home/ci/work/android-x86/target/sysroots/android-toolchain-x86
+    export CC=${TOOLCHAIN}/bin/i686-linux-android-gcc
+    export CXX=${TOOLCHAIN}/bin/i686-linux-android-g++
+    export INSTALL_PREFIX=${TOOLCHAIN}/sysroot/usr
+fi
 
 # prepare out-of-source build
 
