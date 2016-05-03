@@ -131,6 +131,11 @@ export DSERVER_PATH=${JENKINS_HOME}/jobs/dserver_${TRIGGER_PARAM_JOB_GROUP}/work
 export INSTALL_PREFIX=/home/ci/work/${MATRIX_AXIS_PLATFORM}/build-${TRIGGER_PARAM_JOB_GROUP}-branch
 
 case $MATRIX_AXIS_PLATFORM in
+    &quot;android-arm&quot;)   export BOOST_ROOT=/opt/boost_1_55_0  ;;
+    &quot;android-x86&quot;)   export BOOST_ROOT=/opt/boost_1_55_0  ;;
+esac
+
+case $MATRIX_AXIS_PLATFORM in
     &quot;cMT3000&quot;)       export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi  ;;
     &quot;cMT-iv5&quot;)       export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT-iv5/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi  ;;
     &quot;cMT-iv5-3000&quot;)  export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi  ;;
@@ -197,7 +202,7 @@ cd jenkins/${MATRIX_AXIS_PLATFORM}
 # generate makefile
 
 cp ${GUI_PATH}/build/${PLATFORM_BUILD_FOLDER}/features.pri .
-${GUI_PATH}/build/${PLATFORM_BUILD_FOLDER}/qmake_gui.sh ${GUI_PATH} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} RelWithDebInfo
+${GUI_PATH}/build/${PLATFORM_BUILD_FOLDER}/qmake_gui.sh ${GUI_PATH} ${LIBWEINTEK_PATH} ${DSERVER_PATH} ${BOOST_ROOT} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} RelWithDebInfo
 
 # make
 
