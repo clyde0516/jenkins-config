@@ -142,9 +142,9 @@ case $MATRIX_AXIS_PLATFORM in
 esac
 
 case $MATRIX_AXIS_PLATFORM in
-    &quot;cMT-iv5&quot;)       export BUILD_LIBRARY_ONLY=on   ;;
-    &quot;cMT-iv5-3000&quot;)  export BUILD_LIBRARY_ONLY=on   ;;
-    *)               export BUILD_LIBRARY_ONLY=off  ;;
+    &quot;cMT3000&quot;)       export BUILD_LIBRARY_ONLY=off ;;
+    &quot;Ubuntu&quot;)        export BUILD_LIBRARY_ONLY=off ;;
+    *)               export BUILD_LIBRARY_ONLY=on  ;;
 esac
 
 case $MATRIX_AXIS_PLATFORM in
