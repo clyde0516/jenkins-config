@@ -112,6 +112,9 @@
         <hudson.tasks.Shell>
           <command>#!/bin/bash
 
+# Build gui
+echo &quot;================================ gui ================================ gui ================================ gui ================================&quot;
+
 # alter trigger parameter
 
 if [[ ! &quot;`date +&quot;%H%M&quot;`&quot; &lt; &quot;0000&quot; &amp;&amp; ! &quot;`date +&quot;%H%M&quot;`&quot; &gt; &quot;0800&quot; ]]; then
@@ -155,8 +158,8 @@ fi
 
 rm -f ${INSTALL_PREFIX}/bin/gui*
 rm -f ${INSTALL_PREFIX}/lib/liblibgui20.a
-rm -rf ${WORKSPACE}/artifacts
-mkdir ${WORKSPACE}/artifacts
+rm -rf ${GUI_PATH}/artifacts
+mkdir ${GUI_PATH}/artifacts
 
 # prepare out-of-source build
 
@@ -189,20 +192,20 @@ fi
 make VERBOSE=1
 
 if [ &quot;${BUILD_LIBRARY_ONLY}&quot; = &quot;off&quot; ]; then
-    cp ${INSTALL_PREFIX}/bin/gui ${WORKSPACE}/artifacts/gui.RelWithDebInfo
+    cp ${INSTALL_PREFIX}/bin/gui ${GUI_PATH}/artifacts/gui.RelWithDebInfo
 else
-    cp ${INSTALL_PREFIX}/lib/liblibgui20.a ${WORKSPACE}/artifacts
+    cp ${INSTALL_PREFIX}/lib/liblibgui20.a ${GUI_PATH}/artifacts
 fi
 
 # strip and encrypt
 
 if [ &quot;${BUILD_LIBRARY_ONLY}&quot; = &quot;off&quot; ] &amp;&amp; [ -e &quot;${INSTALL_PREFIX}/bin/gui&quot; ]; then
     strip ${INSTALL_PREFIX}/bin/gui
-    cp ${INSTALL_PREFIX}/bin/gui ${WORKSPACE}/artifacts/gui.decrypted
+    cp ${INSTALL_PREFIX}/bin/gui ${GUI_PATH}/artifacts/gui.decrypted
     
     if test -n &quot;${ENCRYPT_EXTENSION_NAME}&quot;; then
         test_mtcrypt --encrypt ${INSTALL_PREFIX}/bin/gui --out ${INSTALL_PREFIX}/bin/gui${ENCRYPT_EXTENSION_NAME}
-        cp ${INSTALL_PREFIX}/bin/gui${ENCRYPT_EXTENSION_NAME} ${WORKSPACE}/artifacts
+        cp ${INSTALL_PREFIX}/bin/gui${ENCRYPT_EXTENSION_NAME} ${GUI_PATH}/artifacts
     fi    
 fi
 </command>
