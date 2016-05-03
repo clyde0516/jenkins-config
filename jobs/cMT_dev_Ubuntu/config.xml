@@ -353,7 +353,7 @@ fi
 
 # export variables
 
-export DSERVER_PATH=${WORKSPACE}
+export DSERVER_PATH=${WORKSPACE}/dserver
 export LIBWEINTEK_PATH=${WORKSPACE}/libweintek
 export MARIADB_CONNECTOR_C_PATH=/home/ci/work/mariadb-connector-c
 export INSTALL_PREFIX=/home/ci/work/${MATRIX_AXIS_PLATFORM}/build-${TRIGGER_PARAM_JOB_GROUP}-branch
