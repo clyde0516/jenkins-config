@@ -134,6 +134,10 @@ case $MATRIX_AXIS_PLATFORM in
     *)               export PLATFORM_BUILD_FOLDER=${MATRIX_AXIS_PLATFORM}  ;;
 esac
 
+# clear artifacts
+
+rm -f ${INSTALL_PREFIX}/lib/libweintek_*.a
+
 # prepare out-of-source build
 cd ${LIBWEINTEK_PATH}/build
 if [ &quot;${TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY}&quot; = &quot;brandnew&quot; ]; then
