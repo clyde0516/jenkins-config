@@ -209,7 +209,6 @@ if test -n &quot;${CROSS_COMPILER_TOOLCHAIN}&quot;; then
     source ${CROSS_COMPILER_TOOLCHAIN}
 fi
 make VERBOSE=1
-cp ${INSTALL_PREFIX}/bin/CloudHmi ${VIEWER_PATH}/artifacts/CloudHmi.RelWithDebInfo	
 
 
 if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;android-arm&quot; ] || [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;android-x86&quot; ]; then
@@ -219,6 +218,8 @@ if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;android-arm&quot; ] || [ &quot;
                                    --storepass 1151511515                                                     \
                                    --keypass   asdzxc123
 else
+    cp ${INSTALL_PREFIX}/bin/CloudHmi ${VIEWER_PATH}/artifacts/CloudHmi.RelWithDebInfo	
+
     # strip and encrypt
     cd ${INSTALL_PREFIX}/bin
     if [ -e &quot;CloudHmi&quot; ]; then
