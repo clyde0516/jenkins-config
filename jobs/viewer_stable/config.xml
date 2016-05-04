@@ -221,7 +221,7 @@ if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;android-arm&quot; ] || [ &quot;
     
     ${QT_ROOT}/bin/androiddeployqt --input ${VIEWER_PATH}/build/jenkins/${MATRIX_AXIS_PLATFORM}/android-libCloudHmi.so-deployment-settings.json \
                                    --output ${INSTALL_PREFIX}/bin \
-                                   --sign ${VIEWER_PATH}/android/android_release_key.keystore weintek \
+                                   --sign ${CLOUDHMI_PATH}/android/android_release_key.keystore weintek \
                                    --storepass 1151511515 \
                                    --keypass asdzxc123
 else
