@@ -166,6 +166,7 @@ fi
 
 rm -f ${INSTALL_PREFIX}/bin/CloudHmi*
 rm -f ${INSTALL_PREFIX}/bin/cMTViewer*
+rm -f ${INSTALL_PREFIX}/bin/bin/QtApp-release-signed.apk
 rm -rf ${VIEWER_PATH}/artifacts
 mkdir ${VIEWER_PATH}/artifacts
 
@@ -205,6 +206,7 @@ if test -n &quot;${ANDROID_PLATFORM}&quot;; then
     rm -rf ${QT_ROOT}/src/android/java/src
     mkdir ${QT_ROOT}/src/android/java/src
     cp -rH ${QT_ROOT}/src/android/java.src.cMTViewer/* ${QT_ROOT}/src/android/java/src
+    rm -rf ${INSTALL_PREFIX}/bin/src
     
     rm -rf ../android
     mkdir ../android
