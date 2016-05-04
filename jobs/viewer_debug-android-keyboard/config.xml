@@ -205,8 +205,6 @@ if test -n &quot;${ANDROID_PLATFORM}&quot;; then
     rm -rf ${QT_ROOT}/src/android/java/src
     mkdir ${QT_ROOT}/src/android/java/src
     cp -rH ${QT_ROOT}/src/android/java.src.cMTViewer/* ${QT_ROOT}/src/android/java/src
-    #rm -f ${INSTALL_PREFIX}/bin/src/org/qtproject/qt5/android/bindings/QtActivity.java
-    #cp -f ${VIEWER_PATH}/android/QtActivity.java ${INSTALL_PREFIX}/bin/src/org/qtproject/qt5/android/bindings
     
     rm -rf ../android
     mkdir ../android
