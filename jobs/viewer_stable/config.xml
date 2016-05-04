@@ -224,6 +224,7 @@ if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;android-arm&quot; ] || [ &quot;
                                    --sign      ${VIEWER_PATH}/android/android_release_key.keystore weintek                                           \
                                    --storepass 1151511515                                                                                            \
                                    --keypass   asdzxc123
+                                   --verbose
 else
     make VERBOSE=1
     cp ${INSTALL_PREFIX}/bin/CloudHmi ${VIEWER_PATH}/artifacts/CloudHmi.RelWithDebInfo	
