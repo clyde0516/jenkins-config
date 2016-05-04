@@ -87,8 +87,6 @@
         <string>cMT-SVR</string>
         <string>cMT-iv5</string>
         <string>cMT-iv5-3000</string>
-        <string>android-arm</string>
-        <string>android-x86</string>
         <string>win32</string>
       </values>
     </hudson.matrix.TextAxis>
