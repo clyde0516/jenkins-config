@@ -182,7 +182,7 @@ fi
 # clear artifacts
 
 rm -f ${INSTALL_PREFIX}/bin/dserver*
-rm -f ${INSTALL_PREFIX}/lib/libdserver_*
+rm -f ${INSTALL_PREFIX}/lib/libdserver_*.a
 rm -rf ${DSERVER_PATH}/artifacts
 mkdir ${DSERVER_PATH}/artifacts
 
