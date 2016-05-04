@@ -337,7 +337,8 @@ else
     fi
     /home/ci/work/crypto e ${INSTALL_PREFIX}/bin/opcua-server ${INSTALL_PREFIX}/bin/${ENCRYPT_NAME}
 fi
-cp ${INSTALL_PREFIX}/bin/${ENCRYPT_NAME} ${OPCUA_SERVER_PATH}/artifacts</command>
+cp ${INSTALL_PREFIX}/bin/${ENCRYPT_NAME} ${OPCUA_SERVER_PATH}/artifacts
+</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
