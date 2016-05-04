@@ -267,6 +267,7 @@
         <string>libweintek_stable</string>
         <string>matrix-test</string>
         <string>slave-healthy-monitoring</string>
+        <string>viewer_debug-android-keyboard</string>
         <string>viewer_dev</string>
         <string>viewer_stable</string>
       </jobNames>
