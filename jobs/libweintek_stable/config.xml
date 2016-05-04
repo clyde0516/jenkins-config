@@ -153,6 +153,10 @@ if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;android-arm&quot; ] || [ &quot;
     export INSTALL_PREFIX=${TOOLCHAIN}/sysroot/usr
 fi
 
+# clear artifacts
+
+rm -f ${INSTALL_PREFIX}/lib/libweintek_*.a
+
 # prepare out-of-source build
 
 cd ${LIBWEINTEK_PATH}/build
