@@ -159,8 +159,8 @@ esac
 
 if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;android-arm&quot; ] || [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;android-x86&quot; ]; then
 	#export ANDROID_CMAKE_FILE=/home/ci/android-cmake/android.toolchain.cmake
-	export ANDROID_SDK_ROOT=/home/ci/Android/Sdk
-	export ANDROID_NDK_ROOT=/home/ci/Android/android-ndk
+	#export ANDROID_SDK_ROOT=/home/ci/Android/Sdk
+	#export ANDROID_NDK_ROOT=/home/ci/Android/android-ndk
     
     if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;android-arm&quot; ]; then
         export TOOLCHAIN=/home/ci/work/android-arm/target/sysroots/android-toolchain-arm
