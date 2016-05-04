@@ -236,6 +236,8 @@ ln -sf ../rma/AuthClient AuthClient
 mkdir -p jenkins
 cd jenkins
 
+rm -rf ${QT_ROOT}/src/android/java/src
+cp -rH ${QT_ROOT}/src/android/java.src.RemoteAccess ${QT_ROOT}/src/android/java/src
 cp -rH ${QT_ROOT}/src/android/java/* ${INSTALL_PREFIX}/apk
 ${QT_ROOT}/bin/qmake ${EA_PATH}/RemoteAccess.pro -r -spec android-g++ \
         WORK_SPACE_PATH=${WORKSPACE} \
