@@ -315,6 +315,10 @@ case $MATRIX_AXIS_PLATFORM in
     *)               export PLATFORM_BUILD_FOLDER=${MATRIX_AXIS_PLATFORM}  ;;
 esac
 
+# clear artifacts
+
+rm -f ${INSTALL_PREFIX}/lib/libweintek_*.a
+
 # prepare out-of-source build
 cd ${LIBWEINTEK_PATH}/build
 if [ &quot;${TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY}&quot; = &quot;brandnew&quot; ]; then
@@ -384,6 +388,7 @@ esac
 # clear artifacts
 
 rm -f ${INSTALL_PREFIX}/bin/dserver*
+rm -f ${INSTALL_PREFIX}/lib/libdserver_*.a
 rm -rf ${DSERVER_PATH}/artifacts
 mkdir ${DSERVER_PATH}/artifacts
 
@@ -497,6 +502,7 @@ fi
 
 rm -f ${INSTALL_PREFIX}/bin/gui*
 rm -f ${INSTALL_PREFIX}/lib/liblibgui20.a
+rm -f ${INSTALL_PREFIX}/lib/libgot_*.a
 rm -rf ${GUI_PATH}/artifacts
 mkdir ${GUI_PATH}/artifacts
 
