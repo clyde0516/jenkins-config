@@ -152,9 +152,9 @@ case $MATRIX_AXIS_PLATFORM in
 esac
 
 case $MATRIX_AXIS_PLATFORM in
-    &quot;android-arm&quot;)   export PATH=/opt/Qt5.5.1/5.5/android_armv7/bin:${PATH}  ;;
-    &quot;android-x86&quot;)   export PATH=/opt/Qt5.5.1/5.5/android_x86/bin:${PATH}    ;;
-    &quot;Ubuntu&quot;)        export PATH=/opt/Qt5.4.2/5.4/gcc_64/bin:${PATH}         ;;
+    &quot;android-arm&quot;)   export QT_ROOT=/opt/Qt5.5.1/5.5/android_armv7  ;;
+    &quot;android-x86&quot;)   export QT_ROOT=/opt/Qt5.5.1/5.5/android_x86    ;;
+    &quot;Ubuntu&quot;)        export QT_ROOT=/opt/Qt5.4.2/5.4/gcc_64         ;;
 esac
 
 if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;android-arm&quot; ] || [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;android-x86&quot; ]; then
@@ -182,6 +182,10 @@ mkdir ${VIEWER_PATH}/artifacts
 
 # prepare out-of-source build
 
+if test -n &quot;${QT_ROOT}&quot;; then
+	export PATH=${QT_ROOT}/bin:${PATH}
+fi
+
 cd ${VIEWER_PATH}/build
 if [ &quot;${TRIGGER_PARAM_VIEWER_BUILD_POLICY}&quot; = &quot;brandnew&quot; ]; then
     rm -rf jenkins/${MATRIX_AXIS_PLATFORM}
@@ -207,17 +211,25 @@ fi
 make VERBOSE=1
 cp ${INSTALL_PREFIX}/bin/CloudHmi ${VIEWER_PATH}/artifacts/CloudHmi.RelWithDebInfo	
 
-# strip and encrypt
 
-cd ${INSTALL_PREFIX}/bin
-if [ -e &quot;CloudHmi&quot; ]; then
-    strip CloudHmi
-    tar -cv CloudHmi &gt;&gt; CloudHmi.tar
-    if test -n &quot;${ENCRYPT_EXTENSION_NAME}&quot;; then
-        test_mtcrypt --encrypt CloudHmi.tar --out cMTViewer${ENCRYPT_EXTENSION_NAME}
-        cp cMTViewer${ENCRYPT_EXTENSION_NAME} ${VIEWER_PATH}/artifacts
-    else
-        cp CloudHmi.tar ${VIEWER_PATH}/artifacts
+if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;android-arm&quot; ] || [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;android-x86&quot; ]; then
+    ${QT_ROOT}/bin/androiddeployqt --input     ${INSTALL_PREFIX}/bin/libCloudHmi.so-deployment-settings.json  \
+                                   --output    ${INSTALL_PREFIX}/bin                                          \
+                                   --sign      ${VIEWER_PATH}/android/android_release_key.keystore weintek    \
+                                   --storepass 1151511515                                                     \
+                                   --keypass   asdzxc123
+else
+    # strip and encrypt
+    cd ${INSTALL_PREFIX}/bin
+    if [ -e &quot;CloudHmi&quot; ]; then
+        strip CloudHmi
+        tar -cv CloudHmi &gt;&gt; CloudHmi.tar
+        if test -n &quot;${ENCRYPT_EXTENSION_NAME}&quot;; then
+            test_mtcrypt --encrypt CloudHmi.tar --out cMTViewer${ENCRYPT_EXTENSION_NAME}
+            cp cMTViewer${ENCRYPT_EXTENSION_NAME} ${VIEWER_PATH}/artifacts
+        else
+            cp CloudHmi.tar ${VIEWER_PATH}/artifacts
+        fi
     fi
 fi
 </command>
