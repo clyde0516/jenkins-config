@@ -158,7 +158,7 @@ case $MATRIX_AXIS_PLATFORM in
 esac
 
 if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;android-arm&quot; ] || [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;android-x86&quot; ]; then
-	export ANDROID_CMAKE_FILE=/home/ci/android-cmake/android.toolchain.cmake
+	#export ANDROID_CMAKE_FILE=/home/ci/android-cmake/android.toolchain.cmake
 	export ANDROID_SDK_ROOT=/home/ci/Android/Sdk
 	export ANDROID_NDK_ROOT=/home/ci/Android/android-ndk
     
@@ -168,8 +168,8 @@ if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;android-arm&quot; ] || [ &quot;
         export TOOLCHAIN=/home/ci/work/android-x86/target/sysroots/android-toolchain-x86
     fi
     
-    export CC=${TOOLCHAIN}/bin/arm-linux-androideabi-gcc
-    export CXX=${TOOLCHAIN}/bin/arm-linux-androideabi-g++
+    #export CC=${TOOLCHAIN}/bin/arm-linux-androideabi-gcc
+    #export CXX=${TOOLCHAIN}/bin/arm-linux-androideabi-g++
     export INSTALL_PREFIX=${TOOLCHAIN}/sysroot/usr
 fi
 
