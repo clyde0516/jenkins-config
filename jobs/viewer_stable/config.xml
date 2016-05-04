@@ -218,12 +218,12 @@ if test -n &quot;${CROSS_COMPILER_TOOLCHAIN}&quot;; then
 fi
 
 
-if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;android-arm&quot; ] || [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;android-x86&quot; ]; then
+if test -n &quot;${ANDROID_PLATFORM}&quot;; then
     make install INSTALL_ROOT=${INSTALL_PREFIX}/bin
     
     cp -rH ${QT_ROOT}/src/android/java/* ${INSTALL_PREFIX}/bin
     rm ${INSTALL_PREFIX}/bin/src/org/qtproject/qt5/android/bindings/QtActivity.java
-    #cp -f ${VIEWER_PATH}/android/QtActivity.java ${INSTALL_PREFIX}/bin/src/org/qtproject/qt5/android/bindings
+    cp -f ${VIEWER_PATH}/android/QtActivity.java ${INSTALL_PREFIX}/bin/src/org/qtproject/qt5/android/bindings
     
     rm -rf ../android
     mkdir ../android
