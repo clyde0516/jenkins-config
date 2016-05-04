@@ -158,6 +158,7 @@ fi
 
 rm -f ${INSTALL_PREFIX}/bin/gui*
 rm -f ${INSTALL_PREFIX}/lib/liblibgui20.a
+rm -f ${INSTALL_PREFIX}/lib/libgot_*.a
 rm -rf ${GUI_PATH}/artifacts
 mkdir ${GUI_PATH}/artifacts
 
