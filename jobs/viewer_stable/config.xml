@@ -211,10 +211,13 @@ fi
 
 
 if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;android-arm&quot; ] || [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;android-x86&quot; ]; then
+    make install INSTALL_ROOT=${INSTALL_PREFIX}/bin
+    
     cp -rH ${QT_ROOT}/src/android/java/* ${INSTALL_PREFIX}/bin
     cp ${VIEWER_PATH}/android/QtActivity.java ${INSTALL_PREFIX}/bin/src/org/qtproject/qt5/android/bindings
     
-    make install INSTALL_ROOT=${INSTALL_PREFIX}/bin
+    mkdir -p ../android
+    cp ${VIEWER_PATH}/android/* ../android
     
     ${QT_ROOT}/bin/androiddeployqt --input     ${VIEWER_PATH}/build/jenkins/${MATRIX_AXIS_PLATFORM}/android-libCloudHmi.so-deployment-settings.json  \
                                    --output    ${INSTALL_PREFIX}/bin                                                                                 \
