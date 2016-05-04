@@ -208,16 +208,17 @@ ${VIEWER_PATH}/build/${PLATFORM_BUILD_FOLDER}/qmake_viewer.sh ${CLOUDHMI_PATH} $
 if test -n &quot;${CROSS_COMPILER_TOOLCHAIN}&quot;; then
     source ${CROSS_COMPILER_TOOLCHAIN}
 fi
-make VERBOSE=1
 
 
 if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;android-arm&quot; ] || [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;android-x86&quot; ]; then
-    ${QT_ROOT}/bin/androiddeployqt --input     ${INSTALL_PREFIX}/bin/libCloudHmi.so-deployment-settings.json  \
+    make install INSTALL_ROOT=${INSTALL_PREFIX}/bin/apk
+    ${QT_ROOT}/bin/androiddeployqt --input     android-libCloudHmi.so-deployment-settings.json                \
                                    --output    ${INSTALL_PREFIX}/bin                                          \
                                    --sign      ${VIEWER_PATH}/android/android_release_key.keystore weintek    \
                                    --storepass 1151511515                                                     \
                                    --keypass   asdzxc123
 else
+    make VERBOSE=1
     cp ${INSTALL_PREFIX}/bin/CloudHmi ${VIEWER_PATH}/artifacts/CloudHmi.RelWithDebInfo	
 
     # strip and encrypt
