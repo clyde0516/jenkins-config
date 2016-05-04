@@ -214,7 +214,7 @@ if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;android-arm&quot; ] || [ &quot;
     make install INSTALL_ROOT=${INSTALL_PREFIX}/bin
     
     cp -rH ${QT_ROOT}/src/android/java/* ${INSTALL_PREFIX}/bin
-    cp ${VIEWER_PATH}/android/QtActivity.java ${INSTALL_PREFIX}/bin/src/org/qtproject/qt5/android/bindings
+    cp -f ${VIEWER_PATH}/android/QtActivity.java ${INSTALL_PREFIX}/bin/src/org/qtproject/qt5/android/bindings
     
     mkdir -p ../android
     cp ${VIEWER_PATH}/android/* ../android
