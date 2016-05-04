@@ -224,6 +224,8 @@ if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;android-arm&quot; ] || [ &quot;
                                    --sign ${VIEWER_PATH}/android/android_release.keystore weintek \
                                    --storepass 1151511515 \
                                    --keypass asdzxc123
+                                   
+    cp ${INSTALL_PREFIX}/bin/bin/QtApp-release-signed.apk ${VIEWER_PATH}/artifacts/cMTViewer-${MATRIX_AXIS_PLATFORM}.apk	
 else
     make VERBOSE=1
     cp ${INSTALL_PREFIX}/bin/CloudHmi ${VIEWER_PATH}/artifacts/CloudHmi.RelWithDebInfo	
