@@ -165,6 +165,11 @@ if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;android-arm&quot; ] || [ &quot;
         &quot;android-arm&quot;)   export ANDROID_PLATFORM=arm  ;;
         &quot;android-x86&quot;)   export ANDROID_PLATFORM=x86  ;;
     esac
+    
+    case $MATRIX_AXIS_PLATFORM in
+        &quot;android-arm&quot;)   export APK_FILE_NAME=QtApp-release.apk         ;;
+        &quot;android-x86&quot;)   export APK_FILE_NAME=QtApp-release-signed.apk  ;;
+    esac
 
 	#export ANDROID_CMAKE_FILE=/home/ci/android-cmake/android.toolchain.cmake
 	export ANDROID_SDK_ROOT=/home/ci/Android/Sdk
@@ -237,8 +242,7 @@ if test -n &quot;${ANDROID_PLATFORM}&quot;; then
                                    --storepass 1151511515 \
                                    --keypass asdzxc123
     
-    mv ${INSTALL_PREFIX}/bin/bin/QtApp-release-signed.apk ${INSTALL_PREFIX}/bin/bin/QtApp-release.apk
-    cp ${INSTALL_PREFIX}/bin/bin/QtApp-release.apk ${VIEWER_PATH}/artifacts/cMTViewer-${ANDROID_PLATFORM}.apk	
+    cp ${INSTALL_PREFIX}/bin/bin/${APK_FILE_NAME} ${VIEWER_PATH}/artifacts/cMTViewer-${ANDROID_PLATFORM}.apk	
 else
     make VERBOSE=1
     cp ${INSTALL_PREFIX}/bin/CloudHmi ${VIEWER_PATH}/artifacts/CloudHmi.RelWithDebInfo	
