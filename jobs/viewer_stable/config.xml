@@ -227,9 +227,9 @@ if test -n &quot;${ANDROID_PLATFORM}&quot;; then
     cp -f ${VIEWER_PATH}/android/QtActivity.java ${QT_ROOT}/src/android/java/src/org/qtproject/qt5/android/bindings
     rm -rf ${INSTALL_PREFIX}/bin/src
     
-    rm -rf ../android
-    mkdir ../android
-    cp -rf ${VIEWER_PATH}/android/${ANDROID_PLATFORM}/* ../android
+    rm -rf android
+    mkdir android
+    cp -rf ${VIEWER_PATH}/android/${ANDROID_PLATFORM}/* android
     
     ${QT_ROOT}/bin/androiddeployqt --input ${VIEWER_PATH}/build/jenkins/${MATRIX_AXIS_PLATFORM}/android-libCloudHmi.so-deployment-settings.json \
                                    --output ${INSTALL_PREFIX}/bin \
