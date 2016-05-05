@@ -192,7 +192,7 @@ mkdir ${VIEWER_PATH}/artifacts
 # prepare out-of-source build
 
 if test -n &quot;${QT_ROOT}&quot;; then
-	export PATH=${QT_ROOT}/bin:${PATH}
+    export PATH=${QT_ROOT}/bin:${PATH}
 fi
 
 cd ${VIEWER_PATH}/build
@@ -214,11 +214,6 @@ ${VIEWER_PATH}/build/${PLATFORM_BUILD_FOLDER}/qmake_viewer.sh ${CLOUDHMI_PATH} $
 
 # make
 
-if test -n &quot;${CROSS_COMPILER_TOOLCHAIN}&quot;; then
-    source ${CROSS_COMPILER_TOOLCHAIN}
-fi
-
-
 if test -n &quot;${ANDROID_PLATFORM}&quot;; then
     make install INSTALL_ROOT=${INSTALL_PREFIX}/bin
     
@@ -239,6 +234,10 @@ if test -n &quot;${ANDROID_PLATFORM}&quot;; then
     
     cp ${INSTALL_PREFIX}/bin/bin/${APK_FILE_NAME} ${VIEWER_PATH}/artifacts/cMTViewer-${ANDROID_PLATFORM}.apk	
 else
+    if test -n &quot;${CROSS_COMPILER_TOOLCHAIN}&quot;; then
+        source ${CROSS_COMPILER_TOOLCHAIN}
+    fi
+
     make VERBOSE=1
     cp ${INSTALL_PREFIX}/bin/CloudHmi ${VIEWER_PATH}/artifacts/CloudHmi.RelWithDebInfo	
 
