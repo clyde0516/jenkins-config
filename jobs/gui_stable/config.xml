@@ -157,7 +157,7 @@ if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;cMT3000&quot; ]; then
 fi
 
 case $MATRIX_AXIS_PLATFORM in
-    &quot;android-arm&quot;)   export PATH=/opt/Qt5.5.1/5.5/android_armv7/bin:${PATH}  ;;
+    &quot;android-arm&quot;)   export PATH=/opt/Qt5.3.2/5.3/android_armv7/bin:${PATH}  ;;
     &quot;android-x86&quot;)   export PATH=/opt/Qt5.5.1/5.5/android_x86/bin:${PATH}    ;;
     &quot;Ubuntu&quot;)        export PATH=/opt/Qt5.4.2/5.4/gcc_64/bin:${PATH}         ;;
 esac
