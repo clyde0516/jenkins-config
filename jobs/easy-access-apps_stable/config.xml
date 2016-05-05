@@ -242,9 +242,8 @@ ${QT_ROOT}/bin/qmake ${EA_PATH}/RemoteAccess.pro -r -spec android-g++ \
         BOOST_ROOT=/opt/boost_1_55_0
 make install INSTALL_ROOT=${INSTALL_PREFIX}/apk
 
-rm -rf ${QT_ROOT}/src/android/java/src
-mkdir ${QT_ROOT}/src/android/java/src
-cp -rH ${QT_ROOT}/src/android/java.src.RemoteAccess/* ${QT_ROOT}/src/android/java/src
+rm -rf ${QT_ROOT}/src/android/java/src/*
+cp -rH ${QT_ROOT}/src/android/java_src_RemoteAccess/* ${QT_ROOT}/src/android/java/src
 cp -rH ${QT_ROOT}/src/android/java/* ${INSTALL_PREFIX}/apk
 ${QT_ROOT}/bin/androiddeployqt --input ${EA_PATH}/jenkins/RemoteAccess/android-libEasyAccess.so-deployment-settings.json \
                                --output ${INSTALL_PREFIX}/apk \
