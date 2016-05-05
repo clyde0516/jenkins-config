@@ -185,7 +185,7 @@ fi
 
 rm -f ${INSTALL_PREFIX}/bin/CloudHmi*
 rm -f ${INSTALL_PREFIX}/bin/cMTViewer*
-rm -f ${INSTALL_PREFIX}/bin/bin/QtApp-release-signed.apk
+rm -f ${INSTALL_PREFIX}/bin/bin/QtApp-release.apk
 rm -rf ${VIEWER_PATH}/artifacts
 mkdir ${VIEWER_PATH}/artifacts
 
@@ -236,8 +236,9 @@ if test -n &quot;${ANDROID_PLATFORM}&quot;; then
                                    --sign ${VIEWER_PATH}/android/android_release.keystore weintek \
                                    --storepass 1151511515 \
                                    --keypass asdzxc123
-                                   
-    cp ${INSTALL_PREFIX}/bin/bin/QtApp-release-signed.apk ${VIEWER_PATH}/artifacts/cMTViewer-${ANDROID_PLATFORM}.apk	
+    
+    mv ${INSTALL_PREFIX}/bin/bin/QtApp-release-signed.apk ${INSTALL_PREFIX}/bin/bin/QtApp-release.apk
+    cp ${INSTALL_PREFIX}/bin/bin/QtApp-release.apk ${VIEWER_PATH}/artifacts/cMTViewer-${ANDROID_PLATFORM}.apk	
 else
     make VERBOSE=1
     cp ${INSTALL_PREFIX}/bin/CloudHmi ${VIEWER_PATH}/artifacts/CloudHmi.RelWithDebInfo	
