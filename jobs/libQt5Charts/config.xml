@@ -106,7 +106,7 @@ fi
 qmake ${CHARTS_PROJECT_NAME}
 make
 
-cd QtCharts/${MATRIX_AXIS_QT_CHARTS_VERSION}/Src/lib
+cd QtCharts/${MATRIX_AXIS_QT_CHARTS_VERSION}/Src/src/lib
 
 if [ &quot;${CHARTS_PROJECT_NAME}&quot; = &quot;charts_no_opengl.pro&quot; ]; then
     mv libQt2Charts.a libQt5Charts.a
