@@ -94,7 +94,7 @@ case $MATRIX_AXIS_PLATFORM in
     *)               export CHARTS_PROJECT_NAME=charts.pro            ;;
 esac
 
-if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;android-arm&quot; ] || [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;android-x86&quot; ] || [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;android-x86-Qt5.6&quot; ]; then
+if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;android-arm&quot; ] || [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;android-x86&quot; ] || [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;android-arm-Qt5.6&quot; ]; then
 	export ANDROID_NDK_ROOT=/home/ci/Android/android-ndk
 fi
 
