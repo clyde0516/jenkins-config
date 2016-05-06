@@ -75,6 +75,8 @@ cp -r ${QT_CHARTS_PATH} QtCharts
     <hudson.tasks.Shell>
       <command>#!/bin/bash
 
+echo ~
+
 case $MATRIX_AXIS_PLATFORM in
     &quot;cMT3000&quot;)       export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi  ;;
     &quot;cMT-iv5&quot;)       export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT-iv5/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi  ;;
