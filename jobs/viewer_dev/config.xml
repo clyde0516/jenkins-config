@@ -162,20 +162,10 @@ if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;android-arm&quot; ] || [ &quot;
         &quot;android-arm&quot;)   export APK_FILE_NAME=QtApp-release.apk         ;;
         &quot;android-x86&quot;)   export APK_FILE_NAME=QtApp-release-signed.apk  ;;
     esac
-
-	#export ANDROID_CMAKE_FILE=/home/ci/android-cmake/android.toolchain.cmake
+    
 	export ANDROID_SDK_ROOT=/home/ci/Android/Sdk
 	export ANDROID_NDK_ROOT=/home/ci/Android/android-ndk
-    
-    if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;android-arm&quot; ]; then
-        export ANDROID_TOOLCHAIN=/home/ci/work/android-arm/target/sysroots/android-toolchain-arm
-    elif [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;android-x86&quot; ]; then
-        export ANDROID_TOOLCHAIN=/home/ci/work/android-x86/target/sysroots/android-toolchain-x86
-    fi
-    
-    #export CC=${ANDROID_TOOLCHAIN}/bin/arm-linux-androideabi-gcc
-    #export CXX=${ANDROID_TOOLCHAIN}/bin/arm-linux-androideabi-g++
-    #export INSTALL_PREFIX=${TOOLCHAIN}/sysroot/usr
+    export ANDROID_TOOLCHAIN=/home/ci/work/android-${ANDROID_PLATFORM}/target/sysroots/android-toolchain-${ANDROID_PLATFORM}
 fi
 
 # clear artifacts
