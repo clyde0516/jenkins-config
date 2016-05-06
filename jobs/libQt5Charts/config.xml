@@ -97,9 +97,9 @@ case $MATRIX_AXIS_QT_VERSION in
 esac
 
 case $MATRIX_AXIS_PLATFORM in
-    &quot;android-arm&quot;)   export PATH=/opt/Qt${$MATRIX_AXIS_QT_VERSION}/${QT_MAIN_VERSION}/android_armv7/bin:${PATH}  ;;
-    &quot;android-x86&quot;)   export PATH=/opt/Qt${$MATRIX_AXIS_QT_VERSION}/${QT_MAIN_VERSION}/android_x86/bin:${PATH}    ;;
-    &quot;Ubuntu&quot;)        export PATH=/opt/Qt${$MATRIX_AXIS_QT_VERSION}/${QT_MAIN_VERSION}/gcc_64/bin:${PATH}         ;;
+    &quot;android-arm&quot;)   export PATH=/opt/Qt${MATRIX_AXIS_QT_VERSION}/${QT_MAIN_VERSION}/android_armv7/bin:${PATH}  ;;
+    &quot;android-x86&quot;)   export PATH=/opt/Qt${MATRIX_AXIS_QT_VERSION}/${QT_MAIN_VERSION}/android_x86/bin:${PATH}    ;;
+    &quot;Ubuntu&quot;)        export PATH=/opt/Qt${MATRIX_AXIS_QT_VERSION}/${QT_MAIN_VERSION}/gcc_64/bin:${PATH}         ;;
 esac
 
 case $MATRIX_AXIS_QT_VERSION in
