@@ -37,11 +37,10 @@
       <name>MATRIX_AXIS_PLATFORM</name>
       <values>
         <string>cMT3000</string>
-        <string>cMT-SVR</string>
         <string>cMT-iv5</string>
-        <string>cMT-iv5-3000</string>
         <string>android-arm</string>
         <string>android-x86</string>
+        <string>Ubuntu</string>
       </values>
     </hudson.matrix.TextAxis>
     <org.jenkinsci.plugins.elasticaxisplugin.ElasticAxis plugin="elastic-axis@1.2">
@@ -79,7 +78,6 @@ cp -r ${QT_CHARTS_PATH} QtCharts
 case $MATRIX_AXIS_PLATFORM in
     &quot;cMT3000&quot;)       export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi  ;;
     &quot;cMT-iv5&quot;)       export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT-iv5/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi  ;;
-    &quot;cMT-iv5-3000&quot;)  export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi  ;;
 esac
 
 case $MATRIX_AXIS_PLATFORM in
