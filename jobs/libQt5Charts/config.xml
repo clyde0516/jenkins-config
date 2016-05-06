@@ -84,6 +84,10 @@ case $MATRIX_AXIS_PLATFORM in
     &quot;Ubuntu&quot;)        export PATH=/opt/Qt5.4.2/5.4/gcc_64/bin:${PATH}         ;;
 esac
 
+case $MATRIX_AXIS_PLATFORM in
+    &quot;cMT-iv5&quot;)       export NO_OPENGL_DEFINES=&quot;DEFINES += QT_NO_OPENGL&quot;  ;;
+esac
+
 rm -rf QtCharts/${MATRIX_AXIS_QT_CHARTS_VERSION}/Src/lib/*
 
 cd QtCharts/${MATRIX_AXIS_QT_CHARTS_VERSION}/Src/src/charts
@@ -92,7 +96,7 @@ if test -n &quot;${CROSS_COMPILER_TOOLCHAIN}&quot;; then
     source ${CROSS_COMPILER_TOOLCHAIN}
 fi
 
-qmake charts.pro
+qmake charts.pro ${NO_OPENGL_DEFINES}
 make</command>
     </hudson.tasks.Shell>
   </builders>
