@@ -25,7 +25,14 @@
     <hudson.matrix.TextAxis>
       <name>MATRIX_AXIS_QT_CHART_VERSION</name>
       <values>
-        <string>2.0.0</string>
+        <string>2.0</string>
+        <string>2.1</string>
+      </values>
+    </hudson.matrix.TextAxis>
+    <hudson.matrix.TextAxis>
+      <name>MATRIX_AXIS_QT_VERSION</name>
+      <values>
+        <string>5.3.2</string>
       </values>
     </hudson.matrix.TextAxis>
   </axes>
