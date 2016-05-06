@@ -159,7 +159,7 @@ if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;android-arm&quot; ] || [ &quot;
     esac
     
     case $MATRIX_AXIS_PLATFORM in
-        &quot;android-arm&quot;)   export APK_FILE_NAME=QtApp-release.apk         ;;
+        &quot;android-arm&quot;)   export APK_FILE_NAME=QtApp-release-signed.apk  ;;
         &quot;android-x86&quot;)   export APK_FILE_NAME=QtApp-release-signed.apk  ;;
     esac
     
