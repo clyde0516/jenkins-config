@@ -689,18 +689,41 @@ case $MATRIX_AXIS_PLATFORM in
     &quot;cMT-iv5-3000&quot;)  export ENCRYPT_EXTENSION_NAME=.iv5  ;;
 esac
 
-if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;Ubuntu&quot; ]; then
-   export PATH=/opt/Qt5.4.2/5.4/gcc_64/bin:${PATH}
+case $MATRIX_AXIS_PLATFORM in
+    &quot;android-arm&quot;)   export QT_ROOT=/opt/Qt5.3.2/5.3/android_armv7  ;;
+    &quot;android-x86&quot;)   export QT_ROOT=/opt/Qt5.3.2/5.3/android_x86    ;;
+    &quot;Ubuntu&quot;)        export QT_ROOT=/opt/Qt5.4.2/5.4/gcc_64         ;;
+esac
+
+if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;android-arm&quot; ] || [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;android-x86&quot; ]; then
+    case $MATRIX_AXIS_PLATFORM in
+        &quot;android-arm&quot;)   export ANDROID_PLATFORM=arm  ;;
+        &quot;android-x86&quot;)   export ANDROID_PLATFORM=x86  ;;
+    esac
+    
+    case $MATRIX_AXIS_PLATFORM in
+        &quot;android-arm&quot;)   export APK_FILE_NAME=QtApp-release.apk         ;;
+        &quot;android-x86&quot;)   export APK_FILE_NAME=QtApp-release-signed.apk  ;;
+    esac
+    
+	export ANDROID_SDK_ROOT=/home/ci/Android/Sdk
+	export ANDROID_NDK_ROOT=/home/ci/Android/android-ndk
+    export ANDROID_TOOLCHAIN=/home/ci/work/android-${ANDROID_PLATFORM}/target/sysroots/android-toolchain-${ANDROID_PLATFORM}
 fi
 
 # clear artifacts
 
 rm -f ${INSTALL_PREFIX}/bin/CloudHmi*
 rm -f ${INSTALL_PREFIX}/bin/cMTViewer*
+rm -f ${INSTALL_PREFIX}/bin/bin/QtApp-release.apk
 rm -rf ${VIEWER_PATH}/artifacts
 mkdir ${VIEWER_PATH}/artifacts
 
 # prepare out-of-source build
+
+if test -n &quot;${QT_ROOT}&quot;; then
+    export PATH=${QT_ROOT}/bin:${PATH}
+fi
 
 cd ${VIEWER_PATH}/build
 if [ &quot;${TRIGGER_PARAM_VIEWER_BUILD_POLICY}&quot; = &quot;brandnew&quot; ]; then
@@ -721,26 +744,46 @@ ${VIEWER_PATH}/build/${PLATFORM_BUILD_FOLDER}/qmake_viewer.sh ${CLOUDHMI_PATH} $
 
 # make
 
-if test -n &quot;${CROSS_COMPILER_TOOLCHAIN}&quot;; then
-    source ${CROSS_COMPILER_TOOLCHAIN}
-fi
-make VERBOSE=1
-cp ${INSTALL_PREFIX}/bin/CloudHmi ${VIEWER_PATH}/artifacts/CloudHmi.RelWithDebInfo	
-
-# strip and encrypt
-
-cd ${INSTALL_PREFIX}/bin
-if [ -e &quot;CloudHmi&quot; ]; then
-    strip CloudHmi
-    tar -cv CloudHmi &gt;&gt; CloudHmi.tar
-    if test -n &quot;${ENCRYPT_EXTENSION_NAME}&quot;; then
-        test_mtcrypt --encrypt CloudHmi.tar --out cMTViewer${ENCRYPT_EXTENSION_NAME}
-        cp cMTViewer${ENCRYPT_EXTENSION_NAME} ${VIEWER_PATH}/artifacts
-    else
-        cp CloudHmi.tar ${VIEWER_PATH}/artifacts
+if test -n &quot;${ANDROID_PLATFORM}&quot;; then
+    make install INSTALL_ROOT=${INSTALL_PREFIX}/bin
+    
+    rm -rf ${QT_ROOT}/src/android/java/src/*
+    cp -rH ${QT_ROOT}/src/android/java_src_ori/* ${QT_ROOT}/src/android/java/src
+    cp -f ${VIEWER_PATH}/android/QtActivity.java ${QT_ROOT}/src/android/java/src/org/qtproject/qt5/android/bindings
+    rm -rf ${INSTALL_PREFIX}/bin/src
+    
+    rm -rf android
+    mkdir android
+    cp -rf ${VIEWER_PATH}/android/${ANDROID_PLATFORM}/* android
+    
+    ${QT_ROOT}/bin/androiddeployqt --input ${VIEWER_PATH}/build/jenkins/${MATRIX_AXIS_PLATFORM}/android-libCloudHmi.so-deployment-settings.json \
+                                   --output ${INSTALL_PREFIX}/bin \
+                                   --sign ${VIEWER_PATH}/android/android_release.keystore weintek \
+                                   --storepass 1151511515 \
+                                   --keypass asdzxc123
+    
+    cp ${INSTALL_PREFIX}/bin/bin/${APK_FILE_NAME} ${VIEWER_PATH}/artifacts/cMTViewer-${ANDROID_PLATFORM}.apk	
+else
+    if test -n &quot;${CROSS_COMPILER_TOOLCHAIN}&quot;; then
+        source ${CROSS_COMPILER_TOOLCHAIN}
     fi
-fi
-</command>
+
+    make VERBOSE=1
+    cp ${INSTALL_PREFIX}/bin/CloudHmi ${VIEWER_PATH}/artifacts/CloudHmi.RelWithDebInfo	
+
+    # strip and encrypt
+    cd ${INSTALL_PREFIX}/bin
+    if [ -e &quot;CloudHmi&quot; ]; then
+        strip CloudHmi
+        tar -cv CloudHmi &gt;&gt; CloudHmi.tar
+        if test -n &quot;${ENCRYPT_EXTENSION_NAME}&quot;; then
+            test_mtcrypt --encrypt CloudHmi.tar --out cMTViewer${ENCRYPT_EXTENSION_NAME}
+            cp cMTViewer${ENCRYPT_EXTENSION_NAME} ${VIEWER_PATH}/artifacts
+        else
+            cp CloudHmi.tar ${VIEWER_PATH}/artifacts
+        fi
+    fi
+fi</command>
         </hudson.tasks.Shell>
         <hudson.tasks.ArtifactArchiver>
           <artifacts>viewer/artifacts/*</artifacts>
