@@ -172,7 +172,6 @@ if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;android-arm&quot; ] || [ &quot;
     
     export CC=${ANDROID_TOOLCHAIN}/bin/arm-linux-androideabi-gcc
     export CXX=${ANDROID_TOOLCHAIN}/bin/arm-linux-androideabi-g++
-    #export INSTALL_PREFIX=${TOOLCHAIN}/sysroot/usr
 fi
 
 # clear artifacts
