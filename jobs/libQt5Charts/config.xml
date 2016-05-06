@@ -86,8 +86,10 @@ case $MATRIX_AXIS_PLATFORM in
 esac
 
 case $MATRIX_AXIS_PLATFORM in
-    &quot;cMT3000&quot;)       export CHARTS_PROJECT_NAME=charts.pro            ;;
     &quot;cMT-iv5&quot;)       export CHARTS_PROJECT_NAME=charts_no_opengl.pro  ;;
+    &quot;android-arm&quot;)   export CHARTS_PROJECT_NAME=charts_no_opengl.pro  ;;
+    &quot;android-x86&quot;)   export CHARTS_PROJECT_NAME=charts_no_opengl.pro  ;;
+    *)               export CHARTS_PROJECT_NAME=charts.pro            ;;
 esac
 
 if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;android-arm&quot; ] || [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;android-x86&quot; ]; then
