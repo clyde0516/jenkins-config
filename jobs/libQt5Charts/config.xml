@@ -91,11 +91,11 @@ case $MATRIX_AXIS_PLATFORM in
     &quot;cMT-iv5&quot;)       export CHARTS_PROJECT_NAME=charts_no_opengl.pro  ;;
 esac
 
-rm -rf QtCharts/${MATRIX_AXIS_QT_CHARTS_VERSION}/Src/lib/*
-rm -rf artifacts
-mkdir artifacts
+rm -rf ${WORKSPACE}/QtCharts/${MATRIX_AXIS_QT_CHARTS_VERSION}/Src/lib/*
+rm -rf ${WORKSPACE}/artifacts
+mkdir ${WORKSPACE}/artifacts
 
-cd QtCharts/${MATRIX_AXIS_QT_CHARTS_VERSION}/Src/src/charts
+cd ${WORKSPACE}/QtCharts/${MATRIX_AXIS_QT_CHARTS_VERSION}/Src/src/charts
 
 if test -n &quot;${CROSS_COMPILER_TOOLCHAIN}&quot;; then
     source ${CROSS_COMPILER_TOOLCHAIN}
@@ -104,7 +104,7 @@ fi
 qmake ${CHARTS_PROJECT_NAME}
 make
 
-cd QtCharts/${MATRIX_AXIS_QT_CHARTS_VERSION}/Src/src/lib
+cd ${WORKSPACE}/QtCharts/${MATRIX_AXIS_QT_CHARTS_VERSION}/Src/src/lib
 
 if [ &quot;${CHARTS_PROJECT_NAME}&quot; = &quot;charts_no_opengl.pro&quot; ]; then
     mv libQt2Charts.a libQt5Charts.a
