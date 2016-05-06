@@ -153,13 +153,11 @@ fi
 
 case $MATRIX_AXIS_PLATFORM in
     &quot;android-arm&quot;)   export PATH=/opt/Qt5.3.2/5.3/android_armv7/bin:${PATH}  ;;
-    &quot;android-x86&quot;)   export PATH=/opt/Qt5.5.1/5.5/android_x86/bin:${PATH}    ;;
+    &quot;android-x86&quot;)   export PATH=/opt/Qt5.3.2/5.3/android_x86/bin:${PATH}    ;;
     &quot;Ubuntu&quot;)        export PATH=/opt/Qt5.4.2/5.4/gcc_64/bin:${PATH}         ;;
 esac
 
 if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;android-arm&quot; ] || [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;android-x86&quot; ]; then
-	#export ANDROID_CMAKE_FILE=/home/ci/android-cmake/android.toolchain.cmake
-	#export ANDROID_SDK_ROOT=/home/ci/Android/Sdk
 	export ANDROID_NDK_ROOT=/home/ci/Android/android-ndk
     
     if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;android-arm&quot; ]; then
@@ -167,10 +165,6 @@ if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;android-arm&quot; ] || [ &quot;
     elif [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;android-x86&quot; ]; then
         export ANDROID_TOOLCHAIN=/home/ci/work/android-x86/target/sysroots/android-toolchain-x86
     fi
-    
-    #export CC=${ANDROID_TOOLCHAIN}/bin/arm-linux-androideabi-gcc
-    #export CXX=${ANDROID_TOOLCHAIN}/bin/arm-linux-androideabi-g++
-    #export INSTALL_PREFIX=${ANDROID_TOOLCHAIN}/sysroot/usr
 fi
 
 # clear artifacts
