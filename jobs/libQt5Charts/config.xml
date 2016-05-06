@@ -60,12 +60,6 @@
 
 export QT_CHARTS_PATH=/home/clydeliu/projects/3rdParty/QtCharts/${MATRIX_AXIS_QT_CHARTS_VERSION}
 
-case $MATRIX_AXIS_PLATFORM in
-    &quot;cMT3000&quot;)       export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi  ;;
-    &quot;cMT-iv5&quot;)       export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT-iv5/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi  ;;
-    &quot;cMT-iv5-3000&quot;)  export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi  ;;
-esac
-
 rm -rf QtCharts
 mkdir QtCharts
 
@@ -77,6 +71,12 @@ cp -r ${QT_CHARTS_PATH} QtCharts
     </org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder>
     <hudson.tasks.Shell>
       <command>#!/bin/bash
+
+case $MATRIX_AXIS_PLATFORM in
+    &quot;cMT3000&quot;)       export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi  ;;
+    &quot;cMT-iv5&quot;)       export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT-iv5/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi  ;;
+    &quot;cMT-iv5-3000&quot;)  export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi  ;;
+esac
 
 case $MATRIX_AXIS_PLATFORM in
     &quot;android-arm&quot;)   export PATH=/opt/Qt5.3.2/5.3/android_armv7/bin:${PATH}  ;;
