@@ -264,7 +264,7 @@
         <string>gui_stable</string>
         <string>gui_stable_for_barcode</string>
         <string>jenkins-test</string>
-        <string>libQt5Charts</string>
+        <string>libQt5Charts_pack</string>
         <string>libweintek_dev</string>
         <string>libweintek_stable</string>
         <string>matrix-test</string>
