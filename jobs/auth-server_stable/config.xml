@@ -129,7 +129,7 @@ cd jenkins
 
 ${RMA_PATH}/build/Ubuntu/cmake_rma.sh ${RMA_PATH} ${LIBWEINTEK_PATH} ${INSTALL_PREFIX} ${BUILD_TYPE}
 
-make install/strip</command>
+${RMA_PATH}/build/Ubuntu/make_auth_server.sh</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
       <command>cd ${WORKSPACE}
