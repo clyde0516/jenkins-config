@@ -130,7 +130,6 @@ esac
 
 # clear artifacts
 
-rm -f ${INSTALL_PREFIX}/lib/libopcua_*.a
 rm -f ${INSTALL_PREFIX}/lib/libcoremodule*.a
 rm -f ${INSTALL_PREFIX}/lib/libua*.a
 rm -f ${INSTALL_PREFIX}/lib/libxmlparser*.a
