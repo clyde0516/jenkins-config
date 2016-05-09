@@ -29,7 +29,7 @@
           <description></description>
         </hudson.plugins.matrix__configuration__parameter.MatrixCombinationsParameterDefinition>
         <hudson.model.StringParameterDefinition>
-          <name>TRIGGER_PARAM_DSERVER_BRANCH</name>
+          <name>TRIGGER_PARAM_OPCSERVER_BRANCH</name>
           <description></description>
           <defaultValue>dev</defaultValue>
         </hudson.model.StringParameterDefinition>
@@ -39,7 +39,7 @@
           <defaultValue>dev</defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.ChoiceParameterDefinition>
-          <name>TRIGGER_PARAM_DSERVER_BUILD_POLICY</name>
+          <name>TRIGGER_PARAM_OPCSERVER_BUILD_POLICY</name>
           <description></description>
           <choices class="java.util.Arrays$ArrayList">
             <a class="string-array">
@@ -69,7 +69,7 @@
     </userRemoteConfigs>
     <branches>
       <hudson.plugins.git.BranchSpec>
-        <name>*/${TRIGGER_PARAM_DSERVER_BRANCH}</name>
+        <name>*/${TRIGGER_PARAM_OPCSERVER_BRANCH}</name>
       </hudson.plugins.git.BranchSpec>
     </branches>
     <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
@@ -101,12 +101,8 @@
     <hudson.matrix.TextAxis>
       <name>MATRIX_AXIS_PLATFORM</name>
       <values>
-        <string>cMT3000</string>
         <string>cMT-SVR</string>
-        <string>cMT-iv5</string>
-        <string>cMT-iv5-3000</string>
-        <string>android-arm</string>
-        <string>android-x86</string>
+        <string>cMT3000</string>
         <string>win32</string>
       </values>
     </hudson.matrix.TextAxis>
@@ -133,20 +129,20 @@
         <hudson.tasks.Shell>
           <command>#!/bin/bash
 
-# Build dserver
-echo &quot;================================ dserver ================================ dserver ================================ dserver ================================&quot;
+# Build opcua
+echo &quot;================================ opcua ================================ opcua ================================ opcua ================================&quot;
 
 # alter trigger parameter
 
 if [[ ! &quot;`date +&quot;%H%M&quot;`&quot; &lt; &quot;0000&quot; &amp;&amp; ! &quot;`date +&quot;%H%M&quot;`&quot; &gt; &quot;0800&quot; ]]; then
-	export TRIGGER_PARAM_DSERVER_BUILD_POLICY=brandnew
+	export TRIGGER_PARAM_OPCSERVER_BUILD_POLICY=brandnew
 fi
 
 # export variables
 
-export DSERVER_PATH=${WORKSPACE}
+export OPCUA_PATH=${WORKSPACE}
 export LIBWEINTEK_PATH=${JENKINS_HOME}/jobs/libweintek_${TRIGGER_PARAM_JOB_GROUP}/workspace
-export MARIADB_CONNECTOR_C_PATH=/home/ci/work/mariadb-connector-c
+export MARIADB_CONNECTOR_C_PATH=&quot;&quot;
 export INSTALL_PREFIX=/home/ci/work/${MATRIX_AXIS_PLATFORM}/build-${TRIGGER_PARAM_JOB_GROUP}-branch
 
 if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;cMT-SVR&quot; ]; then
@@ -177,32 +173,17 @@ case $MATRIX_AXIS_PLATFORM in
     &quot;cMT-iv5-3000&quot;)  export ENCRYPT_EXTENSION_NAME=.c30  ;;
 esac
 
-if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;android-arm&quot; ] || [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;android-x86&quot; ]; then
-	export ANDROID_CMAKE_FILE=/home/ci/android-cmake/android.toolchain.cmake
-	export ANDROID_SDK_ROOT=/home/ci/Android/Sdk
-	export ANDROID_NDK_ROOT=/home/ci/Android/android-ndk
-    
-    if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;android-arm&quot; ]; then
-        export ANDROID_TOOLCHAIN=/home/ci/work/android-arm/target/sysroots/android-toolchain-arm
-    elif [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;android-x86&quot; ]; then
-        export ANDROID_TOOLCHAIN=/home/ci/work/android-x86/target/sysroots/android-toolchain-x86
-    fi
-    
-    export CC=${ANDROID_TOOLCHAIN}/bin/arm-linux-androideabi-gcc
-    export CXX=${ANDROID_TOOLCHAIN}/bin/arm-linux-androideabi-g++
-fi
 
 # clear artifacts
 
-rm -f ${INSTALL_PREFIX}/bin/dserver*
-rm -f ${INSTALL_PREFIX}/lib/libdserver_*.a
-rm -rf ${DSERVER_PATH}/artifacts
-mkdir ${DSERVER_PATH}/artifacts
+rm -f ${INSTALL_PREFIX}/bin/opcua*
+rm -rf ${OPCUA_PATH}/artifacts
+mkdir ${OPCUA_PATH}/artifacts
 
 # prepare out-of-source build
 
-cd ${DSERVER_PATH}/build
-if [ &quot;${TRIGGER_PARAM_DSERVER_BUILD_POLICY}&quot; = &quot;brandnew&quot; ]; then
+cd ${OPCUA_PATH}/build
+if [ &quot;${TRIGGER_PARAM_OPCSERVER_BUILD_POLICY}&quot; = &quot;brandnew&quot; ]; then
     rm -rf jenkins/${MATRIX_AXIS_PLATFORM}
 fi
 if [ ! -d &quot;jenkins&quot; ]; then
@@ -215,31 +196,24 @@ cd jenkins/${MATRIX_AXIS_PLATFORM}
 
 # generate makefile
 
-${DSERVER_PATH}/build/${PLATFORM_BUILD_FOLDER}/cmake_dserver.sh ${DSERVER_PATH} ${LIBWEINTEK_PATH} ${MARIADB_CONNECTOR_C_PATH} ${GOOGLE_BREAKPAD_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} RelWithDebInfo
+${OPCUA_PATH}/build/${PLATFORM_BUILD_FOLDER}/cmake_opcua.sh ${OPCUA_PATH} ${LIBWEINTEK_PATH} ${MARIADB_CONNECTOR_C_PATH} ${GOOGLE_BREAKPAD_PATH} ${INSTALL_PREFIX} ${CROSS_COMPILER_TOOLCHAIN} RelWithDebInfo
 
 # make
 
-if [ &quot;${TRIGGER_PARAM_DSERVER_BUILD_POLICY}&quot; = &quot;clean&quot; ]; then
+if [ &quot;${TRIGGER_PARAM_OPCSERVER_BUILD_POLICY}&quot; = &quot;clean&quot; ]; then
     make clean
 fi
 make install VERBOSE=1
-
-if [ &quot;${BUILD_LIBRARY_ONLY}&quot; = &quot;off&quot; ]; then
-    cp ${INSTALL_PREFIX}/bin/dserver ${DSERVER_PATH}/artifacts/dserver.RelWithDebInfo
-else
-    cp ${INSTALL_PREFIX}/lib/libdserver_core.a ${DSERVER_PATH}/artifacts
-    cp ${INSTALL_PREFIX}/lib/libdserver_client.a ${DSERVER_PATH}/artifacts
-fi
 
 # strip and encrypt
 
 if [ &quot;${BUILD_LIBRARY_ONLY}&quot; = &quot;off&quot; ]; then
     make install/strip VERBOSE=1
-    cp ${INSTALL_PREFIX}/bin/dserver ${DSERVER_PATH}/artifacts/dserver.decrypted
+    cp ${INSTALL_PREFIX}/bin/opcua ${OPCUA_PATH}/artifacts/opcua.decrypted
  
     if test -n &quot;${ENCRYPT_EXTENSION_NAME}&quot;; then
-        /home/ci/work/crypto e ${INSTALL_PREFIX}/bin/dserver ${INSTALL_PREFIX}/bin/dserver${ENCRYPT_EXTENSION_NAME}
-        cp ${INSTALL_PREFIX}/bin/dserver${ENCRYPT_EXTENSION_NAME} ${DSERVER_PATH}/artifacts
+        /home/ci/work/aes_crypto -e ${INSTALL_PREFIX}/bin/opcua -o ${INSTALL_PREFIX}/bin/opcua${ENCRYPT_EXTENSION_NAME}
+        cp ${INSTALL_PREFIX}/bin/opcua${ENCRYPT_EXTENSION_NAME} ${OPCUA_PATH}/artifacts
     fi
 fi
 </command>
@@ -258,7 +232,7 @@ fi
           <command>:: alter trigger parameter&#xd;
 &#xd;
 if &quot;%time%&quot; geq &quot; 0:00:00.00&quot; ( if &quot;%time%&quot; lss &quot; 8:00:00.00&quot; (&#xd;
-    set TRIGGER_PARAM_DSERVER_BUILD_POLICY=clean&#xd;
+    set TRIGGER_PARAM_OPCSERVER_BUILD_POLICY=clean&#xd;
 ))&#xd;
 &#xd;
 :: set variables&#xd;
@@ -284,7 +258,7 @@ call %WORK_UTIL_DIR%\script\replace_string.bat &quot;dserver.props&quot; &quot;&
 &#xd;
 :: build project &#xd;
 &#xd;
-call build_win32.bat dserver Release %TRIGGER_PARAM_DSERVER_BUILD_POLICY%&#xd;
+call build_win32.bat dserver Release %TRIGGER_PARAM_OPCSERVER_BUILD_POLICY%&#xd;
 copy /y dserverRelease\dserver.exe %WORKSPACE_DIR%\artifacts&#xd;
 copy /y dserverRelease\dserver.pdb %WORKSPACE_DIR%\artifacts&#xd;
 </command>
@@ -315,7 +289,7 @@ copy ..\tests\test_project\default_project .&#xd;
     </hudson.tasks.ArtifactArchiver>
     <hudson.tasks.Mailer plugin="mailer@1.16">
       <recipients>katte@weintek.com paul@weintek.com zen@weintek.com easonwu@weintek.com jeremyhong@weintek.com clydeliu@weintek.com</recipients>
-      <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
+      <dontNotifyEveryUnstableBuild>true</dontNotifyEveryUnstableBuild>
       <sendToIndividuals>false</sendToIndividuals>
     </hudson.tasks.Mailer>
   </publishers>
