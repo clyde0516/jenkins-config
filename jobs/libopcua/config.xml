@@ -113,7 +113,10 @@ fi
 
 # export variables
 
-export LIBOPCUA_PATH=${WORKSPACE}
+rm -rf ${WORKSPACE}/linux
+cp -r /home/ci/projects/libopcua .
+
+export LIBOPCUA_PATH=${WORKSPACE}/linux
 export INSTALL_PREFIX=/home/ci/work/${MATRIX_AXIS_PLATFORM}/build-${TRIGGER_PARAM_JOB_GROUP}-branch
 
 case $MATRIX_AXIS_PLATFORM in
