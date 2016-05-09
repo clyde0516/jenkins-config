@@ -113,6 +113,8 @@ fi
 
 # export variables
 
+echo &quot;aaaaaaaaaaaaaaaa&quot; ${WORKSPACE}
+ls ${WORKSPACE}
 rm -rf ${WORKSPACE}/linux
 cp -r /home/ci/projects/libopcua .
 
