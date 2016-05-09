@@ -335,7 +335,7 @@ else
     else
 	    export ENCRYPT_NAME=opcua-server.c30
     fi
-    /home/ci/work/crypto e ${INSTALL_PREFIX}/bin/opcua-server ${INSTALL_PREFIX}/bin/${ENCRYPT_NAME}
+    /home/ci/work/aes_crypto -e ${INSTALL_PREFIX}/bin/opcua-server -o ${INSTALL_PREFIX}/bin/${ENCRYPT_NAME}
 fi
 cp ${INSTALL_PREFIX}/bin/${ENCRYPT_NAME} ${OPCUA_SERVER_PATH}/artifacts
 </command>
