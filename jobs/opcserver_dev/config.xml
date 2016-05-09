@@ -177,6 +177,7 @@ esac
 # clear artifacts
 
 rm -f ${INSTALL_PREFIX}/bin/opcua*
+rm -f ${INSTALL_PREFIX}/lib/libopcua_*.a
 rm -rf ${OPCUA_PATH}/artifacts
 mkdir ${OPCUA_PATH}/artifacts
 
