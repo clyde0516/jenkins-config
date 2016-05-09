@@ -115,10 +115,10 @@ fi
 
 echo &quot;aaaaaaaaaaaaaaaa&quot; ${WORKSPACE}
 ls ${WORKSPACE}
-rm -rf ${WORKSPACE}/linux
-cp -r /home/ci/projects/libopcua .
+rm -rf ${WORKSPACE}/libopcua
+cp -r /home/ci/projects/libopcua ${WORKSPACE}
 
-export LIBOPCUA_PATH=${WORKSPACE}/linux
+export LIBOPCUA_PATH=${WORKSPACE}/libopcua/linux
 export INSTALL_PREFIX=/home/ci/work/${MATRIX_AXIS_PLATFORM}/build-${TRIGGER_PARAM_JOB_GROUP}-branch
 
 case $MATRIX_AXIS_PLATFORM in
