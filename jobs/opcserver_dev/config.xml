@@ -142,7 +142,7 @@ fi
 
 export OPCUA_PATH=${WORKSPACE}
 export LIBWEINTEK_PATH=${JENKINS_HOME}/jobs/libweintek_${TRIGGER_PARAM_JOB_GROUP}/workspace
-export MARIADB_CONNECTOR_C_PATH=&quot;&quot;
+export MARIADB_CONNECTOR_C_PATH=&quot;ignore&quot;
 export INSTALL_PREFIX=/home/ci/work/${MATRIX_AXIS_PLATFORM}/build-${TRIGGER_PARAM_JOB_GROUP}-branch
 
 if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;cMT-SVR&quot; ]; then
