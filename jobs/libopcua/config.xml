@@ -29,17 +29,12 @@
           <description></description>
         </hudson.plugins.matrix__configuration__parameter.MatrixCombinationsParameterDefinition>
         <hudson.model.StringParameterDefinition>
-          <name>TRIGGER_PARAM_LIBWEINTEK_BRANCH</name>
-          <description></description>
-          <defaultValue>dev</defaultValue>
-        </hudson.model.StringParameterDefinition>
-        <hudson.model.StringParameterDefinition>
           <name>TRIGGER_PARAM_JOB_GROUP</name>
           <description></description>
           <defaultValue>dev</defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.ChoiceParameterDefinition>
-          <name>TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY</name>
+          <name>TRIGGER_PARAM_OPCSDK_BUILD_POLICY</name>
           <description></description>
           <choices class="java.util.Arrays$ArrayList">
             <a class="string-array">
@@ -60,25 +55,7 @@
       </strategy>
     </jenkins.model.BuildDiscarderProperty>
   </properties>
-  <scm class="hudson.plugins.git.GitSCM" plugin="git@2.4.2">
-    <configVersion>2</configVersion>
-    <userRemoteConfigs>
-      <hudson.plugins.git.UserRemoteConfig>
-        <url>gitolite@192.168.1.220:libweintek.git</url>
-      </hudson.plugins.git.UserRemoteConfig>
-    </userRemoteConfigs>
-    <branches>
-      <hudson.plugins.git.BranchSpec>
-        <name>*/${TRIGGER_PARAM_LIBWEINTEK_BRANCH}</name>
-      </hudson.plugins.git.BranchSpec>
-    </branches>
-    <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
-    <browser class="hudson.plugins.git.browser.AssemblaWeb">
-      <url></url>
-    </browser>
-    <submoduleCfg class="list"/>
-    <extensions/>
-  </scm>
+  <scm class="hudson.scm.NullSCM"/>
   <canRoam>true</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
@@ -135,7 +112,7 @@ echo &quot;================================ libweintek =========================
 # alter trigger parameter
 
 if [[ ! &quot;`date +&quot;%H%M&quot;`&quot; &lt; &quot;0000&quot; &amp;&amp; ! &quot;`date +&quot;%H%M&quot;`&quot; &gt; &quot;0800&quot; ]]; then
-	export TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY=brandnew
+	export TRIGGER_PARAM_OPCSDK_BUILD_POLICY=brandnew
 fi
 
 # export variables
@@ -176,7 +153,7 @@ rm -f ${INSTALL_PREFIX}/lib/libweintek_*.a
 # prepare out-of-source build
 
 cd ${LIBWEINTEK_PATH}/build
-if [ &quot;${TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY}&quot; = &quot;brandnew&quot; ]; then
+if [ &quot;${TRIGGER_PARAM_OPCSDK_BUILD_POLICY}&quot; = &quot;brandnew&quot; ]; then
     rm -rf jenkins/${MATRIX_AXIS_PLATFORM}
 fi
 if [ ! -d &quot;jenkins&quot; ]; then
@@ -193,7 +170,7 @@ ${LIBWEINTEK_PATH}/build/${PLATFORM_BUILD_FOLDER}/cmake_libweintek.sh ${LIBWEINT
 
 # make
 
-if [ &quot;${TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY}&quot; = &quot;clean&quot; ]; then
+if [ &quot;${TRIGGER_PARAM_OPCSDK_BUILD_POLICY}&quot; = &quot;clean&quot; ]; then
     make clean
 fi
 make install VERBOSE=1</command>
@@ -212,7 +189,7 @@ make install VERBOSE=1</command>
           <command>:: alter trigger parameter&#xd;
 &#xd;
 if &quot;%time%&quot; geq &quot; 0:00:00.00&quot; ( if &quot;%time%&quot; lss &quot; 8:00:00.00&quot; (&#xd;
-    set TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY=clean&#xd;
+    set TRIGGER_PARAM_OPCSDK_BUILD_POLICY=clean&#xd;
 ))&#xd;
 &#xd;
 :: set variables&#xd;
@@ -230,18 +207,8 @@ copy /y %WORK_UTIL_DIR%\libraries\sqlite3\lib\*.lib .&#xd;
 &#xd;
 cd ..\..\build\vs2012&#xd;
 copy /y weintek.props.in weintek.props&#xd;
-build_win32.bat weintek Release %TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY%</command>
+build_win32.bat weintek Release %TRIGGER_PARAM_OPCSDK_BUILD_POLICY%</command>
         </hudson.tasks.BatchFile>
-        <hudson.tasks.BatchFile>
-          <command>mkdir gtest&#xd;
-build\vs2012\testsRelease\tests.exe --gtest_output=xml:gtest\gtest-libweintek.xml</command>
-        </hudson.tasks.BatchFile>
-        <hudson.tasks.junit.JUnitResultArchiver plugin="junit@1.10">
-          <testResults>gtest\*.xml</testResults>
-          <keepLongStdio>false</keepLongStdio>
-          <healthScaleFactor>1.0</healthScaleFactor>
-          <allowEmptyResults>false</allowEmptyResults>
-        </hudson.tasks.junit.JUnitResultArchiver>
       </conditionalbuilders>
     </org.jenkinsci.plugins.conditionalbuildstep.ConditionalBuilder>
   </builders>
