@@ -202,7 +202,7 @@ build_win32.bat weintek Release %TRIGGER_PARAM_OPCSDK_BUILD_POLICY%</command>
   <publishers>
     <hudson.tasks.Mailer plugin="mailer@1.16">
       <recipients>katte@weintek.com paul@weintek.com zen@weintek.com easonwu@weintek.com jeremyhong@weintek.com clydeliu@weintek.com</recipients>
-      <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
+      <dontNotifyEveryUnstableBuild>true</dontNotifyEveryUnstableBuild>
       <sendToIndividuals>false</sendToIndividuals>
     </hudson.tasks.Mailer>
   </publishers>
