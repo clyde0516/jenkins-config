@@ -539,8 +539,8 @@ if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;cMT3000&quot; ]; then
 fi
 
 case $MATRIX_AXIS_PLATFORM in
-    &quot;android-arm&quot;)   export PATH=/opt/Qt5.3.2/5.3/android_armv7/bin:${PATH}  ;;
-    &quot;android-x86&quot;)   export PATH=/opt/Qt5.3.2/5.3/android_x86/bin:${PATH}    ;;
+    &quot;android-arm&quot;)   export PATH=/opt/Qt5.6.0/5.6/android_armv7/bin:${PATH}  ;;
+    &quot;android-x86&quot;)   export PATH=/opt/Qt5.6.0/5.6/android_x86/bin:${PATH}    ;;
     &quot;Ubuntu&quot;)        export PATH=/opt/Qt5.4.2/5.4/gcc_64/bin:${PATH}         ;;
 esac
 
@@ -680,7 +680,7 @@ esac
 
 case $MATRIX_AXIS_PLATFORM in
     &quot;android-arm&quot;)   export QT_ROOT=/opt/Qt5.6.0/5.6/android_armv7  ;;
-    &quot;android-x86&quot;)   export QT_ROOT=/opt/Qt5.3.2/5.3/android_x86    ;;
+    &quot;android-x86&quot;)   export QT_ROOT=/opt/Qt5.6.0/5.6/android_x86    ;;
     &quot;Ubuntu&quot;)        export QT_ROOT=/opt/Qt5.4.2/5.4/gcc_64         ;;
 esac
 
@@ -694,7 +694,7 @@ if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;android-arm&quot; ] || [ &quot;
         &quot;android-arm&quot;)   export APK_FILE_NAME=QtApp-release.apk  ;;
         &quot;android-x86&quot;)   export APK_FILE_NAME=QtApp-release.apk  ;;
     esac
-    
+
 	export ANDROID_SDK_ROOT=/home/ci/Android/Sdk
 	export ANDROID_NDK_ROOT=/home/ci/Android/android-ndk
     export ANDROID_TOOLCHAIN=/home/ci/work/android-${ANDROID_PLATFORM}/target/sysroots/android-toolchain-${ANDROID_PLATFORM}
@@ -704,7 +704,7 @@ fi
 
 rm -f ${INSTALL_PREFIX}/bin/CloudHmi*
 rm -f ${INSTALL_PREFIX}/bin/cMTViewer*
-rm -f ${INSTALL_PREFIX}/bin/bin/QtApp-release.apk
+rm -f ${INSTALL_PREFIX}/bin/bin/${APK_FILE_NAME}
 rm -rf ${VIEWER_PATH}/artifacts
 mkdir ${VIEWER_PATH}/artifacts
 
@@ -738,7 +738,7 @@ if test -n &quot;${ANDROID_PLATFORM}&quot;; then
     
     rm -rf ${QT_ROOT}/src/android/java/src/*
     cp -rH ${QT_ROOT}/src/android/java_src_ori/* ${QT_ROOT}/src/android/java/src
-    #cp -f ${VIEWER_PATH}/android/QtActivity.java ${QT_ROOT}/src/android/java/src/org/qtproject/qt5/android/bindings
+    cp -f ${VIEWER_PATH}/android/QtActivity.java ${QT_ROOT}/src/android/java/src/org/qtproject/qt5/android/bindings
     rm -rf ${INSTALL_PREFIX}/bin/src
     
     rm -rf android
