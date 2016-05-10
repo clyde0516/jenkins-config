@@ -170,7 +170,6 @@ if [ &quot;${TRIGGER_PARAM_OPCSDK_BUILD_POLICY}&quot; = &quot;clean&quot; ]; the
     make clean
 fi
 
-rm  -rf /home/ci/work/cMT3000/build-dev-branch/include/ua*
 make install VERBOSE=1</command>
         </hudson.tasks.Shell>
       </conditionalbuilders>
