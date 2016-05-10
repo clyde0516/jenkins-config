@@ -160,7 +160,6 @@ cd jenkins/${MATRIX_AXIS_PLATFORM}
 
 # generate makefile
 
-echo &quot;aaaaaaaaaaa&quot; ${LIBOPCUA_PATH}
 echo &quot;${LIBOPCUA_PATH}/build/${PLATFORM_BUILD_FOLDER}/cmake_opcua_sdk.sh ${LIBOPCUA_PATH} ${CROSS_COMPILER_TOOLCHAIN} ${INSTALL_PREFIX} Release OFF&quot;
 ${LIBOPCUA_PATH}/build/${PLATFORM_BUILD_FOLDER}/cmake_opcua_sdk.sh ${LIBOPCUA_PATH} ${CROSS_COMPILER_TOOLCHAIN} ${INSTALL_PREFIX} Release OFF
 
