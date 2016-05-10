@@ -111,10 +111,17 @@ if [[ ! &quot;`date +&quot;%H%M&quot;`&quot; &lt; &quot;0000&quot; &amp;&amp; ! 
 	export TRIGGER_PARAM_OPCSDK_BUILD_POLICY=brandnew
 fi
 
-# export variables
+# Copy files from disk
 
-rm -rf ${WORKSPACE}/libopcua
-cp -r /home/ci/projects/libopcua ${WORKSPACE}
+if [ &quot;${TRIGGER_PARAM_OPCSDK_BUILD_POLICY}&quot; = &quot;brandnew&quot; ]; then
+	rm -rf ${WORKSPACE}/libopcua
+fi
+
+if [ ! -e ${WORKSPACE}/libopcua ]; then
+	cp -r /home/ci/projects/libopcua ${WORKSPACE}
+fi
+
+# export variables
 
 export LIBOPCUA_PATH=${WORKSPACE}/libopcua/linux
 export INSTALL_PREFIX=/home/ci/work/${MATRIX_AXIS_PLATFORM}/build-${TRIGGER_PARAM_JOB_GROUP}-branch
