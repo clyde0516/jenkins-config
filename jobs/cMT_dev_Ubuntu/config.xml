@@ -109,7 +109,7 @@
         <hudson.model.BooleanParameterDefinition>
           <name>TRIGGER_PARAM_STATIC_ANALYSIS</name>
           <description></description>
-          <defaultValue>true</defaultValue>
+          <defaultValue>false</defaultValue>
         </hudson.model.BooleanParameterDefinition>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
@@ -264,7 +264,7 @@ cppcheck --enable=all --inconclusive --xml --xml-version=2 \
             <configSeverityEvaluation>
               <threshold></threshold>
               <newThreshold></newThreshold>
-              <failureThreshold>289</failureThreshold>
+              <failureThreshold>262</failureThreshold>
               <newFailureThreshold>1</newFailureThreshold>
               <healthy></healthy>
               <unHealthy></unHealthy>
