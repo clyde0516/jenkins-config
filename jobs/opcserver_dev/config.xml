@@ -210,10 +210,10 @@ make install VERBOSE=1
 
 if [ &quot;${BUILD_LIBRARY_ONLY}&quot; = &quot;off&quot; ]; then
     make install/strip VERBOSE=1
-    cp ${INSTALL_PREFIX}/bin/opcua ${OPCUA_PATH}/artifacts/opcua.decrypted
+    cp ${INSTALL_PREFIX}/bin/opcua-server ${OPCUA_PATH}/artifacts/opcua.decrypted
  
     if test -n &quot;${ENCRYPT_EXTENSION_NAME}&quot;; then
-        /home/ci/work/aes_crypto -e ${INSTALL_PREFIX}/bin/opcua -o ${INSTALL_PREFIX}/bin/opcua${ENCRYPT_EXTENSION_NAME}
+        /home/ci/work/aes_crypto -e ${INSTALL_PREFIX}/bin/opcua-server -o ${INSTALL_PREFIX}/bin/opcua${ENCRYPT_EXTENSION_NAME}
         cp ${INSTALL_PREFIX}/bin/opcua${ENCRYPT_EXTENSION_NAME} ${OPCUA_PATH}/artifacts
     fi
 fi
