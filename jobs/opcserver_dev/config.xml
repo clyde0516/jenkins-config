@@ -245,7 +245,7 @@ set LIBWEINTEK_DIR=C:\jenkins\workspace\libweintek_%TRIGGER_PARAM_JOB_GROUP%\MAT
 :: clear artifacts&#xd;
 &#xd;
 &#xd;
-del %WORKSPACE_DIR%\build\vs2012\dserverRelease\dserver.*&#xd;
+del %WORKSPACE_DIR%\build\vs2012\opcserverRelease\opcserver.*&#xd;
 rmdir /s/q %WORKSPACE_DIR%\artifacts&#xd;
 mkdir %WORKSPACE_DIR%\artifacts&#xd;
 &#xd;
@@ -253,29 +253,17 @@ mkdir %WORKSPACE_DIR%\artifacts&#xd;
 &#xd;
 cd %WORKSPACE_DIR%\build\vs2012&#xd;
 copy /y %LIBWEINTEK_DIR%\build\vs2012\build_win32.bat .&#xd;
-copy /y dserver.props.in dserver.props&#xd;
+copy /y opcserver.props.in opcserver.props&#xd;
 &#xd;
-call %WORK_UTIL_DIR%\script\replace_string.bat &quot;dserver.props&quot; &quot;&lt;WEINTEKDIR&gt;..\..\..\libweintek&lt;/WEINTEKDIR&gt;&quot; &quot;&lt;WEINTEKDIR&gt;%LIBWEINTEK_DIR%&lt;/WEINTEKDIR&gt;&quot;&#xd;
+call %WORK_UTIL_DIR%\script\replace_string.bat &quot;opcserver.props&quot; &quot;&lt;WEINTEKDIR&gt;..\..\..\libweintek&lt;/WEINTEKDIR&gt;&quot; &quot;&lt;WEINTEKDIR&gt;%LIBWEINTEK_DIR%&lt;/WEINTEKDIR&gt;&quot;&#xd;
 &#xd;
 :: build project &#xd;
 &#xd;
 call build_win32.bat dserver Release %TRIGGER_PARAM_OPCSERVER_BUILD_POLICY%&#xd;
-copy /y dserverRelease\dserver.exe %WORKSPACE_DIR%\artifacts&#xd;
-copy /y dserverRelease\dserver.pdb %WORKSPACE_DIR%\artifacts&#xd;
+copy /y opcserverRelease\opcserver.exe %WORKSPACE_DIR%\artifacts&#xd;
+copy /y opcserverRelease\opcserver.pdb %WORKSPACE_DIR%\artifacts&#xd;
 </command>
         </hudson.tasks.BatchFile>
-        <hudson.tasks.BatchFile>
-          <command>mkdir gtest&#xd;
-cd gtest&#xd;
-copy ..\tests\test_project\default_project .&#xd;
-..\build\vs2012\testsRelease\tests.exe --gtest_output=xml:gtest-dserver.xml</command>
-        </hudson.tasks.BatchFile>
-        <hudson.tasks.junit.JUnitResultArchiver plugin="junit@1.10">
-          <testResults>gtest\*.xml</testResults>
-          <keepLongStdio>false</keepLongStdio>
-          <healthScaleFactor>1.0</healthScaleFactor>
-          <allowEmptyResults>false</allowEmptyResults>
-        </hudson.tasks.junit.JUnitResultArchiver>
       </conditionalbuilders>
     </org.jenkinsci.plugins.conditionalbuildstep.ConditionalBuilder>
   </builders>
