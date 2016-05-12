@@ -467,7 +467,7 @@ fi
 
 if [ &quot;${BUILD_LIBRARY_ONLY}&quot; = &quot;off&quot; ]; then
     make install/strip VERBOSE=1
-    cp ${INSTALL_PREFIX}/bin/dserver ${DSERVER_PATH}/artifacts/dserver.decrypted
+    cp ${INSTALL_PREFIX}/bin/dserver ${DSERVER_PATH}/artifacts/mt8xxx.002
  
     if test -n &quot;${ENCRYPT_EXTENSION_NAME}&quot;; then
         /home/ci/work/crypto e ${INSTALL_PREFIX}/bin/dserver ${INSTALL_PREFIX}/bin/dserver${ENCRYPT_EXTENSION_NAME}
@@ -603,7 +603,7 @@ fi
 
 if [ &quot;${BUILD_LIBRARY_ONLY}&quot; = &quot;off&quot; ] &amp;&amp; [ -e &quot;${INSTALL_PREFIX}/bin/gui&quot; ]; then
     strip ${INSTALL_PREFIX}/bin/gui
-    cp ${INSTALL_PREFIX}/bin/gui ${GUI_PATH}/artifacts/gui.decrypted
+    cp ${INSTALL_PREFIX}/bin/gui ${GUI_PATH}/artifacts/mt8xxx.003
     
     if test -n &quot;${ENCRYPT_EXTENSION_NAME}&quot;; then
         test_mtcrypt --encrypt ${INSTALL_PREFIX}/bin/gui --out ${INSTALL_PREFIX}/bin/gui${ENCRYPT_EXTENSION_NAME}
