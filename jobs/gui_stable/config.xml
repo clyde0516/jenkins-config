@@ -258,7 +258,7 @@ mkdir %WORKSPACE_DIR%\artifacts&#xd;
 :: prepare build environment&#xd;
 &#xd;
 cd %WORKSPACE_DIR%\build\vs2012&#xd;
-mkdir testsRelease&#xd;
+mkdir testsProductionRelease&#xd;
 &#xd;
 copy /y %LIBWEINTEK_DIR%\build\vs2012\build_win32.bat .&#xd;
 copy /y got.props.in got.props&#xd;
