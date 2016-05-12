@@ -262,8 +262,8 @@ mkdir testsRelease&#xd;
 &#xd;
 copy /y %LIBWEINTEK_DIR%\build\vs2012\build_win32.bat .&#xd;
 copy /y got.props.in got.props&#xd;
-copy /y %QT_DIR%\bin\Qt5Core.dll .\testsRelease&#xd;
-copy /y %QT_DIR%\bin\icu*53.dll .\testsRelease&#xd;
+copy /y %QT_DIR%\bin\Qt5Core.dll .\testsProductionRelease&#xd;
+copy /y %QT_DIR%\bin\icu*53.dll .\testsProductionRelease&#xd;
 &#xd;
 call %WORK_UTIL_DIR%\script\replace_string.bat &quot;got.props&quot; &quot;&lt;WEINTEKDIR&gt;..\..\..\libweintek&lt;/WEINTEKDIR&gt;&quot; &quot;&lt;WEINTEKDIR&gt;%LIBWEINTEK_DIR%&lt;/WEINTEKDIR&gt;&quot;&#xd;
 call %WORK_UTIL_DIR%\script\replace_string.bat &quot;got.props&quot; &quot;&lt;DSERVERDIR&gt;..\..\..\d-server&lt;/DSERVERDIR&gt;&quot; &quot;&lt;DSERVERDIR&gt;%DSERVER_DIR%&lt;/DSERVERDIR&gt;&quot;&#xd;
@@ -278,7 +278,7 @@ copy /y Win32\ProductionRelease\libgui20.pdb %WORKSPACE_DIR%\artifacts&#xd;
         </hudson.tasks.BatchFile>
         <hudson.tasks.BatchFile>
           <command>mkdir gtest&#xd;
-build\vs2012\testsRelease\tests.exe --gtest_output=xml:gtest\gtest-gui.xml</command>
+build\vs2012\testsProductionRelease\tests.exe --gtest_output=xml:gtest\gtest-gui.xml</command>
         </hudson.tasks.BatchFile>
         <hudson.tasks.junit.JUnitResultArchiver plugin="junit@1.10">
           <testResults>gtest\*.xml</testResults>
