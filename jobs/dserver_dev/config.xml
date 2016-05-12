@@ -217,7 +217,7 @@ fi
 
 if [ &quot;${BUILD_LIBRARY_ONLY}&quot; = &quot;off&quot; ]; then
     make install/strip VERBOSE=1
-    cp ${INSTALL_PREFIX}/bin/dserver ${DSERVER_PATH}/artifacts/dserver.decrypted
+    cp ${INSTALL_PREFIX}/bin/dserver ${DSERVER_PATH}/artifacts/mt8xxx.002
  
     if test -n &quot;${ENCRYPT_EXTENSION_NAME}&quot;; then
         /home/ci/work/crypto e ${INSTALL_PREFIX}/bin/dserver ${INSTALL_PREFIX}/bin/dserver${ENCRYPT_EXTENSION_NAME}
