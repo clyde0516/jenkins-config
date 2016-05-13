@@ -742,7 +742,7 @@ if test -n &quot;${ANDROID_PLATFORM}&quot;; then
     
     rm -rf ${QT_ROOT}/src/android/java/src/*
     cp -rH ${QT_ROOT}/src/android/java_src_ori/* ${QT_ROOT}/src/android/java/src
-    //cp -f ${VIEWER_PATH}/android/QtActivity.java ${QT_ROOT}/src/android/java/src/org/qtproject/qt5/android/bindings
+    cp -f ${VIEWER_PATH}/android/QtActivity.java ${QT_ROOT}/src/android/java/src/org/qtproject/qt5/android/bindings
     rm -rf ${INSTALL_PREFIX}/bin/src
     
     rm -rf android
