@@ -194,7 +194,7 @@ copy /y build\vs2008\build_win32.bat .&#xd;
 &#xd;
 :: build project &#xd;
 &#xd;
-call build_win32_VS2008.bat COMKernel_2008 release %TRIGGER_PARAM_COM_BUILD_POLICY%&#xd;
+call build_win32.bat COMKernel_2008 release %TRIGGER_PARAM_COM_BUILD_POLICY%&#xd;
 copy /y Release\com_e30.exe %WORKSPACE_DIR%\artifacts&#xd;
 copy /y Release\com_e30.pdb %WORKSPACE_DIR%\artifacts</command>
         </hudson.tasks.BatchFile>
