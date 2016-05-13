@@ -211,6 +211,7 @@ if test -n &quot;${ANDROID_PLATFORM}&quot;; then
     cp -rH ${QT_ROOT}/src/android/java_src_ori/* ${QT_ROOT}/src/android/java/src
     cp -f ${VIEWER_PATH}/android/QtActivity.java ${QT_ROOT}/src/android/java/src/org/qtproject/qt5/android/bindings
     rm -rf ${INSTALL_PREFIX}/bin/src
+    rm -rf ${INSTALL_PREFIX}/bin/bin
     
     rm -rf android
     mkdir android
