@@ -60,7 +60,7 @@
         <hudson.model.StringParameterDefinition>
           <name>TRIGGER_PARAM_VIEWER_BRANCH</name>
           <description></description>
-          <defaultValue>v1_stable</defaultValue>
+          <defaultValue>debug_android_keyboard</defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.ChoiceParameterDefinition>
           <name>TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY</name>
