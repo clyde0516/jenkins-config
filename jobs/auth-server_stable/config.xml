@@ -156,6 +156,7 @@ cp ${INSTALL_PREFIX}/bin/session_hwkey_queryer artifacts
       <defaultExcludes>true</defaultExcludes>
       <caseSensitive>true</caseSensitive>
     </hudson.tasks.ArtifactArchiver>
+    <hudson.plugins.claim.ClaimPublisher plugin="claim@2.8"/>
     <hudson.tasks.Mailer plugin="mailer@1.16">
       <recipients>zen@weintek.com</recipients>
       <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
