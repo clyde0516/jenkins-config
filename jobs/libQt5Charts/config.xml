@@ -144,7 +144,9 @@ cp libQt5Charts.a ${WORKSPACE}/artifacts</command>
       <runner class="org.jenkins_ci.plugins.run_condition.BuildStepRunner$Fail" plugin="run-condition@1.0"/>
     </org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder>
   </builders>
-  <publishers/>
+  <publishers>
+    <hudson.plugins.claim.ClaimPublisher plugin="claim@2.8"/>
+  </publishers>
   <buildWrappers/>
   <executionStrategy class="hudson.matrix.DefaultMatrixExecutionStrategyImpl">
     <runSequentially>false</runSequentially>
