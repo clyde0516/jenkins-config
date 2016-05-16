@@ -115,6 +115,7 @@ cppcheck --enable=all --inconclusive --suppress=syntaxError --xml --xml-version=
         </configGraph>
       </cppcheckConfig>
     </org.jenkinsci.plugins.cppcheck.CppcheckPublisher>
+    <hudson.plugins.claim.ClaimPublisher plugin="claim@2.8"/>
   </publishers>
   <buildWrappers/>
 </project>
