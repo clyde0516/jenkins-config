@@ -209,6 +209,7 @@ build_win32.bat weintek Release %TRIGGER_PARAM_OPCSDK_BUILD_POLICY%</command>
     </org.jenkinsci.plugins.conditionalbuildstep.ConditionalBuilder>
   </builders>
   <publishers>
+    <hudson.plugins.claim.ClaimPublisher plugin="claim@2.8"/>
     <hudson.tasks.Mailer plugin="mailer@1.16">
       <recipients>jeremyhong@weintek.com</recipients>
       <dontNotifyEveryUnstableBuild>true</dontNotifyEveryUnstableBuild>
