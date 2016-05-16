@@ -229,6 +229,7 @@ build\vs2012\testsRelease\tests.exe --gtest_output=xml:gtest\gtest-libweintek.xm
     </org.jenkinsci.plugins.conditionalbuildstep.ConditionalBuilder>
   </builders>
   <publishers>
+    <hudson.plugins.claim.ClaimPublisher plugin="claim@2.8"/>
     <hudson.tasks.Mailer plugin="mailer@1.16">
       <recipients>katte@weintek.com paul@weintek.com zen@weintek.com easonwu@weintek.com jeremyhong@weintek.com clydeliu@weintek.com</recipients>
       <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
