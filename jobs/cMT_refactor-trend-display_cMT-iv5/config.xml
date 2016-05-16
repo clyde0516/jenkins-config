@@ -612,6 +612,7 @@ ${INSTALL_PREFIX}/bin/test-got --gtest_output=xml:${WORKSPACE}/gtest/gtest-got.x
       <healthScaleFactor>1.0</healthScaleFactor>
       <allowEmptyResults>true</allowEmptyResults>
     </hudson.tasks.junit.JUnitResultArchiver>
+    <hudson.plugins.claim.ClaimPublisher plugin="claim@2.8"/>
     <hudson.tasks.Mailer plugin="mailer@1.16">
       <recipients>zen@weintek.com easonwu@weintek.com</recipients>
       <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
