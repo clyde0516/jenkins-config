@@ -133,7 +133,7 @@
         </userRemoteConfigs>
         <branches>
           <hudson.plugins.git.BranchSpec>
-            <name>*/${TRIGGER_PARAM_LIBWEINTEK_BRANCH}</name>
+            <name>ac85b4567918a62ec810a89d4c0f561c76cbfd05</name>
           </hudson.plugins.git.BranchSpec>
         </branches>
         <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
