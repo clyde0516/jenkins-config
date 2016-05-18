@@ -153,7 +153,7 @@
         </userRemoteConfigs>
         <branches>
           <hudson.plugins.git.BranchSpec>
-            <name>*/${TRIGGER_PARAM_DSERVER_BRANCH}</name>
+            <name>a48df5d6f5a38660e5740efafe29b77766dc0b2d</name>
           </hudson.plugins.git.BranchSpec>
         </branches>
         <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
