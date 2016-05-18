@@ -22,6 +22,12 @@
       <permission>hudson.model.Run.Update:jeremyhong</permission>
       <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Update:jeremyhong</permission>
     </hudson.security.AuthorizationMatrixProperty>
+    <hudson.plugins.buildblocker.BuildBlockerProperty plugin="build-blocker-plugin@1.7.3">
+      <useBuildBlocker>true</useBuildBlocker>
+      <blockLevel>GLOBAL</blockLevel>
+      <scanQueueFor>DISABLED</scanQueueFor>
+      <blockingJobs>dserver_dev</blockingJobs>
+    </hudson.plugins.buildblocker.BuildBlockerProperty>
     <hudson.model.ParametersDefinitionProperty>
       <parameterDefinitions>
         <hudson.plugins.matrix__configuration__parameter.MatrixCombinationsParameterDefinition plugin="matrix-combinations-parameter@1.0.9">
