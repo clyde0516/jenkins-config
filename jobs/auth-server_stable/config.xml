@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description>build auth_server, admin_client, campagnol_rdv, info_client, update_portal, hmi_dns, session_hwkey_queryer  for 64-bit Linux.</description>
+  <description></description>
   <keepDependencies>false</keepDependencies>
   <properties>
     <jenkins.model.BuildDiscarderProperty>
@@ -96,7 +96,7 @@ rm -rf ${WORKSPACE}/weintek-p2p/jenkins</command>
     <hudson.tasks.Shell>
       <command>#!/bin/bash
 
-export BUILD_TYPE=Release
+export BUILD_TYPE=RelWithDebInfo
 export LIBWEINTEK_PATH=${JENKINS_HOME}/jobs/libweintek_stable/workspace
 export INSTALL_PREFIX=/home/ci/work/Ubuntu/build-stable-branch
 export WEINTEK_P2P_PATH=${WORKSPACE}/weintek-p2p
@@ -117,7 +117,7 @@ make VERBOSE=1 install/strip
       <command>#!/bin/bash
 
 
-export BUILD_TYPE=Release
+export BUILD_TYPE=RelWithDebInfo
 export LIBWEINTEK_PATH=${JENKINS_HOME}/jobs/libweintek_stable/workspace
 export RMA_PATH=${WORKSPACE}/rma
 export INSTALL_PREFIX=/home/ci/work/Ubuntu/build-stable-branch
