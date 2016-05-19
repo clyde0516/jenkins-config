@@ -262,7 +262,6 @@
         <string>easy-access-master_stable</string>
         <string>gui_dev</string>
         <string>gui_stable</string>
-        <string>gui_stable_for_barcode</string>
         <string>jenkins-test</string>
         <string>libopcua</string>
         <string>libQt5Charts</string>
