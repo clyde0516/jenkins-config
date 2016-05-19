@@ -268,7 +268,6 @@
         <string>jenkins-test</string>
         <string>libopcua</string>
         <string>libQt5Charts</string>
-        <string>libQt5Charts_pack</string>
         <string>libweintek_dev</string>
         <string>libweintek_stable</string>
         <string>matrix-test</string>
