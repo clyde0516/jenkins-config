@@ -15,6 +15,12 @@
       <permission>hudson.model.Item.Configure:authenticated</permission>
       <permission>hudson.model.Run.Update:authenticated</permission>
     </hudson.security.AuthorizationMatrixProperty>
+    <hudson.plugins.buildblocker.BuildBlockerProperty plugin="build-blocker-plugin@1.7.3">
+      <useBuildBlocker>false</useBuildBlocker>
+      <blockLevel>GLOBAL</blockLevel>
+      <scanQueueFor>DISABLED</scanQueueFor>
+      <blockingJobs></blockingJobs>
+    </hudson.plugins.buildblocker.BuildBlockerProperty>
     <hudson.model.ParametersDefinitionProperty>
       <parameterDefinitions>
         <hudson.model.ChoiceParameterDefinition>
@@ -457,7 +463,7 @@ fi
 make install VERBOSE=1
 
 if [ &quot;${BUILD_LIBRARY_ONLY}&quot; = &quot;off&quot; ]; then
-    cp ${INSTALL_PREFIX}/bin/dserver ${DSERVER_PATH}/artifacts/dserver.RelWithDebInfo
+    cp ${INSTALL_PREFIX}/bin/dserver ${DSERVER_PATH}/artifacts/mt8xxx.002.RelWithDebInfo
 else
     cp ${INSTALL_PREFIX}/lib/libdserver_core.a ${DSERVER_PATH}/artifacts
     cp ${INSTALL_PREFIX}/lib/libdserver_client.a ${DSERVER_PATH}/artifacts
@@ -594,7 +600,7 @@ fi
 make VERBOSE=1
 
 if [ &quot;${BUILD_LIBRARY_ONLY}&quot; = &quot;off&quot; ]; then
-    cp ${INSTALL_PREFIX}/bin/gui ${GUI_PATH}/artifacts/gui.RelWithDebInfo
+    cp ${INSTALL_PREFIX}/bin/gui ${GUI_PATH}/artifacts/mt8xxx.003.RelWithDebInfo
 else
     cp ${INSTALL_PREFIX}/lib/liblibgui20.a ${GUI_PATH}/artifacts
 fi
