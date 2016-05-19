@@ -4,6 +4,12 @@
   <description></description>
   <keepDependencies>false</keepDependencies>
   <properties>
+    <hudson.plugins.buildblocker.BuildBlockerProperty plugin="build-blocker-plugin@1.7.3">
+      <useBuildBlocker>false</useBuildBlocker>
+      <blockLevel>GLOBAL</blockLevel>
+      <scanQueueFor>DISABLED</scanQueueFor>
+      <blockingJobs></blockingJobs>
+    </hudson.plugins.buildblocker.BuildBlockerProperty>
     <hudson.model.ParametersDefinitionProperty>
       <parameterDefinitions>
         <hudson.plugins.matrix__configuration__parameter.MatrixCombinationsParameterDefinition plugin="matrix-combinations-parameter@1.0.9">
@@ -148,12 +154,12 @@ if [ &quot;${TRIGGER_PARAM_COM_BUILD_POLICY}&quot; = &quot;clean&quot; ]; then
     make clean
 fi
 make install VERBOSE=1
-cp ${INSTALL_PREFIX}/bin/com ${WORKSPACE}/artifacts/com.RelWithDebInfo
+cp ${INSTALL_PREFIX}/bin/com ${WORKSPACE}/artifacts/mt8xxx.001.RelWithDebInfo
 
 # strip 
 
 make install/strip VERBOSE=1
-cp ${INSTALL_PREFIX}/bin/com ${WORKSPACE}/artifacts/com.decrypted
+cp ${INSTALL_PREFIX}/bin/com ${WORKSPACE}/artifacts/mt8xxx.001
 
 # encrypt
 
