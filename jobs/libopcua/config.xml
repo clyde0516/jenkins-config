@@ -22,6 +22,12 @@
       <permission>hudson.model.Run.Update:jeremyhong</permission>
       <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Update:jeremyhong</permission>
     </hudson.security.AuthorizationMatrixProperty>
+    <hudson.plugins.buildblocker.BuildBlockerProperty plugin="build-blocker-plugin@1.7.3">
+      <useBuildBlocker>false</useBuildBlocker>
+      <blockLevel>GLOBAL</blockLevel>
+      <scanQueueFor>DISABLED</scanQueueFor>
+      <blockingJobs></blockingJobs>
+    </hudson.plugins.buildblocker.BuildBlockerProperty>
     <hudson.model.ParametersDefinitionProperty>
       <parameterDefinitions>
         <hudson.plugins.matrix__configuration__parameter.MatrixCombinationsParameterDefinition plugin="matrix-combinations-parameter@1.0.9">
@@ -182,28 +188,7 @@ make install VERBOSE=1</command>
       </runCondition>
       <conditionalbuilders>
         <hudson.tasks.BatchFile>
-          <command>:: alter trigger parameter&#xd;
-&#xd;
-if &quot;%time%&quot; geq &quot; 0:00:00.00&quot; ( if &quot;%time%&quot; lss &quot; 8:00:00.00&quot; (&#xd;
-    set TRIGGER_PARAM_OPCSDK_BUILD_POLICY=clean&#xd;
-))&#xd;
-&#xd;
-:: set variables&#xd;
-&#xd;
-set WORK_UTIL_DIR=c:\jenkins\work&#xd;
-&#xd;
-:: prepare build environment&#xd;
-&#xd;
-md third-party\lib&#xd;
-cd third-party\lib&#xd;
-copy /y %WORK_UTIL_DIR%\libraries\smtp\lib\*.lib .&#xd;
-copy /y %WORK_UTIL_DIR%\libraries\sqlite3\lib\*.lib .&#xd;
-&#xd;
-:: build project&#xd;
-&#xd;
-cd ..\..\build\vs2012&#xd;
-copy /y weintek.props.in weintek.props&#xd;
-build_win32.bat weintek Release %TRIGGER_PARAM_OPCSDK_BUILD_POLICY%</command>
+          <command></command>
         </hudson.tasks.BatchFile>
       </conditionalbuilders>
     </org.jenkinsci.plugins.conditionalbuildstep.ConditionalBuilder>
