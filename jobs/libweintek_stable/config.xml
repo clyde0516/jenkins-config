@@ -4,6 +4,12 @@
   <description></description>
   <keepDependencies>false</keepDependencies>
   <properties>
+    <hudson.plugins.buildblocker.BuildBlockerProperty plugin="build-blocker-plugin@1.7.3">
+      <useBuildBlocker>false</useBuildBlocker>
+      <blockLevel>GLOBAL</blockLevel>
+      <scanQueueFor>DISABLED</scanQueueFor>
+      <blockingJobs></blockingJobs>
+    </hudson.plugins.buildblocker.BuildBlockerProperty>
     <hudson.model.ParametersDefinitionProperty>
       <parameterDefinitions>
         <hudson.plugins.matrix__configuration__parameter.MatrixCombinationsParameterDefinition plugin="matrix-combinations-parameter@1.0.9">
@@ -138,9 +144,9 @@ case $MATRIX_AXIS_PLATFORM in
 esac
 
 if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;android-arm&quot; ] || [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;android-x86&quot; ]; then
-	export ANDROID_CMAKE_FILE=/home/ci/android-cmake/android.toolchain.cmake
-	export ANDROID_SDK_ROOT=/home/ci/Android/Sdk
-	export ANDROID_NDK_ROOT=/home/ci/Android/android-ndk
+    export ANDROID_CMAKE_FILE=/home/ci/android-cmake/android.toolchain.cmake
+    export ANDROID_SDK_ROOT=/home/ci/Android/Sdk
+    export ANDROID_NDK_ROOT=/home/ci/Android/android-ndk
     
     if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;android-arm&quot; ]; then
         export ANDROID_TOOLCHAIN=/home/ci/work/android-arm/target/sysroots/android-toolchain-arm
@@ -150,7 +156,6 @@ if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;android-arm&quot; ] || [ &quot;
     
     export CC=${ANDROID_TOOLCHAIN}/bin/arm-linux-androideabi-gcc
     export CXX=${ANDROID_TOOLCHAIN}/bin/arm-linux-androideabi-g++
-    export INSTALL_PREFIX=${ANDROID_TOOLCHAIN}/sysroot/usr
 fi
 
 # clear artifacts
