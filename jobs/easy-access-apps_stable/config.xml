@@ -4,6 +4,12 @@
   <description>build easy access 2.0 master-app, weintek-p2p</description>
   <keepDependencies>false</keepDependencies>
   <properties>
+    <hudson.plugins.buildblocker.BuildBlockerProperty plugin="build-blocker-plugin@1.7.3">
+      <useBuildBlocker>false</useBuildBlocker>
+      <blockLevel>GLOBAL</blockLevel>
+      <scanQueueFor>DISABLED</scanQueueFor>
+      <blockingJobs></blockingJobs>
+    </hudson.plugins.buildblocker.BuildBlockerProperty>
     <hudson.model.ParametersDefinitionProperty>
       <parameterDefinitions>
         <hudson.plugins.matrix__configuration__parameter.MatrixCombinationsParameterDefinition plugin="matrix-combinations-parameter@1.0.9">
@@ -160,7 +166,8 @@
 
 export BUILD_TYPE=Release
 export LIBWEINTEK_PATH=${JENKINS_HOME}/jobs/libweintek_stable/workspace
-export INSTALL_PREFIX=/home/ci/work/android-arm/build-stable-branch
+#export INSTALL_PREFIX=/home/ci/work/android-arm/build-stable-branch
+export INSTALL_PREFIX=/home/ci/work/${MATRIX_AXIS_PLATFORM}/build-${TRIGGER_PARAM_JOB_GROUP}-branch
 export EA_PATH=${WORKSPACE}/RemoteAccess
 export LIBWEINTEK_ROOT=${LIBWEINTEK_PATH}
 export JAVA_HOME=/home/ci/jdk1.7.0_71
@@ -210,7 +217,8 @@ cd ${WORKSPACE}/weintek-p2p/android/WeintekP2P
 
 export BUILD_TYPE=Release
 export LIBWEINTEK_PATH=${JENKINS_HOME}/jobs/libweintek_stable/workspace
-export INSTALL_PREFIX=/home/ci/work/android-arm/build-stable-branch
+#export INSTALL_PREFIX=/home/ci/work/android-arm/build-stable-branch
+export INSTALL_PREFIX=/home/ci/work/${MATRIX_AXIS_PLATFORM}/build-${TRIGGER_PARAM_JOB_GROUP}-branch
 export EA_PATH=${WORKSPACE}/RemoteAccess
 export LIBWEINTEK_ROOT=${LIBWEINTEK_PATH}
 export JAVA_HOME=/home/ci/jdk1.7.0_71
