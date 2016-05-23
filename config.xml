@@ -242,7 +242,6 @@
         <string>auth-server_stable</string>
         <string>cMT-static-analysis_dev</string>
         <string>cMT-static-analysis_stable</string>
-        <string>cMT_debug-android-autologout_android-arm</string>
         <string>cMT_debug-electric-meter_cMT3000</string>
         <string>cMT_dev-label-performance_cMT3000</string>
         <string>cMT_dev-lite-line-series_cMT3000</string>
