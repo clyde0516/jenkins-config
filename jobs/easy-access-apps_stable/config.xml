@@ -186,6 +186,11 @@ export ANDROID_HOME=/home/ci/Android/Sdk
 # build weintek-p2p
 cd ${WORKSPACE}/weintek-p2p
 cp config_linux.h config.h
+
+if [ &quot;${TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY}&quot; = &quot;brandnew&quot; ]; then
+    rm -rf jenkins
+fi
+
 mkdir -p jenkins
 mkdir -p android/WeintekP2P/app/src/main/jniLibs/armeabi-v7a
 
@@ -204,6 +209,11 @@ cmake -DCMAKE_TOOLCHAIN_FILE=${ANDROID_CMAKE_FILE} \
       ..
 
 cd client
+
+if [ &quot;${TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY}&quot; = &quot;clean&quot; ]; then
+    make clean
+fi
+
 make install
 
 cp ${TOOLCHAIN}/sysroot/usr/lib/libweintek_p2p.so ${WORKSPACE}/weintek-p2p/android/WeintekP2P/app/src/main/jniLibs/armeabi-v7a
@@ -241,6 +251,9 @@ ln -sf /home/ci/work/libweintek-stable libweintek
 cd ${EA_PATH}
 mkdir ${INSTALL_PREFIX}/apk
 ln -sf ../rma/AuthClient AuthClient
+if [ &quot;${TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY}&quot; = &quot;brandnew&quot; ]; then
+    rm -rf jenkins
+fi
 mkdir -p jenkins
 cd jenkins
 
@@ -248,6 +261,11 @@ ${QT_ROOT}/bin/qmake ${EA_PATH}/RemoteAccess.pro -r -spec android-g++ \
         WORK_SPACE_PATH=${WORKSPACE} \
         TOOLCHAIN_ROOT=/home/ci/work/android-arm/target/sysroots \
         BOOST_ROOT=/opt/boost_1_55_0
+        
+if [ &quot;${TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY}&quot; = &quot;clean&quot; ]; then
+    make clean
+fi
+
 make install INSTALL_ROOT=${INSTALL_PREFIX}/apk
 
 rm -rf ${QT_ROOT}/src/android/java/src/*
