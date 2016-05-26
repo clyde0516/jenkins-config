@@ -245,6 +245,7 @@
         <string>cMT_debug-electric-meter_cMT3000</string>
         <string>cMT_dev-label-performance_cMT3000</string>
         <string>cMT_dev-lite-line-series_cMT3000</string>
+        <string>cMT_dev-mqtt-sub_Ubuntu</string>
         <string>cMT_dev-quick-scene-graph_cMT3000</string>
         <string>cMT_dev_Ubuntu</string>
         <string>cMT_opcua</string>
