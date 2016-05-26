@@ -10,9 +10,9 @@
       <permission>hudson.model.Item.Discover:authenticated</permission>
       <permission>hudson.model.Item.Build:authenticated</permission>
       <permission>hudson.model.Item.Cancel:authenticated</permission>
-      <permission>hudson.model.Item.Configure:authenticated</permission>
-      <permission>hudson.model.Item.Delete:authenticated</permission>
       <permission>hudson.model.Item.Workspace:authenticated</permission>
+      <permission>hudson.model.Item.Delete:authenticated</permission>
+      <permission>hudson.model.Item.Configure:authenticated</permission>
       <permission>hudson.model.Run.Update:authenticated</permission>
     </hudson.security.AuthorizationMatrixProperty>
     <hudson.plugins.buildblocker.BuildBlockerProperty plugin="build-blocker-plugin@1.7.3">
@@ -41,7 +41,7 @@
         <hudson.model.StringParameterDefinition>
           <name>TRIGGER_PARAM_JOB_GROUP</name>
           <description></description>
-          <defaultValue>dev</defaultValue>
+          <defaultValue>dev-mqtt-sub</defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>TRIGGER_PARAM_BASE_JOB_GROUP</name>
@@ -51,12 +51,12 @@
         <hudson.model.StringParameterDefinition>
           <name>TRIGGER_PARAM_LIBWEINTEK_BRANCH</name>
           <description></description>
-          <defaultValue>dev</defaultValue>
+          <defaultValue>dev_mqtt_sub</defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>TRIGGER_PARAM_DSERVER_BRANCH</name>
           <description></description>
-          <defaultValue>dev</defaultValue>
+          <defaultValue>dev_mqtt_sub</defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>TRIGGER_PARAM_GUI_BRANCH</name>
@@ -840,7 +840,7 @@ ${INSTALL_PREFIX}/bin/test-got --gtest_output=xml:${WORKSPACE}/gtest/gtest-got.x
   <publishers>
     <hudson.plugins.claim.ClaimPublisher plugin="claim@2.8"/>
     <hudson.tasks.Mailer plugin="mailer@1.16">
-      <recipients>katte@weintek.com paul@weintek.com zen@weintek.com easonwu@weintek.com jeremyhong@weintek.com clydeliu@weintek.com</recipients>
+      <recipients>easonwu@weintek.com clydeliu@weintek.com</recipients>
       <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
       <sendToIndividuals>false</sendToIndividuals>
     </hudson.tasks.Mailer>
