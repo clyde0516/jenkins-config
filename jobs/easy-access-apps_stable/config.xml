@@ -8,7 +8,7 @@
       <useBuildBlocker>true</useBuildBlocker>
       <blockLevel>GLOBAL</blockLevel>
       <scanQueueFor>DISABLED</scanQueueFor>
-      <blockingJobs>dserver_dev</blockingJobs>
+      <blockingJobs>dserver_stable</blockingJobs>
     </hudson.plugins.buildblocker.BuildBlockerProperty>
     <hudson.model.ParametersDefinitionProperty>
       <parameterDefinitions>
