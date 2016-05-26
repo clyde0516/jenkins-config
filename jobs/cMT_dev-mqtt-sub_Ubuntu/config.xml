@@ -344,6 +344,7 @@ fi
 
 # clear artifacts
 
+rm -f ${INSTALL_PREFIX}/bin/test-libweintek
 rm -f ${INSTALL_PREFIX}/lib/libweintek_*.a
 
 # prepare out-of-source build
@@ -433,6 +434,7 @@ fi
 # clear artifacts
 
 rm -f ${INSTALL_PREFIX}/bin/dserver*
+rm -f ${INSTALL_PREFIX}/bin/test-dserver
 rm -f ${INSTALL_PREFIX}/lib/libdserver_*.a
 rm -rf ${DSERVER_PATH}/artifacts
 mkdir ${DSERVER_PATH}/artifacts
@@ -564,6 +566,7 @@ fi
 # clear artifacts
 
 rm -f ${INSTALL_PREFIX}/bin/gui*
+rm -f ${INSTALL_PREFIX}/bin/test-gui
 rm -f ${INSTALL_PREFIX}/lib/liblibgui20.a
 rm -f ${INSTALL_PREFIX}/lib/libgot_*.a
 rm -rf ${GUI_PATH}/artifacts
