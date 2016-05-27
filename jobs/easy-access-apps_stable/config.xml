@@ -204,7 +204,7 @@ cd jenkins
 cmake -DCMAKE_TOOLCHAIN_FILE=${ANDROID_CMAKE_FILE} \
       -DANDROID_NDK=${ANDROID_NDK_ROOT}             \
       -DCMAKE_BUILD_TYPE=Release                     \
-      -DCMAKE_INSTALL_PREFIX=${TOOLCHAIN}/sysroot/usr \
+      -DCMAKE_INSTALL_PREFIX=/home/ci/work/android-arm/build-stable-branch \
       -DANDROID_ABI=&quot;armeabi-v7a&quot;                      \
       ..
 
