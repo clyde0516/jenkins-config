@@ -830,7 +830,7 @@ ${INSTALL_PREFIX}/bin/test-libweintek --gtest_output=xml:${WORKSPACE}/gtest/gtes
 
 cd ${WORKSPACE}/gtest/test-dserver
 cp ../../dserver/tests/test_project/default_project .
-${INSTALL_PREFIX}/bin/test-dserver --gtest_output=xml:${WORKSPACE}/gtest/gtest-dserver.xml
+${INSTALL_PREFIX}/bin/test-dserver --gtest_filter=MqttServerTest.* --gtest_output=xml:${WORKSPACE}/gtest/gtest-dserver.xml
 
 cd ${WORKSPACE}/gtest/test-got
 ${INSTALL_PREFIX}/bin/test-got --gtest_output=xml:${WORKSPACE}/gtest/gtest-got.xml</command>
