@@ -823,6 +823,7 @@ cd gtest
 
 mkdir test-libweintek
 mkdir test-dserver
+mkdir test-dserver/mt8000
 mkdir test-got
 
 cd ${WORKSPACE}/gtest/test-libweintek
@@ -830,7 +831,7 @@ ${INSTALL_PREFIX}/bin/test-libweintek --gtest_output=xml:${WORKSPACE}/gtest/gtes
 
 cd ${WORKSPACE}/gtest/test-dserver
 cp ../../dserver/tests/test_project/default_project .
-${INSTALL_PREFIX}/bin/test-dserver --gtest_filter=*.* --gtest_output=xml:${WORKSPACE}/gtest/gtest-dserver.xml
+${INSTALL_PREFIX}/bin/test-dserver --gtest_output=xml:${WORKSPACE}/gtest/gtest-dserver.xml
 
 cd ${WORKSPACE}/gtest/test-got
 ${INSTALL_PREFIX}/bin/test-got --gtest_output=xml:${WORKSPACE}/gtest/gtest-got.xml</command>
