@@ -115,7 +115,7 @@
         <hudson.model.BooleanParameterDefinition>
           <name>TRIGGER_PARAM_STATIC_ANALYSIS</name>
           <description></description>
-          <defaultValue>false</defaultValue>
+          <defaultValue>true</defaultValue>
         </hudson.model.BooleanParameterDefinition>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
