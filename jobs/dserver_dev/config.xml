@@ -278,10 +278,11 @@ copy /y dserverRelease\dserver.pdb %WORKSPACE_DIR%\artifacts&#xd;
 </command>
         </hudson.tasks.BatchFile>
         <hudson.tasks.BatchFile>
-          <command>mkdir gtest&#xd;
-cd gtest&#xd;
-copy ..\tests\test_project\default_project .&#xd;
-..\build\vs2012\testsRelease\tests.exe --gtest_output=xml:gtest-dserver.xml</command>
+          <command>rmdir /s/q gtest&#xd;
+mkdir gtest&#xd;
+&#xd;
+cd build\vs2012\testsRelease&#xd;
+tests.exe --gtest_output=xml:..\gtest\gtest-dserver.xml</command>
         </hudson.tasks.BatchFile>
         <hudson.tasks.junit.JUnitResultArchiver plugin="junit@1.10">
           <testResults>gtest\*.xml</testResults>
