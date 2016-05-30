@@ -282,7 +282,7 @@ copy /y dserverRelease\dserver.pdb %WORKSPACE_DIR%\artifacts&#xd;
 mkdir gtest&#xd;
 &#xd;
 cd build\vs2012\testsRelease&#xd;
-tests.exe --gtest_output=xml:..\gtest\gtest-dserver.xml</command>
+tests.exe --gtest_output=xml:..\..\..\gtest\gtest-dserver.xml</command>
         </hudson.tasks.BatchFile>
         <hudson.tasks.junit.JUnitResultArchiver plugin="junit@1.10">
           <testResults>gtest\*.xml</testResults>
