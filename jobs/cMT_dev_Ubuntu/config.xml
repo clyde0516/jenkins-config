@@ -820,6 +820,7 @@ cd gtest
 
 mkdir test-libweintek
 mkdir test-dserver
+mkdir test-dserver/mt8000
 mkdir test-got
 
 cd ${WORKSPACE}/gtest/test-libweintek
