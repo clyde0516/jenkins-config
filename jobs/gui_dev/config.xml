@@ -283,8 +283,11 @@ copy /y Win32\ProductionRelease\libgui20.pdb %WORKSPACE_DIR%\artifacts&#xd;
 </command>
         </hudson.tasks.BatchFile>
         <hudson.tasks.BatchFile>
-          <command>mkdir gtest&#xd;
-build\vs2012\testsProductionRelease\tests.exe --gtest_output=xml:gtest\gtest-gui.xml</command>
+          <command>rmdir /s/q gtest&#xd;
+mkdir gtest&#xd;
+&#xd;
+cd build\vs2012\testsProductionRelease&#xd;
+tests.exe --gtest_output=xml:..\..\..\gtest\gtest-gui.xml</command>
         </hudson.tasks.BatchFile>
         <hudson.tasks.junit.JUnitResultArchiver plugin="junit@1.10">
           <testResults>gtest\*.xml</testResults>
@@ -305,11 +308,6 @@ build\vs2012\testsProductionRelease\tests.exe --gtest_output=xml:gtest\gtest-gui
       <caseSensitive>true</caseSensitive>
     </hudson.tasks.ArtifactArchiver>
     <hudson.plugins.claim.ClaimPublisher plugin="claim@2.8"/>
-    <hudson.tasks.Mailer plugin="mailer@1.16">
-      <recipients>katte@weintek.com paul@weintek.com zen@weintek.com easonwu@weintek.com jeremyhong@weintek.com clydeliu@weintek.com</recipients>
-      <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
-      <sendToIndividuals>false</sendToIndividuals>
-    </hudson.tasks.Mailer>
   </publishers>
   <buildWrappers/>
   <executionStrategy class="hudson.matrix.DefaultMatrixExecutionStrategyImpl">
