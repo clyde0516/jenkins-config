@@ -222,8 +222,11 @@ copy /y weintek.props.in weintek.props&#xd;
 build_win32.bat weintek Release %TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY%</command>
         </hudson.tasks.BatchFile>
         <hudson.tasks.BatchFile>
-          <command>mkdir gtest&#xd;
-build\vs2012\testsRelease\tests.exe --gtest_output=xml:gtest\gtest-libweintek.xml</command>
+          <command>rmdir /s/q gtest&#xd;
+mkdir gtest&#xd;
+&#xd;
+cd build\vs2012\testsRelease&#xd;
+tests.exe --gtest_output=xml:..\..\..\gtest\gtest-libweintek.xml</command>
         </hudson.tasks.BatchFile>
         <hudson.tasks.junit.JUnitResultArchiver plugin="junit@1.10">
           <testResults>gtest\*.xml</testResults>
