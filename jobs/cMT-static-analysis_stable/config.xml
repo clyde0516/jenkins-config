@@ -15,6 +15,12 @@
       <permission>hudson.model.Item.Configure:authenticated</permission>
       <permission>hudson.model.Run.Update:authenticated</permission>
     </hudson.security.AuthorizationMatrixProperty>
+    <hudson.plugins.buildblocker.BuildBlockerProperty plugin="build-blocker-plugin@1.7.3">
+      <useBuildBlocker>false</useBuildBlocker>
+      <blockLevel>GLOBAL</blockLevel>
+      <scanQueueFor>DISABLED</scanQueueFor>
+      <blockingJobs></blockingJobs>
+    </hudson.plugins.buildblocker.BuildBlockerProperty>
     <hudson.model.ParametersDefinitionProperty>
       <parameterDefinitions>
         <hudson.model.StringParameterDefinition>
@@ -205,11 +211,6 @@ cppcheck --enable=all --inconclusive --xml --xml-version=2 \
   </builders>
   <publishers>
     <hudson.plugins.claim.ClaimPublisher plugin="claim@2.8"/>
-    <hudson.tasks.Mailer plugin="mailer@1.16">
-      <recipients>katte@weintek.com paul@weintek.com zen@weintek.com easonwu@weintek.com jeremyhong@weintek.com clydeliu@weintek.com</recipients>
-      <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
-      <sendToIndividuals>false</sendToIndividuals>
-    </hudson.tasks.Mailer>
   </publishers>
   <buildWrappers/>
 </project>
