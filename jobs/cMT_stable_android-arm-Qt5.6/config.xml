@@ -712,6 +712,7 @@ fi
 
 # clear artifacts
 
+echo &quot;===========rm -f ${INSTALL_PREFIX}/bin/CloudHmi*&quot;;
 rm -f ${INSTALL_PREFIX}/bin/CloudHmi*
 rm -f ${INSTALL_PREFIX}/bin/cMTViewer*
 rm -f ${INSTALL_PREFIX}/bin/bin/${APK_FILE_NAME}
