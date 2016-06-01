@@ -545,8 +545,8 @@ if [ &quot;${MATRIX_AXIS_PLATFORM}&quot; = &quot;cMT3000&quot; ]; then
 fi
 
 case $MATRIX_AXIS_PLATFORM in
-    &quot;android-arm&quot;)   export PATH=/opt/Qt5.6.0_enterprise/5.6/android_armv7/bin:${PATH}  ;;
-    &quot;android-x86&quot;)   export PATH=/opt/Qt5.6.0_enterprise/5.6/android_x86/bin:${PATH}    ;;
+    &quot;android-arm&quot;)   export PATH=/opt/Qt5.6.0/5.6/android_armv7/bin:${PATH}  ;;
+    &quot;android-x86&quot;)   export PATH=/opt/Qt5.6.0/5.6/android_x86/bin:${PATH}    ;;
     &quot;Ubuntu&quot;)        export PATH=/opt/Qt5.4.2/5.4/gcc_64/bin:${PATH}         ;;
 esac
 
@@ -689,8 +689,8 @@ case $MATRIX_AXIS_PLATFORM in
 esac
 
 case $MATRIX_AXIS_PLATFORM in
-    &quot;android-arm&quot;)   export QT_ROOT=/opt/Qt5.6.0_enterprise/5.6/android_armv7  ;;
-    &quot;android-x86&quot;)   export QT_ROOT=/opt/Qt5.6.0_enterprise/5.6/android_x86    ;;
+    &quot;android-arm&quot;)   export QT_ROOT=/opt/Qt5.6.0/5.6/android_armv7  ;;
+    &quot;android-x86&quot;)   export QT_ROOT=/opt/Qt5.6.0/5.6/android_x86    ;;
     &quot;Ubuntu&quot;)        export QT_ROOT=/opt/Qt5.4.2/5.4/gcc_64         ;;
 esac
 
