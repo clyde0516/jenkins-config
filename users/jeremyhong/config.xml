@@ -19,6 +19,9 @@
     <hudson.tasks.Mailer_-UserProperty plugin="mailer@1.16">
       <emailAddress>jeremyhong@weintek.com</emailAddress>
     </hudson.tasks.Mailer_-UserProperty>
+    <hudson.plugins.emailext.watching.EmailExtWatchAction_-UserProperty plugin="email-ext@2.42">
+      <triggers/>
+    </hudson.plugins.emailext.watching.EmailExtWatchAction_-UserProperty>
     <jenkins.security.LastGrantedAuthoritiesProperty>
       <roles>
         <string>authenticated</string>
@@ -41,7 +44,7 @@
       <collapsed/>
     </hudson.model.PaneStatusProperties>
     <hudson.security.HudsonPrivateSecurityRealm_-Details>
-      <passwordHash>#jbcrypt:$2a$10$jFedKe/TazTCCfgFxw6xreZOEeT0nsPI4n4./CIW6xatbRCrFsGKa</passwordHash>
+      <passwordHash>#jbcrypt:$2a$10$HbKXTkGU1qKCaVRDVhw5LOU4qWR29/qt2pLIWamkh7DGhYH9bd1BS</passwordHash>
     </hudson.security.HudsonPrivateSecurityRealm_-Details>
     <org.jenkinsci.main.modules.cli.auth.ssh.UserPropertyImpl>
       <authorizedKeys></authorizedKeys>
