@@ -253,6 +253,7 @@
         <string>cMT_opcua-server_SVR</string>
         <string>cMT_refactor-trend-display_cMT-iv5</string>
         <string>cMT_stable_android-arm-Qt5.6</string>
+        <string>cMT_stable_android-arm-Qt5.6-debug</string>
         <string>com_5.03.02</string>
         <string>com_5.04.01</string>
         <string>driver_master</string>
