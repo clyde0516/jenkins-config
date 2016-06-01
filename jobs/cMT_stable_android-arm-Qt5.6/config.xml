@@ -15,6 +15,12 @@
       <permission>hudson.model.Item.Configure:authenticated</permission>
       <permission>hudson.model.Run.Update:authenticated</permission>
     </hudson.security.AuthorizationMatrixProperty>
+    <hudson.plugins.buildblocker.BuildBlockerProperty plugin="build-blocker-plugin@1.7.3">
+      <useBuildBlocker>false</useBuildBlocker>
+      <blockLevel>GLOBAL</blockLevel>
+      <scanQueueFor>DISABLED</scanQueueFor>
+      <blockingJobs></blockingJobs>
+    </hudson.plugins.buildblocker.BuildBlockerProperty>
     <hudson.model.ParametersDefinitionProperty>
       <parameterDefinitions>
         <hudson.model.ChoiceParameterDefinition>
@@ -60,7 +66,7 @@
         <hudson.model.StringParameterDefinition>
           <name>TRIGGER_PARAM_VIEWER_BRANCH</name>
           <description></description>
-          <defaultValue>debug_android_keyboard</defaultValue>
+          <defaultValue>v1_stable</defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.ChoiceParameterDefinition>
           <name>TRIGGER_PARAM_LIBWEINTEK_BUILD_POLICY</name>
