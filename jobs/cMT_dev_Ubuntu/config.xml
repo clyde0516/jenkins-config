@@ -716,7 +716,7 @@ fi
 
 # clear artifacts
 
-rm -f ${INSTALL_PREFIX}/bin/CloudHmi*
+rm -f ${INSTALL_PREFIX}/bin/*CloudHmi*
 rm -f ${INSTALL_PREFIX}/bin/cMTViewer*
 rm -f ${INSTALL_PREFIX}/bin/bin/${APK_FILE_NAME}
 rm -rf ${VIEWER_PATH}/artifacts
