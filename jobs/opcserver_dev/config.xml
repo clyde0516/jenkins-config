@@ -266,8 +266,8 @@ call %WORK_UTIL_DIR%\script\replace_string.bat &quot;opcserver.props&quot; &quot
 :: build project &#xd;
 &#xd;
 call build_win32.bat opcserver Release %TRIGGER_PARAM_OPCSERVER_BUILD_POLICY%&#xd;
-copy /y opcserverRelease\opcserver.exe %WORKSPACE_DIR%\artifacts&#xd;
-copy /y opcserverRelease\opcserver.pdb %WORKSPACE_DIR%\artifacts&#xd;
+copy /y opcserverRelease\opcserver.exe %WORKSPACE_DIR%\artifacts\opcua.exe&#xd;
+copy /y opcserverRelease\opcserver.pdb %WORKSPACE_DIR%\artifacts\opcua.pdb &#xd;
 </command>
         </hudson.tasks.BatchFile>
       </conditionalbuilders>
