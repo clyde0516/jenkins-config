@@ -191,7 +191,8 @@ cp ${INSTALL_PREFIX}/lib/libcoremodule*.a ${INSTALL_PREFIX}/lib/libua*.a ${INSTA
       </runCondition>
       <conditionalbuilders>
         <hudson.tasks.BatchFile>
-          <command></command>
+          <command>mkdir artifacts&#xd;
+</command>
         </hudson.tasks.BatchFile>
       </conditionalbuilders>
     </org.jenkinsci.plugins.conditionalbuildstep.ConditionalBuilder>
