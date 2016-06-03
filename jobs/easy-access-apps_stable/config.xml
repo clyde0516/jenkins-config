@@ -202,6 +202,7 @@ cp -rH android/java android/WeintekP2P/app/src/main
 
 cd jenkins
 cmake -DCMAKE_TOOLCHAIN_FILE=${ANDROID_CMAKE_FILE} \
+      -DBOOST_ROOT=/opt/boost_1_55_0               \
       -DANDROID_NDK=${ANDROID_NDK_ROOT}             \
       -DCMAKE_BUILD_TYPE=Release                     \
       -DCMAKE_INSTALL_PREFIX=/home/ci/work/android-arm/build-stable-branch \
