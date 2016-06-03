@@ -199,7 +199,7 @@ cp ${INSTALL_PREFIX}/lib/libcoremodule*.a ${INSTALL_PREFIX}/lib/libua*.a ${INSTA
   </builders>
   <publishers>
     <hudson.tasks.ArtifactArchiver>
-      <artifacts>${WORKSPACE}/artifacts/*</artifacts>
+      <artifacts>artifacts/*</artifacts>
       <allowEmptyArchive>false</allowEmptyArchive>
       <onlyIfSuccessful>false</onlyIfSuccessful>
       <fingerprint>false</fingerprint>
