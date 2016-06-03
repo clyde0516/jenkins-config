@@ -192,7 +192,12 @@ cp ${INSTALL_PREFIX}/lib/libcoremodule*.a ${INSTALL_PREFIX}/lib/libua*.a ${INSTA
       </runCondition>
       <conditionalbuilders>
         <hudson.tasks.BatchFile>
-          <command>mkdir %WORKSPACE_DIR%\artifacts&#xd;
+          <command>:: set variables&#xd;
+&#xd;
+set WORKSPACE_DIR=%cd%&#xd;
+&#xd;
+&#xd;
+mkdir %WORKSPACE_DIR%\artifacts&#xd;
 echo &quot;nofile&quot; &gt; %WORKSPACE_DIR%\artifacts\nofile</command>
         </hudson.tasks.BatchFile>
       </conditionalbuilders>
