@@ -193,7 +193,7 @@ cp ${INSTALL_PREFIX}/lib/libcoremodule*.a ${INSTALL_PREFIX}/lib/libua*.a ${INSTA
       <conditionalbuilders>
         <hudson.tasks.BatchFile>
           <command>mkdir %WORKSPACE_DIR%\artifacts&#xd;
-mkdir %WORKSPACE_DIR%\artifacts\empty</command>
+echo $null &gt;&gt; %WORKSPACE_DIR%\artifacts\nofile</command>
         </hudson.tasks.BatchFile>
       </conditionalbuilders>
     </org.jenkinsci.plugins.conditionalbuildstep.ConditionalBuilder>
