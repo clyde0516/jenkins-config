@@ -175,7 +175,11 @@ if [ &quot;${TRIGGER_PARAM_OPCSDK_BUILD_POLICY}&quot; = &quot;clean&quot; ]; the
     make clean
 fi
 
-make install VERBOSE=1</command>
+make install VERBOSE=1
+
+mkdir ${WORKSPACE}/artifacts
+rm -rf ${WORKSPACE}/artifacts/*
+cp ${INSTALL_PREFIX}/lib/libcoremodule*.a ${INSTALL_PREFIX}/lib/libua*.a ${INSTALL_PREFIX}/lib/libxmlparser*.a ${WORKSPACE}/artifacts</command>
         </hudson.tasks.Shell>
       </conditionalbuilders>
     </org.jenkinsci.plugins.conditionalbuildstep.ConditionalBuilder>
@@ -194,6 +198,14 @@ make install VERBOSE=1</command>
     </org.jenkinsci.plugins.conditionalbuildstep.ConditionalBuilder>
   </builders>
   <publishers>
+    <hudson.tasks.ArtifactArchiver>
+      <artifacts>${WORKSPACE}/artifacts/*</artifacts>
+      <allowEmptyArchive>false</allowEmptyArchive>
+      <onlyIfSuccessful>false</onlyIfSuccessful>
+      <fingerprint>false</fingerprint>
+      <defaultExcludes>true</defaultExcludes>
+      <caseSensitive>true</caseSensitive>
+    </hudson.tasks.ArtifactArchiver>
     <hudson.plugins.claim.ClaimPublisher plugin="claim@2.8"/>
     <hudson.tasks.Mailer plugin="mailer@1.16">
       <recipients>jeremyhong@weintek.com</recipients>
