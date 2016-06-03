@@ -82,7 +82,6 @@
       <values>
         <string>cMT-SVR</string>
         <string>cMT3000</string>
-        <string>win32</string>
       </values>
     </hudson.matrix.TextAxis>
     <org.jenkinsci.plugins.elasticaxisplugin.ElasticAxis plugin="elastic-axis@1.2">
