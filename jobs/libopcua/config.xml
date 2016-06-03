@@ -82,6 +82,7 @@
       <values>
         <string>cMT-SVR</string>
         <string>cMT3000</string>
+        <string>win32</string>
       </values>
     </hudson.matrix.TextAxis>
     <org.jenkinsci.plugins.elasticaxisplugin.ElasticAxis plugin="elastic-axis@1.2">
@@ -191,8 +192,8 @@ cp ${INSTALL_PREFIX}/lib/libcoremodule*.a ${INSTALL_PREFIX}/lib/libua*.a ${INSTA
       </runCondition>
       <conditionalbuilders>
         <hudson.tasks.BatchFile>
-          <command>mkdir artifacts&#xd;
-</command>
+          <command>mkdir %WORKSPACE_DIR%\artifacts&#xd;
+mkdir %WORKSPACE_DIR%\artifacts\empty</command>
         </hudson.tasks.BatchFile>
       </conditionalbuilders>
     </org.jenkinsci.plugins.conditionalbuildstep.ConditionalBuilder>
