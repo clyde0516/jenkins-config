@@ -148,6 +148,25 @@ fi
 export LIBOPCUA_PATH=${WORKSPACE}/libopcua/linux
 export INSTALL_PREFIX=/home/ci/work/${MATRIX_AXIS_PLATFORM}/build-${TRIGGER_PARAM_JOB_GROUP}-branch
 
+#export add -fPIC
+if [ &quot;$TOOLCHAIN&quot; == &quot;&quot; ]; then
+    if [ &quot;$SYSTEM&quot; == 32 ]; then
+        # configure compiler for generic i686
+        export CC=gcc
+        export CXX=g++
+        export CFLAGS=&apos;-march=i686 -fPIC -fno-strict-aliasing&apos;
+        export CXXFLAGS=$CFLAGS
+        export CC CXX CFLAGS CXXFLAGS
+    else
+        # configure compiler for x64
+        export CC=gcc
+        export CXX=g++
+        export CFLAGS=&apos;-march=x86-64 -mtune=generic -fPIC -fno-strict-aliasing&apos;
+        export CXXFLAGS=$CFLAGS
+        export CC CXX CFLAGS CXXFLAGS
+    fi
+fi
+
 case $MATRIX_AXIS_PLATFORM in
 	&quot;cMT-SVR&quot;)       export CROSS_COMPILER_TOOLCHAIN=${JENKINS_HOME}/jobs/libweintek_${TRIGGER_PARAM_JOB_GROUP}/workspace/build/cMT-SVR/Toolchain-arm-fsl-linux-gnueabi.cmake ;;
     &quot;cMT3000&quot;)       export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi  ;;
