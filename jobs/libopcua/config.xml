@@ -6,21 +6,37 @@
   <properties>
     <hudson.security.AuthorizationMatrixProperty>
       <permission>hudson.scm.SCM.Tag:jeremyhong</permission>
+      <permission>hudson.scm.SCM.Tag:knightchang</permission>
       <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Delete:jeremyhong</permission>
+      <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Delete:knightchang</permission>
       <permission>com.cloudbees.plugins.credentials.CredentialsProvider.ManageDomains:jeremyhong</permission>
+      <permission>com.cloudbees.plugins.credentials.CredentialsProvider.ManageDomains:knightchang</permission>
       <permission>hudson.model.Item.Read:jeremyhong</permission>
+      <permission>hudson.model.Item.Read:knightchang</permission>
       <permission>hudson.model.Item.ExtendedRead:jeremyhong</permission>
+      <permission>hudson.model.Item.ExtendedRead:knightchang</permission>
       <permission>hudson.model.Item.Workspace:jeremyhong</permission>
+      <permission>hudson.model.Item.Workspace:knightchang</permission>
       <permission>hudson.model.Item.Configure:jeremyhong</permission>
+      <permission>hudson.model.Item.Configure:knightchang</permission>
       <permission>hudson.model.Run.Delete:jeremyhong</permission>
+      <permission>hudson.model.Run.Delete:knightchang</permission>
       <permission>hudson.model.Item.Discover:jeremyhong</permission>
+      <permission>hudson.model.Item.Discover:knightchang</permission>
       <permission>com.cloudbees.plugins.credentials.CredentialsProvider.View:jeremyhong</permission>
+      <permission>com.cloudbees.plugins.credentials.CredentialsProvider.View:knightchang</permission>
       <permission>hudson.model.Item.Build:jeremyhong</permission>
+      <permission>hudson.model.Item.Build:knightchang</permission>
       <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Create:jeremyhong</permission>
+      <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Create:knightchang</permission>
       <permission>hudson.model.Item.Cancel:jeremyhong</permission>
+      <permission>hudson.model.Item.Cancel:knightchang</permission>
       <permission>hudson.model.Item.Delete:jeremyhong</permission>
+      <permission>hudson.model.Item.Delete:knightchang</permission>
       <permission>hudson.model.Run.Update:jeremyhong</permission>
+      <permission>hudson.model.Run.Update:knightchang</permission>
       <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Update:jeremyhong</permission>
+      <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Update:knightchang</permission>
     </hudson.security.AuthorizationMatrixProperty>
     <hudson.plugins.buildblocker.BuildBlockerProperty plugin="build-blocker-plugin@1.7.3">
       <useBuildBlocker>false</useBuildBlocker>
