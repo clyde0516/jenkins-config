@@ -149,22 +149,14 @@ export LIBOPCUA_PATH=${WORKSPACE}/libopcua/linux
 export INSTALL_PREFIX=/home/ci/work/${MATRIX_AXIS_PLATFORM}/build-${TRIGGER_PARAM_JOB_GROUP}-branch
 
 #export add -fPIC
-if [ &quot;$TOOLCHAIN&quot; == &quot;&quot; ]; then
-    if [ &quot;$SYSTEM&quot; == 32 ]; then
-        # configure compiler for generic i686
-        export CC=gcc
-        export CXX=g++
-        export CFLAGS=&apos;-march=i686 -fPIC -fno-strict-aliasing&apos;
-        export CXXFLAGS=$CFLAGS
-        export CC CXX CFLAGS CXXFLAGS
-    else
-        # configure compiler for x64
-        export CC=gcc
-        export CXX=g++
-        export CFLAGS=&apos;-march=x86-64 -mtune=generic -fPIC -fno-strict-aliasing&apos;
-        export CXXFLAGS=$CFLAGS
-        export CC CXX CFLAGS CXXFLAGS
-    fi
+if [ &quot;$SYSTEM&quot; == 32 ]; then
+	export CFLAGS=&apos;-march=i686 -fPIC -fno-strict-aliasing&apos;
+    export CXXFLAGS=$CFLAGS
+    export CFLAGS CXXFLAGS
+else
+	export CFLAGS=&apos;-march=x86-64 -mtune=generic -fPIC -fno-strict-aliasing&apos;
+    export CXXFLAGS=$CFLAGS
+    export CFLAGS CXXFLAGS
 fi
 
 case $MATRIX_AXIS_PLATFORM in
