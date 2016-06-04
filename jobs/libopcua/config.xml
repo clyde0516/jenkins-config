@@ -149,15 +149,8 @@ export LIBOPCUA_PATH=${WORKSPACE}/libopcua/linux
 export INSTALL_PREFIX=/home/ci/work/${MATRIX_AXIS_PLATFORM}/build-${TRIGGER_PARAM_JOB_GROUP}-branch
 
 #export add -fPIC
-if [ &quot;$SYSTEM&quot; == 32 ]; then
-	export CFLAGS=&apos;-march=i686 -fPIC -fno-strict-aliasing&apos;
-    export CXXFLAGS=$CFLAGS
-    export CFLAGS CXXFLAGS
-else
-	export CFLAGS=&apos;-march=x86-64 -mtune=generic -fPIC -fno-strict-aliasing&apos;
-    export CXXFLAGS=$CFLAGS
-    export CFLAGS CXXFLAGS
-fi
+export CFLAGS=&quot;$CFLAGS -fPIC&quot;
+export CXXFLAGS=&quot;$CXXFLAGS -fPIC&quot;
 
 case $MATRIX_AXIS_PLATFORM in
 	&quot;cMT-SVR&quot;)       export CROSS_COMPILER_TOOLCHAIN=${JENKINS_HOME}/jobs/libweintek_${TRIGGER_PARAM_JOB_GROUP}/workspace/build/cMT-SVR/Toolchain-arm-fsl-linux-gnueabi.cmake ;;
