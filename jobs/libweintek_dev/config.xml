@@ -207,6 +207,10 @@ if &quot;%time%&quot; geq &quot; 0:00:00.00&quot; ( if &quot;%time%&quot; lss &q
 &#xd;
 set WORK_UTIL_DIR=c:\jenkins\work&#xd;
 &#xd;
+:: clear artifacts&#xd;
+&#xd;
+del %WORKSPACE_DIR%\lib\libweintek_*.lib&#xd;
+&#xd;
 :: prepare build environment&#xd;
 &#xd;
 md third-party\lib&#xd;
