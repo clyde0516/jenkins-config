@@ -271,6 +271,7 @@
         <string>libweintek_stable</string>
         <string>matrix-test</string>
         <string>opcserver_dev</string>
+        <string>opcserver_dev_cert</string>
         <string>slave-healthy-monitoring</string>
         <string>viewer_debug-android-keyboard</string>
         <string>viewer_dev</string>
