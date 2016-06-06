@@ -265,6 +265,7 @@
         <string>gui_dev</string>
         <string>gui_stable</string>
         <string>libopcua</string>
+        <string>libopcua-shared</string>
         <string>libQt5Charts</string>
         <string>libweintek_dev</string>
         <string>libweintek_stable</string>
