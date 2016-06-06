@@ -16,11 +16,11 @@
       <permission>hudson.model.Item.Discover:jeremyhong</permission>
       <permission>com.cloudbees.plugins.credentials.CredentialsProvider.View:jeremyhong</permission>
       <permission>hudson.model.Item.Build:jeremyhong</permission>
-      <permission>hudson.model.Item.Cancel:jeremyhong</permission>
       <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Create:jeremyhong</permission>
+      <permission>hudson.model.Item.Cancel:jeremyhong</permission>
       <permission>hudson.model.Item.Delete:jeremyhong</permission>
-      <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Update:jeremyhong</permission>
       <permission>hudson.model.Run.Update:jeremyhong</permission>
+      <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Update:jeremyhong</permission>
     </hudson.security.AuthorizationMatrixProperty>
     <hudson.plugins.buildblocker.BuildBlockerProperty plugin="build-blocker-plugin@1.7.3">
       <useBuildBlocker>true</useBuildBlocker>
@@ -37,12 +37,12 @@
         <hudson.model.StringParameterDefinition>
           <name>TRIGGER_PARAM_OPCSERVER_BRANCH</name>
           <description></description>
-          <defaultValue>dev</defaultValue>
+          <defaultValue>dev_cert</defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>TRIGGER_PARAM_JOB_GROUP</name>
           <description></description>
-          <defaultValue>dev</defaultValue>
+          <defaultValue>dev_cert</defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.ChoiceParameterDefinition>
           <name>TRIGGER_PARAM_OPCSERVER_BUILD_POLICY</name>
