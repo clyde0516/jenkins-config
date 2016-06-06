@@ -27,16 +27,16 @@
       <permission>com.cloudbees.plugins.credentials.CredentialsProvider.View:knightchang</permission>
       <permission>hudson.model.Item.Build:jeremyhong</permission>
       <permission>hudson.model.Item.Build:knightchang</permission>
-      <permission>hudson.model.Item.Cancel:jeremyhong</permission>
-      <permission>hudson.model.Item.Cancel:knightchang</permission>
       <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Create:jeremyhong</permission>
       <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Create:knightchang</permission>
+      <permission>hudson.model.Item.Cancel:jeremyhong</permission>
+      <permission>hudson.model.Item.Cancel:knightchang</permission>
       <permission>hudson.model.Item.Delete:jeremyhong</permission>
       <permission>hudson.model.Item.Delete:knightchang</permission>
-      <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Update:jeremyhong</permission>
-      <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Update:knightchang</permission>
       <permission>hudson.model.Run.Update:jeremyhong</permission>
       <permission>hudson.model.Run.Update:knightchang</permission>
+      <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Update:jeremyhong</permission>
+      <permission>com.cloudbees.plugins.credentials.CredentialsProvider.Update:knightchang</permission>
     </hudson.security.AuthorizationMatrixProperty>
     <hudson.plugins.buildblocker.BuildBlockerProperty plugin="build-blocker-plugin@1.7.3">
       <useBuildBlocker>false</useBuildBlocker>
@@ -53,7 +53,7 @@
         <hudson.model.StringParameterDefinition>
           <name>TRIGGER_PARAM_JOB_GROUP</name>
           <description></description>
-          <defaultValue>dev</defaultValue>
+          <defaultValue>dev_shared</defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.ChoiceParameterDefinition>
           <name>TRIGGER_PARAM_OPCSDK_BUILD_POLICY</name>
