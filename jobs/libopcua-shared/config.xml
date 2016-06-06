@@ -148,10 +148,6 @@ fi
 export LIBOPCUA_PATH=${WORKSPACE}/libopcua/linux
 export INSTALL_PREFIX=/home/ci/work/${MATRIX_AXIS_PLATFORM}/build-${TRIGGER_PARAM_JOB_GROUP}-branch
 
-#export add -fPIC
-export CFLAGS=&quot;$CFLAGS -fPIC&quot;
-export CXXFLAGS=&quot;$CXXFLAGS -fPIC&quot;
-
 case $MATRIX_AXIS_PLATFORM in
 	&quot;cMT-SVR&quot;)       export CROSS_COMPILER_TOOLCHAIN=${JENKINS_HOME}/jobs/libweintek_${TRIGGER_PARAM_JOB_GROUP}/workspace/build/cMT-SVR/Toolchain-arm-fsl-linux-gnueabi.cmake ;;
     &quot;cMT3000&quot;)       export CROSS_COMPILER_TOOLCHAIN=/home/ci/work/cMT3000/target/environment-setup-armv7ahf-vfp-neon-weintek-linux-gnueabi  ;;
@@ -166,9 +162,9 @@ esac
 
 # clear artifacts
 
-rm -f ${INSTALL_PREFIX}/lib/libcoremodule*.a
-rm -f ${INSTALL_PREFIX}/lib/libua*.a
-rm -f ${INSTALL_PREFIX}/lib/libxmlparser*.a
+rm -f ${INSTALL_PREFIX}/lib/libcoremodule*.so
+rm -f ${INSTALL_PREFIX}/lib/libua*.so
+rm -f ${INSTALL_PREFIX}/lib/libxmlparser*.so
 
 # prepare out-of-source build
 
@@ -199,7 +195,7 @@ make install VERBOSE=1
 
 mkdir ${WORKSPACE}/artifacts
 rm -rf ${WORKSPACE}/artifacts/*
-cp ${INSTALL_PREFIX}/lib/libcoremodule*.a ${INSTALL_PREFIX}/lib/libua*.a ${INSTALL_PREFIX}/lib/libxmlparser*.a ${WORKSPACE}/artifacts</command>
+cp ${INSTALL_PREFIX}/lib/libcoremodule*.so ${INSTALL_PREFIX}/lib/libua*.so ${INSTALL_PREFIX}/lib/libxmlparser*.so ${WORKSPACE}/artifacts</command>
         </hudson.tasks.Shell>
       </conditionalbuilders>
     </org.jenkinsci.plugins.conditionalbuildstep.ConditionalBuilder>
