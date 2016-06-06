@@ -262,6 +262,7 @@ set LIBWEINTEK_DIR=C:\jenkins\workspace\libweintek_%TRIGGER_PARAM_JOB_GROUP%\MAT
 :: clear artifacts&#xd;
 &#xd;
 del %WORKSPACE_DIR%\build\vs2012\dserverRelease\dserver.*&#xd;
+del %WORKSPACE_DIR%\lib\dserver_*.lib&#xd;
 rmdir /s/q %WORKSPACE_DIR%\artifacts&#xd;
 mkdir %WORKSPACE_DIR%\artifacts&#xd;
 &#xd;
