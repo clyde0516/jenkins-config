@@ -213,7 +213,7 @@ cp ${INSTALL_PREFIX}/lib/libcoremodule*.a ${INSTALL_PREFIX}/lib/libua*.a ${INSTA
 &#xd;
 set WORKSPACE_DIR=%cd%&#xd;
 &#xd;
-&#xd;
+rmdir /s/q %WORKSPACE_DIR%\artifacts&#xd;
 mkdir %WORKSPACE_DIR%\artifacts&#xd;
 echo &quot;nofile&quot; &gt; %WORKSPACE_DIR%\artifacts\nofile</command>
         </hudson.tasks.BatchFile>
